@@ -9,6 +9,8 @@ SESSION_CONFIG_DEFAULTS = dict(
     real_world_currency_per_point=1.00, participation_fee=0.00, doc=""
 )
 
+OTREE_ADMIN_PASSWORD = markusprior
+OTREE_AUTH_LEVEL = DEMO
 
 SESSION_CONFIGS = [
    dict(
@@ -29,9 +31,9 @@ USE_POINTS = True
 
 ROOMS = [
     dict(
-        name='econ101',
-        display_name='Econ 101 class',
-        participant_label_file='_rooms/econ101.txt',
+        name='markusroom',
+        display_name="Professor Prior's Room",
+        participant_label_file='_rooms/prior.txt',
     ),
     dict(name='live_demo', display_name='Room for live demo (no participant labels)'),
 ]
