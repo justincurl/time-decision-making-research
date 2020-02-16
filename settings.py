@@ -9,8 +9,8 @@ SESSION_CONFIG_DEFAULTS = dict(
     real_world_currency_per_point=1.00, participation_fee=0.00, doc=""
 )
 
-OTREE_ADMIN_PASSWORD = "markusprior"
-OTREE_AUTH_LEVEL = DEMO
+OTREE_ADMIN_PASSWORD="markusprior"
+OTREE_AUTH_LEVEL="DEMO"
 
 SESSION_CONFIGS = [
    dict(
