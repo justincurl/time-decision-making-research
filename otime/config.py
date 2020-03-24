@@ -12,14 +12,14 @@ Be sure to also check the README.md file!
 from .block import Block
 
 #: The total budget available for each choice
-TOTAL_BUDGET = 20
+TOTAL_BUDGET = 5
 
 #: Set to True if you want blocks to be randomized in order
 RANDOMIZE_BLOCKS = False
 
 #: Set to True if the choices per question in a block should be visualized as a slider
 #: as opposed to single radio buttons
-VISUALIZE_CHOICES_AS_SLIDER = True
+VISUALIZE_CHOICES_AS_SLIDER = False
 
 #: The configuration for all blocks to be displayed to the user
 #: Note:
