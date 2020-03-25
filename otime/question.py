@@ -1,6 +1,6 @@
 from typing import List
 
-from .block import Block
+from block import Block
 
 
 class Question:
@@ -17,6 +17,7 @@ class Question:
         self.block = block
         self.index = index
         self.num_choices = block.number_of_choices
+        self.value = self.block.values[self.index]
 
     def question_number(self) -> int:
         """Get the number of this question in the block
@@ -32,12 +33,10 @@ class Question:
         
         :return: list of values
         """
-        initial_value = 5
-        decrease_rate = 0.8
-        absolute_decrease =  initial_value*decrease_rate
+        absolute_decrease =  self.value*self.block.decrease_rate
         values = []
         for i in range(6):
-            values.append(initial_value - absolute_decrease*i)
+            values.append(self.value - absolute_decrease*i)
         return values
 
     def end_values(self) -> List[float]:
