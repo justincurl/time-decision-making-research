@@ -56,10 +56,7 @@ class Block:
 
         :return: List of Questions
         """
-        questions = []
-        for i in range(0,6):
-            questions[i] = Question(self, self.number_of_choices - i - 1)
-        return questions
+        return [Question(self, i) for i in range(len(self.values))]
 
     @staticmethod
     def _days_to_text(value: int) -> str:
