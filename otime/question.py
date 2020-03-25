@@ -1,6 +1,6 @@
 from typing import List
 
-from block import Block
+from .block import Block
 
 
 class Question:
