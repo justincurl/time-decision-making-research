@@ -26,7 +26,7 @@ class Question:
         """
         return self.index + 1
 
-    def start_values(self) -> List[float]:
+    def start_values(self) -> List[str]:
         """ Take the initial number, and determine how much to decrease the amount by
             The expected number of values in this version is going to be 6. Decrease rate is 0.8 in this example.
             These numbers will be decreasing
@@ -36,13 +36,13 @@ class Question:
         absolute_decrease =  self.value - self.value*self.block.decrease_rate
         values = []
         for i in range(6):
-            values.append(self.value - absolute_decrease*i)
+            values.append("${:.2f}".format(self.value - absolute_decrease*i))
         return values
 
-    def end_values(self) -> List[float]:
+    def end_values(self) -> List[str]:
         values =[]
         for i in range(6):
-            values.append(i)
+            values.append("${:.2f}".format(float(i)))
         return values
     
     def choice_index(self) -> range:

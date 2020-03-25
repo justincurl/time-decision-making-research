@@ -18,13 +18,13 @@ SESSION_CONFIGS = [
         display_name='Econ CTB',
         num_demo_participants=3, 
         app_sequence=['otime']
-    ),
-    dict(
-        name='politics',
-        display_name='Political CTB',
-        num_demo_participants=3,
-        app_sequence=['opolitics']
     )
+    # dict(
+    #     name='politics',
+    #     display_name='Political CTB',
+    #     num_demo_participants=3,
+    #     app_sequence=['opolitics']
+    # )
 ]
 
 # ISO-639 code
