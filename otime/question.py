@@ -33,7 +33,7 @@ class Question:
         
         :return: list of values
         """
-        absolute_decrease =  self.value*self.block.decrease_rate
+        absolute_decrease =  self.value - self.value*self.block.decrease_rate
         values = []
         for i in range(6):
             values.append(self.value - absolute_decrease*i)
