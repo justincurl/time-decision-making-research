@@ -25,7 +25,7 @@ class Question:
         :return: Question number
         """
         return self.index + 1
-
+# UPDATE THE VALUES TO BE INPUTED INTO THE TEXT BOXES HERE
     def start_values(self) -> List[str]:
         """ Take the initial number, and determine how much to decrease the amount by
             The expected number of values in this version is going to be 6. Decrease rate is 0.8 in this example.
@@ -39,6 +39,7 @@ class Question:
             values.append("${:.2f}".format(self.value - absolute_decrease*i))
         return values
 
+# UPDATE THE VALUES TO BE INPUTED INTO THE BOXES HERE
     def end_values(self) -> List[str]:
         values =[]
         for i in range(6):
