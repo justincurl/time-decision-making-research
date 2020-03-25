@@ -36,13 +36,13 @@ class Question:
         absolute_decrease =  self.value - self.value*self.block.decrease_rate
         values = []
         for i in range(6):
-            values.append("{:.2f}%".format(self.value - absolute_decrease*i))
+            values.append("{:.1f}%".format(self.value - absolute_decrease*i))
         return values
 
     def end_values(self) -> List[str]:
         values =[]
         for i in range(6):
-            values.append("{:.2f}%".format(float(i)))
+            values.append("{:.1f}%".format(float(i)))
         return values
     
     def choice_index(self) -> range:
