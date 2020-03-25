@@ -26,8 +26,8 @@ VISUALIZE_CHOICES_AS_SLIDER = False
 #: - The given delays are treated as WEEKS where an initial delay of 0 means today.
 #: - The order of interest_rates given is the order in which they will be display, i.e.
 #:      to change the order of display just change the order of values here
+""" Edit the number of choices and values to put in the blocks here """
 BLOCKS = [
-    """ Edit the number of choices and values to put in the blocks here """
     Block(
         values=[1.00, 0.8, 0.6, 0.4, 0.2, 0],
         initial_payout_delay=0,

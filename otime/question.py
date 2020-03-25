@@ -25,20 +25,23 @@ class Question:
         """
         return self.index + 1
 
-    def decreasing_question_values(self, initial_value) -> List[float]:
+    def start_values(self) -> List[float]:
         """ Take the initial number, and determine how much to decrease the amount by
             The expected number of values in this version is going to be 6. Decrease rate is 0.8 in this example.
+            These numbers will be decreasing
         
         :return: list of values
         """
+        initial_value = 5
         decrease_rate = 0.8
         absolute_decrease =  initial_value*decrease_rate
-        values = [initial_value]
+        values = []
         for i in range(6):
             values.append(initial_value - absolute_decrease*i)
         return values
 
-    def increasing_question_values(self) -> List[float]
+    def end_values(self) -> List[float]:
+        values =[]
         for i in range(6):
             values.append(i)
         return values

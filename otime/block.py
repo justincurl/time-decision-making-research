@@ -1,4 +1,5 @@
 from typing import List
+from .question import Question
 
 
 class Block:
@@ -53,8 +54,9 @@ class Block:
 
         :return: List of Questions
         """
+        questions = []
         for i in range(0,6):
-            questions[i] = Question(self, number_of_choices - i - 1)
+            questions[i] = Question(self, self.number_of_choices - i - 1)
         return questions
 
     @staticmethod
