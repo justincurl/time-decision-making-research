@@ -39,13 +39,13 @@ Block {{ step }} of {{ num_blocks }}
         <th rowspan="3" width="10">{{ question.question_number }}.</th>
         <td>payment <span class="text-uppercase">{{ curr_block.text_delay_start }}</span>...</td>
         {% for value in question.start_values %}
-        <td class="text-center">{{ value|c() }}</td>
+        <td class="text-center">{{ value }}</td>
         {% endfor %}
     </tr>
     <tr class="timepref__question-end">
         <td>and payment <span class="text-uppercase">{{ curr_block.text_total_end }}</span></td>
         {% for value in question.end_values %}
-        <td class="text-center">{{ value|c }}</td>
+        <td class="text-center">{{ value }}</td>
         {% endfor %}
     </tr>
     <tr class="timepref__question-choices" data-question-index="{{question.question_number}}">
