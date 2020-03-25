@@ -1,6 +1,4 @@
 from typing import List
-from .question import Question
-
 
 class Block:
     """Describes a single block consisting of multiple choices
@@ -56,6 +54,7 @@ class Block:
 
         :return: List of Questions
         """
+        from .question import Question
         return [Question(self, i) for i in range(len(self.values))]
 
     @staticmethod
