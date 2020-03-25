@@ -4,7 +4,6 @@ from .config import BLOCKS, VISUALIZE_CHOICES_AS_SLIDER
 
 class BlockPage(Page):
     # Displays a `Block` to the player
-
     # This page will automatically retrieve the current `Block` to be displayed
     # to the player from the player's current block.
 
@@ -27,7 +26,7 @@ class BlockPage(Page):
             'progress': round(step * 100 / num_blocks),
             'curr_block': current_block,
             'use_slider': VISUALIZE_CHOICES_AS_SLIDER,
-            'num_choices': current_block.number_of_intermediate_choices + 2
+            'num_choices': current_block.number_of_choices
         }
 
     def error_message(self, values):

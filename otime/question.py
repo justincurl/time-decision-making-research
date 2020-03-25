@@ -16,41 +16,33 @@ class Question:
         """
         self.block = block
         self.index = index
-        self.num_choices = block.number_of_intermediate_choices + 2
-        self.interest_rate = self.block.interest_rates[self.index]
+        self.num_choices = block.number_of_choices
 
     def question_number(self) -> int:
         """Get the number of this question in the block
-
+        
         :return: Question number
         """
         return self.index + 1
 
-    def start_values(self) -> List[float]:
-        """Get the list of initial payoff values (at point t)
-
-        The list of values will start with `config.TOTAL_BUDGET / p` and end at `0`.
-        All values will be rounded to one decimal.
-
-        :return: List of initial payoffs
+    def decreasing_question_values(self, initial_value) -> List[float]:
+        """ Take the initial number, and determine how much to decrease the amount by
+            The expected number of values in this version is going to be 6. Decrease rate is 0.8 in this example.
+        
+        :return: list of values
         """
-        from .config import TOTAL_BUDGET
-        start = round(TOTAL_BUDGET / self.interest_rate, 1)
-        unrounded = [(self.num_choices - 1 - i) * start / (self.num_choices - 1) for i in range(self.num_choices)]
-        return [round(v, 1) for v in unrounded]
+        decrease_rate = 0.8
+        absolute_decrease =  initial_value*decrease_rate
+        values = [initial_value]
+        for i in range(6):
+            values.append(initial_value - absolute_decrease*i)
+        return values
 
-    def end_values(self) -> List[float]:
-        """Get the list of final payoff values (at point t + k)
-
-        The list of values will start with `0` and end at `config.TOTAL_BUDGET`.
-        All values will be rounded to one decimal.
-
-        :return: List of final payoffs
-        """
-        from .config import TOTAL_BUDGET
-        unrounded = [i * TOTAL_BUDGET / (self.num_choices - 1) for i in range(self.num_choices)]
-        return [round(v, 1) for v in unrounded]
-
+    def increasing_question_values(self) -> List[float]
+        for i in range(6):
+            values.append(i)
+        return values
+    
     def choice_index(self) -> range:
         """Range from 1 to the `num_choices` (including)
         """

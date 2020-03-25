@@ -27,28 +27,29 @@ VISUALIZE_CHOICES_AS_SLIDER = False
 #: - The order of interest_rates given is the order in which they will be display, i.e.
 #:      to change the order of display just change the order of values here
 BLOCKS = [
+    """ Edit the number of choices and values to put in the blocks here """
     Block(
-        interest_rates=[1.05, 1.11, 1.18, 1.25, 1.43, 1.82],
+        values=[1.00, 0.8, 0.6, 0.4, 0.2, 0],
         initial_payout_delay=0,
         initial_to_last_payout_delay=35,
-        number_of_intermediate_choices=4
+        number_of_choices=6
     ),
     Block(
-        interest_rates=[1.00, 1.05, 1.18, 1.33, 1.67, 2.22],
+        values=[1.00, 0.8, 0.6, 0.4, 0.2, 0],
         initial_payout_delay=0,
         initial_to_last_payout_delay=63,
-        number_of_intermediate_choices=4
+        number_of_choices=6
     ),
     Block(
-        interest_rates=[1.05, 1.11, 1.18, 1.25, 1.43, 1.82],
+        values=[1.00, 0.8, 0.6, 0.4, 0.2, 0],
         initial_payout_delay=35,
         initial_to_last_payout_delay=35,
-        number_of_intermediate_choices=4
+        number_of_choices=6
     ),
     Block(
-        interest_rates=[1.00, 1.05, 1.18, 1.33, 1.67, 2.22],
+        values=[1.00, 0.8, 0.6, 0.4, 0.2, 0],
         initial_payout_delay=35,
         initial_to_last_payout_delay=63,
-        number_of_intermediate_choices=4
+        number_of_choices=6
     )
 ]

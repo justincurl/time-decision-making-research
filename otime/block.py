@@ -6,39 +6,37 @@ class Block:
     """
 
     def __init__(self,
-                 interest_rates: List[float],
+                 values: List[float],
                  initial_payout_delay: int,
                  initial_to_last_payout_delay: int,
-                 number_of_intermediate_choices: int,
+                 number_of_choices: int,
                  show_least_initial_value_first: bool = False):
         """Create a new block consisting of multiple choices. All delays are treated as WEEKS.
-
-        :param interest_rates: List with interest rate values to use per block
+        :param values: List with fraction of initial value to use per block
         :param initial_payout_delay: Number of days until initial payout
         :param initial_to_last_payout_delay: Number of days between initial and last payout (delay)
-        :param number_of_intermediate_choices: Number of intermediate choices (apart from edge choices)
+        :param number_of_choices: Number of choices
         :param show_least_initial_value_first: Set to `True` in order to show the least amount of initial
         payout money as the first option
         """
-        if type(interest_rates) is not list:
-            raise ValueError("interest_rates must be a list, e.g. [1.05, 1.03]")
+        if type(values) is not list:
+            raise ValueError("values must be a list, e.g. [1.05, 1.03]")
         if (type(initial_payout_delay) is not int
                 or type(initial_payout_delay) is not int
-                or type(number_of_intermediate_choices) is not int):
+                or type(number_of_choices) is not int):
             raise ValueError("parameters initial_payout_delay, initial_to_last_payout_delay, "
-                             "and number_of_intermediate_choices must be integers")
-        if number_of_intermediate_choices < 0:
-            raise ValueError("number of intermediate choices must be >= 0")
+                             "and number_of_choices must be integers")
+        if number_of_choices < 0:
+            raise ValueError("number of choices must be >= 0")
 
-        self.interest_rates = interest_rates
+        self.values = values
         self.initial_payout_delay = initial_payout_delay
         self.initial_to_last_payout_delay = initial_to_last_payout_delay
-        self.number_of_intermediate_choices = number_of_intermediate_choices
+        self.number_of_choices = number_of_choices
         self.show_least_initial_value_first = show_least_initial_value_first
 
     def text_delay_start(self) -> str:
         """Returns a human readable text describing the start of the block (e.g. in 2 days) from today.
-
         :return: Human readable start of block from today
         """
         return self._days_to_text(self.initial_payout_delay)
@@ -55,8 +53,8 @@ class Block:
 
         :return: List of Questions
         """
-        from .question import Question
-        return [Question(self, i) for i in range(len(self.interest_rates))]
+        for i in range(0,6):
+            questions[i] = Question
 
     @staticmethod
     def _days_to_text(value: int) -> str:
