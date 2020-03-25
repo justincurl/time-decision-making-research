@@ -17,7 +17,7 @@ otime provides an easy way of creating time-preference based experiments by conf
 
 
 class Constants(BaseConstants):
-    name_in_url = 'otime'
+    name_in_url = 'opolitics'
     players_per_group = None
     num_rounds = 1
 
