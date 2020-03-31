@@ -10,7 +10,8 @@ class Block:
                  initial_to_last_payout_delay: int,
                  number_of_choices: int,
                  decrease_rate: int,
-                 show_least_initial_value_first: bool = False):
+                 show_least_initial_value_first: bool = False,
+                 block_index: int):
         """Create a new block consisting of multiple choices. All delays are treated as WEEKS.
         :param values: List with fraction of initial value to use per block
         :param initial_payout_delay: Number of days until initial payout
@@ -29,16 +30,13 @@ class Block:
         if number_of_choices < 0:
             raise ValueError("number of choices must be >= 0")
 
-        self.block_index = 0
+        self.block_index = block_index
         self.values = values
         self.initial_payout_delay = initial_payout_delay
         self.initial_to_last_payout_delay = initial_to_last_payout_delay
         self.number_of_choices = number_of_choices
         self.show_least_initial_value_first = show_least_initial_value_first
         self.decrease_rate = decrease_rate
-
-    def set_block_index(self, block_index):
-        self.block_index = block_index
 
 
     def text_delay_start(self) -> str:

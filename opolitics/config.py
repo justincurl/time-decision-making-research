@@ -8,11 +8,13 @@ It's not recommended to edit any of the other files.
 
 Be sure to also check the README.md file!
 """
-
+import random
 from .block import Block
 
 #: The total budget available for each choice
 TOTAL_BUDGET = 5
+
+NUM_BLOCKS = 4
 
 #: Set to True if you want blocks to be randomized in order
 RANDOMIZE_BLOCKS = False
@@ -27,6 +29,10 @@ VISUALIZE_CHOICES_AS_SLIDER = False
 #: - The order of interest_rates given is the order in which they will be display, i.e.
 #:      to change the order of display just change the order of values here
 """ Edit the number of choices and values to put in the blocks here """
+block_order = [i for i in range(NUM_BLOCKS)]
+if RANDOMIZE_BLOCKS:
+    random.shuffle(block_order)
+
 BLOCKS = [
     Block(
         values=[5, 4, 3, 2],
@@ -34,6 +40,7 @@ BLOCKS = [
         initial_to_last_payout_delay=35,
         number_of_choices=6,
         decrease_rate=0.8,
+        block_index=block_order[0]
     ),
     Block(
         values=[5, 4, 3, 2],
@@ -41,6 +48,7 @@ BLOCKS = [
         initial_to_last_payout_delay=63,
         number_of_choices=6,
         decrease_rate=0.8,
+        block_index=block_order[1]
     ),
     Block(
         values=[5, 4, 3, 2],
@@ -48,12 +56,14 @@ BLOCKS = [
         initial_to_last_payout_delay=35,
         number_of_choices=6,
         decrease_rate=0.8,
+        block_index=block_order[2]
     ),
     Block(
         values=[5, 4, 3, 2],
         initial_payout_delay=35,
         initial_to_last_payout_delay=63,
         number_of_choices=6,
-        decrease_rate=0.8
+        decrease_rate=0.8,
+        block_index=block_order[3]
     )
 ]

@@ -1,5 +1,4 @@
 import json
-import random
 from typing import Optional, List
 
 from otree.api import (
@@ -28,10 +27,7 @@ class Subsession(BaseSubsession):
     def creating_session(self) -> None:
         """Initializes the session and creates the order in which the Blocks should be run through
         """
-        block_order = [i for i in range(len(BLOCKS))]
-        if RANDOMIZE_BLOCKS:
-            random.shuffle(block_order)
-
+        block_order = [i for i in BLOCKS.index]
         self.block_order = json.dumps(block_order)
 
     def get_block_order(self) -> List[int]:
