@@ -11,7 +11,7 @@ class Question:
     and of course the total available budget.
     """
 
-    def __init__(self, block: Block, block_index: int index: int):
+    def __init__(self, block: Block, block_index: int, index: int):
         """Create a new Question
         """
         self.block = block
