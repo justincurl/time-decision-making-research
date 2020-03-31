@@ -16,7 +16,7 @@ class Question:
         """
         self.block = block
         self.index = index
-        self.block_index
+        self.block_index = block_index
         self.num_choices = block.number_of_choices
         self.value = self.block.values[self.index]
 
