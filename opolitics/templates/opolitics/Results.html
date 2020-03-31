@@ -1,9 +1,15 @@
 {% extends "global/Page.html" %}
 {% load otree static %}
 
-<h1> Survey Completion </h1>
-<br>
-<br>
-<p> Thank you for participating in the survey please email Markus Prior
-    at mprior@princeton.edu with any questions or concerns. 
-</p>
+{% block title %}
+    Survey Completion!
+{% endblock %}
+
+{% block content %}
+     <div class="results" align="justify">
+        <p align="justify">
+            Thank you for participating. If you have any question, please email Markus Prior
+            at mprior@princeton.edu or Justin Curl at jcurl@princeton.edu.
+        </p>
+     </div>
+{% endblock %}
