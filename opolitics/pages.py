@@ -1,4 +1,4 @@
-from ._builtin import Page, ResultsPage
+from ._builtin import Page
 from .config import BLOCKS, VISUALIZE_CHOICES_AS_SLIDER
 
 
@@ -36,14 +36,8 @@ class BlockPage(Page):
     def before_next_page(self):
         self.player.goto_next_step()
 
-
-class ResultsPage(Page):
-        pass
-
 class Instructions(Page):
     pass
-
-
 
 def generate_page_sequence():
     return [Instructions] + [BlockPage] * len(BLOCKS)

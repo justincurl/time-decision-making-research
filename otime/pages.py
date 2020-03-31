@@ -40,7 +40,6 @@ class Instructions(Page):
     pass
 
 
-
 def generate_page_sequence():
     return [Instructions] + [BlockPage] * len(BLOCKS)
 
