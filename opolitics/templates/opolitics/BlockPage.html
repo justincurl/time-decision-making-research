@@ -64,9 +64,11 @@ Block {{ step }} of {{ num_blocks }}
     {% endfor %} <!-- // endfor: curr_block.questions -->
     </tbody>
 </table>
+
 {% for question in curr_block.questions %}
-    <input id="timepref__answers" type="hidden" name="question_{{question.question_number}}" data-question-index="{{question.question_number}}" value="question.choice_index">
+    <input id="timepref__answers" type="hidden" name="question_answers" data-block-index="{{ question.question_number }}" value="1">
 {% endfor %}
+
 <div class="timepref__waiting">
     You need to fill out all choices in order to continue.
 </div>
