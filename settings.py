@@ -31,18 +31,18 @@ SESSION_CONFIGS = [
     #     num_demo_participants=3,
     #     app_sequence=['oecon', 'opolitics'] 
     # ),
-    # dict(
-    #     name='econ',
-    #     display_name= 'Econ CTB',
-    #     num_demo_participants=3,
-    #     app_sequence=['oecon']
-    # ),
     dict(
-        name='politics',
-        display_name= 'Political CTB',
+        name='econ',
+        display_name= 'Econ CTB',
         num_demo_participants=3,
-        app_sequence=['opolitics']
+        app_sequence=['oecon']
     )
+    # dict(
+    #     name='politics',
+    #     display_name= 'Political CTB',
+    #     num_demo_participants=3,
+    #     app_sequence=['opolitics']
+    # )
 ]
 
 # ISO-639 code
