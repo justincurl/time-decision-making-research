@@ -1,4 +1,4 @@
- from typing import List
+from typing import List
 
 class Block:
     """Describes a single block consisting of multiple choices
