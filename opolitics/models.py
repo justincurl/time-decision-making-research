@@ -101,6 +101,7 @@ class Player(BasePlayer):
         """
         block_index = self.get_current_block_index()
         if 0 <= block_index < len(BLOCKS):
+            BLOCKS[block_index].set_block_index = block_index
             return BLOCKS[block_index]
         else:
             return None

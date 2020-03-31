@@ -33,21 +33,21 @@ BLOCKS = [
         initial_payout_delay=0,
         initial_to_last_payout_delay=35,
         number_of_choices=6,
-        decrease_rate=0.8
+        decrease_rate=0.8,
     ),
     Block(
         values=[5, 4, 3, 2],
         initial_payout_delay=0,
         initial_to_last_payout_delay=63,
         number_of_choices=6,
-        decrease_rate=0.8
+        decrease_rate=0.8,
     ),
     Block(
         values=[5, 4, 3, 2],
         initial_payout_delay=35,
         initial_to_last_payout_delay=35,
         number_of_choices=6,
-        decrease_rate=0.8
+        decrease_rate=0.8,
     ),
     Block(
         values=[5, 4, 3, 2],

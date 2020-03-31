@@ -29,12 +29,17 @@ class Block:
         if number_of_choices < 0:
             raise ValueError("number of choices must be >= 0")
 
+        self.block_index = 0
         self.values = values
         self.initial_payout_delay = initial_payout_delay
         self.initial_to_last_payout_delay = initial_to_last_payout_delay
         self.number_of_choices = number_of_choices
         self.show_least_initial_value_first = show_least_initial_value_first
         self.decrease_rate = decrease_rate
+
+    def set_block_index(self, block_index):
+        self.block_index = block_index
+
 
     def text_delay_start(self) -> str:
         """Returns a human readable text describing the start of the block (e.g. in 2 days) from today.
