@@ -53,6 +53,8 @@ Block {{ step }} of {{ num_blocks }}
         {% endfor %}
     </tr>
 
+    <h1>"{{question_{{question.questionnumber}}}}"</h1>
+
     {% if not forloop.last %}
     <tr class="timepref__spacer">
         <td></td>
@@ -66,7 +68,7 @@ Block {{ step }} of {{ num_blocks }}
 </table>
 
 {% for question in curr_block.questions %}
-    <input id="timepref__answers" type="hidden" name="question_answers" data-block-index="{{ question.question_number }}" value="{{question_answers}}">
+    <input id="timepref__answers" type="hidden" name="question_answers" data-block-index="{{ question.question_number }}" value="6">
 {% endfor %}
 
 <div class="timepref__waiting">
