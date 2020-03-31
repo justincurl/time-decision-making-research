@@ -64,32 +64,6 @@ Block {{ step }} of {{ num_blocks }}
     {% endif %} <!-- // endif: forloop.last -->
     {% endif %} <!-- // endif: not use_slider -->
 
-    {% if use_slider %}
-    <tr class="timepref__question-start timepref__question-index-{{question.question_number}} timepref__question-choices"
-        data-question-index="{{question.question_number}}"
-        data-start-values=""
-        data-end-values="{{question.end_values | json}}">
-        <th rowspan="2" width="10">{{ question.question_number }}.</th>
-        <td class="text-nowrap">
-            payment <span class="text-uppercase">{{ curr_block.text_delay_start }}</span>:
-        </td>
-        <td class="text-center timepref__question-start-value text-nowrap" width="100">
-            0.00€
-        </td>
-        <td class="timepref__question-slider" rowspan="2" width="1000">
-            <div class="timepref__question-start-values">
-                {% for v in question.start_values %}
-                <div>{{v | c}}</div>
-                {% endfor %}
-            </div>
-            <div class="hidden timepref__question-end-values">
-                {% for v in question.end_values %}
-                <div>{{v | c}}</div>
-                {% endfor %}
-            </div>
-            <input type="range" min="1" max="{{num_choices}}" step="1" value="1"/>
-        </td>
-    </tr>
     <tr class="timepref__question-end" data-question-index="{{question.question_number}}">
         <td class="text-nowrap">
             and payment <span class="text-uppercase">{{ curr_block.text_total_end }}</span>:
