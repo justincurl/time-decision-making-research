@@ -39,7 +39,7 @@ SESSION_CONFIGS = [
     ),
     dict(
         name='joint',
-        display_name= 'Joint CTB'',
+        display_name= 'Joint CTB',
         num_demo_participants=3,
         app_sequence=['opolitics', 'oecon'] 
     )
