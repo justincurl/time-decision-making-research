@@ -3,7 +3,6 @@ from typing import List
 class Block:
     """Describes a single block consisting of multiple choices
     """
-
     def __init__(self,
                  values: List[float],
                  initial_payout_delay: int,
@@ -58,7 +57,7 @@ class Block:
         :return: List of Questions
         """
         from .question import Question
-        return [Question(self, i) for i in range(len(self.values))]
+        return [Question(self, self.block_index, i) for i in range(len(self.values))]
 
     @staticmethod
     def _days_to_text(value: int) -> str:
