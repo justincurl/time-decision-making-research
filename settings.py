@@ -25,11 +25,23 @@ OTREE_ADMIN_PASSWORD="markusprior"
 OTREE_AUTH_LEVEL="DEMO"
 
 SESSION_CONFIGS = [
+    # dict(
+    #     name='joint',
+    #     display_name= 'Joint CTB',
+    #     num_demo_participants=3,
+    #     app_sequence=['oecon', 'opolitics'] 
+    # ),
+    # dict(
+    #     name='econ',
+    #     display_name= 'Econ CTB',
+    #     num_demo_participants=3,
+    #     app_sequence=['oecon']
+    # ),
     dict(
-        name='joint',
-        display_name= 'Joint CTB',
+        name='politics',
+        display_name= 'Political CTB',
         num_demo_participants=3,
-        app_sequence=['oecon', 'opolitics'] 
+        app_sequence=['opolitics']
     )
 ]
 
