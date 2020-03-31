@@ -31,7 +31,6 @@ Block {{ step }} of {{ num_blocks }}
     <tbody>
     {% for question in curr_block.questions %}
 
-    {% if not use_slider %}
     <tr class="timepref__question-start timepref__question-unanswered timepref__question-index-{{question.question_number}}">
         <th rowspan="3" width="10">{{ question.question_number }}.</th>
         <td> Growth this year </td>
@@ -58,12 +57,11 @@ Block {{ step }} of {{ num_blocks }}
     <tr class="timepref__spacer">
         <td></td>
         {% for value in question.start_values %}
+        <h6>spacer</h6>
         <td></td>
         {% endfor %}
     </tr>
     {% endif %} <!-- // endif: forloop.last -->
-    {% endif %} <!-- // endif: not use_slider -->
-    
     {% endfor %} <!-- // endfor: curr_block.questions -->
     </tbody>
 </table>

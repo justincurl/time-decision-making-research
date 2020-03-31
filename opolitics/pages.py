@@ -8,7 +8,7 @@ class BlockPage(Page):
     # to the player from the player's current block.
 
     form_model = 'player'
-    form_fields = ['block_answers']
+    form_fields = ['question_answers']
 
     def is_displayed(self):
         # This page will only be displayed when there are blocks left
