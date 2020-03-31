@@ -9,10 +9,10 @@ from otree.api import (
 from .block import Block
 from .config import BLOCKS, RANDOMIZE_BLOCKS
 
-author = 'Michael Rose <michael_rose@gmx.de>'
+author = 'Justin Curl <jcurl@princeton.edu>'
 
 doc = """
-otime provides an easy way of creating time-preference based experiments by configuration
+use Convex Time Budget analysis to analyze 
 """
 
 

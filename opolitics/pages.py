@@ -1,4 +1,4 @@
-from ._builtin import Page, WaitPage
+from ._builtin import Page, ResultsPage
 from .config import BLOCKS, VISUALIZE_CHOICES_AS_SLIDER
 
 
@@ -19,6 +19,7 @@ class BlockPage(Page):
         block_index = self.player.get_current_block_index() + 1
         current_block = self.player.get_current_block()
         num_blocks = len(BLOCKS)
+
         return {
             'step': step,
             'block_index': block_index,
@@ -35,11 +36,16 @@ class BlockPage(Page):
     def before_next_page(self):
         self.player.goto_next_step()
 
+
+class ResultsPage(Page):
+        pass
+
 class Instructions(Page):
     pass
 
+
+
 def generate_page_sequence():
     return [Instructions] + [BlockPage] * len(BLOCKS)
-
 
 page_sequence = generate_page_sequence()
