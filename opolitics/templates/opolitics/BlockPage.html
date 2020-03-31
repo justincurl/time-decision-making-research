@@ -63,26 +63,7 @@ Block {{ step }} of {{ num_blocks }}
     </tr>
     {% endif %} <!-- // endif: forloop.last -->
     {% endif %} <!-- // endif: not use_slider -->
-
-    <tr class="timepref__question-end" data-question-index="{{question.question_number}}">
-        <td class="text-nowrap">
-            and payment <span class="text-uppercase">{{ curr_block.text_total_end }}</span>:
-        </td>
-        <td class="text-center timepref__question-end-value" >
-            0.00€
-        </td>
-    </tr>
-
-    {% if not forloop.last %}
-    <tr class="timepref__spacer">
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    {% endif %} <!-- // endif: forloop.last -->
-    {% endif %} <!-- // endif: use_slider -->
-
+    
     {% endfor %} <!-- // endfor: curr_block.questions -->
     </tbody>
 </table>
