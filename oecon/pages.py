@@ -43,15 +43,15 @@ class Instructions(Page):
     pass
 
 class StartSurvey(Page)
-    def app_after_this_page(self, upcoming_apps):
-        if RANDOMIZE_APPS:
-            choice = random.choice([True, False])
-            if choice:
-                return upcoming_apps[-1]
-            else:
-                pass
-        else:
-            pass
+    # def app_after_this_page(self, upcoming_apps):
+    #     if RANDOMIZE_APPS:
+    #         choice = random.choice([True, False])
+    #         if choice:
+    #             return upcoming_apps[-1]
+    #         else:
+    #             pass
+    #     else:
+    #         pass
     pass
 
 def generate_page_sequence():
