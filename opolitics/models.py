@@ -25,9 +25,10 @@ class Subsession(BaseSubsession):
     block_order = models.StringField(initial="")
 
     def creating_session(self) -> None:
-        """Initializes the session and creates the order in which the Blocks should be run through
+        """Initializes the 
+        session and creates the order in which the Blocks should be run through
         """
-        block_order = [i for i in BLOCKS[i].block_index]
+        block_order = [BLOCKS[i].block_index for i in len(BLOCKS)]
         self.block_order = json.dumps(block_order)
 
     def get_block_order(self) -> List[int]:
