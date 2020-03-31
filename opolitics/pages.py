@@ -35,19 +35,11 @@ class BlockPage(Page):
     def before_next_page(self):
         self.player.goto_next_step()
 
-
-class ResultsWaitPage(WaitPage):
-
-    def after_all_players_arrive(self):
-        pass
-
 class Instructions(Page):
     pass
 
-
-
 def generate_page_sequence():
-    return [Instructions] + [BlockPage] * len(BLOCKS) + [ResultsWaitPage]
+    return [Instructions] + [BlockPage] * len(BLOCKS)
 
 
 page_sequence = generate_page_sequence()
