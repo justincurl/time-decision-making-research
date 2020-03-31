@@ -27,7 +27,7 @@ class Subsession(BaseSubsession):
     def creating_session(self) -> None:
         """Initializes the session and creates the order in which the Blocks should be run through
         """
-        block_order = [i for i in BLOCKS.index]
+        block_order = [i for i in BLOCKS[i].index]
         self.block_order = json.dumps(block_order)
 
     def get_block_order(self) -> List[int]:
