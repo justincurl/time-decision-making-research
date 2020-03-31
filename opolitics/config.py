@@ -40,7 +40,7 @@ BLOCKS = [
         initial_to_last_payout_delay=35,
         number_of_choices=6,
         decrease_rate=0.8,
-        block_index=block_order[0]
+        block_index= int(block_order[0])
     ),
     Block(
         values=[5, 4, 3, 2],
@@ -48,7 +48,7 @@ BLOCKS = [
         initial_to_last_payout_delay=63,
         number_of_choices=6,
         decrease_rate=0.8,
-        block_index=block_order[1]
+        block_index= int(block_order[1])
     ),
     Block(
         values=[5, 4, 3, 2],
@@ -56,7 +56,7 @@ BLOCKS = [
         initial_to_last_payout_delay=35,
         number_of_choices=6,
         decrease_rate=0.8,
-        block_index=block_order[2]
+        block_index= int(block_order[2])
     ),
     Block(
         values=[5, 4, 3, 2],
@@ -64,6 +64,6 @@ BLOCKS = [
         initial_to_last_payout_delay=63,
         number_of_choices=6,
         decrease_rate=0.8,
-        block_index=block_order[3]
+        block_index= int(block_order[3])
     )
 ]
