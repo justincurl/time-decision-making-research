@@ -52,6 +52,7 @@ class StartSurvey(Page)
                 pass
         else:
             pass
+    pass
 
 def generate_page_sequence():
     return [StartSurvey] + [Instructions] + [BlockPage] * len(BLOCKS) + [Results]
