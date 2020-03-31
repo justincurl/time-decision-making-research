@@ -26,18 +26,6 @@ OTREE_AUTH_LEVEL="DEMO"
 
 SESSION_CONFIGS = [
     dict(
-        name='econ',
-        display_name='Econ CTB',
-        num_demo_participants=3, 
-        app_sequence=['oecon']
-    ),
-    dict(
-        name='politics',
-        display_name='Political CTB',
-        num_demo_participants=3,
-        app_sequence=['opolitics']
-    ),
-    dict(
         name='joint',
         display_name= 'Joint CTB',
         num_demo_participants=3,
