@@ -24,7 +24,7 @@ class Question:
         
         :return: Question number
         """
-        return len(self.block.values)*self.block.number_of_choices + self.index + 1
+        return len(self.block.values)*self.block.block_index + self.index + 1
 
     def start_values(self) -> List[str]:
         """ Take the initial number, and determine how much to decrease the amount by
