@@ -41,7 +41,7 @@ SESSION_CONFIGS = [
         name='joint',
         display_name= 'Joint CTB',
         num_demo_participants=3,
-        app_sequence=['opolitics', 'oecon'] 
+        app_sequence=['oecon', 'opolitics'] 
     )
 ]
 
