@@ -66,10 +66,9 @@ Block {{ step }} of {{ num_blocks }}
     {% endfor %} <!-- // endfor: curr_block.questions -->
     </tbody>
 </table>
-<h1>timepref__question-choices</h1>
 
 {% for question in curr_block.questions %}
-    <input id="timepref__answers" type="hidden" name="question_answers" data-block-index="{{ question.question_number }}" value="timepref__question-choice">
+    <input id="timepref__answers" type="hidden" name="question_answers" data-block-index="{{ question.question_number }}" value="{{timepref__question-choice}}">
 {% endfor %}
 
 <div class="timepref__waiting">
