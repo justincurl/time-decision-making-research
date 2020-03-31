@@ -53,7 +53,7 @@ class Player(BasePlayer):
     """Current step the user is in
     """
 
-    block_answers = models.StringField(initial="")
+    question_answers = models.StringField(initial="")
     """Serialized JSON array representing the players answers
     
     The JSON array is two dimensional - the elements of the array represent
