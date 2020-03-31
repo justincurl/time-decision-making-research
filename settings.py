@@ -40,13 +40,13 @@ SESSION_CONFIGS = [
     dict(
         name='public_goods',
         display_name='Trust',
-        num_demo_participants=3,
+        num_demo_participants=4,
         app_sequence=['trust'] 
     ),
     dict(
         name='cournot',
         display_name='Cournot',
-        num_demo_participants=3,
+        num_demo_participants=4,
         app_sequence=['cournot']
     )
 ]
