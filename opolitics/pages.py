@@ -33,6 +33,7 @@ class BlockPage(Page):
     def error_message(self, values):
         pass
 
+
     def before_next_page(self):
         self.player.goto_next_step()
 

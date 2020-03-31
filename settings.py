@@ -36,6 +36,18 @@ SESSION_CONFIGS = [
         display_name='Political CTB',
         num_demo_participants=3,
         app_sequence=['opolitics']
+    ),
+    dict(
+        name='public_goods',
+        display_name='Trust',
+        num_demo_participants=3,
+        app_sequence=['trust'] 
+    ),
+    dict(
+        name='cournot',
+        display_name='Cournot',
+        num_demo_participants=3,
+        app_sequence=['cournot']
     )
 ]
 
