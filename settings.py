@@ -29,7 +29,7 @@ SESSION_CONFIGS = [
         name='econ',
         display_name='Econ CTB',
         num_demo_participants=3, 
-        app_sequence=['otime']
+        app_sequence=['oecon']
     ),
     dict(
         name='politics',
@@ -38,16 +38,10 @@ SESSION_CONFIGS = [
         app_sequence=['opolitics']
     ),
     dict(
-        name='public_goods',
-        display_name='Trust',
-        num_demo_participants=4,
-        app_sequence=['trust'] 
-    ),
-    dict(
-        name='cournot',
-        display_name='Cournot',
-        num_demo_participants=4,
-        app_sequence=['cournot']
+        name='joint',
+        display_name= 'Joint CTB'',
+        num_demo_participants=3,
+        app_sequence=['opolitics', 'oecon'] 
     )
 ]
 

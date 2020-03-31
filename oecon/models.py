@@ -9,15 +9,15 @@ from otree.api import (
 from .block import Block
 from .config import BLOCKS, RANDOMIZE_BLOCKS
 
-author = 'Michael Rose <michael_rose@gmx.de>'
+author = 'Justin Curl <jcurl@princeton.edu>'
 
 doc = """
-otime provides an easy way of creating time-preference based experiments by configuration
+oecon provides an easy way of creating time-preference based experiments by configuration
 """
 
 
 class Constants(BaseConstants):
-    name_in_url = 'otime'
+    name_in_url = 'oecon'
     players_per_group = None
     num_rounds = 1
 

@@ -114,7 +114,7 @@ Block {{ step }} of {{ num_blocks }}
     </tbody>
 </table>
 
-<input id="timepref__answers" type="hidden" name="question_answers" data-question-index="{{ question.question_number }}" value="{{ player.question_answers }}">
+<input id="timepref__answers" type="hidden" name="question_answers" data-block-index="{{ block_index }}" value="{{ player.question_answers }}">
 
 <div class="timepref__waiting">
     You need to fill out all choices in order to continue.
@@ -127,11 +127,11 @@ Block {{ step }} of {{ num_blocks }}
 {% endblock %}
 
 {% block styles %}
-<link rel="stylesheet" href="{% static 'otime/styles/block.css' %}"/>
-<link rel="stylesheet" href="{% static 'otime/styles/rangeslider.css' %}"/>
+<link rel="stylesheet" href="{% static 'oecon/styles/block.css' %}"/>
+<link rel="stylesheet" href="{% static 'oecon/styles/rangeslider.css' %}"/>
 {% endblock %}
 
 {% block scripts %}
-<script src="{% static 'otime/scripts/rangeslider.min.js' %}"></script>
-<script src="{% static 'otime/scripts/block.js' %}"></script>
+<script src="{% static 'oecon/scripts/rangeslider.min.js' %}"></script>
+<script src="{% static 'oecon/scripts/block.js' %}"></script>
 {% endblock %}
