@@ -49,7 +49,10 @@ class Instructions(Page):
             pass
     pass
 
+class Start(Page):
+    pass
+
 def generate_page_sequence():
-    return [Instructions] + [BlockPage] * len(BLOCKS) + [Results]
+    return [Start] + [Instructions] + [BlockPage] * len(BLOCKS) + [Results]
 
 page_sequence = generate_page_sequence()
