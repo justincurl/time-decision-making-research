@@ -37,7 +37,7 @@ class Question:
         absolute_decrease =  self.value - self.value*self.block.decrease_rate
         values = []
         for i in range(6):
-            values.append("{:.1f}%".format(self.value - absolute_decrease*i))
+            values.append("${:.2f}".format(self.value - absolute_decrease*i))
         return values
 
     def end_values(self) -> List[str]:
