@@ -41,6 +41,11 @@ class Results(Page):
     pass
 
 class Instructions(Page):
+    def app_after_this_page(self, upcoming_apps):
+        if random.choice[True, False]:
+            return upcoming_apps[0]
+        else:
+            pass
     pass
 
 def generate_page_sequence():
