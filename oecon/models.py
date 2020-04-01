@@ -44,7 +44,6 @@ class Subsession(BaseSubsession):
 class Group(BaseGroup):
     pass
 
-
 class Player(BasePlayer):
     current_step = models.IntegerField(initial=0)
     """Current step the user is in
