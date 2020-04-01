@@ -1,3 +1,4 @@
+import random
 from ._builtin import Page, WaitPage
 from .config import BLOCKS, VISUALIZE_CHOICES_AS_SLIDER
 
