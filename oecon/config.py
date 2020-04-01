@@ -14,6 +14,8 @@ from .block import Block
 #: The total budget available for each choice
 TOTAL_BUDGET = 5
 
+NUM_BLOCKS = 4
+
 #: Set to True if you want blocks to be randomized in order
 RANDOMIZE_BLOCKS = False
 
