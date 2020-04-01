@@ -3,7 +3,6 @@ from typing import List
 class Block:
     """Describes a single block consisting of multiple choices
     """
-
     def __init__(self,
                  values: List[float],
                  initial_payout_delay: int,
@@ -29,7 +28,7 @@ class Block:
                              "and number_of_choices must be integers")
         if number_of_choices < 0:
             raise ValueError("number of choices must be >= 0")
-        
+
         self.block_index = block_index
         self.values = values
         self.initial_payout_delay = initial_payout_delay
@@ -37,6 +36,7 @@ class Block:
         self.number_of_choices = number_of_choices
         self.show_least_initial_value_first = show_least_initial_value_first
         self.decrease_rate = decrease_rate
+
 
     def text_delay_start(self) -> str:
         """Returns a human readable text describing the start of the block (e.g. in 2 days) from today.
@@ -57,7 +57,7 @@ class Block:
         :return: List of Questions
         """
         from .question import Question
-        return [Question(self, i) for i in range(len(self.values))]
+        return [Question(self, self.block_index, i) for i in range(len(self.values))]
 
     @staticmethod
     def _days_to_text(value: int) -> str:

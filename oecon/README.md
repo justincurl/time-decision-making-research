@@ -1,16 +1,16 @@
-# oecon - Convex Time Budget for Monetary Decisions for otree
+# otime - Time Preferences for otree
 
-*oecon* allows you to easily create time preference based experiments for [otree](http://www.otree.org) by editing a single configuration file (see [`config.py`](./config.py)).
+*otime* allows you to easily create time preference based experiments for [otree](http://www.otree.org) by editing a single configuration file (see [`config.py`](./config.py)).
 
 ## Screenshots
 
 Here is a screenshot of time with in total two blocks configured. The configuration options match the default ones as outlined below. 
 
-![oecon with radio choices](./doc/oecon_block_radio.jpg)
+![otime with radio choices](./doc/otime_block_radio.jpg)
 
 The following screenshot shows the same configuration with `VISUALIZE_CHOICES_AS_SLIDER` set to `True`.
 
-![oecon with slider](./doc/oecon_block_slider.jpg)
+![otime with slider](./doc/otime_block_slider.jpg)
 
 ## Configuration
 Configuration is done by editing the options present in [`config.py`](./config.py).

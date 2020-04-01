@@ -1,6 +1,5 @@
-import random
 from ._builtin import Page, WaitPage
-from .config import BLOCKS, VISUALIZE_CHOICES_AS_SLIDER, RANDOMIZE_APPS
+from .config import BLOCKS, VISUALIZE_CHOICES_AS_SLIDER
 
 
 class BlockPage(Page):
@@ -20,7 +19,7 @@ class BlockPage(Page):
         block_index = self.player.get_current_block_index() + 1
         current_block = self.player.get_current_block()
         num_blocks = len(BLOCKS)
-        
+
         return {
             'step': step,
             'block_index': block_index,
@@ -34,6 +33,7 @@ class BlockPage(Page):
     def error_message(self, values):
         pass
 
+
     def before_next_page(self):
         self.player.goto_next_step()
 
@@ -43,10 +43,7 @@ class Results(Page):
 class Instructions(Page):
     pass
 
-class StartSurvey(Page)
-    pass
-
 def generate_page_sequence():
-    return [StartSurvey] + [Instructions] + [BlockPage] * len(BLOCKS) + [Results]
+    return [Instructions] + [BlockPage] * len(BLOCKS) + [Results]
 
 page_sequence = generate_page_sequence()

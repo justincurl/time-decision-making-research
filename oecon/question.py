@@ -11,11 +11,12 @@ class Question:
     and of course the total available budget.
     """
 
-    def __init__(self, block: Block, index: int):
+    def __init__(self, block: Block, block_index: int, index: int):
         """Create a new Question
         """
         self.block = block
         self.index = index
+        self.block_index = block_index
         self.num_choices = block.number_of_choices
         self.value = self.block.values[self.index]
 
@@ -24,26 +25,25 @@ class Question:
         
         :return: Question number
         """
-        return self.index + 1
-# UPDATE THE VALUES TO BE INPUTED INTO THE TEXT BOXES HERE
+        return len(self.block.values)*self.block_index + self.index + 1
+
     def start_values(self) -> List[str]:
         """ Take the initial number, and determine how much to decrease the amount by
             The expected number of values in this version is going to be 6. Decrease rate is 0.8 in this example.
-            These numbers will be decreasing
+            These numbers will be decreasing 
         
         :return: list of values
         """
         absolute_decrease =  self.value - self.value*self.block.decrease_rate
         values = []
         for i in range(6):
-            values.append("${:.2f}".format(self.value - absolute_decrease*i))
+            values.append("{:.1f}%".format(self.value - absolute_decrease*i))
         return values
 
-# UPDATE THE VALUES TO BE INPUTED INTO THE BOXES HERE
     def end_values(self) -> List[str]:
         values =[]
         for i in range(6):
-            values.append("${:.2f}".format(float(i)))
+            values.append("{:.1f}%".format(float(i)))
         return values
     
     def choice_index(self) -> range:

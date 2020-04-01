@@ -17,15 +17,15 @@ Block {{ step }} of {{ num_blocks }}
 <hr>
 
 <h1 class="timepref__heading">
-    Which payment options would you prefer? 
+    Economic Growth
 </h1>
 
 </p>
         <p align="justify">
-           In this scenario, your payment options would be divided 
-           between <span class="text-uppercase">{{ curr_block.text_delay_start }}</span> and 
-           <span class="text-uppercase">{{ curr_block.text_total_end }}</span> from today. 
+            For each pair of rows, select which combination of annual economic growth this year and next year you prefer.							
+            Example: In the first pair of rows, if a 5% growth rate next year and a 0% growth rate this year was your preferred combination, you would check the left-most box.
 </p>
+
 
 <table class="table table-bordered {% if use_slider %}timepref__with-slider{% endif %}">
     <tbody>
@@ -33,13 +33,13 @@ Block {{ step }} of {{ num_blocks }}
 
     <tr class="timepref__question-start timepref__question-unanswered timepref__question-index-{{question.question_number}}">
         <th rowspan="3" width="10">{{ question.question_number }}.</th>
-        <td>payment <span class="text-uppercase">{{ curr_block.text_delay_start }}</span>...</td>
+        <td> Growth this year </td>
         {% for value in question.start_values %}
         <td class="text-center">{{ value }}</td>
         {% endfor %}
     </tr>
     <tr class="timepref__question-end">
-        <td>and payment <span class="text-uppercase">{{ curr_block.text_total_end }}</span></td>
+        <td>and growth next year </td>
         {% for value in question.end_values %}
         <td class="text-center">{{ value }}</td>
         {% endfor %}
@@ -53,6 +53,8 @@ Block {{ step }} of {{ num_blocks }}
         {% endfor %}
     </tr>
 
+    <h1></h1>
+
     {% if not forloop.last %}
     <tr class="timepref__spacer">
         <td></td>
@@ -61,13 +63,11 @@ Block {{ step }} of {{ num_blocks }}
         {% endfor %}
     </tr>
     {% endif %} <!-- // endif: forloop.last -->
-    {% endif %} <!-- // endif: not use_slider -->
-
     {% endfor %} <!-- // endfor: curr_block.questions -->
     </tbody>
 </table>
 
-<input id="timepref__answers" type="hidden" name="question_answers" data-block-index="{{ block_index }}" value="{{ player.question_answers }}">
+<input id="timepref__answers" type="hidden" name="question_answers" data-block-index="{{ block_index }}" value="{{player.question_answers}}">
 
 <div class="timepref__waiting">
     You need to fill out all choices in order to continue.

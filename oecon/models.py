@@ -1,5 +1,4 @@
 import json
-import random
 from typing import Optional, List
 
 from otree.api import (
@@ -12,7 +11,7 @@ from .config import BLOCKS, RANDOMIZE_BLOCKS
 author = 'Justin Curl <jcurl@princeton.edu>'
 
 doc = """
-oecon provides an easy way of creating time-preference based experiments by configuration
+use Convex Time Budget analysis to analyze 
 """
 
 
@@ -26,7 +25,8 @@ class Subsession(BaseSubsession):
     block_order = models.StringField(initial="")
 
     def creating_session(self) -> None:
-        """Initializes the session and creates the order in which the Blocks should be run through
+        """Initializes the 
+        session and creates the order in which the Blocks should be run through
         """
         block_order = [BLOCKS[i].block_index for i in range(len(BLOCKS))]
         self.block_order = json.dumps(block_order)

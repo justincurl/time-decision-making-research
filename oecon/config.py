@@ -1,14 +1,14 @@
 """
-This file includes all available configuration options for the oecon app.
+This file includes all available configuration options for the otime app.
 
-Modify this file to set all your preferences - also modify `templates/oecon/Results.html` to your liking
+Modify this file to set all your preferences - also modify `templates/otime/Results.html` to your liking
 which will be displayed after all questions of all blocks have been answered.
 
 It's not recommended to edit any of the other files.
 
 Be sure to also check the README.md file!
 """
-
+import random
 from .block import Block
 
 #: The total budget available for each choice
@@ -18,8 +18,6 @@ NUM_BLOCKS = 4
 
 #: Set to True if you want blocks to be randomized in order
 RANDOMIZE_BLOCKS = False
-
-RANDOMIZE_APPS = False
 
 #: Set to True if the choices per question in a block should be visualized as a slider
 #: as opposed to single radio buttons
