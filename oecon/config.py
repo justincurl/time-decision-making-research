@@ -19,7 +19,7 @@ NUM_BLOCKS = 4
 #: Set to True if you want blocks to be randomized in order
 RANDOMIZE_BLOCKS = False
 
-RANDOMIZE_APPS = True
+RANDOMIZE_APPS = False
 
 #: Set to True if the choices per question in a block should be visualized as a slider
 #: as opposed to single radio buttons
