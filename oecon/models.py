@@ -28,10 +28,7 @@ class Subsession(BaseSubsession):
     def creating_session(self) -> None:
         """Initializes the session and creates the order in which the Blocks should be run through
         """
-        block_order = [i for i in range(len(BLOCKS))]
-        if RANDOMIZE_BLOCKS:
-            random.shuffle(block_order)
-
+        block_order = [BLOCKS[i].block_index for i in range(len(BLOCKS))]
         self.block_order = json.dumps(block_order)
 
     def get_block_order(self) -> List[int]:

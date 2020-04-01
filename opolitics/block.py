@@ -10,8 +10,7 @@ class Block:
                  number_of_choices: int,
                  decrease_rate: int,
                  block_index: int,
-                 show_least_initial_value_first: bool = False
-                 ):
+                 show_least_initial_value_first: bool = False):
         """Create a new block consisting of multiple choices. All delays are treated as WEEKS.
         :param values: List with fraction of initial value to use per block
         :param initial_payout_delay: Number of days until initial payout
