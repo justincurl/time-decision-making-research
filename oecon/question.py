@@ -43,7 +43,7 @@ class Question:
     def end_values(self) -> List[str]:
         values =[]
         for i in range(6):
-            values.append("{:.1f}%".format(float(i)))
+            values.append("${:.2f}".format(float(i)))
         return values
     
     def choice_index(self) -> range:
