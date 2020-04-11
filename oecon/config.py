@@ -47,7 +47,7 @@ BLOCKS = [
     Block(
         values=[5, 4, 3, 2],
         initial_payout_delay=0,
-        initial_to_last_payout_delay=63,
+        initial_to_last_payout_delay=70,
         number_of_choices=6,
         decrease_rate=0.8,
         block_index= int(block_order[1])
@@ -63,7 +63,7 @@ BLOCKS = [
     Block(
         values=[5, 4, 3, 2],
         initial_payout_delay=35,
-        initial_to_last_payout_delay=63,
+        initial_to_last_payout_delay=70,
         number_of_choices=6,
         decrease_rate=0.8,
         block_index= int(block_order[3])
