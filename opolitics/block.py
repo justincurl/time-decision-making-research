@@ -65,7 +65,7 @@ class Block:
             return "this year"
         if value == 1:
             return "next year"
-        else if value == 2:
+        elif value == 2:
             return "two years from now"
 
     @staticmethod
