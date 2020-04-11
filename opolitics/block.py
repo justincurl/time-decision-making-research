@@ -65,11 +65,7 @@ class Block:
             return "this year"
         if value == 1:
             return "next year"
-        if value == 2:
-            return "two years from now"
-        if value == 3:
-            return "three years from now"
-        else
+        else:
             return str(value) + "years from now"
 
     @staticmethod
