@@ -65,8 +65,12 @@ class Block:
             return "this year"
         if value == 1:
             return "next year"
-        elif value == 2:
+        if value == 2:
             return "two years from now"
+        if value == 3:
+            return "three years from now"
+        else
+            return str(value) + "years from now"
 
     @staticmethod
     def _days_to_text(value: int) -> str:
