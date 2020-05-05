@@ -94,7 +94,7 @@ class Policy(Page):
     pass
 
 def generate_page_sequence():
-    if random.choice(['econ', 'politics']) == 'econ':
+    if random.choice([True, False]):
         return [Start] + [EconInstructions] + [EconBlockPage] * len(BLOCKS) + [Video] + [PoliticsInstructions] \
             + [PoliticsBlockPage] * len(BLOCKS) + [Results]
     else:
