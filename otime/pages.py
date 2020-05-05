@@ -26,9 +26,11 @@ class BlockPage(Page):
         if self.player.is_econ:
             secondary_instructions = "Secondary Econ Instructions"
             title =  "Payment Preferences"
+            question_instructions = "Payment"
         else:
             secondary_instructions = "Secondary Politics Instructions"
             title = "Economic Growth"
+            question_instructions = "Economic Growth"
 
         return {
             'step': step,
@@ -57,7 +59,7 @@ class Results(Page):
 
 class Instructions(Page):
     def before_next_page(self):
-        if self.round_number == 2:
+        if self.round_number == 2
 
     def vars_for_template(self):  
         if self.player.is_econ:
