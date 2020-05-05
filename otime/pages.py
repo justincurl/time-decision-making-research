@@ -95,10 +95,10 @@ class Policy(Page):
 
 def generate_page_sequence():
     if random.choice([True, False]):
-        return [Start] + [EconInstructions] + [EconBlockPage] * len(BLOCKS) + [Video] + [PoliticsInstructions] \
+        return [EconInstructions] + [EconBlockPage] * len(BLOCKS) + [Video] + [PoliticsInstructions] \
             + [PoliticsBlockPage] * len(BLOCKS) + [Results]
     else:
-        return [Start] + [PoliticsInstructions] + [PoliticsBlockPage] * len(BLOCKS) + [Video] + [EconInstructions] \
+        return [PoliticsInstructions] + [PoliticsBlockPage] * len(BLOCKS) + [Video] + [EconInstructions] \
             + [EconBlockPage] * len(BLOCKS) + [Results]
 
 page_sequence = generate_page_sequence()
