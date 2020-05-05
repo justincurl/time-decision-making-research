@@ -32,7 +32,7 @@ class Subsession(BaseSubsession):
         def creating_session(self):
             # randomize to treatments
             for player in self.get_players():
-                player.version = random.choice(['econ', 'politics'])
+                player.is_econ = random.choice([True, False])
 
             block_order = [BLOCKS[i].block_index for i in range(len(BLOCKS))]
             self.block_order = json.dumps(block_order)
