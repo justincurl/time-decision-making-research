@@ -16,18 +16,21 @@ use Convex Time Budget analysis to analyze
 
 
 class Constants(BaseConstants):
-    name_in_url = 'opolitics'
+    name_in_url = 'otime'
     players_per_group = None
     num_rounds = 1
 
 
 class Subsession(BaseSubsession):
-    block_order = models.StringField(initial="")
+    block_order = models.StringField(initial="") 
 
     def creating_session(self) -> None:
         """Initializes the 
         session and creates the order in which the Blocks should be run through
         """
+        # randomize to treatments  
+        for player in self.get_players():
+            player.choice = random.choice(['econ', 'politics'])
         block_order = [BLOCKS[i].block_index for i in range(len(BLOCKS))]
         self.block_order = json.dumps(block_order)
 
