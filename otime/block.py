@@ -37,40 +37,43 @@ class Block:
         self.show_least_initial_value_first = show_least_initial_value_first
         self.decrease_rate = decrease_rate
 
+    def _instructions(self) -> str:
+        if self.player.choices:
+            return "Econ Instructions"
+        else:
+            return "Politics Instructions"
 
-    def politics_text_delay_start(self) -> str:
+    def _title(self) -> str:
+        if self.player.choices:
+            return "Payment Preferences"
+        else:
+            return "Economic Growth"
+    
+    def _secondary_instructions
+        if self.player.choices:
+            return "Secondary Econ Instructions"
+        else:
+            return "Secondary Politics Instructions"
+
+
+    def _text_delay_start(self) -> str:
         """Returns a human readable text describing the start of the block (e.g. in 1 year) from today.
         :return: Human readable start of block from today
         """
-        return self._years_to_text(self.initial_payout_delay)
+        if self.player.choices:
+            return self._days_to_text(self.initial_payout_delay)
+        else:
+            return self._years_to_text(self.initial_payout_delay)
 
-    def politics_text_total_end(self) -> str:
+    def _text_total_end(self) -> str:
         """Returns a human readable text describing the end of the block (e.g. in 2 years) from today.
 
         :return: Human readable end of block from today
         """
-        return self._years_to_text(self.initial_payout_delay + self.initial_to_last_payout_delay)
-
-    def econ_text_delay_start(self) -> str:
-        """Returns a human readable text describing the start of the block (e.g. in 2 days) from today.
-        :return: Human readable start of block from today
-        """
-        return self._days_to_text(self.initial_payout_delay)
-
-    def econ_text_total_end(self) -> str:
-        """Returns a human readable text describing the end of the block (e.g. in 6 weeks) from today.
-
-        :return: Human readable end of block from today
-        """
-        return self._days_to_text(self.initial_payout_delay + self.initial_to_last_payout_delay)
-
-    def questions(self) -> List['Question']:
-        """Get the list of Questions described by this block
-
-        :return: List of Questions
-        """
-        from .question import Question
-        return [Question(self, self.block_index, i) for i in range(len(self.values))]
+        if self.player.choices:
+            return self._days_to_text(self.initial_payout_delay + self.initial_to_last_payout_delay)
+        else:
+            return self._years_to_text(self.initial_payout_delay + self.initial_to_last_payout_delay)
 
     @staticmethod
     def _years_to_text(value: int) -> str:
