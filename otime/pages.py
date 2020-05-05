@@ -61,7 +61,7 @@ class Instructions(Page):
             instructions = "Econ Instructions"
             title =  "Payment Preferences"
         else:
-            instructions = return "Politics Instructions"
+            instructions = "Politics Instructions"
             title = "Economic Growth"
             
         return {
