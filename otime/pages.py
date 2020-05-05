@@ -57,7 +57,7 @@ class BlockPage(Page):
             'curr_block': current_block,
             'use_slider': VISUALIZE_CHOICES_AS_SLIDER,
             'num_choices': current_block.number_of_choices,
-            'instructions': secondary_instructions,
+            'instructions': instructions,
             'title': title,
             'question_instructions': question_instructions
         }
