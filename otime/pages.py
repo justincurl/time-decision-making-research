@@ -1,4 +1,4 @@
-
+import random
 from ._builtin import Page, WaitPage
 from .config import BLOCKS, VISUALIZE_CHOICES_AS_SLIDER
 
@@ -93,13 +93,11 @@ class Video(Page):
 class Policy(Page):
     pass
 
-
 def generate_page_sequence():
-    if Start.get_player_choice == 'econ'
+    if random.choice('econ', 'politics') == 'econ':
         return [EconInstructions] + [EconBlockPage] * len(BLOCKS) + [Video] + [PoliticsInstructions] \
             + [PoliticsBlockPage] * len(BLOCKS) + [Results]
-    
-    if Start.get_player_choice == 'politics':
+    else:
         return [PoliticsInstructions] + [PoliticsBlockPage] * len(BLOCKS) + [Video] + [EconInstructions] \
             + [EconBlockPage] * len(BLOCKS) + [Results]
 
