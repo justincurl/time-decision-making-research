@@ -49,7 +49,7 @@ class Block:
         else:
             return "Economic Growth"
     
-    def _secondary_instructions:
+    def _secondary_instructions(self) -> str:
         if self.player.choices:
             return "Secondary Econ Instructions"
         else:
