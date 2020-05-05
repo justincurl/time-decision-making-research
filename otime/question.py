@@ -36,7 +36,7 @@ class Question:
         """
         absolute_decrease =  self.value - self.value*self.block.decrease_rate
         values = []
-        if self.player.is_econ:
+        if self.block.player.is_econ:
             for i in range(6):
                 values.append("${:.2f}".format(self.value - absolute_decrease*i))
         else:
@@ -46,7 +46,7 @@ class Question:
 
     def end_values(self) -> List[str]:
         values =[]
-        if self.player.is_econ:
+        if self.block.player.is_econ:
             for i in range(6):
                 values.append("${:.2f}".format(float(i)))
         else:
