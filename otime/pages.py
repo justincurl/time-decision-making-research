@@ -57,12 +57,13 @@ class Results(Page):
 
 class Instructions(Page):
     def _vars_for_template(self):
+        
+        instructions = "Politics Instructions"
+        title = "Economic Growth"
+        
         if self.player.is_econ:
             instructions = "Econ Instructions"
             title =  "Payment Preferences"
-        else:
-            instructions = "Politics Instructions"
-            title = "Economic Growth"
             
         return {
             'instructions': instructions,
