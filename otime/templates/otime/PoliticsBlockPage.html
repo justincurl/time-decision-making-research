@@ -2,17 +2,9 @@
 {% load staticfiles otree %}
 {% load staticfiles %}
 
-{% block title %}
-Block {{ step }} of {{ num_blocks }}
-{% endblock %}
-
 {% block content %}
 
 <hr>
-
-<div class="progress">
-    <div class="progress-bar" style="width: {{ progress }}%">{{ step }} / {{ num_blocks }}</div>
-</div>
 
 <hr>
 
@@ -52,7 +44,6 @@ Block {{ step }} of {{ num_blocks }}
             <input type="radio" name="question_{{question.question_number}}" value="{{ index }}" />
         </td>
         {% endfor %}
-    </tr>
 
     <h1></h1>
 
@@ -62,7 +53,6 @@ Block {{ step }} of {{ num_blocks }}
         {% for value in question.politics_start_values %}
         <td></td>
         {% endfor %}
-    </tr>
     {% endif %} <!-- // endif: forloop.last -->
     {% endfor %} <!-- // endfor: curr_block.questions -->
     </tbody>
