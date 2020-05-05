@@ -28,6 +28,7 @@ class Block:
                              "and number_of_choices must be integers")
         if number_of_choices < 0:
             raise ValueError("number of choices must be >= 0")
+        
 
         self.block_index = block_index
         self.values = values
@@ -36,6 +37,14 @@ class Block:
         self.number_of_choices = number_of_choices
         self.show_least_initial_value_first = show_least_initial_value_first
         self.decrease_rate = decrease_rate
+
+    def questions(self) -> List['Question']:
+        """Get the list of Questions described by this block
+        :return: List of Questions
+        """
+        from .question import Question
+        return [Question(self, self.block_index, i) for i in range(len(self.values))]
+
 
     def text_delay_start(self) -> str:
         """Returns a human readable text describing the start of the block (e.g. in 1 year) from today.
