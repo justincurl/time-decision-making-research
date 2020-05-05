@@ -2,8 +2,8 @@
 from ._builtin import Page, WaitPage
 from .config import BLOCKS, VISUALIZE_CHOICES_AS_SLIDER
 
-class Start(Page) -> str:
-    def get_player_choice(self):
+class Start(Page):
+    def get_player_choice(self) -> str:
         return self.player.choice 
 
 class EconBlockPage(Page):
