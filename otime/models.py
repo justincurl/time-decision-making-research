@@ -100,4 +100,5 @@ class Player(BasePlayer):
         if 0 <= block_index < len(BLOCKS):
             return BLOCKS[block_index]
         else:
+            print("none executed from get current block")
             return None
