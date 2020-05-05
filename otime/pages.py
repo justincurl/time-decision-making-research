@@ -92,11 +92,11 @@ class Policy(Page):
 
 
 def generate_page_sequence():
-    if player.choice == 'econ':
+    if self.player.choice == 'econ':
         return [EconInstructions] + [EconBlockPage] * len(BLOCKS) + [Video] + [PoliticsInstructions] \
             + [PoliticsBlockPage] * len(BLOCKS) + [Results]
     
-    if player.choice == 'politics':
+    if self.player.choice == 'politics':
         return [PoliticsInstructions] + [PoliticsBlockPage] * len(BLOCKS) + [Video] + [EconInstructions] \
             + [EconBlockPage] * len(BLOCKS) + [Results]
 
