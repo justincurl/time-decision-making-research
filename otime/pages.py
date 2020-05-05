@@ -46,10 +46,7 @@ class Individual(Page):
 class Results(Page):
     pass
 
-class EconInstructions(Page):
-    pass
-
-class PoliticsInstructions(Page):
+class Instructions(Page):
     pass
 
 class Video(Page):
