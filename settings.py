@@ -29,12 +29,7 @@ SESSION_CONFIGS = [
         name='oTimeCTB',
         display_name= 'oTime CTB',
         num_demo_participants=3,
-        app_sequence=['otime']
-    ), dict(
-        name='SimpleSurvey',
-        display_name='simple_survey',
-        num_demo_participants=3,
-        app_sequence=['simple_survey']
+        app_sequence=['simple_survey','otime']
     )
 ]
 
