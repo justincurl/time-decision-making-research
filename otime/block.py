@@ -1,5 +1,5 @@
 from typing import List
-from models import Player
+from .models import Player
 
 class Block:
     """Describes a single block consisting of multiple choices
