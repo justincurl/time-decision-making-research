@@ -65,6 +65,8 @@ class Player(BasePlayer):
     player made in the respective question - starting from 1.
     """
 
+    is_econ = models.BooleanField()
+
     def goto_next_step(self) -> None:
         """Advances the player to the next step
         """
