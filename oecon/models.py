@@ -16,7 +16,7 @@ use Convex Time Budget analysis to analyze
 
 
 class Constants(BaseConstants):
-    name_in_url = 'oecon'
+    name_in_url = 'otime'
     players_per_group = None
     num_rounds = 1
 
@@ -33,7 +33,7 @@ class Subsession(BaseSubsession):
             # randomize to treatments
             for player in self.get_players():
                 player.is_econ = random.choice([True, False])
-                BLOCKS[i].player = player
+                BLOCKS[i].add_player(player)
             
             block_order = [BLOCKS[i].block_index for i in range(len(BLOCKS))]
             self.block_order = json.dumps(block_order)

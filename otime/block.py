@@ -1,5 +1,4 @@
 from typing import List
-from .models import Player
 
 class Block:
     """Describes a single block consisting of multiple choices
@@ -11,7 +10,6 @@ class Block:
                  number_of_choices: int,
                  decrease_rate: int,
                  block_index: int,
-                 player: Player,
                  show_least_initial_value_first: bool = False):
         """Create a new block consisting of multiple choices. All delays are treated as WEEKS.
         :param values: List with fraction of initial value to use per block
@@ -38,8 +36,8 @@ class Block:
         self.initial_to_last_payout_delay = initial_to_last_payout_delay
         self.number_of_choices = number_of_choices
         self.show_least_initial_value_first = show_least_initial_value_first
-        self.player = player
         self.decrease_rate = decrease_rate
+        self.player
         
 
     def questions(self) -> List['Question']:
@@ -49,6 +47,9 @@ class Block:
         from .question import Question
         return [Question(self, self.block_index, i) for i in range(len(self.values))]
 
+    def add_player(self, player):
+        from .models import Player
+        self.player = player
 
     def text_delay_start(self) -> str:
         """Returns a human readable text describing the start of the block (e.g. in 1 year) from today.
