@@ -26,10 +26,14 @@ OTREE_AUTH_LEVEL="DEMO"
 
 SESSION_CONFIGS = [
     dict(
-        name='Custom',
-        display_name= 'Custom CTB',
+        name='oTime CTB',
+        display_name= 'oTime CTB',
         num_demo_participants=3,
-        app_sequence=['otime']
+        app_sequence=['otime'],
+        name='simple survey',
+        display_name='simple_survey'
+        num_demo_participants=3,
+        app_sequence=['individual']
     )
 ]
 
