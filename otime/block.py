@@ -38,19 +38,19 @@ class Block:
         self.decrease_rate = decrease_rate
 
     def _instructions(self) -> str:
-        if self.player.choices:
+        if self.player.is_econ:
             return "Econ Instructions"
         else:
             return "Politics Instructions"
 
     def _title(self) -> str:
-        if self.player.choices:
+        if self.player.is_econ:
             return "Payment Preferences"
         else:
             return "Economic Growth"
     
     def _secondary_instructions(self) -> str:
-        if self.player.choices:
+        if self.player.is_econ:
             return "Secondary Econ Instructions"
         else:
             return "Secondary Politics Instructions"
@@ -60,7 +60,7 @@ class Block:
         """Returns a human readable text describing the start of the block (e.g. in 1 year) from today.
         :return: Human readable start of block from today
         """
-        if self.player.choices:
+        if self.player.is_econ:
             return self._days_to_text(self.initial_payout_delay)
         else:
             return self._years_to_text(self.initial_payout_delay)
@@ -70,7 +70,7 @@ class Block:
 
         :return: Human readable end of block from today
         """
-        if self.player.choices:
+        if self.player.is_econ:
             return self._days_to_text(self.initial_payout_delay + self.initial_to_last_payout_delay)
         else:
             return self._years_to_text(self.initial_payout_delay + self.initial_to_last_payout_delay)

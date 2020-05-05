@@ -51,7 +51,7 @@ class Instructions(Page):
 
 class Video(Page):
     def before_next_page(self):
-        self.player.choices = not self.player.choices
+        self.player.is_econ = not self.player.is_econ
 
 class Policy(Page):
     pass

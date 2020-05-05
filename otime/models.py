@@ -31,7 +31,7 @@ class Subsession(BaseSubsession):
         session and creates the order in which the Blocks should be run through
         """
         for player in self.get_players():
-            player.choices = random.choice([True, False])
+            player.is_econ = random.choice([True, False])
         block_order = [BLOCKS[i].block_index for i in range(len(BLOCKS))]
         self.block_order = json.dumps(block_order)
 
@@ -63,6 +63,8 @@ class Player(BasePlayer):
     each number inside the element represents the index of the choice the
     player made in the respective question - starting from 1.
     """
+
+    is_econ = models.BooleanField(initial=False)
 
     def goto_next_step(self) -> None:
         """Advances the player to the next step
