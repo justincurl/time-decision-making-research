@@ -16,7 +16,6 @@ class BlockPage(Page):
     def is_displayed(self):
         # This page will only be displayed when there are blocks left
         return self.player.get_current_block()
-    
 
     def _vars_for_template(self):
         step = self.player.get_current_step() + 1
@@ -47,7 +46,12 @@ class Results(Page):
     pass
 
 class Instructions(Page):
-    pass
+    def _vars_for_template(self):
+        current_block = self.player.get_current_block()
+        return {'curr_block': current_block}
+
+    def error_message(self, values):
+        pass
 
 class Video(Page):
     def before_next_page(self):
