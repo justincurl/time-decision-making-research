@@ -17,7 +17,7 @@ class BlockPage(Page):
         # This page will only be displayed when there are blocks left
         return self.player.get_current_block()
 
-    def _vars_for_template(self):
+    def vars_for_template(self):
         step = self.player.get_current_step() + 1
         block_index = self.player.get_current_block_index() + 1
         current_block = self.player.get_current_block()
@@ -56,19 +56,15 @@ class Results(Page):
     pass
 
 class Instructions(Page):
-    def _vars_for_template(self):
-        
-        instructions = "Politics Instructions"
-        title = "Economic Growth"
-        
+    def vars_for_template(self):  
         if self.player.is_econ:
             instructions = "Econ Instructions"
             title =  "Payment Preferences"
+        else:
+            instructions = "Politics Instructions"
+            title = "Economic Growth"
             
-        return {
-            'instructions': instructions,
-            'title': title
-        }
+        return {'instructions': instructions, 'title': title}
 
     def error_message(self, values):
         pass
