@@ -3,7 +3,6 @@ from typing import List
 class Block:
     """Describes a single block consisting of multiple choices
     """
-    from .models import Player
     def __init__(self,
                  values: List[float],
                  initial_payout_delay: int,
@@ -11,7 +10,6 @@ class Block:
                  number_of_choices: int,
                  decrease_rate: int,
                  block_index: int,
-                 player: Player,
                  show_least_initial_value_first: bool = False):
         """Create a new block consisting of multiple choices. All delays are treated as WEEKS.
         :param values: List with fraction of initial value to use per block
@@ -39,7 +37,7 @@ class Block:
         self.number_of_choices = number_of_choices
         self.show_least_initial_value_first = show_least_initial_value_first
         self.decrease_rate = decrease_rate
-        self.player = player
+        self.player = None
         
 
     def questions(self) -> List['Question']:
