@@ -53,10 +53,8 @@ class PoliticsInstructions(Page):
     pass
 
 class Video(Page):
-    def type_change(self):
+    def before_next_page(self):
         self.player.choices = not self.player.choices
-        
-    type_change()
 
 class Policy(Page):
     pass
