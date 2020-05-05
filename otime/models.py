@@ -32,6 +32,9 @@ class Subsession(BaseSubsession):
         """
         for player in self.get_players():
             player.is_econ = random.choice([True, False])
+            for block in BLOCKS:
+                block.add_player(player)
+                
         block_order = [BLOCKS[i].block_index for i in range(len(BLOCKS))]
         self.block_order = json.dumps(block_order)
 
