@@ -53,8 +53,10 @@ class PoliticsInstructions(Page):
     pass
 
 class Video(Page):
-    self.player.choices = not self.player.choices
-    pass
+    def type_change(self):
+        self.player.choices = not self.player.choices
+        
+    type_change()
 
 class Policy(Page):
     pass
