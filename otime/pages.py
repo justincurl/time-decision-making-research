@@ -58,9 +58,6 @@ class Results(Page):
         return self.round_number == 2
 
 class Instructions(Page):
-    def before_next_page(self):
-        if self.round_number == 2
-
     def vars_for_template(self):  
         if self.player.is_econ:
             instructions = "Econ Instructions"
