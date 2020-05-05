@@ -37,25 +37,6 @@ class Block:
         self.show_least_initial_value_first = show_least_initial_value_first
         self.decrease_rate = decrease_rate
 
-    def instructions(self) -> str:
-        if self.player.is_econ:
-            return "Econ Instructions"
-        else:
-            return "Politics Instructions"
-
-    def title(self) -> str:
-        if self.player.is_econ:
-            return "Payment Preferences"
-        else:
-            return "Economic Growth"
-    
-    def secondary_instructions(self) -> str:
-        if self.player.is_econ:
-            return "Secondary Econ Instructions"
-        else:
-            return "Secondary Politics Instructions"
-
-
     def _text_delay_start(self) -> str:
         """Returns a human readable text describing the start of the block (e.g. in 1 year) from today.
         :return: Human readable start of block from today

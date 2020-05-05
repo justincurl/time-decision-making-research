@@ -23,6 +23,14 @@ class BlockPage(Page):
         current_block = self.player.get_current_block()
         num_blocks = len(BLOCKS)
 
+
+        if self.player.is_econ:
+            secondary_instructions = "Secondary Econ Instructions"
+            title =  "Payment Preferences"
+        else:
+            secondary_instructions = "Secondary Politics Instructions"
+            title = "Economic Growth"
+
         return {
             'step': step,
             'block_index': block_index,
@@ -30,7 +38,9 @@ class BlockPage(Page):
             'progress': round(step * 100 / num_blocks),
             'curr_block': current_block,
             'use_slider': VISUALIZE_CHOICES_AS_SLIDER,
-            'num_choices': current_block.number_of_choices
+            'num_choices': current_block.number_of_choices,
+            'secondary_instructions': secondary_instructions,
+            'title': title
         }
 
     def error_message(self, values):
@@ -47,8 +57,17 @@ class Results(Page):
 
 class Instructions(Page):
     def _vars_for_template(self):
-        current_block = self.player.get_current_block()
-        return {'curr_block': current_block}
+        if self.player.is_econ:
+            instructions = "Econ Instructions"
+            title =  "Payment Preferences"
+        else:
+            instructions = return "Politics Instructions"
+            title = "Economic Growth"
+            
+        return {
+            'instructions': instructions,
+            'title': title
+        }
 
     def error_message(self, values):
         pass
