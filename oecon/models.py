@@ -30,12 +30,12 @@ class Subsession(BaseSubsession):
         """
 
         def creating_session(self):
-        # randomize to treatments
-        for player in self.get_players():
-            player.version = random.choice(['econ', 'politics'])
+            # randomize to treatments
+            for player in self.get_players():
+                player.version = random.choice(['econ', 'politics'])
 
-        block_order = [BLOCKS[i].block_index for i in range(len(BLOCKS))]
-        self.block_order = json.dumps(block_order)
+            block_order = [BLOCKS[i].block_index for i in range(len(BLOCKS))]
+            self.block_order = json.dumps(block_order)
 
     def get_block_order(self) -> List[int]:
         """Get the order in which blocks should be run through
