@@ -1,6 +1,8 @@
 import json
 from typing import Optional, List
 
+import random
+
 from otree.api import (
     models, BaseConstants, BaseSubsession, BaseGroup, BasePlayer
 )
