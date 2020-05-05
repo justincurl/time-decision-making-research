@@ -37,19 +37,19 @@ class Block:
         self.show_least_initial_value_first = show_least_initial_value_first
         self.decrease_rate = decrease_rate
 
-    def _instructions(self) -> str:
+    def instructions(self) -> str:
         if self.player.is_econ:
             return "Econ Instructions"
         else:
             return "Politics Instructions"
 
-    def _title(self) -> str:
+    def title(self) -> str:
         if self.player.is_econ:
             return "Payment Preferences"
         else:
             return "Economic Growth"
     
-    def _secondary_instructions(self) -> str:
+    def secondary_instructions(self) -> str:
         if self.player.is_econ:
             return "Secondary Econ Instructions"
         else:
