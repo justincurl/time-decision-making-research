@@ -41,7 +41,8 @@ class BlockPage(Page):
             'use_slider': VISUALIZE_CHOICES_AS_SLIDER,
             'num_choices': current_block.number_of_choices,
             'secondary_instructions': secondary_instructions,
-            'title': title
+            'title': title,
+            'question_instructions': question_instructions
         }
 
     def error_message(self, values):
