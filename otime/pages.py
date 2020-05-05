@@ -3,8 +3,7 @@ from ._builtin import Page, WaitPage
 from .config import BLOCKS, VISUALIZE_CHOICES_AS_SLIDER
 
 class Start(Page):
-    def get_player_choice(self) -> str:
-        return self.player.choice 
+    pass
 
 class EconBlockPage(Page):
     # Displays a `Block` to the player
@@ -51,7 +50,8 @@ class PoliticsBlockPage(Page):
 
     def is_displayed(self):
         # This page will only be displayed when there are blocks left
-        return self.player.get_current_block() is not None
+        return self.player.get_current_block()
+    
 
     def _vars_for_template(self):
         step = self.player.get_current_step() + 1
@@ -95,10 +95,10 @@ class Policy(Page):
 
 def generate_page_sequence():
     if random.choice(['econ', 'politics']) == 'econ':
-        return [EconInstructions] + [EconBlockPage] * len(BLOCKS) + [Video] + [PoliticsInstructions] \
+        return [Start] + [EconInstructions] + [EconBlockPage] * len(BLOCKS) + [Video] + [PoliticsInstructions] \
             + [PoliticsBlockPage] * len(BLOCKS) + [Results]
     else:
-        return [PoliticsInstructions] + [PoliticsBlockPage] * len(BLOCKS) + [Video] + [EconInstructions] \
+        return [Start] + [PoliticsInstructions] + [PoliticsBlockPage] * len(BLOCKS) + [Video] + [EconInstructions] \
             + [EconBlockPage] * len(BLOCKS) + [Results]
 
 page_sequence = generate_page_sequence()
