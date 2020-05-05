@@ -47,7 +47,8 @@ class Video(Page):
     pass
 
 class Start(Page):
-    page_sequence = [Instructions] + [BlockPage] * len(BLOCKS) + [Video] + [Results]
+    from .pages import Instructions, BlockPage, Results
+    page_sequence = [Instructions] + [BlockPage] * len(BLOCKS) + [Results]
 
 class Instructions(Page):
     pass
