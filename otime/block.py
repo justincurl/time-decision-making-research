@@ -38,18 +38,31 @@ class Block:
         self.decrease_rate = decrease_rate
 
 
-    def text_delay_start(self) -> str:
-        """Returns a human readable text describing the start of the block (e.g. in 2 days) from today.
+    def politics_text_delay_start(self) -> str:
+        """Returns a human readable text describing the start of the block (e.g. in 1 year) from today.
         :return: Human readable start of block from today
         """
         return self._years_to_text(self.initial_payout_delay)
 
-    def text_total_end(self) -> str:
-        """Returns a human readable text describing the end of the block (e.g. in 6 weeks) from today.
+    def politics_text_total_end(self) -> str:
+        """Returns a human readable text describing the end of the block (e.g. in 2 years) from today.
 
         :return: Human readable end of block from today
         """
         return self._years_to_text(self.initial_payout_delay + self.initial_to_last_payout_delay)
+
+    def econ_text_delay_start(self) -> str:
+        """Returns a human readable text describing the start of the block (e.g. in 2 days) from today.
+        :return: Human readable start of block from today
+        """
+        return self._days_to_text(self.initial_payout_delay)
+
+    def econ_text_total_end(self) -> str:
+        """Returns a human readable text describing the end of the block (e.g. in 6 weeks) from today.
+
+        :return: Human readable end of block from today
+        """
+        return self._days_to_text(self.initial_payout_delay + self.initial_to_last_payout_delay)
 
     def questions(self) -> List['Question']:
         """Get the list of Questions described by this block

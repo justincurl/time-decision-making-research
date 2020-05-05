@@ -16,13 +16,13 @@ use Convex Time Budget analysis to analyze
 
 
 class Constants(BaseConstants):
-    name_in_url = 'opolitics'
+    name_in_url = 'otime'
     players_per_group = None
     num_rounds = 1
 
 
 class Subsession(BaseSubsession):
-    block_order = models.StringField(initial="")
+    block_order = models.StringField(initial="") 
 
     def creating_session(self) -> None:
         """Initializes the 
