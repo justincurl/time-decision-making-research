@@ -52,10 +52,10 @@ class Block:
         return self._years_to_text(self.initial_payout_delay + self.initial_to_last_payout_delay)
 
     def econ_text_delay_start(self) -> str:
-    """Returns a human readable text describing the start of the block (e.g. in 2 days) from today.
-    :return: Human readable start of block from today
-    """
-    return self._days_to_text(self.initial_payout_delay)
+        """Returns a human readable text describing the start of the block (e.g. in 2 days) from today.
+        :return: Human readable start of block from today
+        """
+        return self._days_to_text(self.initial_payout_delay)
 
     def econ_text_total_end(self) -> str:
         """Returns a human readable text describing the end of the block (e.g. in 6 weeks) from today.
