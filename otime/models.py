@@ -31,7 +31,11 @@ class Subsession(BaseSubsession):
         session and creates the order in which the Blocks should be run through
         """
         for player in self.get_players():
-            player.is_econ = random.choice([True, False])
+            if self.round_number == 1:
+                player.is_econ = random.choice([True, False])
+            else:
+                player.is_econ = not self.player.in_round(self.round_number - 1).is_econ
+            
             for block in BLOCKS:
                 block.add_player(player)
                 
