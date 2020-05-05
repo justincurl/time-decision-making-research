@@ -28,6 +28,12 @@ class Subsession(BaseSubsession):
         """Initializes the 
         session and creates the order in which the Blocks should be run through
         """
+
+        def creating_session(self):
+        # randomize to treatments
+        for player in self.get_players():
+            player.version = random.choice(['econ', 'politics'])
+
         block_order = [BLOCKS[i].block_index for i in range(len(BLOCKS))]
         self.block_order = json.dumps(block_order)
 

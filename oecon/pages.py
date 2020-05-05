@@ -1,4 +1,3 @@
-import random
 from ._builtin import Page, WaitPage
 from .config import BLOCKS, VISUALIZE_CHOICES_AS_SLIDER, RANDOMIZE_APPS
 
@@ -41,24 +40,16 @@ class BlockPage(Page):
 class Results(Page):
     pass
 
-class Instructions(Page):
+class Individual(Page):
+    pass
+
+class Video(Page):
     pass
 
 class Start(Page):
-    def app_after_this_page(self, upcoming_apps):
-        if RANDOMIZE_APPS:
-            if random.choice([True, False]):
-                return upcoming_apps[0]
-            else: 
-                pass
-        else:
-            pass
+    page_sequence = [Instructions] + [BlockPage] * len(BLOCKS) + [Video] + [Results]
+
+class Instructions(Page):
     pass
 
-def generate_page_sequence():
-    if RANDOMIZE_APPS:
-        return [Start] + [Instructions] + [BlockPage] * len(BLOCKS) + [Results]
-    else:
-        return [Instructions] + [BlockPage] * len(BLOCKS) + [Results]
-
-page_sequence = generate_page_sequence()
+page_sequence = [Start]
