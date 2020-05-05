@@ -27,7 +27,7 @@ class Question:
         """
         return len(self.block.values)*self.block_index + self.index + 1
 
-    def _start_values(self) -> List[str]:
+    def start_values(self) -> List[str]:
         """ Take the initial number, and determine how much to decrease the amount by
             The expected number of values in this version is going to be 6. Decrease rate is 0.8 in this example.
             These numbers will be decreasing 
@@ -44,7 +44,7 @@ class Question:
                 values.append("{:.1f}%".format(self.value - absolute_decrease*i))
         return values
 
-    def _end_values(self) -> List[str]:
+    def end_values(self) -> List[str]:
         values =[]
         if self.player.is_econ:
             for i in range(6):

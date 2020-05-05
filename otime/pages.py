@@ -22,7 +22,7 @@ class BlockPage(Page):
         block_index = self.player.get_current_block_index() + 1
         current_block = self.player.get_current_block()
         num_blocks = len(BLOCKS)
-
+        
 
         if self.player.is_econ:
             secondary_instructions = "Secondary Econ Instructions"
