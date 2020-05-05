@@ -34,7 +34,7 @@ SESSION_CONFIGS = [
         name='SimpleSurvey',
         display_name='simple_survey',
         num_demo_participants=3,
-        app_sequence=['individual']
+        app_sequence=['simple_survey']
     )
 ]
 
