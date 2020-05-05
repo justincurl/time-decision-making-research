@@ -34,7 +34,7 @@ class Subsession(BaseSubsession):
             if self.round_number == 1:
                 player.is_econ = random.choice([True, False])
             else:
-                player.is_econ = not self.in_round(self.round_number - 1).player.is_econ
+                player.is_econ = not player.in_round(self.round_number - 1).is_econ
             
             for block in BLOCKS:
                 block.add_player(player)
