@@ -2,6 +2,9 @@
 from ._builtin import Page, WaitPage
 from .config import BLOCKS, VISUALIZE_CHOICES_AS_SLIDER
 
+class Start(Page) -> str:
+    def get_player_choice(self):
+        return self.player.choice 
 
 class EconBlockPage(Page):
     # Displays a `Block` to the player
@@ -92,11 +95,11 @@ class Policy(Page):
 
 
 def generate_page_sequence():
-    if self.player.choice == 'econ':
+    if Start.get_player_choice == 'econ'
         return [EconInstructions] + [EconBlockPage] * len(BLOCKS) + [Video] + [PoliticsInstructions] \
             + [PoliticsBlockPage] * len(BLOCKS) + [Results]
     
-    if self.player.choice == 'politics':
+    if Start.get_player_choice == 'politics':
         return [PoliticsInstructions] + [PoliticsBlockPage] * len(BLOCKS) + [Video] + [EconInstructions] \
             + [EconBlockPage] * len(BLOCKS) + [Results]
 
