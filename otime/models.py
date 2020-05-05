@@ -20,7 +20,7 @@ use Convex Time Budget analysis to analyze
 class Constants(BaseConstants):
     name_in_url = 'otime'
     players_per_group = None
-    num_rounds = 1
+    num_rounds = 2
 
 
 class Subsession(BaseSubsession):

@@ -52,9 +52,13 @@ class Individual(Page):
     pass
 
 class Results(Page):
-    pass
+    def is_displayed(self):
+        return self.round_number == 2
 
 class Instructions(Page):
+    def before_next_page(self):
+        if self.round_number == 2:
+
     def vars_for_template(self):  
         if self.player.is_econ:
             instructions = "Econ Instructions"
@@ -71,12 +75,13 @@ class Instructions(Page):
 class Video(Page):
     def before_next_page(self):
         self.player.is_econ = not self.player.is_econ
+    def is_displayed(self):
+        return self.round_number == 1
 
 class Policy(Page):
     pass
 
 def generate_page_sequence():
-    return [Instructions] + [BlockPage] * len(BLOCKS) + [Video] + [Instructions] \
-            + [BlockPage] * len(BLOCKS) + [Results]
+    return [Instructions] + [BlockPage] * len(BLOCKS) + [Video] + [Results]
 
 page_sequence = generate_page_sequence()
