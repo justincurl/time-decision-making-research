@@ -30,14 +30,13 @@ class Subsession(BaseSubsession):
         """Initializes the 
         session and creates the order in which the Blocks should be run through
         """
+        import itertools
+        randomOrdering = itertools.cycle([False, True])
         for player in self.get_players():
             if self.round_number == 1:
-                player.is_econ = random.choice([True, False])
+                player.is_econ = next(randomOrdering)
             else:
                 player.is_econ = not player.in_round(self.round_number - 1).is_econ
-            
-            for block in BLOCKS:
-                block.add_player(player)
                 
         block_order = [BLOCKS[i].block_index for i in range(len(BLOCKS))]
         self.block_order = json.dumps(block_order)

@@ -22,7 +22,7 @@ political_instructions = """In this example, you are asked to choose your favori
 class Start(Page):
     pass
 
-class BlockPage(Page):
+class PolBlockPage(Page):
     # Displays a `Block` to the player
     # This page will automatically retrieve the current `Block` to be displayed
     # to the player from the player's current block.
@@ -32,7 +32,7 @@ class BlockPage(Page):
 
     def is_displayed(self):
         # This page will only be displayed when there are blocks left
-        return self.player.get_current_block()
+        return self.player.get_current_block() and not self.player.is_econ
 
     def vars_for_template(self):
         step = self.player.get_current_step() + 1
@@ -40,14 +40,9 @@ class BlockPage(Page):
         current_block = self.player.get_current_block()
         num_blocks = len(BLOCKS)
 
-        if self.player.is_econ:
-            instructions = economic_instructions
-            title =  "Payment Preferences"
-            question_instructions = "Payment"
-        else:
-            instructions = political_instructions
-            title = "Economic Growth"
-            question_instructions = "Economic Growth"
+        instructions = political_instructions
+        title = "Economic Growth"
+        question_instructions = "Economic Growth"
 
         return {
             'step': step,
@@ -67,6 +62,48 @@ class BlockPage(Page):
 
     def before_next_page(self):
         self.player.goto_next_step()
+
+class EconBlockPage(Page):
+    # Displays a `Block` to the player
+    # This page will automatically retrieve the current `Block` to be displayed
+    # to the player from the player's current block.
+
+    form_model = 'player'
+    form_fields = ['question_answers']
+
+    def is_displayed(self):
+        # This page will only be displayed when there are blocks left
+        return self.player.get_current_block() and self.player.is_econ
+
+    def vars_for_template(self):
+        step = self.player.get_current_step() + 1
+        block_index = self.player.get_current_block_index() + 1
+        current_block = self.player.get_current_block()
+        num_blocks = len(BLOCKS)
+
+        instructions = economic_instructions
+        title = "Payment Preferences"
+        question_instructions = "Payment"
+
+        return {
+            'step': step,
+            'block_index': block_index,
+            'num_blocks': num_blocks,
+            'progress': round(step * 100 / num_blocks),
+            'curr_block': current_block,
+            'use_slider': VISUALIZE_CHOICES_AS_SLIDER,
+            'num_choices': current_block.number_of_choices,
+            'instructions': instructions,
+            'title': title,
+            'question_instructions': question_instructions
+        }
+
+    def error_message(self, values):
+        pass
+
+    def before_next_page(self):
+        self.player.goto_next_step()
+
 
 class Individual(Page):
     pass
@@ -99,6 +136,6 @@ class Policy(Page):
     pass
 
 def generate_page_sequence():
-    return [Instructions] + [BlockPage] * len(BLOCKS) + [Video] + [Results]
+    return [Instructions] + [EconBlockPage] * len(BLOCKS) + [PolBlockPage] * len(BLOCKS) + [Video] + [Results]
 
 page_sequence = generate_page_sequence()

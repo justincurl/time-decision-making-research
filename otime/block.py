@@ -36,39 +36,42 @@ class Block:
         self.initial_to_last_payout_delay = initial_to_last_payout_delay
         self.number_of_choices = number_of_choices
         self.show_least_initial_value_first = show_least_initial_value_first
-        self.decrease_rate = decrease_rate
-        self.player = None
-        
+        self.decrease_rate = decrease_rate      
 
     def questions(self) -> List['Question']:
         """Get the list of Questions described by this block
         :return: List of Questions
         """
+        
         from .question import Question
         return [Question(self, self.block_index, i) for i in range(len(self.values))]
 
-    def add_player(self, in_player):
-        self.player = in_player
-
-    def text_delay_start(self) -> str:
+    def econ_text_delay_start(self) -> str:
         """Returns a human readable text describing the start of the block (e.g. in 1 year) from today.
         :return: Human readable start of block from today
         """
-        if self.player.is_econ:
-            return self._days_to_text(self.initial_payout_delay)
-        else:
-            return self._years_to_text(self.initial_payout_delay)
+        return self._days_to_text(self.initial_payout_delay)
+    
+    def pol_text_delay_start(self) -> str:
+        """Returns a human readable text describing the start of the block (e.g. in 1 year) from today.
+        :return: Human readable start of block from today
+        """
+        return self._years_to_text(self.initial_payout_delay)
 
-    def text_total_end(self) -> str:
+    def pol_text_total_end(self) -> str:
         """Returns a human readable text describing the end of the block (e.g. in 2 years) from today.
 
         :return: Human readable end of block from today
         """
-        if self.player.is_econ:
-            return self._days_to_text(self.initial_payout_delay + self.initial_to_last_payout_delay)
-        else:
-            return self._years_to_text(self.initial_payout_delay + self.initial_to_last_payout_delay)
+        return self._years_to_text(self.initial_payout_delay + self.initial_to_last_payout_delay)
 
+    def econ_text_total_end(self) -> str:
+        """Returns a human readable text describing the end of the block (e.g. in 2 years) from today.
+
+        :return: Human readable end of block from today
+        """
+        return self._days_to_text(self.initial_payout_delay + self.initial_to_last_payout_delay)
+       
     @staticmethod
     def _years_to_text(value: int) -> str:
         if value == 0: 

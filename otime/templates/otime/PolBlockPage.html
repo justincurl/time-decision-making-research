@@ -23,14 +23,14 @@
     {% for question in curr_block.questions %}
     <tr class="timepref__question-start timepref__question-unanswered timepref__question-index-{{question.question_number}}">
         <th rowspan="3" width="10">{{ question.question_number }}.</th>
-        <td> {{question_instructions}} <span class="text-uppercase"> {{ curr_block.text_delay_start }} </span></td>
-        {% for value in question.start_values %}
+        <td> {{question_instructions}} <span class="text-uppercase"> {{ curr_block.pol_text_delay_start }} </span></td>
+        {% for value in question.pol_start_values %}
         <td class="text-center">{{ value }}</td>
         {% endfor %}
     </tr>
     <tr class="timepref__question-end">
-        <td>and <span class="text-uppercase"> {{ curr_block.text_total_end }} </span></td>
-        {% for value in question.end_values %}
+        <td>and <span class="text-uppercase"> {{ curr_block.pol_text_total_end }} </span></td>
+        {% for value in question.pol_end_values %}
         <td class="text-center">{{ value }}</td>
         {% endfor %}
     </tr>
@@ -47,7 +47,7 @@
     {% if not forloop.last %}
     <tr class="timepref__spacer">
         <td></td>
-        {% for value in question.start_values %}
+        {% for value in question.pol_start_values %}
         <td></td>
         {% endfor %}
     {% endif %} <!-- // endif: forloop.last -->
