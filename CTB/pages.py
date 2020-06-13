@@ -79,7 +79,7 @@ class Results(Page):
     pass
 
 
-class Instructions(Page):
+class Instructions2(Page):
     def vars_for_template(self):
         title = "Economic Growth"
         return {'instructions': instructions, 'title': title}
@@ -87,9 +87,16 @@ class Instructions(Page):
     def error_message(self, values):
         pass
 
+class Instructions1(Page):
+    def vars_for_template(self):
+        title = "Healy and Lenz Plots"
+        return {'title' : title}
+    def error_message(self, values):
+        pass
+
 
 def generate_page_sequence():
-    return [Instructions] + [HLPage] + [BlockPage] * len(BLOCKS) + [Results]
+    return [Instructions1] + [HLPage] + [Instructions2] + [BlockPage] * len(BLOCKS) + [Results]
 
 
 page_sequence = generate_page_sequence()

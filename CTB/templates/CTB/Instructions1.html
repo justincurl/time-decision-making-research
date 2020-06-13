@@ -1,0 +1,22 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    {{title}} Instructions
+{% endblock %}
+
+{% block content %}
+     <div class="instructions" align="justify">
+        <p align="justify">
+         On the following pages, you will see figures with measurements of how much better off people are during hypothetical U.S. presidents' terms. 
+         The measurements shown are percent change in PERSONAL INCOME GROWTH, which provides a good measure of the strength of the national economy. 
+         <br>
+         <br>
+             After looking at a figure, evaluate the economy during this period. Would you say it is very good, fairly good, fairly bad, or very bad?
+            
+        </p>
+     </div>
+    {% next_button %}
+{% endblock %}
+
+
