@@ -10,24 +10,16 @@ Be sure to also check the README.md file!
 """
 import random
 from .block import Block
+from .plot import Plot
 
 #: The total budget available for each choice
 TOTAL_BUDGET = 5
 
+# Number of Blocks 
 NUM_BLOCKS = 6
-
-all_left_values = [[5.5, 4, 2.8, 1.1], [5.2, 3.5, 2.7, 1.8], [5.6, 3.8, 2.6, 1.6], [5.2, 3.5, 2.7, 1.8], 
-        [5.6, 3.8, 2.6, 1.6], [5.6, 3.8, 2.6, 1.6]]
-
-all_right_values = [[4.2, 4.2, 4.2, 4.2], [4.2, 4.2, 4.2, 4.2], [4.2, 4.2, 4.2, 4.2], [5.5, 5.5, 5.5, 5.5], 
-        [5.5, 5.5, 5.5, 5.5], [5.3, 5.3, 5.3, 5.3]]
 
 #: Set to True if you want blocks to be randomized in order
 RANDOMIZE_BLOCKS = False
-
-#: Set to True if the choices per question in a block should be visualized as a slider
-#: as opposed to single radio buttons
-VISUALIZE_CHOICES_AS_SLIDER = False
 
 #: The configuration for all blocks to be displayed to the user
 #: Note:
@@ -35,6 +27,13 @@ VISUALIZE_CHOICES_AS_SLIDER = False
 #: - The order of interest_rates given is the order in which they will be display, i.e.
 #:      to change the order of display just change the order of values here
 """ Edit the number of choices and values to put in the blocks here """
+
+all_left_values = [[5.5, 4, 2.8, 1.1], [5.2, 3.5, 2.7, 1.8], [5.6, 3.8, 2.6, 1.6], [5.2, 3.5, 2.7, 1.8], 
+        [5.6, 3.8, 2.6, 1.6], [5.6, 3.8, 2.6, 1.6]]
+
+all_right_values = [[4.2, 4.2, 4.2, 4.2], [4.2, 4.2, 4.2, 4.2], [4.2, 4.2, 4.2, 4.2], [5.5, 5.5, 5.5, 5.5], 
+        [5.5, 5.5, 5.5, 5.5], [5.3, 5.3, 5.3, 5.3]]
+
 block_order = [i for i in range(NUM_BLOCKS)]
 if RANDOMIZE_BLOCKS:
     random.shuffle(block_order)
@@ -89,3 +88,14 @@ BLOCKS = [
         block_index= int(block_order[5])
     )
 ]
+
+NUM_PLOTS = 20
+
+RANDOMIZE_PLOTS = False
+
+plot_order = [i for i in range(NUM_PLOTS)]
+
+if RANDOMIZE_PLOTS:
+    random.shuffle(plot_order)
+
+PLOTS = [Plot(i, plot_order[i]) for i in range(NUM_PLOTS)]

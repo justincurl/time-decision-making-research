@@ -1,6 +1,6 @@
 import random
 from ._builtin import Page, WaitPage
-from .config import BLOCKS, VISUALIZE_CHOICES_AS_SLIDER
+from .config import BLOCKS
 
 
 instructions = """
@@ -12,8 +12,28 @@ the other growth rate goes up. Mark the combination of growth rates that you eva
 
 """
 
+
 class Start(Page):
     pass
+
+
+class HLPage(Page):
+    form_model = 'player'
+    form_fields = ['question_answers']
+
+    def vars_for_template(self):
+        PLOTS = self.player.get_plots()
+        title = "Healy & Lenz Plot"
+        block_index = 0
+        question_instructions = "How would you rate the condition of the national economy during this period?"
+
+        return {
+            'plots' : PLOTS,
+            'title' : title,
+            'block_index' : block_index, 
+            'question_instructions' : question_instructions
+        }
+
 
 class BlockPage(Page):
     # Displays a `Block` to the player
@@ -59,8 +79,9 @@ class BlockPage(Page):
 class Results(Page):
     pass
 
+
 class Instructions(Page):
-    def vars_for_template(self):  
+    def vars_for_template(self):
         title = "Economic Growth"
         return {'instructions': instructions, 'title': title}
 
@@ -69,6 +90,7 @@ class Instructions(Page):
 
 
 def generate_page_sequence():
-    return [Instructions] + [BlockPage] * len(BLOCKS) + [Results]
+    return [Instructions] + [HLPage] + [BlockPage] * len(BLOCKS) + [Results]
+
 
 page_sequence = generate_page_sequence()

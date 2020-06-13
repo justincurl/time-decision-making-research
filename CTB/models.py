@@ -8,7 +8,8 @@ from otree.api import (
 )
 
 from .block import Block
-from .config import BLOCKS, RANDOMIZE_BLOCKS
+from .plot import Plot
+from .config import BLOCKS, RANDOMIZE_BLOCKS, PLOTS
 
 author = 'Justin Curl <jcurl@princeton.edu>'
 
@@ -18,28 +19,23 @@ use Convex Time Budget analysis to analyze
 
 
 class Constants(BaseConstants):
-    name_in_url = 'otime'
+    name_in_url = 'CTB'
     players_per_group = None
     num_rounds = 2
 
 
 class Subsession(BaseSubsession):
     block_order = models.StringField(initial="") 
-
+    plot_order = models.StringField(initial="")
     def creating_session(self) -> None:
         """Initializes the 
         session and creates the order in which the Blocks should be run through
         """
-        # import itertools
-        # randomOrdering = itertools.cycle([False, True])
-        # for player in self.get_players():
-        #     if self.round_number == 1:
-        #         player.is_econ = next(randomOrdering)
-        #     else:
-        #         player.is_econ = not player.in_round(self.round_number - 1).is_econ
-                
         block_order = [BLOCKS[i].block_index for i in range(len(BLOCKS))]
         self.block_order = json.dumps(block_order)
+
+        plot_order = [PLOTS[i].plot_index for i in range(len(PLOTS))]
+        self.plot_order = json.dumps(plot_order)
 
     def get_block_order(self) -> List[int]:
         """Get the order in which blocks should be run through
@@ -112,3 +108,17 @@ class Player(BasePlayer):
         else:
             print("none executed from get current block")
             return None
+
+    def get_plots(self) -> int:
+        """Get the index of the block to be currently displayed
+
+        This function returns the 0-based index of the block in `config.BLOCKS`
+        to be displayed to the player taking into account the potentially
+        randomized order.
+        This method will return `-1` if `self.current_step` exceed the number
+        of configured blocks.
+
+        :return: Index of block to display or `-1`
+        """
+        return PLOTS
+

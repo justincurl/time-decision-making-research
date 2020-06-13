@@ -25,12 +25,12 @@ OTREE_ADMIN_PASSWORD="markusprior"
 OTREE_AUTH_LEVEL="DEMO"
 
 SESSION_CONFIGS = [
-    # dict(
-    #     name='oTimeCTB',
-    #     display_name= 'oTime CTB',
-    #     num_demo_participants=3,
-    #     app_sequence=['simple_survey','otime'])
-    # # ),
+    dict(
+        name='oTimeCTB',
+        display_name= 'oTime CTB',
+        num_demo_participants=3,
+        app_sequence=['simple_survey','otime']
+    ),
     dict(
         name='HLandCTB', 
         display_name= 'H&L and CTB', 
