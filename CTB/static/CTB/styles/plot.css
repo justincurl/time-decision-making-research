@@ -1,0 +1,63 @@
+.timepref__heading {
+    margin: 1em 0;
+    text-align: center;
+}
+
+.timepref__spacer {
+    border: none;
+    border-left: 1px solid #fff;
+}
+.timepref__spacer td {
+    border: none;
+}
+
+.timepref__plot-start {
+    border-top: 2px solid #ccc;
+}
+.timepref__plot-choices,
+.timepref__with-slider .timepref__plot-slider {
+    border-bottom: 2px solid #ccc;
+}
+.timepref__with-slider .timepref__plot-choices {
+    border-bottom: none !important;
+}
+.timepref__with-slider .timepref__plot-end {
+    border-bottom: 2px solid #ccc;
+}
+
+.timepref__plot-start th {
+    vertical-align: middle;
+    background-color: #baf8b9;
+    border-bottom: 2px solid #ccc;
+}
+
+.timepref__plot-unanswered th {
+    background-color: #e5e5e5;
+}
+
+.timepref__plot-choice,
+.timepref__plot-choice input {
+    cursor: pointer;
+}
+.timepref__plot-choice:hover {
+    background-color: #e5e5e5;
+}
+.timepref__plot-choice-selected,
+.timepref__plot-choice-selected:hover {
+    background-color: #baf8b9;
+}
+
+.timepref__with-slider .timepref__plot-start-value,
+.timepref__with-slider .timepref__plot-end-value,
+.timepref__with-slider .timepref__plot-slider {
+    vertical-align: middle;
+}
+
+.timepref__with-slider .timepref__plot-slider .timepref__plot-start-values,
+.timepref__with-slider .timepref__plot-slider .timepref__plot-end-values {
+    display: none;
+}
+
+.timepref__next-button {
+    display: none;
+}

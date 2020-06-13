@@ -89,7 +89,7 @@ BLOCKS = [
     )
 ]
 
-NUM_PLOTS = 20
+NUM_PLOTS = 5
 
 RANDOMIZE_PLOTS = False
 

@@ -21,7 +21,7 @@ use Convex Time Budget analysis to analyze
 class Constants(BaseConstants):
     name_in_url = 'CTB'
     players_per_group = None
-    num_rounds = 2
+    num_rounds = 1
 
 
 class Subsession(BaseSubsession):
@@ -55,6 +55,8 @@ class Player(BasePlayer):
     current_step = models.IntegerField(initial=0)
     """Current step the user is in
     """
+
+    plot_answers = models.StringField(initial="")
 
     question_answers = models.StringField(initial="")
     """Serialized JSON array representing the players answers

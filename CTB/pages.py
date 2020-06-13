@@ -19,18 +19,18 @@ class Start(Page):
 
 class HLPage(Page):
     form_model = 'player'
-    form_fields = ['question_answers']
+    form_fields = ['plot_answers']
 
     def vars_for_template(self):
         PLOTS = self.player.get_plots()
         title = "Healy & Lenz Plot"
-        block_index = 0
+        page_index = 0
         question_instructions = "How would you rate the condition of the national economy during this period?"
 
         return {
             'plots' : PLOTS,
             'title' : title,
-            'block_index' : block_index, 
+            'page_index' : page_index, 
             'question_instructions' : question_instructions
         }
 
@@ -62,7 +62,6 @@ class BlockPage(Page):
             'num_blocks': num_blocks,
             'progress': round(step * 100 / num_blocks),
             'curr_block': current_block,
-            'use_slider': VISUALIZE_CHOICES_AS_SLIDER,
             'num_choices': current_block.number_of_choices,
             'instructions': instructions,
             'title': title,
