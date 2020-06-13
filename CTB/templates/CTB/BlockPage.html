@@ -1,0 +1,85 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load staticfiles %}
+
+{% block content %}
+
+<hr>
+
+<hr>
+
+<h1 class="timepref__heading">
+    {{ title }} 
+    <br>
+    ({{curr_block.text_delay_start}} vs. {{curr_block.text_total_end}})
+</h1>
+
+</p>
+        <p align="justify">
+                On the following pages, you will see measurements of how much better off people are in two years of a hypothetical U.S. presidents' term. 
+            The measurements shown are percent change in personal income growth, which provides a good measure of the strength of the national economy. 
+            <br>
+            <br>
+               For each pair of years, you will see different combinations of income growth. As you can see, there is a trade-off: as one growth rate goes down,
+            the other growth rate goes up. Mark the combination of growth rates that you evaluate as the strongest economy.
+</p>
+
+
+<table class="table table-bordered {% if use_slider %}timepref__with-slider{% endif %}">
+    <tbody>
+    {% for question in curr_block.questions %}
+    <tr class="timepref__question-start timepref__question-unanswered timepref__question-index-{{question.question_number}}">
+        <th rowspan="3" width="10">{{ question.question_number }}.</th>
+        <td> {{question_instructions}} <span class="text-uppercase"> in {{ curr_block.text_delay_start }} </span></td>
+        {% for value in question.start_values %}
+        <td class="text-center">{{ value }}</td>
+        {% endfor %}
+    </tr>
+    <tr class="timepref__question-end">
+        <td>and <span class="text-uppercase"> in {{ curr_block.text_total_end }} </span></td>
+        {% for value in question.end_values %}
+        <td class="text-center">{{ value }}</td>
+        {% endfor %}
+    </tr>
+    <tr class="timepref__question-choices" data-question-index="{{question.question_number}}">
+        <td></td>
+        {% for index in question.choice_index %}
+        <td class="text-center timepref__question-choice">
+            <input type="radio" name="question_{{question.question_number}}" value="{{ index }}" />
+        </td>
+        {% endfor %}
+
+    <h1></h1>
+
+    {% if not forloop.last %}
+    <tr class="timepref__spacer">
+        <td></td>
+        {% for value in question.start_values %}
+        <td></td>
+        {% endfor %}
+    {% endif %} <!-- // endif: forloop.last -->
+    {% endfor %} <!-- // endfor: curr_block.questions -->
+    </tbody>
+</table>
+
+<input id="timepref__answers" type="hidden" name="question_answers" data-block-index="{{ block_index }}" value="{{player.question_answers}}">
+
+<div class="timepref__waiting">
+    You need to fill out all choices in order to continue.
+</div>
+
+<div class="timepref__next-button">
+{% next_button %}
+</div>
+
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'CTB/styles/block.css' %}"/>
+<link rel="stylesheet" href="{% static 'CTB/styles/rangeslider.css' %}"/>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'CTB/scripts/rangeslider.min.js' %}"></script>
+<script src="{% static 'CTB/scripts/block.js' %}"></script>
+{% endblock %}
