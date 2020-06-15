@@ -21,6 +21,8 @@ NUM_BLOCKS = 6
 #: Set to True if you want blocks to be randomized in order
 RANDOMIZE_BLOCKS = False
 
+RANDOMIZE_PLOTS = True
+
 #: The configuration for all blocks to be displayed to the user
 #: Note:
 #: - The given delays are treated as WEEKS where an initial delay of 0 means today.
@@ -35,8 +37,6 @@ all_right_values = [[4.2, 4.2, 4.2, 4.2], [4.2, 4.2, 4.2, 4.2], [4.2, 4.2, 4.2, 
         [5.5, 5.5, 5.5, 5.5], [5.3, 5.3, 5.3, 5.3]]
 
 block_order = [i for i in range(NUM_BLOCKS)]
-if RANDOMIZE_BLOCKS:
-    random.shuffle(block_order)
 
 BLOCKS = [
     Block(
@@ -91,11 +91,6 @@ BLOCKS = [
 
 NUM_PLOTS = 5
 
-RANDOMIZE_PLOTS = False
+plot_links = ["https://i.imgur.com/7nVED9H.png", "https://i.imgur.com/PtfIsEV.png", "https://i.imgur.com/aAS88mA.png", "https://i.imgur.com/bCqMEek.png", "https://i.imgur.com/Xflg73S.png"]
 
-plot_order = [i for i in range(NUM_PLOTS)]
-
-if RANDOMIZE_PLOTS:
-    random.shuffle(plot_order)
-
-PLOTS = [Plot(i, plot_order[i]) for i in range(NUM_PLOTS)]
+PLOTS = [Plot(image_link=plot_links[i]) for i in range(NUM_PLOTS)]

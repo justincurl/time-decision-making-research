@@ -9,7 +9,7 @@ from otree.api import (
 
 from .block import Block
 from .plot import Plot
-from .config import BLOCKS, RANDOMIZE_BLOCKS, PLOTS
+from .config import BLOCKS, PLOTS, RANDOMIZE_PLOTS, RANDOMIZE_BLOCKS
 
 author = 'Justin Curl <jcurl@princeton.edu>'
 
@@ -21,30 +21,34 @@ use Convex Time Budget analysis to analyze
 class Constants(BaseConstants):
     name_in_url = 'CTB'
     players_per_group = None
-    num_rounds = 1
+    num_rounds = 2
 
 
 class Subsession(BaseSubsession):
-    block_order = models.StringField(initial="") 
-    plot_order = models.StringField(initial="")
     def creating_session(self) -> None:
         """Initializes the 
         session and creates the order in which the Blocks should be run through
         """
-        block_order = [BLOCKS[i].block_index for i in range(len(BLOCKS))]
-        self.block_order = json.dumps(block_order)
+        import itertools
+        randomFirst = random.choice([True, False])
+        ordering = itertools.cycle([randomFirst, not randomFirst])
+        for player in self.get_players():
+            if self.round_number == 1:
+                player.hl_second = next(ordering)
+            else:
+                player.hl_second = not player.in_round(self.round_number - 1).hl_second       
 
-        plot_order = [PLOTS[i].plot_index for i in range(len(PLOTS))]
-        self.plot_order = json.dumps(plot_order)
-
-    def get_block_order(self) -> List[int]:
-        """Get the order in which blocks should be run through
-
-        The elements of the list represent the 0-based index in the `config.BLOCKS` list.
-
-        :return: List of Block indexes
-        """
-        return json.loads(self.block_order)
+            if player.hl_second:
+                
+                plot_order = [i for i in range(len(PLOTS))]
+                if RANDOMIZE_PLOTS:
+                    random.shuffle(plot_order)
+                player.plot_order = json.dumps(plot_order)
+            else:
+                block_order = [i for i in range(len(BLOCKS))]
+                if RANDOMIZE_BLOCKS:
+                    random.shuffle(block_order)
+                player.block_order = json.dumps(block_order)
 
 
 class Group(BaseGroup):
@@ -52,11 +56,13 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    current_step = models.IntegerField(initial=0)
+
+    current_block_step = models.IntegerField(initial=0)
     """Current step the user is in
     """
+    current_plot_step = models.IntegerField(initial=0)
 
-    plot_answers = models.StringField(initial="")
+    hl_second = models.BooleanField(initial=False)
 
     question_answers = models.StringField(initial="")
     """Serialized JSON array representing the players answers
@@ -67,18 +73,25 @@ class Player(BasePlayer):
     each number inside the element represents the index of the choice the
     player made in the respective question - starting from 1.
     """
+ 
+    plot_order = models.StringField(initial="")
+    block_order = models.StringField(initial="") 
+    
+    def goto_next_plot_step(self) -> None:
+        self.current_plot_step += 1
 
-    def goto_next_step(self) -> None:
+    def goto_next_block_step(self) -> None:
         """Advances the player to the next step
         """
-        self.current_step = self.current_step + 1
+        self.current_block_step += 1
 
-    def get_current_step(self) -> int:
+    def get_current_block_step(self) -> int:
         """The player's current step
 
         :return: Current step
         """
-        return self.current_step
+        return self.current_block_step
+    
 
     def get_current_block_index(self) -> int:
         """Get the index of the block to be currently displayed
@@ -91,9 +104,8 @@ class Player(BasePlayer):
 
         :return: Index of block to display or `-1`
         """
-        if self.current_step < len(BLOCKS):
-            block_order = self.subsession.get_block_order()
-            return block_order[self.current_step]
+        if self.current_block_step < len(BLOCKS):
+            return json.loads(self.block_order)[self.current_block_step]
         else:
             return -1
 
@@ -111,16 +123,12 @@ class Player(BasePlayer):
             print("none executed from get current block")
             return None
 
-    def get_plots(self) -> int:
-        """Get the index of the block to be currently displayed
-
-        This function returns the 0-based index of the block in `config.BLOCKS`
-        to be displayed to the player taking into account the potentially
-        randomized order.
-        This method will return `-1` if `self.current_step` exceed the number
-        of configured blocks.
-
-        :return: Index of block to display or `-1`
-        """
-        return PLOTS
+    def get_current_plot(self) -> Optional[Plot]:
+        if self.current_plot_step < len(PLOTS):
+            plot_index = json.loads(self.plot_order)[self.current_plot_step]
+            if 0 <= plot_index < len(PLOTS):
+                return PLOTS[plot_index]
+        else:
+            print("none executed from get current plot")
+            return None
 

@@ -9,7 +9,7 @@
     }
 
     // Block index and state are read from existing DOM elements
-    var pageIndex = parseInt(answersInput.attr('data-page-index')) - 1;
+    var plotIndex = parseInt(answersInput.attr('data-plot-index')) - 1;
     var state = JSON.parse(answersInput.val() || '[]');
 
     jQuery('.timepref__plot-choices').each(function () {

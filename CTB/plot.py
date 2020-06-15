@@ -7,15 +7,11 @@ class Plot:
 
     """
 
-    def __init__(self, general_index, plot_index: str):
+    def __init__(self, image_link):
         """Create a new Question
         """
-        self.general_index = general_index
-        self.plot_index = plot_index
         self.num_choices = 4
-
-    def general_index(self) -> int:
-        return self.general_index + 1
+        self.image_link = image_link
 
     def start_values(self) -> List[str]:
         """ Take the initial number, and determine how much to decrease the amount by

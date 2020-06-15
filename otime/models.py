@@ -34,9 +34,9 @@ class Subsession(BaseSubsession):
         randomOrdering = itertools.cycle([False, True])
         for player in self.get_players():
             if self.round_number == 1:
-                player.is_econ = next(randomOrdering)
+                player.econ_second = next(randomOrdering)
             else:
-                player.is_econ = not player.in_round(self.round_number - 1).is_econ
+                player.econ_second = not player.in_round(self.round_number - 1).econ_second
                 
         block_order = [BLOCKS[i].block_index for i in range(len(BLOCKS))]
         self.block_order = json.dumps(block_order)
@@ -70,7 +70,7 @@ class Player(BasePlayer):
     player made in the respective question - starting from 1.
     """
 
-    is_econ = models.BooleanField(initial=False)
+    econ_second = models.BooleanField(initial=False)
 
     def goto_next_step(self) -> None:
         """Advances the player to the next step

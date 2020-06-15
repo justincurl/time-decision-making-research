@@ -4,63 +4,32 @@
 
 {% block content %}
 
-<hr>
+<div class="plot" align="center">
+    <span><img src={{plot.image_link}}></span>
+</div>
+<br>
+<div class="question" align="center"><h4>{{ step }}. How would you rate the condition of the national economy during this period?</h4></div>
 
-<hr>
-
-<h1 class="timepref__heading">
-    {{ title }} 
-    <br>
-</h1>
-
-</p>
-        <p align="justify">
-                On the following pages, you will see figures with measurements of how much better off people are during hypothetical U.S. presidents' terms. 
-            The measurements shown are percent change in PERSONAL INCOME GROWTH, which provides a good measure of the strength of the national economy. 
-            <br>
-            <br>
-                After looking at a figure, evaluate the economy during this period. Would you say it is very good, fairly good, fairly bad, or very bad?
-</p>
-
-<table class="table table-bordered">
+<table class="table">
     <tbody>
-    {% for plot in plots %}
-        
-    <tr class="timepref__plot-end">
-        <td colspan="6" align="center"><span><img src="https://i.imgur.com/PtfIsEV.png"></span></td>
-    </tr>
-
-    <tr class="timepref__plot-start timepref__plot-unanswered timepref__plot-index-{{plot.general_index}}">
-        <th rowspan="3" width="10">{{ plot.general_index }}.</th>
-        <td> How would you rate the condition of <br> the national economy during this period? </td>
+    <tr class="timepref__question-start timepref__question-unanswered timepref__question-index-{{step}}">
         {% for value in plot.start_values %}
         <td class="text-center">{{ value }}</td>
         {% endfor %}
     </tr>
-
-    <tr class="timepref__plot-choices" data-plot-index="{{plot.plot_index}}">
-        <td></td>
+    <tr class="timepref__question-choices" data-question-index="{{step}}">
         {% for index in plot.choice_index %}
-        <td class="text-center timepref__plot-choice">
-            <input type="radio" name="plot_{{plot.general_index}}" value="{{ index }}" />
+        <td class="text-center timepref__question-choice">
+            <input type="radio" name="question_{{step}}" value="{{ index }}" />
         </td>
         {% endfor %}
 
     <h1></h1>
 
-    {% if not forloop.last %}
-    <tr class="timepref__spacer">
-        <td></td>
-        {% for value in plot.start_values %}
-        <td></td>
-        {% endfor %}
-    {% endif %} <!-- // endif: forloop.last -->
-    {% endfor %} <!-- // endfor: curr_block.plots -->
     </tbody>
 </table>
 
-
-<input id="timepref__answers" type="hidden" name="plot_answers" data-page-index="{{ page_index }}" value="{{player.plot_answers}}">
+<input id="timepref__answers" type="hidden" name="question_answers" data-block-index="{{ step }}" value="{{player.question_answers}}">
 
 <div class="timepref__waiting">
     You need to fill out all choices in order to continue.
@@ -70,16 +39,14 @@
 {% next_button %}
 </div>
 
-
 {% endblock %}
 
-
 {% block styles %}
-<link rel="stylesheet" href="{% static 'CTB/styles/plot.css' %}"/>
+<link rel="stylesheet" href="{% static 'CTB/styles/block.css' %}"/>
 <link rel="stylesheet" href="{% static 'CTB/styles/rangeslider.css' %}"/>
 {% endblock %}
 
 {% block scripts %}
 <script src="{% static 'CTB/scripts/rangeslider.min.js' %}"></script>
-<script src="{% static 'CTB/scripts/plot.js' %}"></script>
+<script src="{% static 'CTB/scripts/block.js' %}"></script>
 {% endblock %}

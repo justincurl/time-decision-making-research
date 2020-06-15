@@ -68,4 +68,4 @@ class Block:
             term = "3rd"
         if value == 4:
             term = "Final"
-        return term + " Year of Term"
+        return term

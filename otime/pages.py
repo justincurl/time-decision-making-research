@@ -32,7 +32,7 @@ class PolBlockPage(Page):
 
     def is_displayed(self):
         # This page will only be displayed when there are blocks left
-        return self.player.get_current_block() and not self.player.is_econ
+        return self.player.get_current_block() and not self.player.econ_second
 
     def vars_for_template(self):
         step = self.player.get_current_step() + 1
@@ -73,7 +73,7 @@ class EconBlockPage(Page):
 
     def is_displayed(self):
         # This page will only be displayed when there are blocks left
-        return self.player.get_current_block() and self.player.is_econ
+        return self.player.get_current_block() and self.player.econ_second
 
     def vars_for_template(self):
         step = self.player.get_current_step() + 1
@@ -114,7 +114,7 @@ class Results(Page):
 
 class Instructions(Page):
     def vars_for_template(self):  
-        if self.player.is_econ:
+        if self.player.econ_second:
             instructions = economic_instructions
             title =  "Payment Preferences"
         else:
@@ -128,7 +128,7 @@ class Instructions(Page):
 
 class Video(Page):
     def before_next_page(self):
-        self.player.is_econ = not self.player.is_econ
+        self.player.econ_second = not self.player.econ_second
     def is_displayed(self):
         return self.round_number == 1
 
