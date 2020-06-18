@@ -136,7 +136,7 @@ class InstructionsHL(Page):
             instructions_bold = "personal income growth"
             instructions_pt2 = ", which provides a good measure of the strength of the national economy."
             instructions_pt3 = """
-                After looking at a figure, evaluate the economy during this period. Would you say it is very good, fairly good, fairly bad, or very bad?
+                After looking at a figure, evaluate the economy during this period. Would you say it is very bad, fairly bad, fairly good, or very good?
             """
         else:
             instructions_pt1 = """
@@ -146,7 +146,7 @@ class InstructionsHL(Page):
             instructions_bold = "personal income growth"
             instructions_pt2 = ""
             instructions_pt3 = """
-                After looking at a figure, evaluate the economy during this period. Would you say it is very good, fairly good, fairly bad, or very bad?
+                After looking at a figure, evaluate the economy during this period. Would you say it is very bad, fairly bad, fairly good, or very good?
             """
         return {
             'instructions_pt1': instructions_pt1, 

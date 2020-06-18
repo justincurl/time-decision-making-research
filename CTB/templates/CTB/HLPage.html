@@ -8,42 +8,46 @@
     <span><img src={{plot.image_link}}></span>
 </div>
 <br>
-<div class="question" align="center"><h4>{{ step }}. How would you rate the condition of the national economy during this period?</h4></div>
+<div class="question" align="center">
+    <h4>{{ step }}. How would you rate the condition of the national economy during this period?</h4>
+</div>
 
 <table class="table">
     <tbody>
-    <tr class="timepref__question-start timepref__question-unanswered timepref__question-index-{{step}}">
-        {% for value in plot.start_values %}
-        <td class="text-center">{{ value }}</td>
-        {% endfor %}
-    </tr>
-    <tr class="timepref__question-choices" data-question-index="{{step}}">
-        {% for index in plot.choice_index %}
-        <td class="text-center timepref__question-choice">
-            <input type="radio" name="question_{{step}}" value="{{ index }}" />
-        </td>
-        {% endfor %}
+        <tr class="timepref__question-start timepref__question-unanswered timepref__question-index-{{step}}">
+            {% for value in plot.start_values %}
+            <td class="text-center">{{ value }}</td>
+            {% endfor %}
+        </tr>
+        <tr class="timepref__question-choices" data-question-index="{{step}}">
+            {% for index in plot.choice_index %}
+            <td class="text-center timepref__question-choice">
+                <input type="radio" name="question_{{step}}" value="{{ index }}" />
+            </td>
+            {% endfor %}
 
-    <h1></h1>
+            <h1></h1>
 
     </tbody>
 </table>
 
-<input id="timepref__answers" type="hidden" name="question_answers" data-block-index="{{ step }}" value="{{player.question_answers}}">
+<input id="timepref__answers" type="hidden" name="question_answers" data-block-index="{{ step }}"
+    value="{{player.question_answers}}">
 
-<div class="timepref__waiting">
-    You need to fill out all choices in order to continue.
+<div class="timepref__waiting"
+    onclick="return confirm('You still have unanswered questions. Would you like to continue?')">
+    {% next_button %}
 </div>
 
 <div class="timepref__next-button">
-{% next_button %}
+    {% next_button %}
 </div>
 
 {% endblock %}
 
 {% block styles %}
-<link rel="stylesheet" href="{% static 'CTB/styles/block.css' %}"/>
-<link rel="stylesheet" href="{% static 'CTB/styles/rangeslider.css' %}"/>
+<link rel="stylesheet" href="{% static 'CTB/styles/block.css' %}" />
+<link rel="stylesheet" href="{% static 'CTB/styles/rangeslider.css' %}" />
 {% endblock %}
 
 {% block scripts %}
