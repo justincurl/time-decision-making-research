@@ -4,6 +4,11 @@
 
 {% block content %}
 
+<div class="progress">
+    <div class="progress-bar" style="width: {{ progress }}%">{{ progress }} / 100 </div>
+</div>
+<br>
+
 <div class="plot" align="center">
     <span><img src={{plot.image_link}}></span>
 </div>
@@ -34,8 +39,16 @@
 <input id="timepref__answers" type="hidden" name="question_answers" data-block-index="{{ step }}"
     value="{{player.question_answers}}">
 
-<div class="timepref__waiting"
-    onclick="return confirm('You still have unanswered questions. Would you like to continue?')">
+<script>
+    function alertFunctionPlot() {
+        alert("In order for your answers to be most helpful to us, it is really important that you respond to all questions.")
+        jQuery('.timepref__waiting').hide();
+        jQuery('.timepref__next-button').show();
+        return false
+    }
+</script>
+
+<div class="timepref__waiting" onclick="return alertFunctionPlot();">
     {% next_button %}
 </div>
 

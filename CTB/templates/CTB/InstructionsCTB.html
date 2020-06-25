@@ -2,22 +2,22 @@
 {% load otree static %}
 
 {% block title %}
-    Part {{round_number}} Instructions
+Part {{round_number}} Instructions
 {% endblock %}
 
 {% block content %}
-     <div class="instructions" align="justify">
-        <h4><p style="text-align:center;">{{title}}</p></h4>
-        <p>
-            {{instructions_pt1}}<strong>{{instructions_bold}}</strong>{{instructions_pt2}}
-            <br>
-            <br>
-            {{instructions_pt3}}
-        </p>
-     </div>
-     <hr>
-     <br>
-    {% next_button %}
+<div class="instructions" align="justify">
+    <h4>
+        <p style="text-align:center;">{{title}}</p>
+    </h4>
+    <p>
+        {{instructions_pt1}}
+        <br>
+        <br>
+        {{instructions_pt2}}
+    </p>
+</div>
+<hr>
+<br>
+{% next_button %}
 {% endblock %}
-
-

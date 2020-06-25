@@ -1,0 +1,76 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="progress">
+   <div class="progress-bar" style="width: {{ progress }}%">{{ progress }} / 100 </div>
+</div>
+<br>
+
+<div>
+   Most modern theories of decision-making recognize the fact that decisions do not take place in a vacuum.
+   Individual preferences and knowledge, along with situational variables, can greatly impact the decision process.
+   In order to facilitate our research on decision-making, we are interested in whether you actually take
+   the time to read the directions. So, rather than answering the following question accurately, please
+   check only “Mauritania” and “None of the above” and then continue. This will demonstrate to us that
+   you have taken the time to read and follow the instructions.
+</div>
+
+<br>
+
+<div class="question" align="center">
+   <h5>Which of the following countries have you heard mentioned in the news during the last week? </h5>
+</div>
+
+<table class="table">
+   <tbody>
+      <tr>
+         {% for value in values %}
+         <td class="text-center">{{ value }}</td>
+         {% endfor %}
+      </tr>
+      <tr class="attention-check-choices">
+         {% for index in choices %}
+         <td class="attention-check-choice text-center">
+            <input id="attention-check-{{index}}" type="checkbox" name="attention-{{index}}" value="{{ index }}" />
+         </td>
+         {% endfor %}
+   </tbody>
+</table>
+
+<input id="attention__check" type="hidden" name="attention_check" value="{{player.attention_check}}">
+
+<script>
+   function alertFunction() {
+      alert('In order for your answers to be most helpful to us, it is really important that you respond to all questions.')
+      return false
+   }
+</script>
+
+<script>
+   function alertFunction() {
+      alert('You must choose "I would like to participate" in order to participate in the study')
+      return false
+   }
+</script>
+
+<div class="waiting" onclick="return alertFunction();">
+   {% next_button %}
+</div>
+
+<div class="next-button">
+   {% next_button %}
+</div>
+
+
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'CTB/styles/block.css' %}" />
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'CTB/scripts/attention.js' %}"></script>
+{% endblock %}
