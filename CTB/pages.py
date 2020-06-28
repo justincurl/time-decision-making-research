@@ -1,7 +1,10 @@
 import random
 import json
+import datetime
 from ._builtin import Page, WaitPage
 from .config import BLOCKS, PLOTS
+
+PROGRESS_DENOM = len(PLOTS) + len(BLOCKS) + 1
 
 
 class Start(Page):
@@ -27,11 +30,11 @@ class HLPage(Page):
         step = self.player.current_plot_step + 1
         current_plot = self.player.get_current_plot()
         num_plots = len(PLOTS)
-        progress_num = (step) * 48
-        progress_denom = num_plots
-        progress = round(progress_num / progress_denom)
         if self.player.round_number == 2:
-            progress += 52
+            progress_num = (step + 7) * 100
+        else:
+            progress_num = (step) * 100
+        progress = round(progress_num / PROGRESS_DENOM)
 
         return {
             "step": step,
@@ -56,9 +59,6 @@ class BlockPage(Page):
     form_fields = ["question_answers"]
 
     def is_displayed(self):
-        print(self.player.consent_answer)
-        print(json.loads(self.player.consent_answer))
-        print(json.dumps(0))
         # This page will only be displayed when there are blocks left
         return (
             not self.player.hl_second
@@ -71,11 +71,12 @@ class BlockPage(Page):
         block_index = self.player.get_current_block_index() + 1
         current_block = self.player.get_current_block()
         num_blocks = len(BLOCKS)
-        progress_num = (step) * 48
-        progress_denom = num_blocks
-        progress = round(progress_num / progress_denom)
+
         if self.player.round_number == 2:
-            progress += 52
+            progress_num = (step + 25) * 100
+        else:
+            progress_num = (step) * 100
+        progress = round(progress_num / PROGRESS_DENOM)
 
         questions_to_page = (len(current_block.left_values) * (step - 1)) + 1
 
@@ -100,7 +101,19 @@ class BlockPage(Page):
 
 
 class Results(Page):
+    def __datetime(date_str):
+        return datetime.strptime(date_str, "%H:%M:%S")
+
     def is_displayed(self):
+        now = datetime.datetime.now()
+        current_time = now.strftime("%H:%M:%S")
+        self.player.finish_time = json.dumps(current_time)
+        finish_time = datetime.datetime.strptime(current_time, "%H:%M:%S")
+        start_time = datetime.datetime.strptime(
+            json.loads(self.player.start_time), "%H:%M:%S"
+        )
+        self.player.total_time = json.dumps(str(finish_time - start_time))
+
         return self.round_number == 2 and (json.loads(self.player.consent_answer) == 1)
 
 
@@ -114,6 +127,10 @@ class Consent(Page):
     form_fields = ["consent_answer"]
 
     def is_displayed(self):
+        now = datetime.datetime.now()
+        current_time = now.strftime("%H:%M:%S")
+        self.player.start_time = json.dumps(current_time)
+
         return self.round_number == 1
 
 
@@ -128,6 +145,10 @@ class Attention(Page):
         return self.round_number == 1 and (json.loads(self.player.consent_answer) == 1)
 
     def vars_for_template(self):
+        if self.player.hl_second:
+            progress = 6 / PROGRESS_DENOM * 100
+        else:
+            progress = 24 / PROGRESS_DENOM * 100
         values = [
             "France",
             "Germany",
@@ -139,7 +160,11 @@ class Attention(Page):
             "Mexico",
             "None of the Above",
         ]
-        return {"values": values, "choices": range(1, len(values) + 1), "progress": 52}
+        return {
+            "values": values,
+            "choices": range(1, len(values) + 1),
+            "progress": progress,
+        }
 
 
 class InstructionsCTB(Page):

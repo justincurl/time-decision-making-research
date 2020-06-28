@@ -5,7 +5,7 @@
 {% block content %}
 
 <div class="progress">
-   <div class="progress-bar" style="width: {{ progress }}%">{{ progress }} / 100 </div>
+   <div class="progress-bar" style="width: {{ progress }}%"></div>
 </div>
 <br>
 
@@ -45,13 +45,8 @@
 <script>
    function alertFunction() {
       alert('In order for your answers to be most helpful to us, it is really important that you respond to all questions.')
-      return false
-   }
-</script>
-
-<script>
-   function alertFunction() {
-      alert('You must choose "I would like to participate" in order to participate in the study')
+      jQuery(".waiting").hide()
+      jQuery(".next-button").show()
       return false
    }
 </script>

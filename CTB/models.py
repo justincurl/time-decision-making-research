@@ -54,6 +54,9 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
+    start_time = models.StringField()
+    finish_time = models.StringField()
+    total_time = models.StringField()
 
     current_block_step = models.IntegerField(initial=0)
     """Current step the user is in
