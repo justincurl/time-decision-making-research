@@ -145,7 +145,7 @@ class Attention(Page):
         return self.round_number == 1 and (json.loads(self.player.consent_answer) == 1)
 
     def vars_for_template(self):
-        if self.player.hl_second:
+        if not self.player.hl_second:
             progress = 6 / PROGRESS_DENOM * 100
         else:
             progress = 24 / PROGRESS_DENOM * 100
