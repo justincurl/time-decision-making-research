@@ -18,9 +18,6 @@
             if (jQuery(str).is(":checked"))
                 values.push(i)
         }
-        if (values[0] == 4 && values[1] == 9)
-            answersInput.val(JSON.stringify(1));
-        else
-            answersInput.val(JSON.stringify(0));
+        answersInput.val(JSON.stringify(values));
     });
 }());

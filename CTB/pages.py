@@ -100,8 +100,16 @@ class BlockPage(Page):
         self.player.goto_next_block_step()
 
 
+class Feedback(Page):
+    form_model = "player"
+    form_fields = ["feedback"]
+
+    def is_displayed(self):
+        return self.round_number == 2 and (json.loads(self.player.consent_answer) == 1)
+
+
 class Results(Page):
-    def __datetime(date_str):
+    def __datetime(self, date_str):
         return datetime.strptime(date_str, "%H:%M:%S")
 
     def is_displayed(self):
@@ -251,6 +259,7 @@ def generate_page_sequence():
         + [HLPage] * len(PLOTS)
         + [BlockPage] * len(BLOCKS)
         + [Attention]
+        + [Feedback]
         + [Results]
         + [NonConsent]
     )

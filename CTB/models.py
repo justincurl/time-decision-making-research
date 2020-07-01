@@ -35,7 +35,8 @@ class Subsession(BaseSubsession):
             if self.round_number == 1:
                 player.hl_second = next(ordering)
             else:
-                player.hl_second = not player.in_round(self.round_number - 1).hl_second
+                player.hl_second = not player.in_round(
+                    self.round_number - 1).hl_second
             if player.hl_second:
 
                 plot_order = [i for i in range(len(PLOTS))]
@@ -57,6 +58,8 @@ class Player(BasePlayer):
     start_time = models.StringField()
     finish_time = models.StringField()
     total_time = models.StringField()
+
+    feedback = models.LongStringField()
 
     current_block_step = models.IntegerField(initial=0)
     """Current step the user is in
@@ -134,4 +137,3 @@ class Player(BasePlayer):
         else:
             print("none executed from get current plot")
             return None
-

@@ -61,3 +61,8 @@
 .timepref__next-button {
     display: none;
 }
+
+textarea {
+    width: 800px;
+    resize: none;
+}
