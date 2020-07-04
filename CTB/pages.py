@@ -190,7 +190,7 @@ class InstructionsCTB(Page):
         else:
             instructions_pt1 = """
                 On each of the following 6 pages, you will see measurements of how much better off people are in two years of a hypothetical 
-                U.S. president's four-year term. The measurements shown are again percent change in personal income growth
+                U.S. president's four-year term. The measurements shown are again percent change in personal income growth.
             """
             instructions_pt2 = """
                 After looking at the values for income growth in the two years, choose the combination of growth rates that you rate as the strongest economy.
@@ -228,7 +228,7 @@ class InstructionsHL(Page):
         else:
             instructions_pt1 = """
                 On each of the following 24 pages, you will see a figure with measurements of how much better off people are during a hypothetical 
-                U.S. president's four-year term. The measurements shown are again percent change in personal income growth
+                U.S. president's four-year term. The measurements shown are again percent change in personal income growth.
                 """
             instructions_pt2 = """
                 After looking at a figure, evaluate the economy during this period. Would you say it is very bad, fairly bad, 
