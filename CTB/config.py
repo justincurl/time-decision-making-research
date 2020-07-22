@@ -103,33 +103,47 @@ BLOCKS = [
     ),
 ]
 
-NUM_PLOTS = 24
-
+NUM_PLOTS = 18
+# small_plot_links = [
+#     "https://i.imgur.com/bclJT7b.png",
+#     "https://i.imgur.com/mfZ4X2j.png",
+#     "https://i.imgur.com/zfYOn1A.png",
+#     "https://i.imgur.com/wyFkWUQ.png",
+#     "https://i.imgur.com/RXXZRdB.png",
+#     "https://i.imgur.com/CRj3Tcc.png",
+#     "https://i.imgur.com/BnMUSKV.png",
+#     "https://i.imgur.com/MvFDoc7.png",
+#     "https://i.imgur.com/6iHDf6b.png",
+#     "https://i.imgur.com/6hGujUK.png",
+#     "https://i.imgur.com/8ixS5hv.png",
+#     "https://i.imgur.com/KXPVBCR.png",
+#     "https://i.imgur.com/EKBwKih.png",
+#     "https://i.imgur.com/Ubtp5em.png",
+#     "https://i.imgur.com/hSfaWOw.png",
+#     "https://i.imgur.com/HnniYEh.png",
+#     "https://i.imgur.com/pSJXSUO.png",
+#     "https://i.imgur.com/hPcouQo.png"
+# ]
 plot_links = [
-    "https://i.imgur.com/wI95aRk.png",
-    "https://i.imgur.com/qBLDL9q.png",
-    "https://i.imgur.com/afR6gMb.png",
-    "https://i.imgur.com/Tz22E9V.png",
-    "https://i.imgur.com/5rL2vnx.png",
-    "https://i.imgur.com/Rzx5ejS.png",
-    "https://i.imgur.com/rXEmgQy.png",
-    "https://i.imgur.com/3TItooK.png",
-    "https://i.imgur.com/eAygo5V.png",
-    "https://i.imgur.com/9LNZ5GM.png",
-    "https://i.imgur.com/ywcOXAu.png",
-    "https://i.imgur.com/nF7Scjj.png",
-    "https://i.imgur.com/j8Jd3r9.png",
-    "https://i.imgur.com/Ac0SpHS.png",
-    "https://i.imgur.com/tLBY1G3.png",
-    "https://i.imgur.com/B17WGCS.png",
-    "https://i.imgur.com/2HVuOhO.png",
-    "https://i.imgur.com/Wqs15Kb.png",
-    "https://i.imgur.com/FVGCKWd.png",
-    "https://i.imgur.com/QzdomVt.png",
-    "https://i.imgur.com/t2Y8hFx.png",
-    "https://i.imgur.com/9q9Wgpt.png",
-    "https://i.imgur.com/CY2bxmX.png",
-    "https://i.imgur.com/W8nsFX0.png",
+    "https://i.imgur.com/tv80mGo.png",
+    "https://i.imgur.com/QP549W9.png",
+    "https://i.imgur.com/ff7lu55.png",
+    "https://i.imgur.com/eEBRZFo.png",
+    "https://i.imgur.com/qOcXBox.png",
+    "https://i.imgur.com/FCvX5dt.png",
+    "https://i.imgur.com/y34mfxd.png",
+    "https://i.imgur.com/aZl77Sz.png",
+    "https://i.imgur.com/slbHvpo.png",
+    "https://i.imgur.com/iNVr5g8.png",
+    "https://i.imgur.com/maIW58T.png",
+    "https://i.imgur.com/AXwjhC9.png",
+    "https://i.imgur.com/Git8BSM.png",
+    "https://i.imgur.com/qResnR3.png",
+    "https://i.imgur.com/uP4eNmx.png",
+    "https://i.imgur.com/qMlDI48.png",
+    "https://i.imgur.com/yJKtg0Y.png",
+    "https://i.imgur.com/m4DjdUF.png"
 ]
 
+# SMALL_PLOTS = [Plot(image_link=small_plot_links[i]) for i in range(NUM_PLOTS)]
 PLOTS = [Plot(image_link=plot_links[i]) for i in range(NUM_PLOTS)]

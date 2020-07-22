@@ -3,7 +3,7 @@ from typing import Optional, List
 
 import random
 
-from otree.api import models, BaseConstants, BaseSubsession, BaseGroup, BasePlayer
+from otree.api import models, BaseConstants, BaseSubsession, BaseGroup, BasePlayer, widgets
 
 from .block import Block
 from .plot import Plot
@@ -59,7 +59,17 @@ class Player(BasePlayer):
     finish_time = models.StringField()
     total_time = models.StringField()
 
-    feedback = models.LongStringField(initial="Feedback")
+    device_type = models.IntegerField(
+        choices=[
+            [1, 'Desktop Computer'],
+            [2, 'Laptop Computer'],
+            [3, 'Smartphone'],
+            [4, 'Tablet'],
+            [5, 'Something Else']
+        ]
+    )
+
+    feedback = models.LongStringField(blank=True)
 
     current_block_step = models.IntegerField(initial=0)
     """Current step the user is in
@@ -131,7 +141,8 @@ class Player(BasePlayer):
 
     def get_current_plot(self) -> Optional[Plot]:
         if self.current_plot_step < len(PLOTS):
-            plot_index = json.loads(self.plot_order)[self.current_plot_step]
+            plot_index = json.loads(self.plot_order)[
+                self.current_plot_step]
             if 0 <= plot_index < len(PLOTS):
                 return PLOTS[plot_index]
         else:

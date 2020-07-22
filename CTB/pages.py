@@ -22,13 +22,14 @@ class HLPage(Page):
         # This page will only be displayed when there are blocks left
         return (
             self.player.hl_second
-            and self.player.get_current_plot()
+            and self.player.get_current_plot(self.player.device_type)
             and (json.loads(self.player.consent_answer) == 1)
         )
 
     def vars_for_template(self):
         step = self.player.current_plot_step + 1
-        current_plot = self.player.get_current_plot()
+        current_plot = self.player.get_current_plot(self.player.device_type)
+
         num_plots = len(PLOTS)
         if self.player.round_number == 2:
             progress_num = (step + 7) * 100
@@ -73,7 +74,7 @@ class BlockPage(Page):
         num_blocks = len(BLOCKS)
 
         if self.player.round_number == 2:
-            progress_num = (step + 25) * 100
+            progress_num = (step + 10) * 100
         else:
             progress_num = (step) * 100
         progress = round(progress_num / PROGRESS_DENOM)
@@ -130,18 +131,6 @@ class NonConsent(Page):
         return json.loads(self.player.consent_answer) == 0
 
 
-class Consent(Page):
-    form_model = "player"
-    form_fields = ["consent_answer"]
-
-    def is_displayed(self):
-        now = datetime.datetime.now()
-        current_time = now.strftime("%H:%M:%S")
-        self.player.start_time = json.dumps(current_time)
-
-        return self.round_number == 1
-
-
 class Attention(Page):
     form_model = "player"
     form_fields = ["attention_check"]
@@ -177,29 +166,42 @@ class Attention(Page):
 
 class InstructionsCTB(Page):
     def vars_for_template(self):
-        title = "Choose the Best Economy under Hypothetical, Second-Term Presidents"
+        title = "Choose the Strongest Economy"
+        i_pt1 = """
+            On the following 6 pages, you will see figures with measurements of how much better off people are in two different years of a hypothetical U.S. president’s term. The figures only show the economy for """
+        i_pt2 = """
+            presidents in their second terms. 
+        """
+        i_pt4 = """
+            After looking at the values for income growth in two different years, choose the combination of growth that you evaluate as the strongest economy overall. As you can see, there is a trade-off: As growth goes down for one year, it goes up for the other. 
+        """
+        i_pt5 = """
+            For example, the figure below asks you to pick a combination of growth in the second year of the president’s term and growth in the final year of the president’s term. The leftmost response button combines 2 percent growth in the final year of the president’s term and 0 percent growth in the second year. The rightmost button combines 0 percent growth in the final year and 2.5 percent growth in the second year of the president’s term. 
+        """
+        i_pt6 = """
+            You can select any combination of growth. If you thought that 1 percent growth in the second year and 1.2 percent in the final year of the term are the strongest economy overall, you would mark the third button from the left, as in the example. 
+        """
+        instructions_image_link = "none"
+        i_pt7 = """
+            To start the task, click “next”. 
+        """
         if self.round_number == 1:
-            instructions_pt1 = """
-                On each of the following 6 pages, you will see measurements of how much better off people are in two years of a hypothetical 
-                U.S. president's four-year term. The measurements shown are percent change in personal income growth, which provides a 
-                good measure of the strength of the national economy."""
-            instructions_pt2 = """
-                After looking at the values for income growth in the two years, choose the combination of growth rates that you rate as the strongest economy.
-                As you can see, there is a trade-off: As the growth rate goes down for one year, it goes up for the other.
+            i_pt3 = """
+               The measurements shown are personal income growth: the percentage by which the average person’s income increased in a given year. This provides a good measure of the strength of the national economy.             
             """
         else:
-            instructions_pt1 = """
-                On each of the following 6 pages, you will see measurements of how much better off people are in two years of a hypothetical 
-                U.S. president's four-year term. The measurements shown are again percent change in personal income growth.
+            i_pt3 = """
+                The measurements shown are again personal income growth: the percentage by which the average person’s income increased in a given year. 
             """
-            instructions_pt2 = """
-                After looking at the values for income growth in the two years, choose the combination of growth rates that you rate as the strongest economy.
-                As you can see, there is a trade-off: As the growth rate goes down for one year, it goes up for the other.
-            """
-
         return {
-            "instructions_pt1": instructions_pt1,
-            "instructions_pt2": instructions_pt2,
+            "i_pt1": i_pt1,
+            "i_pt2": i_pt2,
+            "i_pt3": i_pt3,
+            "i_pt4": i_pt4,
+            "i_pt5": i_pt5,
+            "i_pt6": i_pt6,
+            "i_pt7": i_pt7,
+            "instructions_image_link": instructions_image_link,
             "title": title,
             "round_number": self.round_number,
         }
@@ -216,26 +218,39 @@ class InstructionsCTB(Page):
 class InstructionsHL(Page):
     def vars_for_template(self):
         title = "Evaluate the Economy under Hypothetical, Second-Term Presidents"
+        i_pt1 = """
+            On the following 9 pages, you will see figures with measurements of how much better off people are during hypothetical U.S. presidents’ terms. The figures only show the economy for 
+        """
+        i_pt2 = """
+            presidents in their second terms. 
+        """
+        i_pt4 = """
+            For example, the figure below shows that incomes grew by 1.9 percent in the first year of the president’s term, by 2.1 percent in the second year, by 2.5 percent in the third year, and by 2.0 percent in the final year of the president’s term. 
+        """
+        i_pt5 = """
+            After looking at a figure, evaluate the economy during this period. Would you say it is very good, fairly good, fairly bad, or very bad? 
+        """
+        i_pt6 = """
+            To start the task, click “next”. 
+        """
+        instructions_image_link = "none"
+
         if self.round_number == 1:
-            instructions_pt1 = """
-                On each of the following 24 pages, you will see a figure with measurements of how much better off people are during a hypothetical 
-                U.S. president's four-year term. The measurements shown are percent change in personal income growth, which provides a 
-                good measure of the strength of the national economy."""
-            instructions_pt2 = """
-                After looking at a figure, evaluate the economy during this period. Would you say it is very bad, fairly bad, 
-                fairly good, or very good?
+            i_pt3 = """
+                The measurements shown are personal income growth, the percentage by which the average person’s income increased in a given year. This provides a good measure of the strength of the national economy. 
             """
         else:
-            instructions_pt1 = """
-                On each of the following 24 pages, you will see a figure with measurements of how much better off people are during a hypothetical 
-                U.S. president's four-year term. The measurements shown are again percent change in personal income growth.
-                """
-            instructions_pt2 = """
-                After looking at a figure, evaluate the economy during this period. Would you say it is very bad, fairly bad, 
-                fairly good, or very good?"""
+            i_pt3 = """
+                The measurements shown are again personal income growth: the percentage by which the average person’s income increased in a given year. 
+            """
         return {
-            "instructions_pt1": instructions_pt1,
-            "instructions_pt2": instructions_pt2,
+            "i_pt1": i_pt1,
+            "i_pt2": i_pt2,
+            "i_pt3": i_pt3,
+            "i_pt4": i_pt4,
+            "i_pt5": i_pt5,
+            "i_pt6": i_pt6,
+            "instructions_image_link": instructions_image_link,
             "title": title,
             "round_number": self.round_number,
         }
@@ -251,9 +266,36 @@ class InstructionsHL(Page):
         return self.player.hl_second and (json.loads(self.player.consent_answer) == 1)
 
 
+class Consent(Page):
+    form_model = "player"
+    form_fields = ["consent_answer"]
+
+    def is_displayed(self):
+        now = datetime.datetime.now()
+        current_time = now.strftime("%H:%M:%S")
+        self.player.start_time = json.dumps(current_time)
+
+        return self.round_number == 1
+
+
+class PhoneDevice(Page):
+    def is_displayed(self):
+        return self.player.round_number == 1 and self.player.device_type == 3
+
+
+class DeviceType(Page):
+    form_model = "player"
+    form_fields = ["device_type"]
+
+    def is_displayed(self):
+        return self.player.round_number == 1
+
+
 def generate_page_sequence():
     return (
         [Consent]
+        + [DeviceType]
+        + [PhoneDevice]
         + [InstructionsHL]
         + [InstructionsCTB]
         + [HLPage] * len(PLOTS)

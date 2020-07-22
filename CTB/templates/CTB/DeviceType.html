@@ -1,0 +1,30 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load staticfiles %}
+
+{% block title %}
+Device Type
+{% endblock %}
+
+{% block content %}
+
+<div class="question" align="justify">
+    So we can optimize your survey experience, please tell us on what device you are taking this survey.
+</div>
+
+<br>
+
+<div class="device-type-questions">
+    {% formfield player.device_type %}
+</div>
+
+<div class="next-button">
+    {% next_button %}
+</div>
+
+
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'CTB/styles/block.css' %}" />
+{% endblock %}
