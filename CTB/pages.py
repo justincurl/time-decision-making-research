@@ -27,21 +27,28 @@ class HLPage(Page):
         )
 
     def vars_for_template(self):
-        step = self.player.current_plot_step + 1
-        current_plot = self.player.get_current_plot()
+        step1 = self.player.current_plot_step + 1
+        plot1 = self.player.get_current_plot()
+        self.player.goto_next_plot_step()
+        step2 = self.player.current_plot_step + 1
+        plot2 = self.player.get_current_plot()
+
+        block_step = step2//2
 
         num_plots = len(PLOTS)
         if self.player.round_number == 2:
-            progress_num = (step + 7) * 100
+            progress_num = (step1 + 7) * 100
         else:
-            progress_num = (step) * 100
+            progress_num = (step1) * 100
         progress = round(progress_num / PROGRESS_DENOM)
 
         return {
-            "step": step,
-            "num_plots": num_plots,
+            "step1": step1,
+            "step2": step2,
             "progress": progress,
-            "plot": current_plot,
+            "plot1": plot1,
+            "plot2": plot2,
+            "block_index": block_step
         }
 
     def error_message(self, values):
