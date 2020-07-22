@@ -22,13 +22,13 @@ class HLPage(Page):
         # This page will only be displayed when there are blocks left
         return (
             self.player.hl_second
-            and self.player.get_current_plot(self.player.device_type)
+            and self.player.get_current_plot()
             and (json.loads(self.player.consent_answer) == 1)
         )
 
     def vars_for_template(self):
         step = self.player.current_plot_step + 1
-        current_plot = self.player.get_current_plot(self.player.device_type)
+        current_plot = self.player.get_current_plot()
 
         num_plots = len(PLOTS)
         if self.player.round_number == 2:
