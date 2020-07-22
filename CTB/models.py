@@ -69,6 +69,12 @@ class Player(BasePlayer):
         ]
     )
 
+    lottery_answer = models.IntegerField()
+
+    dice_answer = models.IntegerField()
+
+    disease_answer = models.IntegerField()
+
     feedback = models.LongStringField(blank=True)
 
     current_block_step = models.IntegerField(initial=0)

@@ -1,0 +1,24 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block content %}
+
+<div class="progress">
+    <div class="progress-bar" style="width: {{ progress }}%"></div>
+</div>
+<br>
+<div class="results" align="justify">
+    <p align="justify">
+        If the chance of getting a disease is 1 out of 1000, this would be the same as having __% chance of getting the
+        disease.
+    </p>
+
+    {% formfield player.disease_answer label="% Chance of Disease" %}
+</div>
+
+
+<div class="next-button">
+    {% next_button %}
+</div>
+
+{% endblock %}

@@ -4,7 +4,7 @@ import datetime
 from ._builtin import Page, WaitPage
 from .config import BLOCKS, PLOTS
 
-PROGRESS_DENOM = len(PLOTS) + len(BLOCKS) + 1
+PROGRESS_DENOM = len(PLOTS)/2 + len(BLOCKS) + 4
 
 
 class Start(Page):
@@ -37,7 +37,7 @@ class HLPage(Page):
 
         num_plots = len(PLOTS)
         if self.player.round_number == 2:
-            progress_num = (step1 + 7) * 100
+            progress_num = (step1 + 11) * 100
         else:
             progress_num = (step1) * 100
         progress = round(progress_num / PROGRESS_DENOM)
@@ -81,7 +81,7 @@ class BlockPage(Page):
         num_blocks = len(BLOCKS)
 
         if self.player.round_number == 2:
-            progress_num = (step + 10) * 100
+            progress_num = (step + 14) * 100
         else:
             progress_num = (step) * 100
         progress = round(progress_num / PROGRESS_DENOM)
@@ -142,17 +142,14 @@ class Attention(Page):
     form_model = "player"
     form_fields = ["attention_check"]
 
-    def before_next_page(self):
-        self.player.hl_second = not self.player.hl_second
-
     def is_displayed(self):
         return self.round_number == 1 and (json.loads(self.player.consent_answer) == 1)
 
     def vars_for_template(self):
         if not self.player.hl_second:
-            progress = 6 / PROGRESS_DENOM * 100
+            progress = 9 / PROGRESS_DENOM * 100
         else:
-            progress = 24 / PROGRESS_DENOM * 100
+            progress = 12 / PROGRESS_DENOM * 100
         values = [
             "France",
             "Germany",
@@ -188,7 +185,7 @@ class InstructionsCTB(Page):
         i_pt6 = """
             You can select any combination of growth. If you thought that 1 percent growth in the second year and 1.2 percent in the final year of the term are the strongest economy overall, you would mark the third button from the left, as in the example. 
         """
-        instructions_image_link = "none"
+        instructions_image_link = "https://i.imgur.com/yan1jln.png"
         i_pt7 = """
             To start the task, click “next”. 
         """
@@ -240,7 +237,7 @@ class InstructionsHL(Page):
         i_pt6 = """
             To start the task, click “next”. 
         """
-        instructions_image_link = "none"
+        instructions_image_link = "https://i.imgur.com/zUlkbql.png"
 
         if self.round_number == 1:
             i_pt3 = """
@@ -287,7 +284,7 @@ class Consent(Page):
 
 class PhoneDevice(Page):
     def is_displayed(self):
-        return self.player.round_number == 1 and self.player.device_type == 3
+        return self.player.round_number == 1 and self.player.device_type == 3 and (json.loads(self.player.consent_answer) == 1)
 
 
 class DeviceType(Page):
@@ -295,7 +292,62 @@ class DeviceType(Page):
     form_fields = ["device_type"]
 
     def is_displayed(self):
-        return self.player.round_number == 1
+        return self.player.round_number == 1 and (json.loads(self.player.consent_answer) == 1)
+
+
+class Dice(Page):
+    form_model = "player"
+    form_fields = ["dice_answer"]
+
+    def is_displayed(self):
+        return self.player.round_number == 1 and (json.loads(self.player.consent_answer) == 1)
+
+    def vars_for_template(self):
+        if not self.player.hl_second:
+            progress = 7 / PROGRESS_DENOM * 100
+        else:
+            progress = 10 / PROGRESS_DENOM * 100
+
+        return {
+            "progress": progress,
+        }
+
+
+class Disease(Page):
+    form_model = "player"
+    form_fields = ["disease_answer"]
+
+    def is_displayed(self):
+        return self.player.round_number == 1 and (json.loads(self.player.consent_answer) == 1)
+
+    def before_next_page(self):
+        self.player.hl_second = not self.player.hl_second
+
+    def vars_for_template(self):
+        if not self.player.hl_second:
+            progress = 10 / PROGRESS_DENOM * 100
+        else:
+            progress = 13 / PROGRESS_DENOM * 100
+        return {
+            "progress": progress,
+        }
+
+
+class Lottery(Page):
+    form_model = "player"
+    form_fields = ["lottery_answer"]
+
+    def is_displayed(self):
+        return self.player.round_number == 1 and (json.loads(self.player.consent_answer) == 1)
+
+    def vars_for_template(self):
+        if not self.player.hl_second:
+            progress = 8 / PROGRESS_DENOM * 100
+        else:
+            progress = 11 / PROGRESS_DENOM * 100
+        return {
+            "progress": progress,
+        }
 
 
 def generate_page_sequence():
@@ -307,7 +359,10 @@ def generate_page_sequence():
         + [InstructionsCTB]
         + [HLPage] * len(PLOTS)
         + [BlockPage] * len(BLOCKS)
+        + [Dice]
+        + [Lottery]
         + [Attention]
+        + [Disease]
         + [Feedback]
         + [Results]
         + [NonConsent]

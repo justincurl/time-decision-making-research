@@ -5,6 +5,12 @@
 Part {{round_number}} Instructions
 {% endblock %}
 
+<style>
+    img {
+        width: 30%;
+    }
+</style>
+
 {% block content %}
 <div class="instructions" align="justify">
     <h4>
@@ -23,14 +29,13 @@ Part {{round_number}} Instructions
         {{i_pt5}}
         <br>
         <br>
-        {{i_pt6}}
-        <br>
-        <br>
-        {{instructions_image_link}}
-        <br>
-        <br>
+    <div align="center"><img src={{instructions_image_link}} width=70%></div>
+    <br>
+    <br>
+    {{i_pt6}}
     </p>
 </div>
+
 <hr>
 <br>
 {% next_button %}

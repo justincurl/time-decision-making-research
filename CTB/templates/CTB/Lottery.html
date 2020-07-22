@@ -1,0 +1,21 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block content %}
+
+<div class="progress">
+    <div class="progress-bar" style="width: {{ progress }}%"></div>
+</div>
+<br>
+<div class="results" align="justify">
+    <p align="justify">
+        In a lottery, the chance of winning a $10 prize is 1%. What is your best guess about how many people would win a
+        $10 prize if 1000 people each buy a single ticket to the lottery?
+    </p>
+    {% formfield player.lottery_answer label="Lottery Winners out of 1,000" %}
+
+    <div class="next-button">
+        {% next_button %}
+    </div>
+
+    {% endblock %}

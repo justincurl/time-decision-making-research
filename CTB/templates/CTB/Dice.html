@@ -1,0 +1,23 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block content %}
+
+<div class="progress">
+    <div class="progress-bar" style="width: {{ progress }}%"></div>
+</div>
+<br>
+<div class="results" align="justify">
+    <p align="justify">
+        Imagine that we rolled a fair, six-sided die 1,000 times. What is your best guess about how many times the die
+        would come up even (2, 4, or 6) in 1,000 rolls?
+    </p>
+    {% formfield player.dice_answer label="Even Rolls out of 1,000" %}
+    <br>
+</div>
+
+<div class="next-button">
+    {% next_button %}
+</div>
+
+{% endblock %}
