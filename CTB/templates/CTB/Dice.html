@@ -27,6 +27,10 @@
         jQuery(".next-button").show()
         jQuery(".waiting").hide()
     });
+    jQuery(".formfield").on("focusin", function () {
+        jQuery(".next-button").show()
+        jQuery(".waiting").hide()
+    });
 </script>
 
 <div class="waiting" onclick="return alertFunction();">

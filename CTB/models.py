@@ -142,8 +142,7 @@ class Player(BasePlayer):
         if 0 <= block_index < len(BLOCKS):
             return BLOCKS[block_index]
         else:
-            print("none executed from get current block: ", block_index)
-            return None
+            return False
 
     def get_current_plot(self) -> Optional[Plot]:
         if self.current_plot_step < len(PLOTS):
@@ -153,7 +152,7 @@ class Player(BasePlayer):
                 return PLOTS[plot_index]
         else:
             print("none executed from get current plot")
-            return None
+            return False
 
     def get_next_plot(self) -> Optional[Plot]:
         if self.current_plot_step + 1 < len(PLOTS):
@@ -162,5 +161,4 @@ class Player(BasePlayer):
             if 0 <= plot_index < len(PLOTS):
                 return PLOTS[plot_index]
         else:
-            print("none executed from get current plot")
-            return None
+            return False

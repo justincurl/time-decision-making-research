@@ -4,7 +4,7 @@ import datetime
 from ._builtin import Page, WaitPage
 from .config import BLOCKS, PLOTS
 
-PROGRESS_DENOM = len(PLOTS)/2 + len(BLOCKS) + 4
+PROGRESS_DENOM = 20
 
 
 class Start(Page):
@@ -32,13 +32,13 @@ class HLPage(Page):
         step2 = self.player.current_plot_step + 2
         plot2 = self.player.get_next_plot()
 
-        block_step = step2//2
+        page = step2//2
 
         num_plots = len(PLOTS)
         if self.player.round_number == 2:
-            progress_num = (step1 + 11) * 100
+            progress_num = (page + 11) * 100
         else:
-            progress_num = (step1) * 100
+            progress_num = (page) * 100
         progress = round(progress_num / PROGRESS_DENOM)
 
         return {
@@ -47,7 +47,7 @@ class HLPage(Page):
             "progress": progress,
             "plot1": plot1,
             "plot2": plot2,
-            "block_index": block_step
+            "block_index": page
         }
 
     def error_message(self, values):
