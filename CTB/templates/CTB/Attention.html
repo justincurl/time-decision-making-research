@@ -14,7 +14,7 @@
    Individual preferences and knowledge, along with situational variables, can greatly impact the decision process.
    In order to facilitate our research on decision-making, we are interested in whether you actually take
    the time to read the directions. So, rather than answering the following question accurately, please
-   check only “Mauritania” and “None of the above” and then continue. This will demonstrate to us that
+   check only Mauritania and None of the above and then continue. This will demonstrate to us that
    you have taken the time to read and follow the instructions.
 </div>
 
@@ -41,19 +41,6 @@
 </table>
 
 <input id="attention__check" type="hidden" name="attention_check" value="{{player.attention_check}}">
-
-<script>
-   function alertFunction() {
-      alert('In order for your answers to be most helpful to us, it is really important that you respond to all questions.')
-      jQuery(".waiting").hide()
-      jQuery(".next-button").show()
-      return false
-   }
-</script>
-
-<div class="waiting" onclick="return alertFunction();">
-   {% next_button %}
-</div>
 
 <div class="next-button">
    {% next_button %}
