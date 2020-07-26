@@ -106,7 +106,24 @@ BLOCKS = [
 NUM_PLOTS = 18
 
 plot_links = [
-    "https://i.imgur.com/qpaRNrX", "https://i.imgur.com/TuSpZo0.png", "https://i.imgur.com/7LZvwmr.png", "https://i.imgur.com/NpkqJHE.png", "https://i.imgur.com/YEtQoF2.png", "https://i.imgur.com/T9X2bBp.png", "https://i.imgur.com/dvfgeqj.png", "https://i.imgur.com/Q3IiPZR.png", "https://i.imgur.com/jAQ6CJb.png", "https://i.imgur.com/25ni7G4.png", "https://i.imgur.com/L8DiVvQ.png", "https://i.imgur.com/ASGntyM.png", "https://i.imgur.com/i1Sxc32.png", "https://i.imgur.com/Xkj8GZK.png", "https://i.imgur.com/SKaSxxG.png", "https://i.imgur.com/YqhDmdB.png", "https://i.imgur.com/1sdQawn.png", "https://i.imgur.com/mWqxdRK.png"
+    "https://i.imgur.com/qpaRNrX.png",
+    "https://i.imgur.com/TuSpZo0.png",
+    "https://i.imgur.com/7LZvwmr.png",
+    "https://i.imgur.com/NpkqJHE.png",
+    "https://i.imgur.com/YEtQoF2.png",
+    "https://i.imgur.com/T9X2bBp.png",
+    "https://i.imgur.com/dvfgeqj.png",
+    "https://i.imgur.com/Q3IiPZR.png",
+    "https://i.imgur.com/jAQ6CJb.png",
+    "https://i.imgur.com/25ni7G4.png",
+    "https://i.imgur.com/L8DiVvQ.png",
+    "https://i.imgur.com/ASGntyM.png",
+    "https://i.imgur.com/i1Sxc32.png",
+    "https://i.imgur.com/Xkj8GZK.png",
+    "https://i.imgur.com/SKaSxxG.png",
+    "https://i.imgur.com/YqhDmdB.png",
+    "https://i.imgur.com/1sdQawn.png",
+    "https://i.imgur.com/mWqxdRK.png"
 ]
 
 PLOTS = [Plot(image_link=plot_links[i]) for i in range(NUM_PLOTS)]
