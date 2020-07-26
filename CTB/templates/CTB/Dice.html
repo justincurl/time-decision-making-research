@@ -12,8 +12,8 @@
         Imagine that we rolled a fair, six-sided die 1,000 times. What is your best guess about how many times the die
         would come up even (2, 4, or 6) in 1,000 rolls?
     </p>
-    {% formfield player.dice_answer label="Even Rolls out of 1,000" %}
-    <br>
+    <div class="formfield"></div>{% formfield player.dice_answer label="Even Rolls out of 1,000" %}
+</div>
 </div>
 
 <script>
@@ -23,17 +23,17 @@
         jQuery('.next-button').show();
         return false
     }
+    jQuery(".formfield").on("change", function () {
+        jQuery(".next-button").show()
+        jQuery(".waiting").hide()
+    });
 </script>
 
 <div class="waiting" onclick="return alertFunction();">
     {% next_button %}
 </div>
 
-<div class="next-button">
-    {% next_button %}
-</div>
-
-<div class="next-button">
+<div class="next-button" type="hidden">
     {% next_button %}
 </div>
 

@@ -21,6 +21,10 @@
         jQuery('.next-button').show();
         return false
     }
+    jQuery(".device-type-questions").on("change", function () {
+        jQuery(".next-button").show()
+        jQuery(".waiting").hide()
+    });
 </script>
 
 <div class="waiting" onclick="return alertFunction();">

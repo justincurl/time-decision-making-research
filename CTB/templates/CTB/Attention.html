@@ -42,17 +42,29 @@
 
 <input id="attention__check" type="hidden" name="attention_check" value="{{player.attention_check}}">
 
-<div class="next-button">
+<script>
+   function attention() {
+      var answersInput = jQuery('#attention__check');
+      if (!answersInput.length) {
+         throw new Error('cannot find answers input #attention__check');
+      }
+      var values = []
+      for (i = 1; i < 10; i++) {
+         str = "#attention-check-" + String(i)
+         if (jQuery(str).is(":checked"))
+            values.push(i)
+      }
+      answersInput.val(JSON.stringify(values));
+   }
+
+</script>
+
+<div class="next-button" onclick="return attention();">
    {% next_button %}
 </div>
-
 
 {% endblock %}
 
 {% block styles %}
 <link rel="stylesheet" href="{% static 'CTB/styles/block.css' %}" />
-{% endblock %}
-
-{% block scripts %}
-<script src="{% static 'CTB/scripts/attention.js' %}"></script>
 {% endblock %}

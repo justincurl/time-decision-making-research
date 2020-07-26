@@ -9,11 +9,12 @@
 <br>
 <div class="results" align="justify">
     <p align="justify">
-        If the chance of getting a disease is 1 out of 1000, this would be the same as having __% chance of getting the
+        If the chance of getting a disease is 1 out of 1000, this would be the same as having a __% chance of getting
+        the
         disease.
     </p>
 
-    {% formfield player.disease_answer label="% Chance of Disease" %}
+    <div class="formfield">{% formfield player.disease_answer label="% Chance" %}</div>
 </div>
 
 <script>
@@ -23,16 +24,15 @@
         jQuery('.next-button').show();
         return false
     }
+    jQuery(".formfield").on("change", function () {
+        jQuery(".next-button").show()
+        jQuery(".waiting").hide()
+    });
 </script>
 
 <div class="waiting" onclick="return alertFunction();">
     {% next_button %}
 </div>
-
-<div class="next-button">
-    {% next_button %}
-</div>
-
 
 <div class="next-button">
     {% next_button %}
