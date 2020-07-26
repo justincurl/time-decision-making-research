@@ -73,7 +73,7 @@ class Player(BasePlayer):
 
     dice_answer = models.IntegerField(blank=True)
 
-    disease_answer = models.IntegerField(blank=True)
+    disease_answer = models.FloatField(blank=True)
 
     feedback = models.LongStringField(blank=True)
 
