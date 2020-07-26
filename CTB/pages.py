@@ -29,9 +29,8 @@ class HLPage(Page):
     def vars_for_template(self):
         step1 = self.player.current_plot_step + 1
         plot1 = self.player.get_current_plot()
-        self.player.goto_next_plot_step()
-        step2 = self.player.current_plot_step + 1
-        plot2 = self.player.get_current_plot()
+        step2 = self.player.current_plot_step + 2
+        plot2 = self.player.get_next_plot()
 
         block_step = step2//2
 
@@ -55,6 +54,7 @@ class HLPage(Page):
         pass
 
     def before_next_page(self):
+        self.player.goto_next_plot_step()
         self.player.goto_next_plot_step()
 
 
