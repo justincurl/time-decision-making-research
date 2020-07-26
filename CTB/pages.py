@@ -180,10 +180,10 @@ class InstructionsCTB(Page):
             After looking at the values for income growth in two different years, choose the combination of growth that you evaluate as the strongest economy overall. As you can see, there is a trade-off: As growth goes down for one year, it goes up for the other. 
         """
         i_pt5 = """
-            For example, the figure below asks you to pick a combination of growth in the second year of the president’s term and growth in the final year of the president’s term. The leftmost response button combines 2 percent growth in the final year of the president’s term and 0 percent growth in the second year. The rightmost button combines 0 percent growth in the final year and 2.5 percent growth in the second year of the president’s term. 
+            For example, the figure below asks you to pick a combination of growth in the final year of the president’s term and growth earlier, in the second year of the president’s term. The leftmost response button combines 2 percent growth in the final year of the president’s term and 0 percent growth in the second year. The rightmost button combines 0 percent growth in the final year and 2.5 percent growth in the second year of the president’s term.
         """
         i_pt6 = """
-            You can select any combination of growth. If you thought that 1 percent growth in the second year and 1.2 percent in the final year of the term are the strongest economy overall, you would mark the third button from the left, as in the example. 
+            You can select any combination of growth. If you thought that 1.2 percent in the final year and 1 percent growth in the second year of the term was the strongest economy overall, you would mark the third button from the left, as in the example.
         """
         instructions_image_link = "https://i.imgur.com/yan1jln.png"
         i_pt7 = """

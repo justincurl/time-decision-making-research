@@ -66,14 +66,14 @@ class Player(BasePlayer):
             [3, 'Smartphone'],
             [4, 'Tablet'],
             [5, 'Something Else']
-        ]
+        ], blank=True
     )
 
-    lottery_answer = models.IntegerField()
+    lottery_answer = models.IntegerField(blank=True)
 
-    dice_answer = models.IntegerField()
+    dice_answer = models.IntegerField(blank=True)
 
-    disease_answer = models.IntegerField()
+    disease_answer = models.IntegerField(blank=True)
 
     feedback = models.LongStringField(blank=True)
 

@@ -16,6 +16,23 @@
     {% formfield player.disease_answer label="% Chance of Disease" %}
 </div>
 
+<script>
+    function alertFunction() {
+        alert("In order for your answers to be most helpful to us, it is really important that you respond to all questions.")
+        jQuery('.waiting').hide();
+        jQuery('.next-button').show();
+        return false
+    }
+</script>
+
+<div class="waiting" onclick="return alertFunction();">
+    {% next_button %}
+</div>
+
+<div class="next-button">
+    {% next_button %}
+</div>
+
 
 <div class="next-button">
     {% next_button %}
