@@ -4,6 +4,7 @@ import datetime
 from ._builtin import Page, WaitPage
 from .config import BLOCKS, PLOTS
 
+MTURK_CODE = "MTurk Code"
 PROGRESS_DENOM = 20
 
 
@@ -117,6 +118,11 @@ class Feedback(Page):
 
 
 class Results(Page):
+    def vars_for_template(self):
+        return {
+            "mturk_code": MTURK_CODE
+        }
+
     def __datetime(self, date_str):
         return datetime.strptime(date_str, "%H:%M:%S")
 
@@ -363,7 +369,6 @@ def generate_page_sequence():
         + [Lottery]
         + [Attention]
         + [Disease]
-        + [Feedback]
         + [Results]
         + [NonConsent]
     )
