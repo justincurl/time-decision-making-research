@@ -69,11 +69,11 @@ class Player(BasePlayer):
         ], blank=True
     )
 
-    lottery_answer = models.IntegerField(blank=True)
+    lottery_answer = models.FloatField(blank=True, min=0, max=1000000)
 
-    dice_answer = models.IntegerField(blank=True)
+    dice_answer = models.FloatField(blank=True, min=0, max=1000000)
 
-    disease_answer = models.FloatField(blank=True)
+    disease_answer = models.FloatField(blank=True, min=0, max=1000000)
 
     feedback = models.LongStringField(blank=True)
 
