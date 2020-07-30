@@ -23,11 +23,7 @@
         jQuery('.next-button').show();
         return false
     }
-    jQuery(".formfield").on("change", function () {
-        jQuery(".next-button").show()
-        jQuery(".waiting").hide()
-    });
-    jQuery(".formfield").on("focusin", function () {
+    jQuery(".formfield").on("click", function () {
         jQuery(".next-button").show()
         jQuery(".waiting").hide()
     });
