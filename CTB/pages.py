@@ -237,7 +237,7 @@ class InstructionsHL(Page):
     def vars_for_template(self):
         title = "Evaluate the Economy"
         i_pt1 = """
-            On the following 9 pages, you will see figures with measurements of how much better off people are during hypothetical U.S. presidents’ terms. The figures only show the economy for .         """
+            On the following 9 pages, you will see figures with measurements of how much better off people are during hypothetical U.S. presidents’ terms. The figures only show the economy for """
         i_pt2 = """
             presidents in their second terms. 
         """
