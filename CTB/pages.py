@@ -176,28 +176,34 @@ class Attention(Page):
 
 class InstructionsCTB(Page):
     def vars_for_template(self):
-        title = "Choose the Strongest Economy"
+        title = "Choose the Best Economy"
         i_pt1 = """
             On the following 6 pages, you will see figures with measurements of how much better off people are in two different years of a hypothetical U.S. president’s term. The figures only show the economy for """
         i_pt2 = """
-            presidents in their second terms. 
+            presidents in their second terms.
         """
         i_pt4 = """
-            After looking at the values for income growth in two different years, choose the combination of growth that you evaluate as the strongest economy overall. As you can see, there is a trade-off: As growth goes down for one year, it goes up for the other. 
+            If you could choose how much income growth to have in two different years of a president’s term, what combination of growth rates would you consider the best? 
         """
         i_pt5 = """
-            For example, the figure below asks you to pick a combination of growth in the final year of the president’s term and growth earlier, in the second year of the president’s term. The leftmost response button combines 2 percent growth in the final year of the president’s term and 0 percent growth in the second year. The rightmost button combines 0 percent growth in the final year and 2.5 percent growth in the second year of the president’s term.
+            In the following questions, you’ll be asked to choose combinations of growth rates. As you will see, there is a trade-off: As growth goes down for one year, it goes up for the other. Each screen asks about a different pair of years. 
         """
         i_pt6 = """
-            You can select any combination of growth. If you thought that 1.2 percent in the final year and 1 percent growth in the second year of the term was the strongest economy overall, you would mark the third button from the left, as in the example.
+            Here’s an example: 
         """
         instructions_image_link = "https://i.imgur.com/yan1jln.png"
         i_pt7 = """
+            The example asks a respondent to pick a combination of growth in the final year of the president’s term and growth earlier, in the second year of the president’s term. There are six different options to choose from. For example, the leftmost response button combines 2 percent growth in the final year of the president’s term and 0 percent growth in the second year. The rightmost button combines 0 percent growth in the final year and 2.5 percent growth in the second year of the president’s term.  
+        """
+        i_pt8 = """
+            In this example, the respondent thought that 1.2 percent in the final year and 1 percent growth in the second year of the term was the best economy overall, and therefore marked the third button from the left. 
+        """
+        i_pt9 = """
             To start the task, click “next”. 
         """
         if self.round_number == 1:
             i_pt3 = """
-               The measurements shown are personal income growth: the percentage by which the average person’s income increased in a given year. This provides a good measure of the strength of the national economy.             
+               The measurements shown are personal income growth: the percentage by which the average person’s income increased in a given year. This provides a good measure of the strength of the national economy. 
             """
         else:
             i_pt3 = """
@@ -211,6 +217,8 @@ class InstructionsCTB(Page):
             "i_pt5": i_pt5,
             "i_pt6": i_pt6,
             "i_pt7": i_pt7,
+            "i_pt8": i_pt8,
+            "i_pt9": i_pt9,
             "instructions_image_link": instructions_image_link,
             "title": title,
             "round_number": self.round_number,
@@ -227,31 +235,32 @@ class InstructionsCTB(Page):
 
 class InstructionsHL(Page):
     def vars_for_template(self):
-        title = "Evaluate the Economy under Hypothetical, Second-Term Presidents"
+        title = "Evaluate the Economy"
         i_pt1 = """
-            On the following 9 pages, you will see figures with measurements of how much better off people are during hypothetical U.S. presidents’ terms. The figures only show the economy for 
-        """
+            On the following 9 pages, you will see figures with measurements of how much better off people are during hypothetical U.S. presidents’ terms. The figures only show the economy for .         """
         i_pt2 = """
             presidents in their second terms. 
         """
         i_pt4 = """
-            For example, the figure below shows that incomes grew by 1.9 percent in the first year of the president’s term, by 2.1 percent in the second year, by 2.5 percent in the third year, and by 2.0 percent in the final year of the president’s term. 
+            After looking at a figure, you’ll be asked to evaluate the economy during this period. Would you say it is very good, fairly good, fairly bad, or very bad? 
         """
         i_pt5 = """
-            After looking at a figure, evaluate the economy during this period. Would you say it is very good, fairly good, fairly bad, or very bad? 
+            Here’s an example: 
         """
         i_pt6 = """
+            In this example, the figure shows that incomes grew by 1.9 percent in the first year of the president’s term, by 2.1 percent in the second year, by 2.5 percent in the third year, and by 2.0 percent in the final year of the president’s term. 
+        """
+        i_pt7 = """
             To start the task, click “next”. 
         """
         instructions_image_link = "https://i.imgur.com/zUlkbql.png"
 
         if self.round_number == 1:
             i_pt3 = """
-                The measurements shown are personal income growth, the percentage by which the average person’s income increased in a given year. This provides a good measure of the strength of the national economy. 
-            """
+                The measurements shown are personal income growth, the percentage by which the average person’s income increased in a given year. This provides a good measure of the strength of the national economy.             """
         else:
             i_pt3 = """
-                The measurements shown are again personal income growth: the percentage by which the average person’s income increased in a given year. 
+                The measurements shown are again personal income growth, the percentage by which the average person’s income increased in a given year.
             """
         return {
             "i_pt1": i_pt1,
@@ -260,6 +269,7 @@ class InstructionsHL(Page):
             "i_pt4": i_pt4,
             "i_pt5": i_pt5,
             "i_pt6": i_pt6,
+            "i_pt7": i_pt7,
             "instructions_image_link": instructions_image_link,
             "title": title,
             "round_number": self.round_number,
