@@ -251,10 +251,10 @@ class InstructionsHL(Page):
 
         if self.round_number == 1:
             i_pt3 = """
-                The measurements shown are personal income growth, the percentage by which the average person’s income increased in a given year. This provides a good measure of the strength of the national economy.             """
+                The measurements shown are personal income growth: the percentage by which the average person’s income increased in a given year. This provides a good measure of the strength of the national economy.             """
         else:
             i_pt3 = """
-                The measurements shown are again personal income growth, the percentage by which the average person’s income increased in a given year.
+                The measurements shown are again personal income growth: the percentage by which the average person’s income increased in a given year.
             """
         return {
             "i_pt1": i_pt1,
@@ -366,10 +366,6 @@ class ZipCode(Page):
 
     def is_displayed(self):
         return self.player.round_number == 2 and (json.loads(self.player.consent_answer) == 1)
-
-    def error_message(self, values):
-        if len(str(values['zipcode'])) != 5:
-            return "please enter a valid zipcode (between 00000 and 99999)"
 
     def vars_for_template(self):
         return {
