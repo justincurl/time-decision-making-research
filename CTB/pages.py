@@ -4,8 +4,7 @@ import datetime
 from ._builtin import Page, WaitPage
 from .config import BLOCKS, PLOTS
 
-MTURK_CODE = "MTurk Code"
-PROGRESS_DENOM = 25
+PROGRESS_DENOM = 23
 
 
 class Start(Page):
@@ -118,11 +117,6 @@ class Feedback(Page):
 
 
 class Results(Page):
-    def vars_for_template(self):
-        return {
-            "mturk_code": MTURK_CODE
-        }
-
     def __datetime(self, date_str):
         return datetime.strptime(date_str, "%H:%M:%S")
 
@@ -375,37 +369,11 @@ class ZipCode(Page):
 
     def error_message(self, values):
         if len(str(values['zipcode'])) != 5:
-            return "Please enter a valid zipcode between (00000 and 99999)"
+            return "please enter a valid zipcode (between 00000 and 99999)"
 
     def vars_for_template(self):
         return {
-            "progress": 25/PROGRESS_DENOM * 100,
-        }
-
-
-class Ethnicity(Page):
-    form_model = "player"
-    form_fields = ["ethnicity"]
-
-    def is_displayed(self):
-        return self.player.round_number == 2 and (json.loads(self.player.consent_answer) == 1)
-
-    def vars_for_template(self):
-        return {
-            "progress": 23/PROGRESS_DENOM*100,
-        }
-
-
-class Age(Page):
-    form_model = "player"
-    form_fields = ["age"]
-
-    def is_displayed(self):
-        return self.player.round_number == 2 and (json.loads(self.player.consent_answer) == 1)
-
-    def vars_for_template(self):
-        return {
-            "progress": 21/PROGRESS_DENOM*100,
+            "progress": 23/PROGRESS_DENOM * 100,
         }
 
 
@@ -418,13 +386,13 @@ class Education(Page):
 
     def vars_for_template(self):
         return {
-            "progress": 22/PROGRESS_DENOM*100,
+            "progress": 21/PROGRESS_DENOM*100,
         }
 
 
-class Gender(Page):
+class GenderAge(Page):
     form_model = "player"
-    form_fields = ["gender"]
+    form_fields = ["gender", "age"]
 
     def is_displayed(self):
         return self.player.round_number == 2 and (json.loads(self.player.consent_answer) == 1)
@@ -435,9 +403,9 @@ class Gender(Page):
         }
 
 
-class Race(Page):
+class EthnicityRace(Page):
     form_model = "player"
-    form_fields = ["race"]
+    form_fields = ["ethnicity", "race"]
 
     def is_displayed(self):
         return self.round_number == 2 and (json.loads(self.player.consent_answer) == 1)
@@ -453,7 +421,7 @@ class Race(Page):
         ]
         return {
             "values": values,
-            "progress": 24/PROGRESS_DENOM*100,
+            "progress": 22/PROGRESS_DENOM*100,
         }
 
 
@@ -470,11 +438,9 @@ def generate_page_sequence():
         + [Lottery]
         + [Attention]
         + [Disease]
-        + [Gender]
-        + [Age]
+        + [GenderAge]
         + [Education]
-        + [Ethnicity]
-        + [Race]
+        + [EthnicityRace]
         + [ZipCode]
         + [Results]
         + [NonConsent]

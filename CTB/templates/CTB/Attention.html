@@ -20,25 +20,21 @@
 
 <br>
 
-<div class="question" align="center">
+<div class="question" align="justify">
    <h5>Which of the following countries have you heard mentioned in the news during the last week? </h5>
 </div>
+<br>
 
-<table class="table">
-   <tbody>
-      <tr>
-         {% for value in values %}
-         <td class="text-center">{{ value }}</td>
-         {% endfor %}
-      </tr>
-      <tr class="attention-check-choices">
-         {% for index in choices %}
-         <td class="attention-check-choice text-center">
-            <input id="attention-check-{{index}}" type="checkbox" name="attention-{{index}}" value="{{ index }}" />
-         </td>
-         {% endfor %}
-   </tbody>
-</table>
+<div class="attention-check-choices">
+   {% for value in values %}
+   <div class="attention-check-choice">
+      <input id="attention-check-{{forloop.counter}}" type="checkbox" name="attention-{{forloop.counter}}"
+         value="{{ forloop.counter }}" />
+      <label for="attention-check-{{forloop.counter}}">{{value}}</label>
+   </div>
+   {% endfor %}
+</div>
+<br>
 
 <input id="attention__check" type="hidden" name="attention_check" value="{{player.attention_check}}">
 

@@ -86,7 +86,6 @@ class Player(BasePlayer):
     gender = models.IntegerField(blank=True, choices=[
         [1, 'Male'],
         [2, 'Female'],
-        [3, 'Other']
     ], widget=widgets.RadioSelect)
 
     ethnicity = models.BooleanField(blank=True, choices=[

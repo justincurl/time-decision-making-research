@@ -7,11 +7,18 @@
     <div class="progress-bar" style="width: {{ progress }}%"></div>
 </div>
 <br>
+
 <div class="results" align="justify">
-    <p>Are you of Hispanic, Latino or Spanish Origin?</p>
-    <div class="formfield">{% formfield player.ethnicity label="" %}
-    </div>
+    <p>Now we only have a few more questions about your demographic background.</p>
+    <br>
+    <p>What is your gender?</p>
+    <div class="formfield">{% formfield player.gender label="" %}</div>
 </div>
+</div>
+
+<div class="results" align="justify">
+    <p>What is your age?</p>
+    <div class="formfield-age">{% formfield player.age label="" %}</div>
 </div>
 
 <script>
@@ -21,7 +28,7 @@
         jQuery('.next-button').show();
         return false
     }
-    jQuery(".formfield").on("click", function () {
+    jQuery(".formfield-age").on("click", function () {
         jQuery(".next-button").show();
         jQuery(".waiting").hide();
     });
