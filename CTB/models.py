@@ -69,6 +69,35 @@ class Player(BasePlayer):
         ], blank=True
     )
 
+    race = models.StringField()
+    education = models.IntegerField(
+        choices=[
+            [1, 'I do not have a high school degree or GED '],
+            [2, 'Regular high school degree '],
+            [3, 'GED or alternative credential '],
+            [4, 'Some college credit, but less than 1 year of college credit '],
+            [5, '1 or more years of college credit, no degree '],
+            [6, 'Associate’s degree (for example: AA, AS) '],
+            [7, 'Bachelor’s degree (for example: BA, BS) '],
+            [8, 'Graduate or professional degree ']
+        ], blank=True, widget=widgets.RadioSelect
+    )
+
+    gender = models.IntegerField(blank=True, choices=[
+        [1, 'Male'],
+        [2, 'Female'],
+        [3, 'Other']
+    ], widget=widgets.RadioSelect)
+
+    ethnicity = models.BooleanField(blank=True, choices=[
+        [True, 'Yes'],
+        [False, 'No']
+    ], widget=widgets.RadioSelect)
+
+    age = models.IntegerField(blank=True, min=18, max=110)
+
+    zipcode = models.IntegerField(blank=True, min=0, max=99999)
+
     lottery_answer = models.FloatField(blank=True, min=0, max=1000000)
 
     dice_answer = models.FloatField(blank=True, min=0, max=1000000)

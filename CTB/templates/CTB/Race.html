@@ -1,0 +1,67 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="progress">
+    <div class="progress-bar" style="width: {{ progress }}%"></div>
+</div>
+<br>
+
+<div class="question" align="justify">
+    <p>What is your race?</p>
+</div>
+<div>
+    <div class="race-choices">
+        {% for value in values %}
+        <div class="race-choice-line">
+            <input id="race-choice-{{ forloop.counter }}" type="checkbox" name="race-choice-{{ forloop.counter }}"
+                value="{{ forloop.counter }}" />
+            <label for="race-choice-{{ forloop.counter }}">{{value}}</label>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<br>
+
+<input id="race" type="hidden" name="race" value="{{player.race}}">
+
+<script>
+    function race() {
+        var answersInput = jQuery('#race');
+        if (!answersInput.length) {
+            print("cannot find answers input #race")
+            throw new Error('cannot find answers input #race');
+        }
+        var values = []
+        for (i = 1; i <= 6; i++) {
+            str = "#race-choice-" + String(i)
+            if (jQuery(str).is(":checked"))
+                values.push(i)
+        }
+        answersInput.val(JSON.stringify(values));
+    }
+    function alertFunction() {
+        alert("In order for your answers to be most helpful to us, it is really important that you respond to all questions.")
+        jQuery('.waiting').hide();
+        jQuery('.next-button').show();
+        return false
+    }
+    jQuery(".race-choices").on("click", function () {
+        jQuery(".next-button").show();
+        jQuery(".waiting").hide();
+    });
+</script>
+
+<div class="waiting" onclick="return alertFunction();">
+    {% next_button %}
+</div>
+
+<div class="next-button" onclick="return race();">
+    {% next_button %}
+</div>
+
+<script>jQuery(".next-button").hide();</script>
+
+{% endblock %}
