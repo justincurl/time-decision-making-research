@@ -294,7 +294,7 @@ class Consent(Page):
 
 class PhoneDevice(Page):
     def is_displayed(self):
-        return self.player.round_number == 1 and self.player.device_type == 3 and (json.loads(self.player.consent_answer) == 1)
+        return self.player.round_number == 1 and self.player.device_type == 3
 
 
 class DeviceType(Page):
@@ -302,7 +302,7 @@ class DeviceType(Page):
     form_fields = ["device_type"]
 
     def is_displayed(self):
-        return self.player.round_number == 1 and (json.loads(self.player.consent_answer) == 1)
+        return self.player.round_number == 1
 
 
 class Dice(Page):
@@ -423,9 +423,9 @@ class EthnicityRace(Page):
 
 def generate_page_sequence():
     return (
-        [Consent]
-        + [DeviceType]
+        [DeviceType]
         + [PhoneDevice]
+        + [Consent]
         + [InstructionsHL]
         + [InstructionsCTB]
         + [HLPage] * len(PLOTS)

@@ -4,15 +4,25 @@
 
 {% block content %}
 
-<div class="question" align="justify">
-    So we can optimize your survey experience, please tell us on what device you are taking this survey.
+<div align="justify">
+    You are being asked to volunteer in a research study. The purpose of the study is to better understand how people
+    think about the economy.
+</div>
+<br>
+<div align="justify">
+    You will be asked to consent to participating in this study momentarily.
+</div>
+<br>
+<div align="justify">
+    First, so we can optimize your survey experience, please tell us on what device you are taking this survey.
 </div>
 
 <br>
 
 <div class="device-type-questions">
-    {% formfield player.device_type %}
+    {% formfield player.device_type label="" %}
 </div>
+<br>
 
 <script>
     function alertFunction() {
