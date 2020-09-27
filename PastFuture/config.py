@@ -50,16 +50,17 @@ all_right_values = [
     [2.5, 2.5, 2.5, 2.5],
 ]
 
-block_order = [i for i in range(NUM_BLOCKS)]
+block1_order = [i for i in range(NUM_BLOCKS)]
+block2_order = [i for i in range(NUM_BLOCKS)]
 
-BLOCKS = [
+BLOCKS1 = [
     Block(
         left_values=all_left_values[0],
         right_values=all_right_values[0],
         top_earlier_term=1,
         bottom_later_term=2,
         number_of_choices=6,
-        block_index=int(block_order[0]),
+        block_index=int(block1_order[0]),
     ),
     Block(
         left_values=all_left_values[1],
@@ -67,7 +68,7 @@ BLOCKS = [
         top_earlier_term=1,
         bottom_later_term=3,
         number_of_choices=6,
-        block_index=int(block_order[1]),
+        block_index=int(block1_order[1]),
     ),
     Block(
         left_values=all_left_values[2],
@@ -75,7 +76,7 @@ BLOCKS = [
         top_earlier_term=1,
         bottom_later_term=4,
         number_of_choices=6,
-        block_index=int(block_order[2]),
+        block_index=int(block1_order[2]),
     ),
     Block(
         left_values=all_left_values[3],
@@ -83,7 +84,7 @@ BLOCKS = [
         top_earlier_term=2,
         bottom_later_term=3,
         number_of_choices=6,
-        block_index=int(block_order[3]),
+        block_index=int(block1_order[3]),
     ),
     Block(
         left_values=all_left_values[4],
@@ -91,7 +92,7 @@ BLOCKS = [
         top_earlier_term=2,
         bottom_later_term=4,
         number_of_choices=6,
-        block_index=int(block_order[4]),
+        block_index=int(block1_order[4]),
     ),
     Block(
         left_values=all_left_values[5],
@@ -99,7 +100,58 @@ BLOCKS = [
         top_earlier_term=3,
         bottom_later_term=4,
         number_of_choices=6,
-        block_index=int(block_order[5]),
+        block_index=int(block1_order[5]),
+    ),
+]
+
+BLOCKS2 = [
+    Block(
+        left_values=all_left_values[0],
+        right_values=all_right_values[0],
+        top_earlier_term=1,
+        bottom_later_term=2,
+        number_of_choices=6,
+        block_index=int(block2_order[0]),
+    ),
+    Block(
+        left_values=all_left_values[1],
+        right_values=all_right_values[1],
+        top_earlier_term=1,
+        bottom_later_term=3,
+        number_of_choices=6,
+        block_index=int(block2_order[1]),
+    ),
+    Block(
+        left_values=all_left_values[2],
+        right_values=all_right_values[2],
+        top_earlier_term=1,
+        bottom_later_term=4,
+        number_of_choices=6,
+        block_index=int(block2_order[2]),
+    ),
+    Block(
+        left_values=all_left_values[3],
+        right_values=all_right_values[3],
+        top_earlier_term=2,
+        bottom_later_term=3,
+        number_of_choices=6,
+        block_index=int(block2_order[3]),
+    ),
+    Block(
+        left_values=all_left_values[4],
+        right_values=all_right_values[4],
+        top_earlier_term=2,
+        bottom_later_term=4,
+        number_of_choices=6,
+        block_index=int(block2_order[4]),
+    ),
+    Block(
+        left_values=all_left_values[5],
+        right_values=all_right_values[5],
+        top_earlier_term=3,
+        bottom_later_term=4,
+        number_of_choices=6,
+        block_index=int(block2_order[5]),
     ),
 ]
 
@@ -126,4 +178,5 @@ plot_links = [
     "https://i.imgur.com/5zo4hrS.png",
 ]
 
-PLOTS = [Plot(image_link=plot_links[i]) for i in range(NUM_PLOTS)]
+PLOTS1 = [Plot(image_link=plot_links[i]) for i in range(NUM_PLOTS)]
+PLOTS2 = [Plot(image_link=plot_links[i]) for i in range(NUM_PLOTS)]

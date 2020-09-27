@@ -7,7 +7,7 @@ from otree.api import models, BaseConstants, BaseSubsession, BaseGroup, BasePlay
 
 from .block import Block
 from .plot import Plot
-from .config import BLOCKS, PLOTS, RANDOMIZE_PLOTS, RANDOMIZE_BLOCKS
+from .config import BLOCKS1, BLOCKS2, PLOTS1, PLOTS2, RANDOMIZE_PLOTS, RANDOMIZE_BLOCKS
 
 author = "Justin Curl <jcurl@princeton.edu>"
 
@@ -19,7 +19,7 @@ use Convex Time Budget analysis to analyze
 class Constants(BaseConstants):
     name_in_url = "PastFuture"
     players_per_group = None
-    num_rounds = 2
+    num_rounds = 1
 
 
 class Subsession(BaseSubsession):
@@ -28,26 +28,50 @@ class Subsession(BaseSubsession):
         session and creates the order in which the Blocks should be run through
         """
         import itertools
+        listOfOptions = [
+            (0, 'HLPast', 'HLFuture'),
+            (1, 'HLPast', 'CTBPast'),
+            (2, 'HLPast', 'CTBFuture'),
+            (3, 'HLFuture', 'CTBPast'),
+            (4, 'HLFuture', 'CTBFuture'),
+            (5, 'CTBPast', 'CTBFuture'),
+            (6, 'HLFuture', 'HLPast'),
+            (7, 'CTBPast', 'HLPast'),
+            (8, 'CTBFuture', 'HLPast'),
+            (9, 'CTBPast', 'HLFuture'),
+            (10, 'CTBFuture', 'HLFuture'),
+            (11, 'CTBFuture', 'CTBPast'),
+        ]
 
-        randomFirst = random.choice([True, False])
-        ordering = itertools.cycle([randomFirst, not randomFirst])
+        rand_choice = random.choice(listOfOptions)
+        ordering = itertools.cycle(listOfOptions)
+        start_at_random = itertools.islice(ordering, rand_choice[0], None)
         for player in self.get_players():
-            if self.round_number == 1:
-                player.hl_second = next(ordering)
-            else:
-                player.hl_second = not player.in_round(
-                    self.round_number - 1).hl_second
-            if player.hl_second:
+            player_order = next(start_at_random)
+            player.first = player_order[1]
+            player.second = player_order[2]
 
-                plot_order = [i for i in range(len(PLOTS))]
+            if player.first[:2] == 'HL':
+                plot1_order = [i for i in range(len(PLOTS1))]
                 if RANDOMIZE_PLOTS:
-                    random.shuffle(plot_order)
-                player.plot_order = json.dumps(plot_order)
+                    random.shuffle(plot1_order)
+                player.plot1_order = json.dumps(plot1_order)
             else:
-                block_order = [i for i in range(len(BLOCKS))]
+                block1_order = [i for i in range(len(BLOCKS1))]
                 if RANDOMIZE_BLOCKS:
-                    random.shuffle(block_order)
-                player.block_order = json.dumps(block_order)
+                    random.shuffle(block1_order)
+                player.block1_order = json.dumps(block1_order)
+
+            if player.second[:2] == 'HL':
+                plot2_order = [i for i in range(len(PLOTS1))]
+                if RANDOMIZE_PLOTS:
+                    random.shuffle(plot2_order)
+                player.plot2_order = json.dumps(plot2_order)
+            else:
+                block2_order = [i for i in range(len(BLOCKS1))]
+                if RANDOMIZE_BLOCKS:
+                    random.shuffle(block2_order)
+                player.block2_order = json.dumps(block2_order)
 
 
 class Group(BaseGroup):
@@ -70,6 +94,55 @@ class Player(BasePlayer):
     )
 
     race = models.StringField()
+
+    take_risks = models.IntegerField(
+        choices=[
+            [0, '0 unwilling to take risks'],
+            [1, '1'],
+            [2, '2'],
+            [3, '3'],
+            [4, '4'],
+            [5, '5'],
+            [6, '6'],
+            [7, '7'],
+            [8, '8'],
+            [9, '9'],
+            [10, '10 fully prepared to take risks']
+        ], widget=widgets.RadioSelect, blank=True
+    )
+
+    benefit_today = models.IntegerField(
+        choices=[
+            [0, '0 completely unwilling to do so'],
+            [1, '1'],
+            [2, '2'],
+            [3, '3'],
+            [4, '4'],
+            [5, '5'],
+            [6, '6'],
+            [7, '7'],
+            [8, '8'],
+            [9, '9'],
+            [10, '10 very willing to do so']
+        ], widget=widgets.RadioSelect, blank=True
+    )
+
+    impulsive = models.IntegerField(
+        choices=[
+            [0, '0 not at all impulsive'],
+            [1, '1'],
+            [2, '2'],
+            [3, '3'],
+            [4, '4'],
+            [5, '5'],
+            [6, '6'],
+            [7, '7'],
+            [8, '8'],
+            [9, '9'],
+            [10, '10 very impulsive']
+        ], widget=widgets.RadioSelect, blank=True
+    )
+
     education = models.IntegerField(
         choices=[
             [1, 'I do not have a high school degree or GED '],
@@ -105,11 +178,11 @@ class Player(BasePlayer):
     feedback = models.LongStringField(blank=True)
 
     current_block_step = models.IntegerField(initial=0)
-    """Current step the user is in
-    """
     current_plot_step = models.IntegerField(initial=0)
 
-    hl_second = models.BooleanField(initial=False)
+    first = models.StringField(initial="")
+    second = models.StringField(initial="")
+    set_1 = models.BooleanField(initial=True)
 
     consent_answer = models.StringField(initial="")
 
@@ -123,8 +196,16 @@ class Player(BasePlayer):
     player made in the respective question - starting from 1.
     """
 
-    plot_order = models.StringField(initial="")
-    block_order = models.StringField(initial="")
+    block1_order = models.StringField(initial="")
+
+    block2_order = models.StringField(initial="")
+
+    plot1_order = models.StringField(initial="")
+    
+    plot2_order = models.StringField(initial="")
+
+    denominator = models.IntegerField(initial=0)
+
     attention_check = models.StringField(initial="")
 
     def goto_next_plot_step(self) -> None:
@@ -153,10 +234,16 @@ class Player(BasePlayer):
 
         :return: Index of block to display or `-1`
         """
-        if self.current_block_step < len(BLOCKS):
-            return json.loads(self.block_order)[self.current_block_step]
+        if self.set_1:
+            if self.current_block_step < len(BLOCKS1):
+                return json.loads(self.block1_order)[self.current_block_step]
+            else:
+                return -1
         else:
-            return -1
+            if self.current_block_step < len(BLOCKS2):
+                return json.loads(self.block2_order)[self.current_block_step]
+            else:
+                return -1
 
     def get_current_block(self) -> Optional[Block]:
         """Get the current Block to display
@@ -165,27 +252,53 @@ class Player(BasePlayer):
 
         :return: Block to display or `None`
         """
-        block_index = self.get_current_block_index()
-        if 0 <= block_index < len(BLOCKS):
-            return BLOCKS[block_index]
+        if self.set_1:
+            block_index = self.get_current_block_index()
+            if 0 <= block_index < len(BLOCKS1):
+                return BLOCKS1[block_index]
+            else:
+                return False
         else:
-            return False
+            block_index = self.get_current_block_index()
+            if 0 <= block_index < len(BLOCKS2):
+                return BLOCKS2[block_index]
+            else:
+                return False
 
     def get_current_plot(self) -> Optional[Plot]:
-        if self.current_plot_step < len(PLOTS):
-            plot_index = json.loads(self.plot_order)[
-                self.current_plot_step]
-            if 0 <= plot_index < len(PLOTS):
-                return PLOTS[plot_index]
+        if self.set_1:
+            if self.current_plot_step < len(PLOTS1):
+                plot_index = json.loads(self.plot1_order)[
+                    self.current_plot_step]
+                if 0 <= plot_index < len(PLOTS1):
+                    return PLOTS1[plot_index]
+            else:
+                print("none executed from get current plot")
+                return False
         else:
-            print("none executed from get current plot")
-            return False
+            if self.current_plot_step < len(PLOTS2):
+                plot_index = json.loads(self.plot2_order)[
+                    self.current_plot_step]
+                if 0 <= plot_index < len(PLOTS2):
+                    return PLOTS2[plot_index]
+            else:
+                print("none executed from get current plot")
+                return False
 
     def get_next_plot(self) -> Optional[Plot]:
-        if self.current_plot_step + 1 < len(PLOTS):
-            plot_index = json.loads(self.plot_order)[
-                self.current_plot_step + 1]
-            if 0 <= plot_index < len(PLOTS):
-                return PLOTS[plot_index]
+        if self.set_1:
+            if self.current_plot_step + 1 < len(PLOTS1):
+                plot_index = json.loads(self.plot1_order)[
+                    self.current_plot_step + 1]
+                if 0 <= plot_index < len(PLOTS1):
+                    return PLOTS1[plot_index]
+            else:
+                return False
         else:
-            return False
+            if self.current_plot_step + 1 < len(PLOTS2):
+                plot_index = json.loads(self.plot2_order)[
+                    self.current_plot_step + 1]
+                if 0 <= plot_index < len(PLOTS2):
+                    return PLOTS2[plot_index]
+            else:
+                return False
