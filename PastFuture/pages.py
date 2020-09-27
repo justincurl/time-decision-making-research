@@ -81,6 +81,7 @@ class BlockPage(Page):
         num_blocks = len(BLOCKS)
 
         if self.player.round_number == 2:
+            # TODO: Update Progress Bar
             progress_num = (step + 13) * 100
         else:
             progress_num = (step) * 100
@@ -171,7 +172,8 @@ class Attention(Page):
 class CTBInstructionsFuture(Page):
     def vars_for_template(self):
         title = "Choose the Best Future Economy"
-        instructions_image_link = "https://i.imgur.com/yan1jln.png"
+        # TODO: Update Image Links
+        instructions_image_link = "https://i.imgur.com/uEs8ViI.png"
         return {
             "instructions_image_link": instructions_image_link,
             "title": title,
@@ -181,6 +183,7 @@ class CTBInstructionsFuture(Page):
         pass
 
     def is_displayed(self):
+        # TODO: Handle randomization logic
         return not self.player.hl_second and (
             (json.loads(self.player.consent_answer) == 1)
         )
@@ -189,7 +192,7 @@ class CTBInstructionsFuture(Page):
 class CTBInstructionsPast(Page):
     def vars_for_template(self):
         title = "Choose the Best Past Economy"
-        instructions_image_link = "https://i.imgur.com/yan1jln.png"
+        instructions_image_link = "https://i.imgur.com/uEs8ViI.png"
         return {
             "instructions_image_link": instructions_image_link,
             "title": title,
@@ -207,7 +210,7 @@ class CTBInstructionsPast(Page):
 class HLInstructionsFuture(Page):
     def vars_for_template(self):
         title = "Evaluate the Future Economy"
-        instructions_image_link = "https://i.imgur.com/zUlkbql.png"
+        instructions_image_link = "https://i.imgur.com/GD3wzM5.png"
         return {
             "instructions_image_link": instructions_image_link,
             "title": title,
@@ -227,7 +230,7 @@ class HLInstructionsFuture(Page):
 class HLInstructionsPast(Page):
     def vars_for_template(self):
         title = "Evaluate the Past Economy"
-        instructions_image_link = "https://i.imgur.com/zUlkbql.png"
+        instructions_image_link = "https://i.imgur.com/GD3wzM5.png"
         return {
             "instructions_image_link": instructions_image_link,
             "title": title,

@@ -32,22 +32,22 @@ RANDOMIZE_PLOTS = True
 
 
 all_left_values = [
-    [8.6, 5.7, 2.8, 1.4],
-    [6.6, 4.4, 2.2, 1.1],
-    [8.7, 5.8, 2.9, 1.4],
-    [6.9, 4.6, 2.3, 1.2],
-    [9, 6, 3, 1.5],
-    [8.9, 5.9, 3, 1.5]
+    [2,2,2,2],
+    [2,2,2,2],
+    [2,2,2,2],
+    [2,2,2,2],
+    [2,2,2,2],
+    [2,2,2,2],
 ]
 
 
 all_right_values = [
-    [4.3, 4.3, 4.3, 4.3],
-    [4.4, 4.4, 4.4, 4.4],
-    [4, 4, 4, 4],
-    [5.8, 5.8, 5.8, 5.8],
-    [5.6, 5.6, 5.6, 5.6],
-    [4.3, 4.3, 4.3, 4.3],
+    [2.5, 2.5, 2.5, 2.5],
+    [2.5, 2.5, 2.5, 2.5],
+    [2.5, 2.5, 2.5, 2.5],
+    [2.5, 2.5, 2.5, 2.5],
+    [2.5, 2.5, 2.5, 2.5],
+    [2.5, 2.5, 2.5, 2.5],
 ]
 
 block_order = [i for i in range(NUM_BLOCKS)]
@@ -56,48 +56,48 @@ BLOCKS = [
     Block(
         left_values=all_left_values[0],
         right_values=all_right_values[0],
-        top_later_term=2,
-        bottom_earlier_term=1,
+        top_earlier_term=1,
+        bottom_later_term=2,
         number_of_choices=6,
         block_index=int(block_order[0]),
     ),
     Block(
         left_values=all_left_values[1],
         right_values=all_right_values[1],
-        top_later_term=3,
-        bottom_earlier_term=1,
+        top_earlier_term=1,
+        bottom_later_term=3,
         number_of_choices=6,
         block_index=int(block_order[1]),
     ),
     Block(
         left_values=all_left_values[2],
         right_values=all_right_values[2],
-        top_later_term=4,
-        bottom_earlier_term=1,
+        top_earlier_term=1,
+        bottom_later_term=4,
         number_of_choices=6,
         block_index=int(block_order[2]),
     ),
     Block(
         left_values=all_left_values[3],
         right_values=all_right_values[3],
-        top_later_term=3,
-        bottom_earlier_term=2,
+        top_earlier_term=2,
+        bottom_later_term=3,
         number_of_choices=6,
         block_index=int(block_order[3]),
     ),
     Block(
         left_values=all_left_values[4],
         right_values=all_right_values[4],
-        top_later_term=4,
-        bottom_earlier_term=2,
+        top_earlier_term=2,
+        bottom_later_term=4,
         number_of_choices=6,
         block_index=int(block_order[4]),
     ),
     Block(
         left_values=all_left_values[5],
         right_values=all_right_values[5],
-        top_later_term=4,
-        bottom_earlier_term=3,
+        top_earlier_term=3,
+        bottom_later_term=4,
         number_of_choices=6,
         block_index=int(block_order[5]),
     ),
@@ -106,24 +106,24 @@ BLOCKS = [
 NUM_PLOTS = 18
 
 plot_links = [
-    "https://i.imgur.com/qpaRNrX.png",
-    "https://i.imgur.com/TuSpZo0.png",
-    "https://i.imgur.com/7LZvwmr.png",
-    "https://i.imgur.com/NpkqJHE.png",
-    "https://i.imgur.com/YEtQoF2.png",
-    "https://i.imgur.com/T9X2bBp.png",
-    "https://i.imgur.com/dvfgeqj.png",
-    "https://i.imgur.com/Q3IiPZR.png",
-    "https://i.imgur.com/jAQ6CJb.png",
-    "https://i.imgur.com/25ni7G4.png",
-    "https://i.imgur.com/L8DiVvQ.png",
-    "https://i.imgur.com/ASGntyM.png",
-    "https://i.imgur.com/i1Sxc32.png",
-    "https://i.imgur.com/Xkj8GZK.png",
-    "https://i.imgur.com/SKaSxxG.png",
-    "https://i.imgur.com/YqhDmdB.png",
-    "https://i.imgur.com/1sdQawn.png",
-    "https://i.imgur.com/mWqxdRK.png"
+    "https://i.imgur.com/5zo4hrS.png",
+    "https://i.imgur.com/5zo4hrS.png",
+    "https://i.imgur.com/5zo4hrS.png",
+    "https://i.imgur.com/5zo4hrS.png",
+    "https://i.imgur.com/5zo4hrS.png",
+    "https://i.imgur.com/5zo4hrS.png",
+    "https://i.imgur.com/5zo4hrS.png",
+    "https://i.imgur.com/5zo4hrS.png",
+    "https://i.imgur.com/5zo4hrS.png",
+    "https://i.imgur.com/5zo4hrS.png",
+    "https://i.imgur.com/5zo4hrS.png",
+    "https://i.imgur.com/5zo4hrS.png",
+    "https://i.imgur.com/5zo4hrS.png",
+    "https://i.imgur.com/5zo4hrS.png",
+    "https://i.imgur.com/5zo4hrS.png",
+    "https://i.imgur.com/5zo4hrS.png",
+    "https://i.imgur.com/5zo4hrS.png",
+    "https://i.imgur.com/5zo4hrS.png",
 ]
 
 PLOTS = [Plot(image_link=plot_links[i]) for i in range(NUM_PLOTS)]

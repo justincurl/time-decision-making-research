@@ -5,37 +5,43 @@ from os import environ
 # the session config can be accessed from methods in your apps as self.session.config,
 # e.g. self.session.config['participation_fee']
 
-SESSION_CONFIG_DEFAULTS=dict(
-        real_world_currency_per_point=1.00, 
-        participation_fee=0.00, doc="", 
-        mturk_hit_settings = dict(
-            keywords='bonus, study',
-            title='Title for your experiment',
-            description='Description for your experiment',
-            frame_height=500,
-            template='global/mturk_template.html',
-            minutes_allotted_per_assignment=60,
-            expiration_hours=7 * 24,
-            qualification_requirements=[]
-            # grant_qualification_id='YOUR_QUALIFICATION_ID_HERE', # to prevent retakes
-        )
+SESSION_CONFIG_DEFAULTS = dict(
+    real_world_currency_per_point=1.00,
+    participation_fee=0.00, doc="",
+    mturk_hit_settings=dict(
+        keywords='bonus, study',
+        title='Title for your experiment',
+        description='Description for your experiment',
+        frame_height=500,
+        template='global/mturk_template.html',
+        minutes_allotted_per_assignment=60,
+        expiration_hours=7 * 24,
+        qualification_requirements=[]
+        # grant_qualification_id='YOUR_QUALIFICATION_ID_HERE', # to prevent retakes
     )
+)
 
-OTREE_ADMIN_PASSWORD="markusprior"
-OTREE_AUTH_LEVEL="DEMO"
+OTREE_ADMIN_PASSWORD = "markusprior"
+OTREE_AUTH_LEVEL = "DEMO"
 
 SESSION_CONFIGS = [
     dict(
         name='oTimeCTB',
-        display_name= 'oTime CTB',
+        display_name='oTime CTB',
         num_demo_participants=3,
-        app_sequence=['simple_survey','otime']
+        app_sequence=['simple_survey', 'otime']
     ),
     dict(
-        name='HLandCTB', 
-        display_name= 'H&L and CTB', 
+        name='HLandCTB',
+        display_name='H&L and CTB',
         num_demo_participants=3,
         app_sequence=['CTB']
+    ),
+    dict(
+        name='PastFuture',
+        display_name='Past & Future',
+        num_demo_participants=3,
+        app_sequence=['PastFuture']
     )
 ]
 
@@ -68,4 +74,3 @@ Here are some oTree games.
 SECRET_KEY = 'xb_4%4j75ymz+gb468yyjn^3rumxo7ap3363wc4u87-vtcwd@a'
 
 INSTALLED_APPS = ['otree']
-

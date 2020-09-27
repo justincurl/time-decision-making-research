@@ -17,7 +17,7 @@ use Convex Time Budget analysis to analyze
 
 
 class Constants(BaseConstants):
-    name_in_url = "CTB"
+    name_in_url = "PastFuture"
     players_per_group = None
     num_rounds = 2
 
