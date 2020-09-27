@@ -1,0 +1,103 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="progress">
+    <div class="progress-bar" style="width: {{ progress }}%"></div>
+</div>
+<br>
+
+<style>
+    img {
+        width: 65%;
+    }
+</style>
+
+<div class="plot1" align="center">
+    <span><img src={{plot1.image_link}}></span>
+</div>
+<br>
+<div class="question" align="center">
+    <h4>{{ step1 }}. How would you rate the condition of the national economy during this period?</h4>
+</div>
+
+<table class="table">
+    <tbody>
+        <tr class="timepref__question-start timepref__question-unanswered timepref__question-index-{{step1}}">
+            {% for value in plot1.start_values %}
+            <td class="text-center">{{ value }}</td>
+            {% endfor %}
+        </tr>
+        <tr class="timepref__question-choices" data-question-index="{{step1}}">
+            {% for index in plot1.choice_index %}
+            <td class="text-center timepref__question-choice">
+                <input type="radio" name="question_{{step1}}" value="{{ index }}" />
+            </td>
+            {% endfor %}
+
+            <h1></h1>
+
+    </tbody>
+</table>
+<br>
+<br>
+<div class="plot2" align="center">
+    <span><img src={{plot2.image_link}}></span>
+</div>
+<br>
+<div class="question" align="center">
+    <h4>{{ step2 }}. How would you rate the condition of the national economy during this period?</h4>
+</div>
+
+<table class="table">
+    <tbody>
+        <tr class="timepref__question-start timepref__question-unanswered timepref__question-index-{{step2}}">
+            {% for value in plot2.start_values %}
+            <td class="text-center">{{ value }}</td>
+            {% endfor %}
+        </tr>
+        <tr class="timepref__question-choices" data-question-index="{{step2}}">
+            {% for index in plot2.choice_index %}
+            <td class="text-center timepref__question-choice">
+                <input type="radio" name="question_{{step2}}" value="{{ index }}" />
+            </td>
+            {% endfor %}
+
+            <h1></h1>
+
+    </tbody>
+</table>
+
+<input id="timepref__answers" type="hidden" name="question_answers" data-block-index="{{ block_index }}"
+    value="{{player.question_answers}}">
+
+<script>
+    function alertFunctionPlot() {
+        alert("In order for your answers to be most helpful to us, it is really important that you respond to all questions.")
+        jQuery('.timepref__waiting').hide();
+        jQuery('.timepref__next-button').show();
+        return false
+    }
+</script>
+
+<div class="timepref__waiting" onclick="return alertFunctionPlot();">
+    {% next_button %}
+</div>
+
+<div class="timepref__next-button">
+    {% next_button %}
+</div>
+
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'CTB/styles/block.css' %}" />
+<link rel="stylesheet" href="{% static 'CTB/styles/rangeslider.css' %}" />
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'CTB/scripts/rangeslider.min.js' %}"></script>
+<script src="{% static 'CTB/scripts/block.js' %}"></script>
+{% endblock %}

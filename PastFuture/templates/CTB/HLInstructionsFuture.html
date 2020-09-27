@@ -1,0 +1,47 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+<style>
+    img {
+        width: 30%;
+    }
+</style>
+
+{% block content %}
+<div class="instructions" align="justify">
+    <h4>
+        <p style="text-align:center;">{{title}}</p>
+    </h4>
+    <p>
+        On the following 9 pages, we would like you to imagine you are looking forward at <strong>proposed economic
+            growth over a four-year period.</strong>
+        <br><br>
+        You will see figures with the proposed measurements of how much better off people will be in each year of this
+        four-year period, and you will be asked to evaluate each of these proposals.
+        <br><br>
+        The measurements shown are <strong>personal income growth:</strong> the percentage by which the average person’s
+        income will increase in a given year. This provides a good measure of what the strength of the national economy
+        will be.
+        <br><br>
+        After looking at each figure, you’ll be asked to evaluate this proposed economic growth. Would you say the
+        condition of the national economy under this proposal will be very good, fairly good, fairly bad, or very bad?
+        <br><br>
+        <strong>Here’s an example:</strong>
+    <div align="center"><img src={{instructions_image_link}} width=70%></div>
+    The example figure shows that incomes will grow by 1.9 percent in the first (soonest) year, then by 2.1 percent in
+    the second year, then by 2.5 percent in the third year, and by 2.0 percent in the fourth year.
+    <br><br>
+    In this example, the person making the evaluation thought the proposed future economy was “fairly good” during this
+    period, and therefore marked the third button from the left.
+    <br><br>
+    Remember, you are looking at a <strong>future proposed economic growth,</strong> so the first year of the four-year
+    period is soonest, while the fourth year of the period is several years away.
+    <br><br>
+    To start the task, click “next”.
+    </p>
+</div>
+
+<hr>
+<br>
+{% next_button %}
+{% endblock %}
