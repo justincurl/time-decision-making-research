@@ -1,0 +1,35 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+<style>
+    img {
+        width: 5%;
+    }
+</style>
+
+{% block content %}
+<div class="instructions" align="justify">
+    <h4>
+        <p style="text-align:center;">{{title}}</p>
+    </h4>
+    <p>
+        On the following 9 pages, we would now like you to imagine you are looking <strong>forward</strong> at
+        <strong>proposed economic growth</strong> over a four-year period.
+        <br><br>
+        You will see figures with the proposed measurements of how much better off people will be in each year of this
+        four-year period. The measurements shown are again <strong>personal income growth:</strong> the percentage by
+        which the average person’s income will increase in a given year.
+        <br><br>
+        After looking at each figure, you’ll similarly be asked to evaluate this proposed economic growth. Would you say
+        the condition of the national economy under this proposal will be very good, fairly good, fairly bad, or very
+        bad?
+        <br><br>
+        To start the task, click “next”.
+
+    </p>
+
+</div>
+<hr>
+<br>
+{% next_button %}
+{% endblock %}

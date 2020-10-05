@@ -4,6 +4,7 @@ import datetime
 from ._builtin import Page, WaitPage
 from .config import BLOCKS1, BLOCKS2, PLOTS1, PLOTS2
 
+
 class Start(Page):
     pass
 
@@ -19,13 +20,13 @@ class HLPage(Page):
         # This page will only be displayed when there are blocks left
         if self.player.set_1:
             return (
-                self.player.first[:2] == 'HL'
+                self.player.first[:2] == "HL"
                 and self.player.get_current_plot()
                 and (json.loads(self.player.consent_answer) == 1)
             )
         else:
             return (
-                self.player.second[:2] == 'HL'
+                self.player.second[:2] == "HL"
                 and self.player.get_current_plot()
                 and (json.loads(self.player.consent_answer) == 1)
             )
@@ -36,28 +37,30 @@ class HLPage(Page):
         step2 = self.player.current_plot_step + 2
         plot2 = self.player.get_next_plot()
 
-        page = step2//2
+        page = step2 // 2
         instructions1 = "How would you rate the condition of the "
-        instructions3 = " during this period? Very bad, fairly bad, fairly good, or very good?"
+        instructions3 = (
+            " during this period? Very bad, fairly bad, fairly good, or very good?"
+        )
         if self.player.set_1:
             progress_num = page * 100
             num_plots = len(PLOTS1)
-            if self.player.first[2:] == 'Past':
+            if self.player.first[2:] == "Past":
                 instructions2 = "past national economy"
             else:
                 instructions2 = "proposed national economy"
         else:
-            if self.player.first[:2] == 'HL':
-                progress_num = page + (len(PLOTS1)//2) + 7
+            if self.player.first[:2] == "HL":
+                progress_num = page + (len(PLOTS1) // 2) + 7
             else:
                 progress_num = page + len(BLOCKS1) + 7
-    
+
             num_plots = len(PLOTS2)
-            if self.player.second[2:] == 'Past':
+            if self.player.second[2:] == "Past":
                 instructions2 = "past national economy"
             else:
                 instructions2 = "proposed national economy"
-    
+
             progress_num = (page + 10) * 100
 
             progress_num = (page) * 100
@@ -95,16 +98,16 @@ class BlockPage(Page):
         # This page will only be displayed when there are blocks left
         if self.player.set_1:
             return (
-                self.player.first[:3] == 'CTB'
+                self.player.first[:3] == "CTB"
                 and self.player.get_current_block()
                 and (json.loads(self.player.consent_answer) == 1)
             )
         else:
             return (
-                self.player.second[:3] == 'CTB'
+                self.player.second[:3] == "CTB"
                 and self.player.get_current_block()
                 and (json.loads(self.player.consent_answer) == 1)
-        )
+            )
 
     def vars_for_template(self):
         step = self.player.get_current_block_step() + 1
@@ -115,17 +118,17 @@ class BlockPage(Page):
         if self.player.set_1:
             progress_num = (step) * 100
             num_blocks = len(BLOCKS1)
-            if self.player.first[3:] == 'Past':
+            if self.player.first[3:] == "Past":
                 instructions2 = "past growth rates "
             else:
                 instructions2 = "proposed growth rates "
         else:
             num_blocks = len(BLOCKS2)
-            if self.player.first[:2] == 'HL':
-                progress_num = (step + (len(PLOTS1)//2) + 7) * 100
+            if self.player.first[:2] == "HL":
+                progress_num = (step + (len(PLOTS1) // 2) + 7) * 100
             else:
                 progress_num = (step + len(BLOCKS1) + 7) * 100
-            if self.player.second[3:] == 'Past':
+            if self.player.second[3:] == "Past":
                 instructions2 = "past growth rates "
             else:
                 instructions2 = "proposed growth rates "
@@ -162,7 +165,7 @@ class Feedback(Page):
     form_fields = ["feedback"]
 
     def is_displayed(self):
-        return (json.loads(self.player.consent_answer) == 1)
+        return json.loads(self.player.consent_answer) == 1
 
 
 class Results(Page):
@@ -179,7 +182,7 @@ class Results(Page):
         )
         self.player.total_time = json.dumps(str(finish_time - start_time))
 
-        return (json.loads(self.player.consent_answer) == 1)
+        return json.loads(self.player.consent_answer) == 1
 
 
 class NonConsent(Page):
@@ -190,16 +193,16 @@ class NonConsent(Page):
 class Attention(Page):
     form_model = "player"
     form_fields = ["attention_check"]
-    
+
     def is_displayed(self):
-        return (json.loads(self.player.consent_answer) == 1)
+        return json.loads(self.player.consent_answer) == 1
 
     def vars_for_template(self):
-        if self.player.first[:2] == 'HL':
-            progress_num = ((len(PLOTS1)//2) + 3) * 100
+        if self.player.first[:2] == "HL":
+            progress_num = ((len(PLOTS1) // 2) + 3) * 100
         else:
             progress_num = (len(BLOCKS1) + 3) * 100
-        progress = progress_num/self.player.denominator
+        progress = progress_num / self.player.denominator
         values = [
             "France",
             "Germany",
@@ -218,7 +221,7 @@ class Attention(Page):
         }
 
 
-class CTBInstructionsFuture(Page):
+class CTBFuture(Page):
     def vars_for_template(self):
         title = "Choose the Best Future Economy"
         instructions_image_link = "https://i.imgur.com/uEs8ViI.png"
@@ -231,17 +234,14 @@ class CTBInstructionsFuture(Page):
         pass
 
     def is_displayed(self):
-        if self.player.set_1:
-            return self.player.first == 'CTBFuture' and (
-                (json.loads(self.player.consent_answer) == 1)
-            )
-        else:
-            return self.player.second == 'CTBFuture' and (
-                (json.loads(self.player.consent_answer) == 1)
-            )
+        return (
+            self.player.set_1
+            and self.player.first == "CTBFuture"
+            and ((json.loads(self.player.consent_answer) == 1))
+        )
 
 
-class CTBInstructionsPast(Page):
+class CTBPast(Page):
     def vars_for_template(self):
         title = "Choose the Best Past Economy"
         instructions_image_link = "https://i.imgur.com/uEs8ViI.png"
@@ -254,17 +254,14 @@ class CTBInstructionsPast(Page):
         pass
 
     def is_displayed(self):
-        if self.player.set_1:
-            return self.player.first == 'CTBPast' and (
-                (json.loads(self.player.consent_answer) == 1)
-            )
-        else:
-            return self.player.second == 'CTBPast' and (
-                (json.loads(self.player.consent_answer) == 1)
-            )
+        return (
+            self.player.set_1
+            and self.player.first == "CTBPast"
+            and ((json.loads(self.player.consent_answer) == 1))
+        )
 
 
-class HLInstructionsFuture(Page):
+class HLFuture(Page):
     def vars_for_template(self):
         title = "Evaluate the Future Economy"
         instructions_image_link = "https://i.imgur.com/GD3wzM5.png"
@@ -277,17 +274,14 @@ class HLInstructionsFuture(Page):
         pass
 
     def is_displayed(self):
-        if self.player.set_1:
-            return self.player.first == 'HLFuture' and (
-                (json.loads(self.player.consent_answer) == 1)
-            )
-        else:
-            return self.player.second == 'HLFuture' and (
-                (json.loads(self.player.consent_answer) == 1)
-            )
+        return (
+            self.player.set_1
+            and self.player.first == "HLFuture"
+            and ((json.loads(self.player.consent_answer) == 1))
+        )
 
 
-class HLInstructionsPast(Page):
+class HLPast(Page):
     def vars_for_template(self):
         title = "Evaluate the Past Economy"
         instructions_image_link = "https://i.imgur.com/GD3wzM5.png"
@@ -300,14 +294,180 @@ class HLInstructionsPast(Page):
         pass
 
     def is_displayed(self):
-        if self.player.set_1:
-            return self.player.first == 'HLPast' and (
-                (json.loads(self.player.consent_answer) == 1)
-            )
-        else:
-            return self.player.second == 'HLPast' and (
-                (json.loads(self.player.consent_answer) == 1)
-            )
+        return (
+            self.player.set_1
+            and self.player.first == "HLPast"
+            and ((json.loads(self.player.consent_answer) == 1))
+        )
+
+
+class HLFuturePast(Page):
+    def vars_for_template(self):
+        title = "Evaluate the Future Economy"
+        instructions_image_link = "https://i.imgur.com/GD3wzM5.png"
+        return {
+            "instructions_image_link": instructions_image_link,
+            "title": title,
+        }
+
+    def error_message(self, values):
+        pass
+
+    def is_displayed(self):
+        return (
+            not self.player.set_1
+            and self.player.second == "HLFuture"
+            and self.player.first == "HLPast"
+            and ((json.loads(self.player.consent_answer) == 1))
+        )
+
+
+class HLFutureCTB(Page):
+    def vars_for_template(self):
+        title = "Evaluate the Future Economy"
+        instructions_image_link = "https://i.imgur.com/GD3wzM5.png"
+        return {
+            "instructions_image_link": instructions_image_link,
+            "title": title,
+        }
+
+    def error_message(self, values):
+        pass
+
+    def is_displayed(self):
+        return (
+            not self.player.set_1
+            and self.player.second == "HLFuture"
+            and self.player.first == "CTBFuture"
+            and ((json.loads(self.player.consent_answer) == 1))
+        )
+
+
+class HLPastFuture(Page):
+    def vars_for_template(self):
+        title = "Evaluate the Past Economy"
+        instructions_image_link = "https://i.imgur.com/GD3wzM5.png"
+        return {
+            "instructions_image_link": instructions_image_link,
+            "title": title,
+        }
+
+    def error_message(self, values):
+        pass
+
+    def is_displayed(self):
+        return (
+            not self.player.set_1
+            and self.player.second == "HLPast"
+            and self.player.first == "HLFuture"
+            and ((json.loads(self.player.consent_answer) == 1))
+        )
+
+
+class HLPastCTB(Page):
+    def vars_for_template(self):
+        title = "Evaluate the Past Economy"
+        instructions_image_link = "https://i.imgur.com/GD3wzM5.png"
+        return {
+            "instructions_image_link": instructions_image_link,
+            "title": title,
+        }
+
+    def error_message(self, values):
+        pass
+
+    def is_displayed(self):
+        return (
+            not self.player.set_1
+            and self.player.second == "HLPast"
+            and self.player.first == "CTBPast"
+            and ((json.loads(self.player.consent_answer) == 1))
+        )
+
+
+class CTBPastHL(Page):
+    def vars_for_template(self):
+        title = "Choose the Best Past Economy"
+        instructions_image_link = "https://i.imgur.com/uEs8ViI.png"
+        return {
+            "instructions_image_link": instructions_image_link,
+            "title": title,
+        }
+
+    def error_message(self, values):
+        pass
+
+    def is_displayed(self):
+        return (
+            not self.player.set_1
+            and self.player.second == "CTBPast"
+            and self.player.first == "HLPast"
+            and ((json.loads(self.player.consent_answer) == 1))
+        )
+
+
+class CTBPastFuture(Page):
+    def vars_for_template(self):
+        title = "Choose the Best Past Economy"
+        instructions_image_link = "https://i.imgur.com/uEs8ViI.png"
+        return {
+            "instructions_image_link": instructions_image_link,
+            "title": title,
+        }
+
+    def error_message(self, values):
+        pass
+
+    def is_displayed(self):
+        return (
+            not self.player.set_1
+            and self.player.second == "CTBPast"
+            and self.player.first == "CTBFuture"
+            and ((json.loads(self.player.consent_answer) == 1))
+        )
+
+
+class CTBFuturePast(Page):
+    def vars_for_template(self):
+        title = "Choose the Best Future Economy"
+        instructions_image_link = "https://i.imgur.com/uEs8ViI.png"
+        return {
+            "instructions_image_link": instructions_image_link,
+            "title": title,
+        }
+
+    def error_message(self, values):
+        pass
+
+    def is_displayed(self):
+        return (
+            not self.player.set_1
+            and self.player.second == "CTBFuture"
+            and self.player.first == "CTBPast"
+            and ((json.loads(self.player.consent_answer) == 1))
+        )
+
+
+class CTBFutureHL(Page):
+    def vars_for_template(self):
+        title = "Choose the Best Future Economy"
+        instructions_image_link = "https://i.imgur.com/uEs8ViI.png"
+        return {
+            "instructions_image_link": instructions_image_link,
+            "title": title,
+        }
+
+    def error_message(self, values):
+        pass
+
+    def is_displayed(self):
+        return (
+            not self.player.set_1
+            and self.player.second == "CTBFuture"
+            and self.player.first == "HLFuture"
+            and ((json.loads(self.player.consent_answer) == 1))
+        )
+
 
 class Consent(Page):
     form_model = "player"
@@ -318,12 +478,12 @@ class Consent(Page):
         current_time = now.strftime("%H:%M:%S")
         self.player.start_time = json.dumps(current_time)
         self.player.denominator = 13
-        if self.player.first[:2] == 'HL':
+        if self.player.first[:2] == "HL":
             self.player.denominator += len(PLOTS1) // 2
         else:
             self.player.denominator += len(BLOCKS1)
-        
-        if self.player.second[:2] == 'HL':
+
+        if self.player.second[:2] == "HL":
             self.player.denominator += len(PLOTS2) // 2
         else:
             self.player.denominator += len(BLOCKS2)
@@ -348,15 +508,17 @@ class Dice(Page):
     form_fields = ["dice_answer"]
 
     def is_displayed(self):
-        return self.player.round_number == 1 and (json.loads(self.player.consent_answer) == 1)
+        return self.player.round_number == 1 and (
+            json.loads(self.player.consent_answer) == 1
+        )
 
     def vars_for_template(self):
-        if self.player.first[:2] == 'HL':
-            progress_num = ((len(PLOTS1)//2) + 1) * 100
+        if self.player.first[:2] == "HL":
+            progress_num = ((len(PLOTS1) // 2) + 1) * 100
         else:
             progress_num = (len(BLOCKS1) + 1) * 100
-        
-        progress = progress_num/self.player.denominator
+
+        progress = progress_num / self.player.denominator
         return {
             "progress": progress,
         }
@@ -367,14 +529,16 @@ class Disease(Page):
     form_fields = ["disease_answer"]
 
     def is_displayed(self):
-        return self.player.round_number == 1 and (json.loads(self.player.consent_answer) == 1)
+        return self.player.round_number == 1 and (
+            json.loads(self.player.consent_answer) == 1
+        )
 
     def vars_for_template(self):
-        if self.player.first[:2] == 'HL':
-            progress_num = ((len(PLOTS1)//2) + 4) * 100
+        if self.player.first[:2] == "HL":
+            progress_num = ((len(PLOTS1) // 2) + 4) * 100
         else:
             progress_num = (len(BLOCKS1) + 4) * 100
-        progress = progress_num/self.player.denominator
+        progress = progress_num / self.player.denominator
         return {
             "progress": progress,
         }
@@ -385,15 +549,17 @@ class Lottery(Page):
     form_fields = ["lottery_answer"]
 
     def is_displayed(self):
-        return self.player.round_number == 1 and (json.loads(self.player.consent_answer) == 1)
+        return self.player.round_number == 1 and (
+            json.loads(self.player.consent_answer) == 1
+        )
 
     def vars_for_template(self):
-        if self.player.first[:2] == 'HL':
-            progress_num = ((len(PLOTS1)//2) + 2) * 100
+        if self.player.first[:2] == "HL":
+            progress_num = ((len(PLOTS1) // 2) + 2) * 100
         else:
             progress_num = (len(BLOCKS1) + 2) * 100
-        
-        progress = progress_num/self.player.denominator
+
+        progress = progress_num / self.player.denominator
         return {
             "progress": progress,
         }
@@ -404,11 +570,11 @@ class ZipCode(Page):
     form_fields = ["zipcode"]
 
     def is_displayed(self):
-        return (json.loads(self.player.consent_answer) == 1)
+        return json.loads(self.player.consent_answer) == 1
 
     def vars_for_template(self):
         return {
-            "progress": (self.player.denominator - 1)/self.player.denominator*100
+            "progress": (self.player.denominator - 1) / self.player.denominator * 100
         }
 
 
@@ -417,11 +583,11 @@ class Education(Page):
     form_fields = ["education"]
 
     def is_displayed(self):
-        return (json.loads(self.player.consent_answer) == 1)
+        return json.loads(self.player.consent_answer) == 1
 
     def vars_for_template(self):
         return {
-            "progress": (self.player.denominator - 3)/self.player.denominator*100,
+            "progress": (self.player.denominator - 3) / self.player.denominator * 100,
         }
 
 
@@ -430,14 +596,16 @@ class BenefitToday(Page):
     form_fields = ["benefit_today"]
 
     def is_displayed(self):
-        return self.player.round_number == 1 and (json.loads(self.player.consent_answer) == 1)
+        return self.player.round_number == 1 and (
+            json.loads(self.player.consent_answer) == 1
+        )
 
     def vars_for_template(self):
-        if self.player.first[:2] == 'HL':
-            progress_num = ((len(PLOTS1)//2) + 5) * 100
+        if self.player.first[:2] == "HL":
+            progress_num = ((len(PLOTS1) // 2) + 5) * 100
         else:
             progress_num = (len(BLOCKS1) + 5) * 100
-        progress = progress_num/self.player.denominator
+        progress = progress_num / self.player.denominator
         return {
             "progress": progress,
         }
@@ -448,14 +616,16 @@ class TakeRisks(Page):
     form_fields = ["take_risks"]
 
     def is_displayed(self):
-        return self.player.round_number == 1 and (json.loads(self.player.consent_answer) == 1)
+        return self.player.round_number == 1 and (
+            json.loads(self.player.consent_answer) == 1
+        )
 
     def vars_for_template(self):
-        if self.player.first[:2] == 'HL':
-            progress_num = ((len(PLOTS1)//2) + 6) * 100
+        if self.player.first[:2] == "HL":
+            progress_num = ((len(PLOTS1) // 2) + 6) * 100
         else:
             progress_num = (len(BLOCKS1) + 6) * 100
-        progress = progress_num/self.player.denominator
+        progress = progress_num / self.player.denominator
         return {
             "progress": progress,
         }
@@ -466,7 +636,9 @@ class Impulsive(Page):
     form_fields = ["impulsive"]
 
     def is_displayed(self):
-        return self.player.round_number == 1 and (json.loads(self.player.consent_answer) == 1)
+        return self.player.round_number == 1 and (
+            json.loads(self.player.consent_answer) == 1
+        )
 
     def before_next_page(self):
         self.player.set_1 = False
@@ -474,11 +646,11 @@ class Impulsive(Page):
         self.player.current_block_step = 0
 
     def vars_for_template(self):
-        if self.player.first[:2] == 'HL':
-            progress_num = (len(PLOTS1)//2 + 7) * 100
+        if self.player.first[:2] == "HL":
+            progress_num = (len(PLOTS1) // 2 + 7) * 100
         else:
             progress_num = (len(BLOCKS1) + 7) * 100
-        progress = progress_num/self.player.denominator
+        progress = progress_num / self.player.denominator
         return {
             "progress": progress,
         }
@@ -489,11 +661,11 @@ class GenderAge(Page):
     form_fields = ["gender", "age"]
 
     def is_displayed(self):
-        return (json.loads(self.player.consent_answer) == 1)
+        return json.loads(self.player.consent_answer) == 1
 
     def vars_for_template(self):
         return {
-            "progress": (self.player.denominator - 4)/self.player.denominator*100,
+            "progress": (self.player.denominator - 4) / self.player.denominator * 100,
         }
 
 
@@ -502,7 +674,7 @@ class EthnicityRace(Page):
     form_fields = ["ethnicity", "race"]
 
     def is_displayed(self):
-        return (json.loads(self.player.consent_answer) == 1)
+        return json.loads(self.player.consent_answer) == 1
 
     def vars_for_template(self):
         values = [
@@ -511,11 +683,11 @@ class EthnicityRace(Page):
             "Asian",
             "American Indian or Alaska Native",
             "Native Hawaiian or Pacific Islander",
-            "Some other race"
+            "Some other race",
         ]
         return {
             "values": values,
-            "progress": (self.player.denominator - 2)/self.player.denominator*100,
+            "progress": (self.player.denominator - 2) / self.player.denominator * 100,
         }
 
 
@@ -524,10 +696,10 @@ def generate_page_sequence():
         [DeviceType]
         + [PhoneDevice]
         + [Consent]
-        + [HLInstructionsPast]
-        + [HLInstructionsFuture]
-        + [CTBInstructionsPast]
-        + [CTBInstructionsFuture]
+        + [HLPast]
+        + [HLFuture]
+        + [CTBPast]
+        + [CTBFuture]
         + [HLPage] * (len(PLOTS1) // 2)
         + [BlockPage] * len(BLOCKS1)
         + [Dice]
@@ -537,10 +709,14 @@ def generate_page_sequence():
         + [BenefitToday]
         + [TakeRisks]
         + [Impulsive]
-        + [HLInstructionsPast]
-        + [HLInstructionsFuture]
-        + [CTBInstructionsPast]
-        + [CTBInstructionsFuture]
+        + [HLFuturePast]
+        + [HLFutureCTB]
+        + [HLPastFuture]
+        + [HLPastCTB]
+        + [CTBFutureHL]
+        + [CTBFuturePast]
+        + [CTBPastHL]
+        + [CTBPastFuture]
         + [HLPage] * (len(PLOTS2) // 2)
         + [BlockPage] * len(BLOCKS2)
         + [GenderAge]
@@ -550,5 +726,6 @@ def generate_page_sequence():
         + [Results]
         + [NonConsent]
     )
+
 
 page_sequence = generate_page_sequence()

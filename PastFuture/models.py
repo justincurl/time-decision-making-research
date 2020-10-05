@@ -31,16 +31,12 @@ class Subsession(BaseSubsession):
         listOfOptions = [
             (0, 'HLPast', 'HLFuture'),
             (1, 'HLPast', 'CTBPast'),
-            (2, 'HLPast', 'CTBFuture'),
-            (3, 'HLFuture', 'CTBPast'),
-            (4, 'HLFuture', 'CTBFuture'),
-            (5, 'CTBPast', 'CTBFuture'),
-            (6, 'HLFuture', 'HLPast'),
-            (7, 'CTBPast', 'HLPast'),
-            (8, 'CTBFuture', 'HLPast'),
-            (9, 'CTBPast', 'HLFuture'),
-            (10, 'CTBFuture', 'HLFuture'),
-            (11, 'CTBFuture', 'CTBPast'),
+            (2, 'HLFuture', 'CTBFuture'),
+            (3, 'CTBPast', 'CTBFuture'),
+            (4, 'HLFuture', 'HLPast'),
+            (5, 'CTBPast', 'HLPast'),
+            (6, 'CTBFuture', 'HLFuture'),
+            (7, 'CTBFuture', 'CTBPast'),
         ]
 
         rand_choice = random.choice(listOfOptions)
