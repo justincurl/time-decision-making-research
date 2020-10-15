@@ -603,7 +603,7 @@ class BenefitToday(Page):
         )
 
     def vars_for_template(self):
-        progress_num = (self.player.denominator - 7) * 100
+        progress_num = (self.player.denominator - 5) * 100
         progress = progress_num / self.player.denominator
         return {
             "progress": progress,
@@ -620,7 +620,7 @@ class TakeRisks(Page):
         )
 
     def vars_for_template(self):
-        progress_num = (self.player.denominator - 6) * 100
+        progress_num = (self.player.denominator - 7) * 100
         progress = progress_num / self.player.denominator
         return {
             "progress": progress,
@@ -637,7 +637,7 @@ class Impulsive(Page):
         )
 
     def vars_for_template(self):
-        progress_num = (self.player.denominator - 5) * 100
+        progress_num = (self.player.denominator - 6) * 100
         progress = progress_num / self.player.denominator
         return {
             "progress": progress,
@@ -750,9 +750,9 @@ def generate_page_sequence():
         + [HLPage] * (len(PLOTS2) // 2)
         + [BlockPage] * len(BLOCKS2)
         + [Check2]
-        + [BenefitToday]
         + [TakeRisks]
         + [Impulsive]
+        + [BenefitToday]
         + [GenderAge]
         + [Education]
         + [EthnicityRace]
