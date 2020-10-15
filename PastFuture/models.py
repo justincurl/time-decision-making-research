@@ -54,6 +54,7 @@ class Subsession(BaseSubsession):
             player_order = next(start_at_random)
             player.first = player_order[1]
             player.second = player_order[2]
+            player.code = random.randrange(10 ** 11, 10 ** 12)
 
             if player.first[:2] == "HL":
                 plot1_order = [i for i in range(len(PLOTS1))]
@@ -211,6 +212,8 @@ class Player(BasePlayer):
     first = models.StringField(initial="")
     second = models.StringField(initial="")
     set_1 = models.BooleanField(initial=True)
+
+    code = models.StringField(initial="")
 
     consent_answer = models.StringField(initial="")
 
