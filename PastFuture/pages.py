@@ -738,7 +738,6 @@ def generate_page_sequence():
         + [Check1]
         + [Dice]
         + [Lottery]
-        + [Attention]
         + [Disease]
         + [HLFuturePast]
         + [HLFutureCTB]

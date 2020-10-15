@@ -103,7 +103,7 @@ class Player(BasePlayer):
 
     take_risks = models.IntegerField(
         choices=[
-            [0, "0 unwilling to take risks"],
+            [0, "0 completely unwilling to take risks"],
             [1, "1"],
             [2, "2"],
             [3, "3"],
