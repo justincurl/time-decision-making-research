@@ -3,7 +3,14 @@ from typing import Optional, List
 
 import random
 
-from otree.api import models, BaseConstants, BaseSubsession, BaseGroup, BasePlayer, widgets
+from otree.api import (
+    models,
+    BaseConstants,
+    BaseSubsession,
+    BaseGroup,
+    BasePlayer,
+    widgets,
+)
 
 from .block import Block
 from .plot import Plot
@@ -24,19 +31,20 @@ class Constants(BaseConstants):
 
 class Subsession(BaseSubsession):
     def creating_session(self) -> None:
-        """Initializes the 
+        """Initializes the
         session and creates the order in which the Blocks should be run through
         """
         import itertools
+
         listOfOptions = [
-            (0, 'HLPast', 'HLFuture'),
-            (1, 'HLPast', 'CTBPast'),
-            (2, 'HLFuture', 'CTBFuture'),
-            (3, 'CTBPast', 'CTBFuture'),
-            (4, 'HLFuture', 'HLPast'),
-            (5, 'CTBPast', 'HLPast'),
-            (6, 'CTBFuture', 'HLFuture'),
-            (7, 'CTBFuture', 'CTBPast'),
+            (0, "HLPast", "HLFuture"),
+            (1, "HLPast", "CTBPast"),
+            (2, "HLFuture", "CTBFuture"),
+            (3, "CTBPast", "CTBFuture"),
+            (4, "HLFuture", "HLPast"),
+            (5, "CTBPast", "HLPast"),
+            (6, "CTBFuture", "HLFuture"),
+            (7, "CTBFuture", "CTBPast"),
         ]
 
         rand_choice = random.choice(listOfOptions)
@@ -47,7 +55,7 @@ class Subsession(BaseSubsession):
             player.first = player_order[1]
             player.second = player_order[2]
 
-            if player.first[:2] == 'HL':
+            if player.first[:2] == "HL":
                 plot1_order = [i for i in range(len(PLOTS1))]
                 if RANDOMIZE_PLOTS:
                     random.shuffle(plot1_order)
@@ -58,7 +66,7 @@ class Subsession(BaseSubsession):
                     random.shuffle(block1_order)
                 player.block1_order = json.dumps(block1_order)
 
-            if player.second[:2] == 'HL':
+            if player.second[:2] == "HL":
                 plot2_order = [i for i in range(len(PLOTS1))]
                 if RANDOMIZE_PLOTS:
                     random.shuffle(plot2_order)
@@ -81,85 +89,109 @@ class Player(BasePlayer):
 
     device_type = models.IntegerField(
         choices=[
-            [1, 'Desktop Computer'],
-            [2, 'Laptop Computer'],
-            [3, 'Smartphone'],
-            [4, 'Tablet'],
-            [5, 'Something Else']
-        ], blank=True
+            [1, "Desktop Computer"],
+            [2, "Laptop Computer"],
+            [3, "Smartphone"],
+            [4, "Tablet"],
+            [5, "Something Else"],
+        ],
+        blank=True,
     )
 
     race = models.StringField()
 
     take_risks = models.IntegerField(
         choices=[
-            [0, '0 unwilling to take risks'],
-            [1, '1'],
-            [2, '2'],
-            [3, '3'],
-            [4, '4'],
-            [5, '5'],
-            [6, '6'],
-            [7, '7'],
-            [8, '8'],
-            [9, '9'],
-            [10, '10 fully prepared to take risks']
-        ], widget=widgets.RadioSelect, blank=True
+            [0, "0 unwilling to take risks"],
+            [1, "1"],
+            [2, "2"],
+            [3, "3"],
+            [4, "4"],
+            [5, "5"],
+            [6, "6"],
+            [7, "7"],
+            [8, "8"],
+            [9, "9"],
+            [10, "10 fully prepared to take risks"],
+        ],
+        widget=widgets.RadioSelectHorizontal,
+        blank=True,
     )
 
     benefit_today = models.IntegerField(
         choices=[
-            [0, '0 completely unwilling to do so'],
-            [1, '1'],
-            [2, '2'],
-            [3, '3'],
-            [4, '4'],
-            [5, '5'],
-            [6, '6'],
-            [7, '7'],
-            [8, '8'],
-            [9, '9'],
-            [10, '10 very willing to do so']
-        ], widget=widgets.RadioSelect, blank=True
+            [0, "completely unwilling to do so"],
+            [1, "1"],
+            [2, "2"],
+            [3, "3"],
+            [4, "4"],
+            [5, "5"],
+            [6, "6"],
+            [7, "7"],
+            [8, "8"],
+            [9, "9"],
+            [10, "10 very willing to do so"],
+        ],
+        widget=widgets.RadioSelectHorizontal,
+        blank=True,
     )
 
     impulsive = models.IntegerField(
         choices=[
-            [0, '0 not at all impulsive'],
-            [1, '1'],
-            [2, '2'],
-            [3, '3'],
-            [4, '4'],
-            [5, '5'],
-            [6, '6'],
-            [7, '7'],
-            [8, '8'],
-            [9, '9'],
-            [10, '10 very impulsive']
-        ], widget=widgets.RadioSelect, blank=True
+            [0, "0 not at all impulsive"],
+            [1, "1"],
+            [2, "2"],
+            [3, "3"],
+            [4, "4"],
+            [5, "5"],
+            [6, "6"],
+            [7, "7"],
+            [8, "8"],
+            [9, "9"],
+            [10, "10 very impulsive"],
+        ],
+        widget=widgets.RadioSelectHorizontal,
+        blank=True,
     )
 
     education = models.IntegerField(
         choices=[
-            [1, 'I do not have a high school degree or GED '],
-            [2, 'Regular high school degree '],
-            [3, 'GED or alternative credential '],
-            [4, 'Some college credit, no degree'],
-            [5, 'Associate’s degree (for example: AA, AS) '],
-            [6, 'Bachelor’s degree (for example: BA, BS) '],
-            [7, 'Graduate or professional degree ']
-        ], blank=True, widget=widgets.RadioSelect
+            [1, "I do not have a high school degree or GED "],
+            [2, "Regular high school degree "],
+            [3, "GED or alternative credential "],
+            [4, "Some college credit, no degree"],
+            [5, "Associate’s degree (for example: AA, AS) "],
+            [6, "Bachelor’s degree (for example: BA, BS) "],
+            [7, "Graduate or professional degree "],
+        ],
+        blank=True,
+        widget=widgets.RadioSelect,
     )
 
-    gender = models.IntegerField(blank=True, choices=[
-        [1, 'Male'],
-        [2, 'Female'],
-    ], widget=widgets.RadioSelect)
+    check_1 = models.IntegerField(
+        blank=True,
+        choices=[[0, "Past Economic Growth"], [1, "Future Economic Growth"]],
+        widget=widgets.RadioSelect,
+    )
 
-    ethnicity = models.BooleanField(blank=True, choices=[
-        [True, 'Yes'],
-        [False, 'No']
-    ], widget=widgets.RadioSelect)
+    check_2 = models.IntegerField(
+        blank=True,
+        choices=[[0, "Past Economic Growth"], [1, "Future Economic Growth"]],
+        widget=widgets.RadioSelect,
+    )
+
+    gender = models.IntegerField(
+        blank=True,
+        choices=[
+            [1, "Male"],
+            [2, "Female"],
+        ],
+        widget=widgets.RadioSelect,
+    )
+
+    ethnicity = models.BooleanField(
+        blank=True, choices=[[True, "Yes"], [False, "No"]], widget=widgets.RadioSelect
+    )
 
     age = models.IntegerField(blank=True, min=18, max=110)
 
@@ -182,7 +214,7 @@ class Player(BasePlayer):
 
     consent_answer = models.StringField(initial="")
 
-    question_answers = models.StringField(initial="")
+    question1_answers = models.StringField(initial="", blank=True)
     """Serialized JSON array representing the players answers
     
     The JSON array is two dimensional - the elements of the array represent
@@ -191,13 +223,14 @@ class Player(BasePlayer):
     each number inside the element represents the index of the choice the
     player made in the respective question - starting from 1.
     """
+    question2_answers = models.StringField(initial="", blank=True)
 
     block1_order = models.StringField(initial="")
 
     block2_order = models.StringField(initial="")
 
     plot1_order = models.StringField(initial="")
-    
+
     plot2_order = models.StringField(initial="")
 
     denominator = models.IntegerField(initial=0)
@@ -208,8 +241,7 @@ class Player(BasePlayer):
         self.current_plot_step += 1
 
     def goto_next_block_step(self) -> None:
-        """Advances the player to the next step
-        """
+        """Advances the player to the next step"""
         self.current_block_step += 1
 
     def get_current_block_step(self) -> int:
@@ -264,8 +296,7 @@ class Player(BasePlayer):
     def get_current_plot(self) -> Optional[Plot]:
         if self.set_1:
             if self.current_plot_step < len(PLOTS1):
-                plot_index = json.loads(self.plot1_order)[
-                    self.current_plot_step]
+                plot_index = json.loads(self.plot1_order)[self.current_plot_step]
                 if 0 <= plot_index < len(PLOTS1):
                     return PLOTS1[plot_index]
             else:
@@ -273,8 +304,7 @@ class Player(BasePlayer):
                 return False
         else:
             if self.current_plot_step < len(PLOTS2):
-                plot_index = json.loads(self.plot2_order)[
-                    self.current_plot_step]
+                plot_index = json.loads(self.plot2_order)[self.current_plot_step]
                 if 0 <= plot_index < len(PLOTS2):
                     return PLOTS2[plot_index]
             else:
@@ -284,16 +314,14 @@ class Player(BasePlayer):
     def get_next_plot(self) -> Optional[Plot]:
         if self.set_1:
             if self.current_plot_step + 1 < len(PLOTS1):
-                plot_index = json.loads(self.plot1_order)[
-                    self.current_plot_step + 1]
+                plot_index = json.loads(self.plot1_order)[self.current_plot_step + 1]
                 if 0 <= plot_index < len(PLOTS1):
                     return PLOTS1[plot_index]
             else:
                 return False
         else:
             if self.current_plot_step + 1 < len(PLOTS2):
-                plot_index = json.loads(self.plot2_order)[
-                    self.current_plot_step + 1]
+                plot_index = json.loads(self.plot2_order)[self.current_plot_step + 1]
                 if 0 <= plot_index < len(PLOTS2):
                     return PLOTS2[plot_index]
             else:

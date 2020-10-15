@@ -3,7 +3,8 @@
         We use an IIFE to properly encapsulate all JavaScript code and prevent
         leaking anything into global scope.
      */
-    var answersInput = jQuery('#timepref__answers');
+    var answersInput = jQuery("#timepref__answers")
+
     if (!answersInput.length) {
         throw new Error('cannot find answers input #timepref__answers');
     }
@@ -102,18 +103,5 @@
             jQuery('.timepref__next-button').show();
             jQuery('.timepref__waiting').hide();
         }
-    }
-
-    /**
-     * Updates all displayed values for the given slider choice index (1-based).
-     * @param questionRow The TR for the question
-     * @param choiceIndex The selected choice index (1-based)
-     */
-    function updateSliderValues(questionRow, choiceIndex) {
-        var startValue = questionRow.find('.timepref__question-start-values').children().eq(choiceIndex - 1).html();
-        var endValue = questionRow.find('.timepref__question-end-values').children().eq(choiceIndex - 1).html();
-
-        questionRow.find('.timepref__question-start-value').html(startValue);
-        questionRow.next().find('.timepref__question-end-value').html(endValue);
     }
 }());

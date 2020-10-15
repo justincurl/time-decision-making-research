@@ -70,8 +70,13 @@
     </tbody>
 </table>
 
-<input id="timepref__answers" type="hidden" name="question_answers" data-block-index="{{ block_index }}"
-    value="{{player.question_answers}}">
+{% if player.set_1 %}
+<input id="timepref__answers" type="hidden" name="question1_answers" data-block-index="{{ block_index }}"
+    value="{{player.question1_answers}}">
+{% else %}
+<input id="timepref__answers" type="hidden" name="question2_answers" data-block-index="{{ block_index }}"
+    value="{{player.question2_answers}}">
+{% endif %}
 
 <script>
     function alertFunctionPlot() {

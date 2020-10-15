@@ -6,16 +6,11 @@
 <div class="progress">
     <div class="progress-bar" style="width: {{ progress }}%"></div>
 </div>
-<br><br>
+<br>
+
 <div class="results" align="justify">
-    <p>
-        How willing are you to give up something that is beneficial for you today in order to benefit more from that in
-        the future?
-        <br><br>
-        Please answer on a scale from 0 to 10, where 0 means completely unwilling to do so, and 10 means very willing to
-        do so.
-    </p>
-    <div class="formfield text-center">{% formfield player.benefit_today label="" %}</div>
+    <p>{{instructions}}</p>
+    <div class="formfield">{% formfield player.check_2 label="" %}</div>
 </div>
 
 <script>
@@ -40,9 +35,5 @@
 </div>
 
 <script>jQuery(".next-button").hide();</script>
-
-{% block styles %}
-<link rel="stylesheet" href="{% static 'CTB/styles/block.css' %}" />
-{% endblock %}
 
 {% endblock %}

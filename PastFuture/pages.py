@@ -14,7 +14,7 @@ class HLPage(Page):
     # This page will automatically retrieve the current `Block` to be displayed
     # to the player from the player's current block.
     form_model = "player"
-    form_fields = ["question_answers"]
+    form_fields = ["question1_answers", "question2_answers"]
 
     def is_displayed(self):
         # This page will only be displayed when there are blocks left
@@ -51,9 +51,9 @@ class HLPage(Page):
                 instructions2 = "proposed national economy"
         else:
             if self.player.first[:2] == "HL":
-                progress_num = page + (len(PLOTS1) // 2) + 7
+                progress_num = (page + (len(PLOTS1) // 2) + 7) * 100
             else:
-                progress_num = page + len(BLOCKS1) + 7
+                progress_num = (page + len(BLOCKS1) + 7) * 100
 
             num_plots = len(PLOTS2)
             if self.player.second[2:] == "Past":
@@ -61,9 +61,6 @@ class HLPage(Page):
             else:
                 instructions2 = "proposed national economy"
 
-            progress_num = (page + 10) * 100
-
-            progress_num = (page) * 100
         progress = round(progress_num / self.player.denominator)
 
         return {
@@ -92,7 +89,7 @@ class BlockPage(Page):
     # to the player from the player's current block.
 
     form_model = "player"
-    form_fields = ["question_answers"]
+    form_fields = ["question1_answers", "question2_answers"]
 
     def is_displayed(self):
         # This page will only be displayed when there are blocks left
@@ -477,7 +474,7 @@ class Consent(Page):
         now = datetime.datetime.now()
         current_time = now.strftime("%H:%M:%S")
         self.player.start_time = json.dumps(current_time)
-        self.player.denominator = 13
+        self.player.denominator = 15
         if self.player.first[:2] == "HL":
             self.player.denominator += len(PLOTS1) // 2
         else:
@@ -514,9 +511,9 @@ class Dice(Page):
 
     def vars_for_template(self):
         if self.player.first[:2] == "HL":
-            progress_num = ((len(PLOTS1) // 2) + 1) * 100
+            progress_num = ((len(PLOTS1) // 2) + 2) * 100
         else:
-            progress_num = (len(BLOCKS1) + 1) * 100
+            progress_num = (len(BLOCKS1) + 2) * 100
 
         progress = progress_num / self.player.denominator
         return {
@@ -533,11 +530,16 @@ class Disease(Page):
             json.loads(self.player.consent_answer) == 1
         )
 
+    def before_next_page(self):
+        self.player.set_1 = False
+        self.player.current_plot_step = 0
+        self.player.current_block_step = 0
+
     def vars_for_template(self):
         if self.player.first[:2] == "HL":
-            progress_num = ((len(PLOTS1) // 2) + 4) * 100
+            progress_num = ((len(PLOTS1) // 2) + 5) * 100
         else:
-            progress_num = (len(BLOCKS1) + 4) * 100
+            progress_num = (len(BLOCKS1) + 5) * 100
         progress = progress_num / self.player.denominator
         return {
             "progress": progress,
@@ -555,9 +557,9 @@ class Lottery(Page):
 
     def vars_for_template(self):
         if self.player.first[:2] == "HL":
-            progress_num = ((len(PLOTS1) // 2) + 2) * 100
+            progress_num = ((len(PLOTS1) // 2) + 3) * 100
         else:
-            progress_num = (len(BLOCKS1) + 2) * 100
+            progress_num = (len(BLOCKS1) + 3) * 100
 
         progress = progress_num / self.player.denominator
         return {
@@ -601,10 +603,7 @@ class BenefitToday(Page):
         )
 
     def vars_for_template(self):
-        if self.player.first[:2] == "HL":
-            progress_num = ((len(PLOTS1) // 2) + 5) * 100
-        else:
-            progress_num = (len(BLOCKS1) + 5) * 100
+        progress_num = (self.player.denominator - 7) * 100
         progress = progress_num / self.player.denominator
         return {
             "progress": progress,
@@ -621,10 +620,7 @@ class TakeRisks(Page):
         )
 
     def vars_for_template(self):
-        if self.player.first[:2] == "HL":
-            progress_num = ((len(PLOTS1) // 2) + 6) * 100
-        else:
-            progress_num = (len(BLOCKS1) + 6) * 100
+        progress_num = (self.player.denominator - 6) * 100
         progress = progress_num / self.player.denominator
         return {
             "progress": progress,
@@ -640,19 +636,56 @@ class Impulsive(Page):
             json.loads(self.player.consent_answer) == 1
         )
 
-    def before_next_page(self):
-        self.player.set_1 = False
-        self.player.current_plot_step = 0
-        self.player.current_block_step = 0
-
     def vars_for_template(self):
-        if self.player.first[:2] == "HL":
-            progress_num = (len(PLOTS1) // 2 + 7) * 100
-        else:
-            progress_num = (len(BLOCKS1) + 7) * 100
+        progress_num = (self.player.denominator - 5) * 100
         progress = progress_num / self.player.denominator
         return {
             "progress": progress,
+        }
+
+
+class Check1(Page):
+    form_model = "player"
+    form_fields = ["check_1"]
+
+    def is_displayed(self):
+        return json.loads(self.player.consent_answer) == 1
+
+    def vars_for_template(self):
+        if self.player.first[:2] == "HL":
+            progress_num = ((len(PLOTS1) // 2) + 1) * 100
+        else:
+            progress_num = (len(BLOCKS1) + 1) * 100
+
+        progress = progress_num / self.player.denominator
+
+        if self.player.first[:3] == "CTB":
+            instructions = "On the previous pages, were you choosing growth rates for two years of past economic growth, or future economic growth? "
+        else:
+            instructions = "On the previous pages, were you rating the condition of past economic growth or future economic growth? "
+
+        return {
+            "instructions": instructions,
+            "progress": progress,
+        }
+
+
+class Check2(Page):
+    form_model = "player"
+    form_fields = ["check_2"]
+
+    def is_displayed(self):
+        return json.loads(self.player.consent_answer) == 1
+
+    def vars_for_template(self):
+        if self.player.second[:3] == "CTB":
+            instructions = "On the previous pages, were you choosing growth rates for two years of past economic growth, or future economic growth? "
+        else:
+            instructions = "On the previous pages, were you rating the condition of past economic growth or future economic growth? "
+
+        return {
+            "instructions": instructions,
+            "progress": (self.player.denominator - 8) / self.player.denominator * 100,
         }
 
 
@@ -702,13 +735,11 @@ def generate_page_sequence():
         + [CTBFuture]
         + [HLPage] * (len(PLOTS1) // 2)
         + [BlockPage] * len(BLOCKS1)
+        + [Check1]
         + [Dice]
         + [Lottery]
         + [Attention]
         + [Disease]
-        + [BenefitToday]
-        + [TakeRisks]
-        + [Impulsive]
         + [HLFuturePast]
         + [HLFutureCTB]
         + [HLPastFuture]
@@ -719,6 +750,10 @@ def generate_page_sequence():
         + [CTBPastFuture]
         + [HLPage] * (len(PLOTS2) // 2)
         + [BlockPage] * len(BLOCKS2)
+        + [Check2]
+        + [BenefitToday]
+        + [TakeRisks]
+        + [Impulsive]
         + [GenderAge]
         + [Education]
         + [EthnicityRace]
