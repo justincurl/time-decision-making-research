@@ -7,6 +7,29 @@
     <div class="progress-bar" style="width: {{ progress }}%"></div>
 </div>
 <br>
+
+<style>
+    .take_risks-choice,
+    .take_risks-choice input {
+        cursor: pointer;
+    }
+
+    .take_risks-choices:hover {
+        background-color: #e5e5e5;
+    }
+
+    .take_risks-choices:selected,
+    .take_risks-choices-selected:hover {
+        background-color: #baf8b9;
+    }
+
+    .take_risks_labels th {
+        vertical-align: middle;
+        background-color: #baf8b9;
+        border-bottom: 2px solid #ccc;
+    }
+</style>
+
 <div class="results" align="justify">
     <p>
         How do you see yourself: Are you generally a person who is fully prepared to take risks or do you try to avoid
@@ -15,7 +38,29 @@
         Please answer on a scale from 0 to 10, where 0 means unwilling to take risks, and 10 means fully prepared to
         take risks.
     </p>
-    <div class="formfield text-center">{% formfield player.take_risks label="" %}</div>
+    <table style="width: 100%" class="table text-center">
+        <tbody>
+            <form>
+                <tr>
+                    {% for choice in form.take_risks %}
+                    <td>
+                        <label class="take_risks-labels"
+                            for="take_risks_{{forloop.counter}}">{{choice.choice_label}}</label>
+                    </td>
+                    {% endfor %}
+                </tr>
+                <br>
+                <tr>
+                    {% for choice in form.take_risks %}
+                    <td>
+                        <input class="take_risks-choices" id="take_risks_{{forloop.counter}}" name="take_risks"
+                            type="radio" value={{choice.choice_label}} />
+                    </td>
+                    {% endfor %}
+                </tr>
+            </form>
+        </tbody>
+    </table>
 </div>
 
 <script>
@@ -25,7 +70,7 @@
         jQuery('.next-button').show();
         return false
     }
-    jQuery(".formfield").on("click", function () {
+    jQuery(".take_risks-choices").on("click", function () {
         jQuery(".next-button").show();
         jQuery(".waiting").hide();
     });

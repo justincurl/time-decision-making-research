@@ -14,7 +14,29 @@
         <br><br>
         Please answer on a scale from 0 to 10, where 0 means not at all impulsive and 10 means very impulsive.
     </p>
-    <div style="width:100%" class="formfield text-center">{% formfield player.impulsive label="" %}</div>
+    <table style="width: 100%" class="table text-center">
+        <tbody>
+            <form>
+                <tr>
+                    {% for choice in form.impulsive %}
+                    <td>
+                        <label class="impulsive-labels"
+                            for="impulsive_{{forloop.counter}}">{{choice.choice_label}}</label>
+                    </td>
+                    {% endfor %}
+                </tr>
+                <br>
+                <tr>
+                    {% for choice in form.impulsive %}
+                    <td>
+                        <input class="impulsive-choices" id="impulsive_{{forloop.counter}}" name="impulsive"
+                            type="radio" value={{choice.choice_label}} />
+                    </td>
+                    {% endfor %}
+                </tr>
+            </form>
+        </tbody>
+    </table>
 </div>
 <br>
 <br>

@@ -44,7 +44,6 @@ class HLPage(Page):
         )
         if self.player.set_1:
             progress_num = page * 100
-            num_plots = len(PLOTS1)
             if self.player.first[2:] == "Past":
                 instructions2 = "past national economy"
             else:
@@ -55,7 +54,6 @@ class HLPage(Page):
             else:
                 progress_num = (page + len(BLOCKS1) + 7) * 100
 
-            num_plots = len(PLOTS2)
             if self.player.second[2:] == "Past":
                 instructions2 = "past national economy"
             else:

@@ -115,13 +115,13 @@ class Player(BasePlayer):
             [9, "9"],
             [10, "10 fully prepared to take risks"],
         ],
-        widget=widgets.RadioSelectHorizontal,
+        widget=widgets.RadioSelect,
         blank=True,
     )
 
     benefit_today = models.IntegerField(
         choices=[
-            [0, "completely unwilling to do so"],
+            [0, "0 completely unwilling to do so"],
             [1, "1"],
             [2, "2"],
             [3, "3"],
@@ -133,7 +133,7 @@ class Player(BasePlayer):
             [9, "9"],
             [10, "10 very willing to do so"],
         ],
-        widget=widgets.RadioSelectHorizontal,
+        widget=widgets.RadioSelect,
         blank=True,
     )
 
@@ -151,7 +151,7 @@ class Player(BasePlayer):
             [9, "9"],
             [10, "10 very impulsive"],
         ],
-        widget=widgets.RadioSelectHorizontal,
+        widget=widgets.RadioSelect,
         blank=True,
     )
 
