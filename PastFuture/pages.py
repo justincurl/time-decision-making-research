@@ -727,6 +727,7 @@ def generate_page_sequence():
         [DeviceType]
         + [PhoneDevice]
         + [Consent]
+        + [TakeRisks]
         + [HLPast]
         + [HLFuture]
         + [CTBPast]

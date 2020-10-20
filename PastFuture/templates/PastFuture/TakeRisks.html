@@ -9,24 +9,13 @@
 <br>
 
 <style>
-    .take_risks-choice,
-    .take_risks-choice input {
-        cursor: pointer;
+    table {
+        table-layout: fixed;
+        width: 100%;
     }
 
-    .take_risks-choices:hover {
-        background-color: #e5e5e5;
-    }
-
-    .take_risks-choices:selected,
-    .take_risks-choices-selected:hover {
-        background-color: #baf8b9;
-    }
-
-    .take_risks_labels th {
-        vertical-align: middle;
-        background-color: #baf8b9;
-        border-bottom: 2px solid #ccc;
+    td {
+        width: 25%;
     }
 </style>
 
@@ -41,6 +30,23 @@
     <table style="width: 100%" class="table text-center">
         <tbody>
             <form>
+                <tr>
+                    <td>
+                        completely unwilling to take risks
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        fully prepared to take risks
+                    </td>
+                </tr>
                 <tr>
                     {% for choice in form.take_risks %}
                     <td>

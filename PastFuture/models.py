@@ -103,7 +103,7 @@ class Player(BasePlayer):
 
     take_risks = models.IntegerField(
         choices=[
-            [0, "0 completely unwilling to take risks"],
+            [0, "0"],
             [1, "1"],
             [2, "2"],
             [3, "3"],
@@ -113,7 +113,7 @@ class Player(BasePlayer):
             [7, "7"],
             [8, "8"],
             [9, "9"],
-            [10, "10 fully prepared to take risks"],
+            [10, "10 "],
         ],
         widget=widgets.RadioSelect,
         blank=True,
@@ -121,7 +121,7 @@ class Player(BasePlayer):
 
     benefit_today = models.IntegerField(
         choices=[
-            [0, "0 completely unwilling to do so"],
+            [0, "0"],
             [1, "1"],
             [2, "2"],
             [3, "3"],
@@ -131,7 +131,7 @@ class Player(BasePlayer):
             [7, "7"],
             [8, "8"],
             [9, "9"],
-            [10, "10 very willing to do so"],
+            [10, "10"],
         ],
         widget=widgets.RadioSelect,
         blank=True,
@@ -139,7 +139,7 @@ class Player(BasePlayer):
 
     impulsive = models.IntegerField(
         choices=[
-            [0, "0 not at all impulsive"],
+            [0, "0"],
             [1, "1"],
             [2, "2"],
             [3, "3"],
@@ -149,7 +149,7 @@ class Player(BasePlayer):
             [7, "7"],
             [8, "8"],
             [9, "9"],
-            [10, "10 very impulsive"],
+            [10, "10"],
         ],
         widget=widgets.RadioSelect,
         blank=True,
