@@ -32,22 +32,22 @@ RANDOMIZE_PLOTS = True
 
 
 all_left_values = [
-    [0.85, 1.7, 3.4, 6.8, 13.6],
-    [0.9, 1.8, 3.6, 7.2, 14.4],
-    [0.725, 1.45, 2.9, 5.8, 11.6],
-    [0.9, 1.8, 3.6, 7.2, 14.4],
-    [0.775, 1.55, 3.1, 6.2, 12.4],
-    [0.825, 1.65, 3.3, 6.6, 13.2],
+    [1.5, 2.5, 4, 6.4, 10.7],
+    [1, 2, 3.5, 6.1, 12.3],
+    [1.5, 2.6, 4.1, 6.5, 11.2],
+    [1, 2, 3, 4.5, 9],
+    [1.5, 2.9, 4.4, 6.7, 12.9],
+    [1.5, 2.5, 4.5, 8.1, 13.5],
 ]
 
 
 all_right_values = [
-    [3.4, 3.4, 3.4, 3.4, 3.4],
-    [3.6, 3.6, 3.6, 3.6, 3.6],
-    [2.9, 2.9, 2.9, 2.9, 2.9],
-    [3.6, 3.6, 3.6, 3.6, 3.6],
-    [3.1, 3.1, 3.1, 3.1, 3.1],
-    [3.3, 3.3, 3.3, 3.3, 3.3],
+    [4, 4, 4, 4, 4],
+    [3.5, 3.5, 3.5, 3.5, 3.5],
+    [4.1, 4.1, 4.1, 4.1, 4.1],
+    [3, 3, 3, 3, 3],
+    [4.4, 4.4, 4.4, 4.4, 4.4],
+    [4.5, 4.5, 4.5, 4.5, 4.5],
 ]
 
 block1_order = [i for i in range(NUM_BLOCKS)]
@@ -155,27 +155,25 @@ BLOCKS2 = [
     ),
 ]
 
-NUM_PLOTS = 18
+NUM_PLOTS = 16
 
 plot_links = [
-    "https://i.imgur.com/sH9YQiQ.png",
-    "https://i.imgur.com/8qaYO7I.png",
-    "https://i.imgur.com/rDgwEYP.png",
-    "https://i.imgur.com/9ufxb8h.png",
-    "https://i.imgur.com/aI805Ti.png",
-    "https://i.imgur.com/ut9ksk4.png",
-    "https://i.imgur.com/eFEVW00.png",
-    "https://i.imgur.com/osFSpsG.png",
-    "https://i.imgur.com/1BOqhIe.png",
-    "https://i.imgur.com/chWQ17R.png",
-    "https://i.imgur.com/WKHOMT7.png",
-    "https://i.imgur.com/N2CmC5E.png",
-    "https://i.imgur.com/E8n0Lbo.png",
-    "https://i.imgur.com/6SPZcfz.png",
-    "https://i.imgur.com/P0EKWit.png",
-    "https://i.imgur.com/uz0E0hJ.png",
-    "https://i.imgur.com/0t7BhoX.png",
-    "https://i.imgur.com/N0NA4Gs.png",
+    "https://i.imgur.com/JcaBGNi.png",
+    "https://i.imgur.com/ej3I1aa.png",
+    "https://i.imgur.com/ZZItnq7.png",
+    "https://i.imgur.com/if5oLFh.png",
+    "https://i.imgur.com/vdbplSb.png",
+    "https://i.imgur.com/t4sdSV6.png",
+    "https://i.imgur.com/cCClmIn.png",
+    "https://i.imgur.com/KgzsIH7.png",
+    "https://i.imgur.com/kIlFFs8.png",
+    "https://i.imgur.com/UndrAVo.png",
+    "https://i.imgur.com/2BTKhi0.png",
+    "https://i.imgur.com/vXTvq8a.png",
+    "https://i.imgur.com/7YfqKtd.png",
+    "https://i.imgur.com/4AAqISx.png",
+    "https://i.imgur.com/TW3JYOC.png",
+    "https://i.imgur.com/ma5nWH0.png",
 ]
 
 PLOTS1 = [Plot(image_link=plot_links[i]) for i in range(NUM_PLOTS)]
