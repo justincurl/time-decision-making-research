@@ -27,6 +27,16 @@ OTREE_AUTH_LEVEL = "DEMO"
 
 SESSION_CONFIGS = [
     dict(
+        name="SliderCTB",
+        display_name="Slider CTB",
+        num_demo_participants=3,
+        app_sequence=["Slider"],
+        earlier_time="",
+        later_time="",
+        earlier_payment=1000,
+        later_payment=1100,
+    ),
+    dict(
         name="oTimeCTB",
         display_name="oTime CTB",
         num_demo_participants=3,
