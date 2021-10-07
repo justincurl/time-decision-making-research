@@ -31,10 +31,11 @@ SESSION_CONFIGS = [
         display_name="Slider CTB",
         num_demo_participants=3,
         app_sequence=["Slider"],
-        earlier_time="",
-        later_time="",
-        earlier_payment=1000,
-        later_payment=1100,
+        t_earliers="Today, Today, Today, Today, Today, 8 Weeks from Today, 8 Weeks from Today, 8 Weeks from Today, 8 Weeks from Today, 8 Weeks from Today",
+        t_laters="8 Weeks from Today, 8 Weeks from Today, 8 Weeks from Today, 8 Weeks from Today, 8 Weeks from Today, 16 Weeks from Today, 16 Weeks from Today, 16 Weeks from Today, 16 Weeks from Today, 16 Weeks from Today",
+        payment_earliers="1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000",
+        payment_laters="1000, 1250, 1500, 2000, 2500, 1000, 1250, 1500, 2000, 2500",
+        num_sliders=10
     ),
     dict(
         name="oTimeCTB",

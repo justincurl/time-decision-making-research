@@ -10,6 +10,7 @@ from otree.api import (
     BasePlayer,
     widgets,
 )
+from otree.models import player
 
 author = "Justin Curl <jcurl@princeton.edu>"
 
@@ -17,22 +18,46 @@ author = "Justin Curl <jcurl@princeton.edu>"
 class Constants(BaseConstants):
     name_in_url = "Slider"
     players_per_group = None
-    num_rounds = 12
-    
+    num_rounds = 14
 
 class Subsession(BaseSubsession):
     def creating_session(self):
+        t_earliers = self.session.config['t_earliers'].split(', ')
+        t_laters = self.session.config['t_laters'].split(', ')
+        payment_earliers = self.session.config['payment_earliers'].split(', ')
+        payment_laters = self.session.config['payment_laters'].split(', ')
+
+        round_configs = []
+        for i in range(self.session.config['num_sliders']):
+            round_configs.append((t_earliers[i], t_laters[i], payment_earliers[i], payment_laters[i]))
+
+        import itertools, random
+        round_configs = itertools.cycle(round_configs)
+        if self.round_number == 1:
+            start_idx = random.randrange(self.session.config['num_sliders'])
+        else:
+            idx_candidate = self.get_players()[0].in_round(self.round_number - 1).condition_idx + 1
+            if idx_candidate >= self.session.config['num_sliders']:
+                start_idx = 1
+            else:
+                start_idx = idx_candidate
+    
+        iteration_start = itertools.islice(round_configs, start_idx, None)
+
         for p in self.get_players():
-            p.earlier_time = p.session.config['earlier_time']  # example: today
-            p.later_time = p.session.config['later_time']
-            p.earlier_max = p.session.config['earlier_payment'] 
-            p.later_max = p.session.config['later_payment']
+            player_config = next(iteration_start)
+            p.condition_idx = start_idx
+            p.earlier_time = player_config[0]  # example: today
+            p.later_time = player_config[1]
+            p.earlier_max = int(player_config[2])
+            p.later_max = int(player_config[3])
 
 class Group(BaseGroup):
     pass
 
 
 class Player(BasePlayer):
+    condition_idx = models.IntegerField()
     start_time = models.StringField()
     finish_time = models.StringField()
     total_time = models.StringField()
