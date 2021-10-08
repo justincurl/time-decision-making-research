@@ -162,8 +162,8 @@ class SliderSimple(Page):
 
     def is_displayed(self):
         return (
-            (self.player.round_number != Constants.num_rounds) and 
-            (self.player.round_number != 1) and
+            (self.player.round_number <= self.player.session.config["num_sliders"] + 1) and 
+            (self.player.round_number > 1) and
             (json.loads(self.participant.vars["consent_answer"]) == 1)
         )
 

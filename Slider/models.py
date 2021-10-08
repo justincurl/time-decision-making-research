@@ -1,5 +1,5 @@
 import json
-from typing import Optional, List
+import random
 
 
 from otree.api import (
@@ -18,7 +18,7 @@ author = "Justin Curl <jcurl@princeton.edu>"
 class Constants(BaseConstants):
     name_in_url = "Slider"
     players_per_group = None
-    num_rounds = 14
+    num_rounds = 42
 
 class Subsession(BaseSubsession):
     def creating_session(self):
@@ -31,33 +31,28 @@ class Subsession(BaseSubsession):
         for i in range(self.session.config['num_sliders']):
             round_configs.append((t_earliers[i], t_laters[i], payment_earliers[i], payment_laters[i]))
 
-        import itertools, random
-        round_configs = itertools.cycle(round_configs)
-        if self.round_number == 1:
-            start_idx = random.randrange(self.session.config['num_sliders'])
-        else:
-            idx_candidate = self.get_players()[0].in_round(self.round_number - 1).condition_idx + 1
-            if idx_candidate >= self.session.config['num_sliders']:
-                start_idx = 1
-            else:
-                start_idx = idx_candidate
-    
-        iteration_start = itertools.islice(round_configs, start_idx, None)
-
-        for p in self.get_players():
-            player_config = next(iteration_start)
-            p.condition_idx = start_idx
-            p.earlier_time = player_config[0]  # example: today
-            p.later_time = player_config[1]
-            p.earlier_max = int(player_config[2])
-            p.later_max = int(player_config[3])
+        for i, p in enumerate(self.get_players()):
+            if self.round_number == 1:
+                # randomize slider order for each player
+                slider_order = [j for j in range(self.session.config['num_sliders'])]
+                random.shuffle(slider_order)
+                p.slider_order = json.dumps(slider_order)
+                print(p.slider_order)
+            elif self.round_number <= self.session.config['num_sliders'] + 1:
+                # only go for the configurable number of sliders
+                p.slider_order = p.in_round(self.round_number - 1).slider_order
+                player_config = round_configs[json.loads(p.slider_order)[self.round_number - 2]]
+                p.earlier_time = player_config[0]  # example: today
+                p.later_time = player_config[1]
+                p.earlier_max = int(player_config[2])
+                p.later_max = int(player_config[3])
 
 class Group(BaseGroup):
     pass
 
 
 class Player(BasePlayer):
-    condition_idx = models.IntegerField()
+    slider_order = models.StringField()
     start_time = models.StringField()
     finish_time = models.StringField()
     total_time = models.StringField()
