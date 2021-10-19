@@ -16,31 +16,31 @@ author = "Justin Curl <jcurl@princeton.edu>"
 
 
 class Constants(BaseConstants):
-    name_in_url = "Slider"
+    name_in_url = "FutureSlider"
     players_per_group = None
     num_rounds = 21
 
 class Subsession(BaseSubsession):
     def creating_session(self):
-        t_earliers = self.session.config['t_earliers'].split(', ')
-        t_laters = self.session.config['t_laters'].split(', ')
-        payment_earliers = self.session.config['payment_earliers'].split(', ')
-        payment_laters = self.session.config['payment_laters'].split(', ')
+        t_earliers = self.session.config['future_t_earliers'].split(', ')
+        t_laters = self.session.config['future_t_laters'].split(', ')
+        payment_earliers = self.session.config['future_payment_earliers'].split(', ')
+        payment_laters = self.session.config['future_payment_laters'].split(', ')
 
         round_configs = []
-        for i in range(self.session.config['num_sliders']):
+        for i in range(self.session.config['future_num_sliders']):
             round_configs.append((t_earliers[i], t_laters[i], payment_earliers[i], payment_laters[i]))
 
         for i, p in enumerate(self.get_players()):
-            if self.session.config["randomize_sliders"]:
+            if self.session.config["future_randomize_sliders"]:
                 if self.round_number == 1:
                     # randomize slider order for each player
-                    slider_order = [j for j in range(self.session.config['num_sliders'])]
+                    slider_order = [j for j in range(self.session.config['future_num_sliders'])]
                     random.shuffle(slider_order)
                     p.slider_order = json.dumps(slider_order)
                 else:
                     p.slider_order = p.in_round(self.round_number - 1).slider_order
-                if self.round_number <= self.session.config['num_sliders']:
+                if self.round_number <= self.session.config['future_num_sliders']:
                     # only go for the configurable number of sliders
                     player_config = round_configs[json.loads(p.slider_order)[self.round_number - 1]]
                     p.earlier_time = player_config[0]  # example: today
@@ -48,7 +48,7 @@ class Subsession(BaseSubsession):
                     p.earlier_max = int(player_config[2])
                     p.later_max = int(player_config[3])
             else:
-                if self.round_number <= self.session.config['num_sliders']:
+                if self.round_number <= self.session.config['future_num_sliders']:
                     player_config = round_configs[self.round_number - 1]
                     p.earlier_time = player_config[0]  # example: today
                     p.later_time = player_config[1]

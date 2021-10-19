@@ -51,6 +51,7 @@ class Slider(Page):
 class PastInstructions(Page):
     def is_displayed(self):
         return (
+            self.round_number == 1 and
             json.loads(self.participant.vars["consent_answer"]) == 1
         )
 

@@ -15,7 +15,7 @@ use Convex Time Budget analysis to analyze
 
 
 class Constants(BaseConstants):
-    name_in_url = "CTB"
+    name_in_url = "FutureCTB"
     players_per_group = None
     num_rounds = 1
     max_blocks = 6
@@ -26,19 +26,19 @@ class Subsession(BaseSubsession):
         """Initializes the 
         session and creates the order in which the Blocks should be run through
         """
-        CTB_right_values = self.session.config["CTB_right_values"].split(", ")
+        CTB_right_values = self.session.config["future_CTB_right_values"].split(", ")
         CTB_right_values = [float(i) for i in CTB_right_values]
-        CTB_left_values = self.session.config["CTB_left_values"].split(", ")
+        CTB_left_values = self.session.config["future_CTB_left_values"].split(", ")
         CTB_left_values = [float(i) for i in CTB_left_values]
-        CTB_t_earliers = self.session.config['CTB_t_earliers'].split(', ')
-        CTB_t_laters = self.session.config['CTB_t_laters'].split(', ')
-        block_order = [i for i in range(self.session.config["num_blocks"])]
+        CTB_t_earliers = self.session.config['future_CTB_t_earliers'].split(', ')
+        CTB_t_laters = self.session.config['future_CTB_t_laters'].split(', ')
+        block_order = [i for i in range(self.session.config["future_num_blocks"])]
 
-        block_size = self.session.config["block_size"]
+        block_size = self.session.config["future_block_size"]
 
         CTB_blocks_left = []
         CTB_blocks_right = []
-        for i in range(self.session.config["num_blocks"]):
+        for i in range(self.session.config["future_num_blocks"]):
             CTB_blocks_left.append(CTB_left_values[i*block_size:(i+1)*block_size])
             CTB_blocks_right.append(CTB_right_values[i*block_size:(i+1)*block_size])
 
@@ -56,7 +56,7 @@ class Subsession(BaseSubsession):
 
         for player in self.get_players():
             player.blocks = codecs.encode(pickle.dumps(Blocks), "base64").decode()
-            if self.session.config["randomize_blocks"]:
+            if self.session.config["future_randomize_blocks"]:
                 random.shuffle(block_order)
             player.block_order = json.dumps(block_order)
 
