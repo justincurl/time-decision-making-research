@@ -22,13 +22,23 @@ SESSION_CONFIG_DEFAULTS = dict(
     ),
 )
 
-OTREE_ADMIN_PASSWORD = "markusprior"
 OTREE_AUTH_LEVEL = "DEMO"
 
 SESSION_CONFIGS = [
     dict(
-        name="SliderCTB",
-        display_name="Slider CTB",
+        name="Slider_Full",
+        display_name="Slider Full",
+        num_demo_participants=3,
+        app_sequence=["consent", "Slider", "demographics"],
+        t_earliers="Today, Today, Today, Today, Today, 8 Weeks from Today, 8 Weeks from Today, 8 Weeks from Today, 8 Weeks from Today, 8 Weeks from Today",
+        t_laters="8 Weeks from Today, 8 Weeks from Today, 8 Weeks from Today, 8 Weeks from Today, 8 Weeks from Today, 16 Weeks from Today, 16 Weeks from Today, 16 Weeks from Today, 16 Weeks from Today, 16 Weeks from Today",
+        payment_earliers="1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000",
+        payment_laters="1000, 1250, 1500, 2000, 2500, 1000, 1250, 1500, 2000, 2500",
+        num_sliders=10
+    ), 
+    dict(
+        name="Slider_Only",
+        display_name="Slider Only",
         num_demo_participants=3,
         app_sequence=["Slider"],
         t_earliers="Today, Today, Today, Today, Today, 8 Weeks from Today, 8 Weeks from Today, 8 Weeks from Today, 8 Weeks from Today, 8 Weeks from Today",
@@ -37,24 +47,24 @@ SESSION_CONFIGS = [
         payment_laters="1000, 1250, 1500, 2000, 2500, 1000, 1250, 1500, 2000, 2500",
         num_sliders=10
     ),
-    dict(
-        name="oTimeCTB",
-        display_name="oTime CTB",
-        num_demo_participants=3,
-        app_sequence=["simple_survey", "otime"],
-    ),
-    dict(
-        name="HLandCTB",
-        display_name="H&L and CTB",
-        num_demo_participants=3,
-        app_sequence=["CTB"],
-    ),
-    dict(
-        name="PastFuture",
-        display_name="Past & Future",
-        num_demo_participants=3,
-        app_sequence=["PastFuture"],
-    ),
+    # dict(
+    #     name="oTimeCTB",
+    #     display_name="oTime CTB",
+    #     num_demo_participants=3,
+    #     app_sequence=["simple_survey", "otime"],
+    # ),
+    # dict(
+    #     name="HLandCTB",
+    #     display_name="H&L and CTB",
+    #     num_demo_participants=3,
+    #     app_sequence=["CTB"],
+    # ),
+    # dict(
+    #     name="PastFuture",
+    #     display_name="Past & Future",
+    #     num_demo_participants=3,
+    #     app_sequence=["PastFuture"],
+    # ),
 ]
 
 # ISO-639 code

@@ -1,0 +1,78 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+	Slider
+{% endblock %}
+
+{% block content %}
+
+    {{ form.check_slider_one.errors }}
+    {{ form.check_slider_two.errors }}
+
+    <input type="hidden" name="check_slider_one" value="" id="id_check_slider_one"/>
+    <input type="hidden" name="check_slider_two" value="" id="id_check_slider_two"/>
+
+    <h5>Please click and drag the sliders to choose an allocation of check payment between {{earlier_time}} and {{later_time}}. <br><br>Note: Delaying your payment will increase the overall size of the payment </h5>
+    <hr>
+    <br>
+    
+    <table class="center">
+        <tr height="425px">
+            <td style="text-align: center;">
+                    <input type="range" name="slider_one" step=10 min=0 max={{earlier_max}} value="None" id="id_slider_one" class="rotate" class="form-control"/>
+                    <output class="bubble-one" id="feedback_one"></output>
+            </td>
+            <td style="text-align: center;">
+                    <div class="bubble-center" id="feedback_center">
+                        <div id="feedback_text"></div>
+                    </div>
+            </td>
+            <td style="text-align: center;">
+                    <input type="range" name="slider_two" step=10 min=0 max={{later_max}} value="None" id="id_slider_two" class="rotate" class="form-control"/>
+                    <output class="bubble-two" id="feedback_two"></output>
+            </td>
+        </tr>
+        <tr style="border-top: solid thick"> 
+            <td style="text-align: center;">
+                <h5 style="text-transform: uppercase;">{{earlier_time}}</h5>
+            </td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;">
+                <h5 style="text-transform: uppercase;">{{later_time}}</h5>
+            </td>
+        </tr>
+    </table>
+
+    <script>
+        function alertFunction() {
+            alert("In order for your answers to be most helpful to us, it is really important that you respond to all questions.")
+            jQuery('.waiting').hide();
+            jQuery('.next-button').show();
+            return false
+        }
+        jQuery(".formfield-age").on("click", function () {
+            jQuery(".next-button").show();
+            jQuery(".waiting").hide();
+        });
+    </script>
+    
+    <div class="waiting" onclick="return alertFunction();">
+        {% next_button %}
+    </div>
+    
+    <div class="next-button">
+        {% next_button %}
+    </div>
+    
+    <script>jQuery(".next-button").hide();</script>
+
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'Slider/styles/slider.css' %}" />
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'Slider/scripts/slider.js' %}"></script>
+{% endblock %}
