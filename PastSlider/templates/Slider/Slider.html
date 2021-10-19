@@ -1,0 +1,142 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+	Slider
+{% endblock %}
+
+{% block content %}
+
+    {{ form.check_slider_one.errors }}
+    {{ form.check_slider_two.errors }}
+
+    <input type="hidden" name="check_slider_one" value="" id="id_check_slider_one"/>
+    <input type="hidden" name="check_slider_two" value="" id="id_check_slider_two"/>
+
+    <h5>Please click and drag the sliders to choose an allocation of check payment between {{earlier_time}} and {{later_time}}. <br><br>Note: Delaying your payment will increase the overall size of the payment </h5>
+    <hr>
+    <br>
+    
+    <table class="center">
+        <tr height="425px">
+            <td style="text-align: center;">
+                    <input type="range" name="slider_one" step=10 min=0 max={{earlier_max}} value="None" id="id_slider_one" class="rotate" class="form-control"/>
+                    <output class="bubble-one" id="feedback_one"></output>
+            </td>
+            <td style="text-align: center;">
+                    <div class="bubble-center" id="feedback_center">
+                        <div id="feedback_text"></div>
+                    </div>
+            </td>
+            <td style="text-align: center;">
+                    <input type="range" name="slider_two" step=10 min=0 max={{later_max}} value="None" id="id_slider_two" class="rotate" class="form-control"/>
+                    <output class="bubble-two" id="feedback_two"></output>
+            </td>
+        </tr>
+        <tr style="border-top: solid thick"> 
+            <td style="text-align: center;">
+                <h5 style="text-transform: uppercase;">{{earlier_time}}</h5>
+            </td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;">
+                <h5 style="text-transform: uppercase;">{{later_time}}</h5>
+            </td>
+        </tr>
+    </table>
+    <script>
+        $(document).ready(function () {
+            // set step size
+            var earlier_max = {{ earlier_max }};
+            var later_max = {{ later_max }};
+            document.getElementById("id_slider_one").step = earlier_max/10;
+            document.getElementById("id_slider_two").step = later_max/10;
+        
+            // hide slider thumb until initial click
+            $('input[name=slider_one]').on('input change', function () {
+                $('input[name=slider_one]').addClass('slider_one_thumb');
+                $('input[name=slider_two]').addClass('slider_two_thumb');
+                var slider_one_val = earlier_max - $(this).val();
+                var slider_two_val = $(this).val()*later_max/earlier_max;
+                document.getElementById("id_slider_two").value = $(this).val()*later_max/earlier_max;
+                updateLabel(slider_one_val, slider_two_val);
+            });
+        
+            // handle changes in slider value
+            $('input[name=slider_one]').on('input', function() {
+                var slider_one_val = earlier_max - $(this).val();
+                var slider_two_val = $(this).val()*later_max/earlier_max;
+                document.getElementById("id_slider_two").value = slider_two_val; // links the two slider values together
+                updateLabel(slider_one_val, slider_two_val);
+                $('#check_slider_one').val(1);
+                $('#check_slider_two').val(1);
+            });
+        
+            // functions for slider 2
+        
+            // hide slider thumb until initial click
+            $('input[name=slider_two]').on('input change', function () {
+                $('input[name=slider_one]').addClass('slider_one_thumb');
+                $('input[name=slider_two]').addClass('slider_two_thumb');
+                var slider_two_val = $(this).val();
+                var slider_one_actual_val = slider_two_val*earlier_max/later_max;
+                var slider_one_display_val = earlier_max - slider_one_actual_val;
+                updateLabel(slider_one_display_val, slider_two_val);
+                document.getElementById("id_slider_one").value = slider_one_actual_val;
+            });
+        
+            // handle changes in slider value
+            $('input[name=slider_two]').on('input', function() {
+                var slider_two_val = $(this).val();
+                var slider_one_actual_val = slider_two_val*earlier_max/later_max;
+                var slider_one_display_val = earlier_max - slider_one_actual_val;
+                document.getElementById("id_slider_one").value = slider_one_actual_val;
+                updateLabel(slider_one_display_val, slider_two_val);
+                $('#check_slider_one').val(1);
+                $('#check_slider_two').val(1);
+            });
+        
+            function updateLabel(slider_one_val, slider_two_val) {
+                var f1 = document.getElementById("feedback_one");
+                var f2 = document.getElementById("feedback_two");
+                var fc = document.getElementById("feedback_center");
+                var ft = document.getElementById("feedback_text");
+                slider_one_norm = slider_one_val/earlier_max;
+                f1.style.top = (-315 + slider_one_norm*400)+"px";
+                f2.style.top = (-315 + slider_one_norm*400)+"px";
+                fc.style.top = (-215 + slider_one_norm*400)+"px";
+                f1.style.visibility = "visible";
+                f2.style.visibility = "visible";
+                fc.style.visibility = "visible";
+                f1.innerHTML = "$"+slider_one_val;
+                f2.innerHTML = "$"+slider_two_val;
+                ft.innerHTML = 'You will receive <strong>$'+slider_one_val+'</strong> {{earlier_time}} and <br>$<strong>'+slider_two_val+'</strong> {{later_time}}';
+            }
+        });   
+    </script>
+    <script>
+        function alertFunction() {
+            alert("In order for your answers to be most helpful to us, it is really important that you respond to all questions.")
+            jQuery('.waiting').hide();
+            jQuery('.next-button').show();
+            return false
+        }
+        jQuery(".rotate").on("click", function () {
+            jQuery(".next-button").show();
+            jQuery(".waiting").hide();
+        });
+    </script>
+    
+    <div class="waiting" onclick="return alertFunction();">
+        {% next_button %}
+    </div>
+    
+    <div class="next-button">
+        {% next_button %}
+    </div>
+    
+    <script>jQuery(".next-button").hide();</script>
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'Slider/styles/slider.css' %}" />
+{% endblock %}

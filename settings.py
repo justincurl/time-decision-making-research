@@ -35,7 +35,7 @@ SESSION_CONFIGS = [
         payment_earliers="1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000",
         payment_laters="1000, 1250, 1500, 2000, 2500, 1000, 1250, 1500, 2000, 2500",
         num_sliders=10,
-        random=False, 
+        randomize_sliders=False, 
         
     ), 
     dict(
@@ -48,7 +48,7 @@ SESSION_CONFIGS = [
         payment_earliers="1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000",
         payment_laters="1000, 1250, 1500, 2000, 2500, 1000, 1250, 1500, 2000, 2500",
         num_sliders=10,
-        randomize_slider=False
+        randomize_sliders=False
     ),
     dict(
         name="CTB_only",
@@ -62,6 +62,31 @@ SESSION_CONFIGS = [
         num_blocks=3,
         block_size=5,
         randomize_blocks=False
+    ),
+    dict(
+        name="Slider_CTB",
+        display_name="Slider then CTB",
+        num_demo_participants=3,
+        app_sequence=["consent", "Slider", "CTB", "demographics"],
+        t_earliers="Today, Today, Today, Today, Today, 8 Weeks from Today, 8 Weeks from Today, 8 Weeks from Today, 8 Weeks from Today, 8 Weeks from Today",
+        t_laters="8 Weeks from Today, 8 Weeks from Today, 8 Weeks from Today, 8 Weeks from Today, 8 Weeks from Today, 16 Weeks from Today, 16 Weeks from Today, 16 Weeks from Today, 16 Weeks from Today, 16 Weeks from Today",
+        payment_earliers="1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000",
+        payment_laters="1000, 1250, 1500, 2000, 2500, 1000, 1250, 1500, 2000, 2500",
+        num_sliders=10,
+        randomize_sliders=False,
+        CTB_left_values = "1, 2, 3, 4.5, 9, 1.5, 2.9, 4.4, 6.7, 12.9, 1.5, 2.5, 4.5, 8.1, 13.5", 
+        CTB_right_values = "3, 3, 3, 3, 3, 4.4, 4.4, 4.4, 4.4, 4.4, 4.5, 4.5, 4.5, 4.5, 4.5",
+        CTB_t_earliers="This Year, 1 Year from Now, 1 Year Ago",
+        CTB_t_laters="1 Year from Now, 2 Years from Now, This Year",
+        num_blocks=3,
+        block_size=5,
+        randomize_blocks=False
+    ),
+    dict(
+        name="Slider_CTB_Demo",
+        display_name="Sliders and CTB 10.19 Demo",
+        num_demo_participants=100,
+        app_sequence=["consent", "PastSlider","PastCTB", "FutureSlider", "FutureCTB", "demographics"],
     )
 ]
 

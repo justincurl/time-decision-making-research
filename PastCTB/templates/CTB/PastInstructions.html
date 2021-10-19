@@ -1,0 +1,47 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load staticfiles %}
+
+{% block title %}
+Participation Consent
+{% endblock %}
+
+{% block content %}
+
+<style>
+    .consent-choice {
+        padding-left: 3%;
+    }
+</style>
+
+<div class="question" align="justify">
+    We are interested in your views about job creation. A commission that oversees a federal annual fund had 
+    developed plans for the number of temporary (1-year contract) jobs created in the past few years. This annual 
+    fund was available starting two year ago until this year and would have been used for job creation as well as 
+    an unrelated different federal project. We want to know how you would have allocated new jobs between two 
+    years. It was possible to create all jobs in the earlier year or all jobs in the later year. It was also possible 
+    to the number of jobs created between the two years.
+    <br>
+    <br>
+
+    The commission had developed different for each of the following three programs: 
+<br>
+Program 1: Create new jobs either two years ago or one year ago, while using the funds for the unrelated federal project this year. 
+<br>
+Program 2: Create new jobs either two years ago or this year, while pausing job creation last year using the funds for the unrelated federal project.
+<br>
+Program 3: Create all new jobs either last year or this year, while using the funds for the unrelated federal project two years ago.
+<br>
+<br>
+
+For each program, you will be asked to make 6 choices, for a total of 18 choices over the past plans about job creation. Each of the 18 choices will be over how to best allocate the temporary jobs between two points in time. In other words, you will be asked to choose which combination of jobs created between the earlier year and the later year you think would have been best to implement. Please make each choice for each program as if it is the plan that would have been implemented. Remember there are no “right” or “wrong” answers.  
+</div>
+
+<br>
+
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'consent/scripts/consent.js' %}"></script>
+{% endblock %}

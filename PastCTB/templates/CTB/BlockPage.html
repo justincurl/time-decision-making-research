@@ -1,0 +1,90 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load staticfiles %}
+
+{% block content %}
+
+<br>
+
+<h4 align="center">{{question_instructions}} {{curr_block.text_delay_start}} vs. {{curr_block.text_total_end}}
+</h4>
+<br>
+
+<h6>
+    For each pair of years, mark the combination of growth rates that you evaluate as the strongest national economy in
+    this period.
+</h6>
+
+
+<table class="table table-bordered">
+    <tbody>
+        {% for question in curr_block.questions %}
+        <tr
+            class="timepref__question-start timepref__question-unanswered timepref__question-index-{{questions_to_page|add:question.index}}">
+            <th rowspan="3" width="10">{{questions_to_page|add:question.index}}.</th>
+            <td> {{question_instructions}} <strong>{{ curr_block.text_delay_start }}</strong></span>
+            </td>
+            {% for value in question.start_values %}
+            <td class="text-center">{{ value }}</td>
+            {% endfor %}
+        </tr>
+        <tr class="timepref__question-end">
+            <td>AND <strong>{{ curr_block.text_total_end }}</strong></td>
+            {% for value in question.end_values %}
+            <td class="text-center">{{ value }}</td>
+            {% endfor %}
+        </tr>
+        <tr class="timepref__question-choices" data-question-index="{{questions_to_page|add:question.index}}">
+            <td></td>
+            {% for index in question.choice_index %}
+            <td class="text-center timepref__question-choice">
+                <input type="radio" name="question_{{questions_to_page|add:question.index}}" value="{{ index }}" />
+            </td>
+            {% endfor %}
+
+            <h1></h1>
+
+            {% if not forloop.last %}
+        <tr class="timepref__spacer">
+            <td></td>
+            {% for value in question.start_values %}
+            <td></td>
+            {% endfor %}
+            {% endif %}
+            <!-- // endif: forloop.last -->
+            {% endfor %}
+            <!-- // endfor: curr_block.questions -->
+    </tbody>
+</table>
+
+<input id="timepref__answers" type="hidden" name="question_answers" data-block-index="{{ block_index }}"
+    value="{{player.question_answers}}">
+
+<script>
+    function alertFunctionBlock() {
+        alert("In order for your answers to be most helpful to us, it is really important that you respond to all questions.")
+        jQuery('.timepref__waiting').hide();
+        jQuery('.timepref__next-button').show();
+        return false
+    }
+</script>
+
+<div class="timepref__waiting" onclick="return alertFunctionBlock();">
+    {% next_button %}
+</div>
+
+<div class=" timepref__next-button">
+    {% next_button %}
+</div>
+
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'CTB/styles/block.css' %}" />
+<link rel="stylesheet" href="{% static 'CTB/styles/rangeslider.css' %}" />
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'CTB/scripts/rangeslider.min.js' %}"></script>
+<script src="{% static 'CTB/scripts/block.js' %}"></script>
+{% endblock %}
