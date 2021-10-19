@@ -38,14 +38,15 @@ class Subsession(BaseSubsession):
                     slider_order = [j for j in range(self.session.config['num_sliders'])]
                     random.shuffle(slider_order)
                     p.slider_order = json.dumps(slider_order)
-                elif self.round_number <= self.session.config['num_sliders']:
-                    # only go for the configurable number of sliders
+                else:
                     p.slider_order = p.in_round(self.round_number - 1).slider_order
-                player_config = round_configs[json.loads(p.slider_order)[self.round_number - 2]]
-                p.earlier_time = player_config[0]  # example: today
-                p.later_time = player_config[1]
-                p.earlier_max = int(player_config[2])
-                p.later_max = int(player_config[3])
+                if self.round_number <= self.session.config['num_sliders']:
+                    # only go for the configurable number of sliders
+                    player_config = round_configs[json.loads(p.slider_order)[self.round_number - 1]]
+                    p.earlier_time = player_config[0]  # example: today
+                    p.later_time = player_config[1]
+                    p.earlier_max = int(player_config[2])
+                    p.later_max = int(player_config[3])
             else:
                 if self.round_number <= self.session.config['num_sliders']:
                     player_config = round_configs[self.round_number - 1]
