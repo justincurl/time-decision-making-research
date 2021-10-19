@@ -1,13 +1,11 @@
 import json
 from typing import Optional, List
 
-import random
+import random, pickle, codecs
 
 from otree.api import models, BaseConstants, BaseSubsession, BaseGroup, BasePlayer, widgets
 
 from .block import Block
-from .plot import Plot
-from .config import BLOCKS, PLOTS, RANDOMIZE_PLOTS, RANDOMIZE_BLOCKS
 
 author = "Justin Curl <jcurl@princeton.edu>"
 
@@ -19,7 +17,7 @@ use Convex Time Budget analysis to analyze
 class Constants(BaseConstants):
     name_in_url = "CTB"
     players_per_group = None
-    num_rounds = 2
+    num_rounds = 1
 
 
 class Subsession(BaseSubsession):
@@ -27,27 +25,40 @@ class Subsession(BaseSubsession):
         """Initializes the 
         session and creates the order in which the Blocks should be run through
         """
-        import itertools
+        CTB_right_values = self.session.config["CTB_right_values"].split(", ")
+        CTB_right_values = [float(i) for i in CTB_right_values]
+        CTB_left_values = self.session.config["CTB_left_values"].split(", ")
+        CTB_left_values = [float(i) for i in CTB_left_values]
+        CTB_t_earliers = self.session.config['CTB_t_earliers'].split(', ')
+        CTB_t_laters = self.session.config['CTB_t_laters'].split(', ')
+        block_order = [i for i in range(self.session.config["num_blocks"])]
+        
+        block_size = self.session.config["block_size"]
 
-        randomFirst = random.choice([True, False])
-        ordering = itertools.cycle([randomFirst, not randomFirst])
+        CTB_blocks_left = []
+        CTB_blocks_right = []
+        for i in range(self.session.config["num_blocks"]):
+            CTB_blocks_left.append(CTB_left_values[i*block_size:(i+1)*block_size])
+            CTB_blocks_right.append(CTB_right_values[i*block_size:(i+1)*block_size])
+
+        Blocks = []
+        for i in range(len(block_order)):
+            Blocks.append(Block(
+                left_values=CTB_blocks_left[i],
+                right_values=CTB_blocks_right[i],
+                t_earlier=CTB_t_earliers[i],
+                t_later=CTB_t_laters[i],
+                number_of_choices=6,
+                block_index=i
+                )
+            )
+
         for player in self.get_players():
-            if self.round_number == 1:
-                player.hl_second = next(ordering)
-            else:
-                player.hl_second = not player.in_round(
-                    self.round_number - 1).hl_second
-            if player.hl_second:
-
-                plot_order = [i for i in range(len(PLOTS))]
-                if RANDOMIZE_PLOTS:
-                    random.shuffle(plot_order)
-                player.plot_order = json.dumps(plot_order)
-            else:
-                block_order = [i for i in range(len(BLOCKS))]
-                if RANDOMIZE_BLOCKS:
-                    random.shuffle(block_order)
-                player.block_order = json.dumps(block_order)
+            player.blocks = codecs.encode(pickle.dumps(Blocks), "base64").decode()
+            block_order = [i for i in range(len(Blocks))]
+            if self.session.config["randomize_blocks"]:
+                random.shuffle(block_order)
+            player.block_order = json.dumps(block_order)
 
 
 class Group(BaseGroup):
@@ -59,57 +70,13 @@ class Player(BasePlayer):
     finish_time = models.StringField()
     total_time = models.StringField()
 
-    device_type = models.IntegerField(
-        choices=[
-            [1, 'Desktop Computer'],
-            [2, 'Laptop Computer'],
-            [3, 'Smartphone'],
-            [4, 'Tablet'],
-            [5, 'Something Else']
-        ], blank=True
-    )
-
-    race = models.StringField()
-    education = models.IntegerField(
-        choices=[
-            [1, 'I do not have a high school degree or GED '],
-            [2, 'Regular high school degree '],
-            [3, 'GED or alternative credential '],
-            [4, 'Some college credit, no degree'],
-            [5, 'Associate’s degree (for example: AA, AS) '],
-            [6, 'Bachelor’s degree (for example: BA, BS) '],
-            [7, 'Graduate or professional degree ']
-        ], blank=True, widget=widgets.RadioSelect
-    )
-
-    gender = models.IntegerField(blank=True, choices=[
-        [1, 'Male'],
-        [2, 'Female'],
-    ], widget=widgets.RadioSelect)
-
-    ethnicity = models.BooleanField(blank=True, choices=[
-        [True, 'Yes'],
-        [False, 'No']
-    ], widget=widgets.RadioSelect)
-
-    age = models.IntegerField(blank=True, min=18, max=110)
-
-    zipcode = models.IntegerField(blank=True, min=0, max=99999)
-
-    lottery_answer = models.FloatField(blank=True, min=0, max=10000)
-
-    dice_answer = models.FloatField(blank=True, min=0, max=10000)
-
-    disease_answer = models.FloatField(blank=True, min=0, max=10000)
-
-    feedback = models.LongStringField(blank=True)
+    blocks = models.LongStringField(initial="")
 
     current_block_step = models.IntegerField(initial=0)
     """Current step the user is in
     """
     current_plot_step = models.IntegerField(initial=0)
 
-    hl_second = models.BooleanField(initial=False)
 
     consent_answer = models.StringField(initial="")
 
@@ -123,9 +90,7 @@ class Player(BasePlayer):
     player made in the respective question - starting from 1.
     """
 
-    plot_order = models.StringField(initial="")
     block_order = models.StringField(initial="")
-    attention_check = models.StringField(initial="")
 
     def goto_next_plot_step(self) -> None:
         self.current_plot_step += 1
@@ -153,7 +118,8 @@ class Player(BasePlayer):
 
         :return: Index of block to display or `-1`
         """
-        if self.current_block_step < len(BLOCKS):
+        
+        if self.current_block_step < len(pickle.loads(codecs.decode(self.blocks.encode(), "base64"))):
             return json.loads(self.block_order)[self.current_block_step]
         else:
             return -1
@@ -166,26 +132,7 @@ class Player(BasePlayer):
         :return: Block to display or `None`
         """
         block_index = self.get_current_block_index()
-        if 0 <= block_index < len(BLOCKS):
-            return BLOCKS[block_index]
-        else:
-            return False
-
-    def get_current_plot(self) -> Optional[Plot]:
-        if self.current_plot_step < len(PLOTS):
-            plot_index = json.loads(self.plot_order)[
-                self.current_plot_step]
-            if 0 <= plot_index < len(PLOTS):
-                return PLOTS[plot_index]
-        else:
-            print("none executed from get current plot")
-            return False
-
-    def get_next_plot(self) -> Optional[Plot]:
-        if self.current_plot_step + 1 < len(PLOTS):
-            plot_index = json.loads(self.plot_order)[
-                self.current_plot_step + 1]
-            if 0 <= plot_index < len(PLOTS):
-                return PLOTS[plot_index]
+        if 0 <= block_index < len(pickle.loads(codecs.decode(self.blocks.encode(), "base64"))):
+            return pickle.loads(codecs.decode(self.blocks.encode(), "base64"))[block_index]
         else:
             return False

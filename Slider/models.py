@@ -32,7 +32,7 @@ class Subsession(BaseSubsession):
             round_configs.append((t_earliers[i], t_laters[i], payment_earliers[i], payment_laters[i]))
 
         for i, p in enumerate(self.get_players()):
-            if self.session.config["random"]:
+            if self.session.config["randomize_sliders"]:
                 if self.round_number == 1:
                     # randomize slider order for each player
                     slider_order = [j for j in range(self.session.config['num_sliders'])]

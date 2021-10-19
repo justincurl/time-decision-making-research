@@ -6,8 +6,8 @@ class Block:
     def __init__(self,
                  left_values: List[float],
                  right_values: List[float],
-                 t_earlier: str,
-                 t_later: str,
+                 top_later_term: int,
+                 bottom_earlier_term: int,
                  number_of_choices: int,
                  block_index: int,
                  show_least_initial_value_first: bool = False):
@@ -21,16 +21,19 @@ class Block:
         """
         if type(left_values) is not list or type(right_values) is not list:
             raise ValueError("values must be a list, e.g. [1.05, 1.03]")
-        if type(number_of_choices) is not int:
-            raise ValueError("number_of_choices must be integers")
+        if (type(top_later_term) is not int
+                or type(bottom_earlier_term) is not int
+                or type(number_of_choices) is not int):
+            raise ValueError("top_later_term, bottom_earlier_term, "
+                             "and number_of_choices must be integers")
         if number_of_choices < 0:
             raise ValueError("number of choices must be >= 0")
 
         self.block_index = block_index
         self.left_values = left_values
         self.right_values = right_values
-        self.t_later = t_later
-        self.t_earlier = t_earlier
+        self.top_later_term = top_later_term
+        self.bottom_earlier_term = bottom_earlier_term
         self.number_of_choices = number_of_choices
         self.show_least_initial_value_first = show_least_initial_value_first     
 
@@ -45,11 +48,24 @@ class Block:
         """Returns a human readable text describing the start of the block (e.g. in 1 year) from today.
         :return: Human readable start of block from today
         """
-        return self.t_earlier
+        return self._years_to_text(self.top_later_term)
 
     def text_total_end(self) -> str:
         """Returns a human readable text describing the end of the block (e.g. in 2 years) from today.
 
         :return: Human readable end of block from today
         """
-        return self.t_later
+        return self._years_to_text(self.bottom_earlier_term)
+
+       
+    @staticmethod
+    def _years_to_text(value: int) -> str:
+        if value == 1: 
+            term = "1st"
+        if value == 2:
+            term = "2nd"
+        if value == 3:
+            term = "3rd"
+        if value == 4:
+            term = "Final"
+        return term

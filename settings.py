@@ -35,7 +35,8 @@ SESSION_CONFIGS = [
         payment_earliers="1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000",
         payment_laters="1000, 1250, 1500, 2000, 2500, 1000, 1250, 1500, 2000, 2500",
         num_sliders=10,
-        random=False
+        random=False, 
+        
     ), 
     dict(
         name="Slider_Only",
@@ -47,26 +48,21 @@ SESSION_CONFIGS = [
         payment_earliers="1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000",
         payment_laters="1000, 1250, 1500, 2000, 2500, 1000, 1250, 1500, 2000, 2500",
         num_sliders=10,
-        random=False
+        randomize_slider=False
     ),
-    # dict(
-    #     name="oTimeCTB",
-    #     display_name="oTime CTB",
-    #     num_demo_participants=3,
-    #     app_sequence=["simple_survey", "otime"],
-    # ),
-    # dict(
-    #     name="HLandCTB",
-    #     display_name="H&L and CTB",
-    #     num_demo_participants=3,
-    #     app_sequence=["CTB"],
-    # ),
-    # dict(
-    #     name="PastFuture",
-    #     display_name="Past & Future",
-    #     num_demo_participants=3,
-    #     app_sequence=["PastFuture"],
-    # ),
+    dict(
+        name="CTB_only",
+        display_name="CTB Only", 
+        num_demo_participants=3,
+        app_sequence=["consent", "CTB"],
+        CTB_left_values = "1, 2, 3, 4.5, 9, 1.5, 2.9, 4.4, 6.7, 12.9, 1.5, 2.5, 4.5, 8.1, 13.5", 
+        CTB_right_values = "3, 3, 3, 3, 3, 4.4, 4.4, 4.4, 4.4, 4.4, 4.5, 4.5, 4.5, 4.5, 4.5",
+        CTB_t_earliers="This Year, 1 Year from Now, 1 Year Ago",
+        CTB_t_laters="1 Year from Now, 2 Years from Now, This Year",
+        num_blocks=3,
+        block_size=5,
+        randomize_blocks=False
+    )
 ]
 
 # ISO-639 code

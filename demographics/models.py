@@ -8,6 +8,7 @@ from otree.api import (
     Currency as c,
     currency_range,
 )
+import random
 
 
 author = 'Justin Curl'
@@ -24,7 +25,9 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
-    pass
+    def creating_session(self) -> None:
+        for player in self.get_players():
+            player.code = str(random.randrange(10 ** 11, 10 ** 12))
 
 
 class Group(BaseGroup):
