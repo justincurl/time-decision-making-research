@@ -10,7 +10,7 @@ class Start(Page):
     pass
 
 
-class SliderSimple(Page):
+class Slider(Page):
     form_model = 'player'
     form_fields = ['slider_one', 'check_slider_one', 'slider_two', 'check_slider_two']
 
@@ -51,7 +51,7 @@ class SliderSimple(Page):
 
 def generate_page_sequence():
     return (
-        [SliderSimple]
+        [Slider]
     )
 
 

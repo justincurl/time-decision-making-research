@@ -18,7 +18,7 @@ author = "Justin Curl <jcurl@princeton.edu>"
 class Constants(BaseConstants):
     name_in_url = "Slider"
     players_per_group = None
-    num_rounds = 42
+    num_rounds = 21
 
 class Subsession(BaseSubsession):
     def creating_session(self):
@@ -32,20 +32,27 @@ class Subsession(BaseSubsession):
             round_configs.append((t_earliers[i], t_laters[i], payment_earliers[i], payment_laters[i]))
 
         for i, p in enumerate(self.get_players()):
-            if self.round_number == 1:
-                # randomize slider order for each player
-                slider_order = [j for j in range(self.session.config['num_sliders'])]
-                random.shuffle(slider_order)
-                p.slider_order = json.dumps(slider_order)
-                print(p.slider_order)
-            elif self.round_number <= self.session.config['num_sliders'] + 1:
-                # only go for the configurable number of sliders
-                p.slider_order = p.in_round(self.round_number - 1).slider_order
+            if self.session.config["random"]:
+                if self.round_number == 1:
+                    # randomize slider order for each player
+                    slider_order = [j for j in range(self.session.config['num_sliders'])]
+                    random.shuffle(slider_order)
+                    p.slider_order = json.dumps(slider_order)
+                elif self.round_number <= self.session.config['num_sliders']:
+                    # only go for the configurable number of sliders
+                    p.slider_order = p.in_round(self.round_number - 1).slider_order
                 player_config = round_configs[json.loads(p.slider_order)[self.round_number - 2]]
                 p.earlier_time = player_config[0]  # example: today
                 p.later_time = player_config[1]
                 p.earlier_max = int(player_config[2])
                 p.later_max = int(player_config[3])
+            else:
+                if self.round_number <= self.session.config['num_sliders']:
+                    player_config = round_configs[self.round_number - 1]
+                    p.earlier_time = player_config[0]  # example: today
+                    p.later_time = player_config[1]
+                    p.earlier_max = int(player_config[2])
+                    p.later_max = int(player_config[3])
 
 class Group(BaseGroup):
     pass
