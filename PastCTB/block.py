@@ -45,11 +45,11 @@ class Block:
         """Returns a human readable text describing the start of the block (e.g. in 1 year) from today.
         :return: Human readable start of block from today
         """
-        return self.t_earlier
+        return self.t_later
 
     def text_total_end(self) -> str:
         """Returns a human readable text describing the end of the block (e.g. in 2 years) from today.
 
         :return: Human readable end of block from today
         """
-        return self.t_later
+        return self.t_earlier

@@ -27,7 +27,7 @@ class Slider(Page):
         current_time = now.strftime("%H:%M:%S")
         self.player.start_time = json.dumps(current_time)
         return (
-            (self.player.round_number <= self.player.session.config["num_sliders"]) and 
+            (self.player.round_number <= self.player.session.config["past_num_sliders"]) and 
             (json.loads(self.participant.vars["consent_answer"]) == 1)
         )
 

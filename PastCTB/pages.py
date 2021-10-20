@@ -29,13 +29,13 @@ class BlockPage(Page):
 
         questions_to_page = (len(current_block.left_values) * (step - 1)) + 1
 
-        question_instructions = "Personal Income Growth"
+        question_instructions = "Jobs created"
 
         return {
             "step": step,
             "block_index": block_index,
             "questions_to_page": questions_to_page,
-            "num_blocks": self.session.config["num_blocks"],
+            "num_blocks": self.session.config["past_num_blocks"],
             "curr_block": current_block,
             "num_choices": current_block.number_of_choices,
             "question_instructions": question_instructions,
@@ -54,9 +54,6 @@ class PastInstructions(Page):
 
     def is_displayed(self):
         return json.loads(self.participant.vars["consent_answer"]) == 1
-
-
-
 
 def generate_page_sequence():
     return (

@@ -85,7 +85,7 @@ SESSION_CONFIGS = [
     dict(
         name="Slider_CTB_Demo",
         display_name="Sliders and CTB 10.19 Demo",
-        num_demo_participants=100,
+        num_demo_participants=20,
         app_sequence=["consent", "PastSlider","PastCTB", "FutureSlider", "FutureCTB", "demographics"],
         past_t_earliers="1 year ago, 1 year ago, 1 year ago, 1 year ago, 1 year ago, 1 year ago, 2 years ago, 2 years ago, 2 years ago, 2 years ago, 2 years ago, 2 years ago, 2 years ago, 2 years ago, 2 years ago, 2 years ago, 2 years ago, 2 years ago",
         past_t_laters="this year, this year, this year, this year, this year, this year, this year, this year, this year, this year, this year, this year, 1 year ago, 1 year ago, 1 year ago, 1 year ago, 1 year ago, 1 year ago",
@@ -110,8 +110,8 @@ SESSION_CONFIGS = [
         future_CTB_right_values = "13500, 15000, 16500, 18000, 19500, 21000, 13500, 15000, 16500, 18000, 19500, 21000, 13500, 15000, 16500, 18000, 19500, 21000",
         future_CTB_t_earliers="this year, this year, this year, this year, this year, this year, this year, this year, this year, this year, this year, this year, 1 year later, 1 year later, 1 year later, 1 year later, 1 year later, 1 year later",
         future_CTB_t_laters="1 year later, 1 year later, 1 year later, 1 year later, 1 year later, 1 year later, 2 years later, 2 years later, 2 years later, 2 years later, 2 years later, 2 years later, 2 years later, 2 years later, 2 years later, 2 years later, 2 years later, 2 years later",
-        num_blocks=3,
-        block_size=6,
+        future_num_blocks=3,
+        future_block_size=6,
         future_randomize_blocks=False,
     )
 ]
