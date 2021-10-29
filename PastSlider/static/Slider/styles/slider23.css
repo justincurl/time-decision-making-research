@@ -1,0 +1,612 @@
+/* control gaps between times */
+
+.pre-t1 {
+    width: 0px !important;
+}
+
+.t1 {
+    width: 450px !important;
+    text-align: left !important;
+    margin-left: -74px !important; /* 70 for label button width + 4 for label utton padding */
+}
+
+.t2_slider {
+    width: 230px !important;
+    margin-left: -95px;
+}
+
+.t2_text {
+    width: 230px !important;
+    text-align: left !important;    
+}
+
+.t2_t3_gap {
+    width: 180px  !important;
+    text-align: left  !important;
+}
+
+.t3_slider {
+    width: 230px !important;
+    margin-left: -100px !important;
+}
+
+.t3_text {
+    width: 230px !important;
+    text-align: left !important;
+}
+
+.post_t3 {
+    width: 0px !important;
+    margin-left: -95px;
+}
+
+
+/* make sliders vertical */
+.rotate {
+    width: 300px; /* change the height of the bars (use width marker because of rotation) */
+    transform: rotate(270deg);
+    vertical-align: bottom;
+}
+
+/* new thumb that appears when clicked */
+.slider_one_thumb::-webkit-slider-thumb {
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #007afe;
+    border: 2px solid #000000;
+    height: 160px !important; /* control the width of the slider thumb */
+    border-radius: 50%;
+    box-shadow: 210px 0 0 200px rgb(43, 173, 43);
+    width: 8% !important;
+    border-radius: 0px !important;
+    background: rgb(154, 214, 235) !important;
+    cursor: pointer !important;
+    -webkit-appearance: none !important;
+}
+
+
+input[name=slider_one] {
+    -webkit-appearance: none;
+}
+
+input[name=slider_one]:focus {
+    outline: none;
+}
+
+/* the track itself */
+input[name=slider_one]::-webkit-slider-runnable-track {
+    overflow:hidden;
+    height: 160px; /* control the width of the bars */
+    cursor: pointer;
+    background: #d3d3d3;
+    border-radius: 0px;
+    border: 1px solid #000000;
+}
+
+/* hide original thumb */
+input[name=slider_one]::-webkit-slider-thumb {
+    border: 0px;
+    height: 0px;
+    width: 0px;
+    border-radius: 0px;
+    -webkit-appearance: none;
+}
+
+/* for slider two */
+/* new thumb that appears when clicked */
+.slider_two_thumb::-webkit-slider-thumb {
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #007afe;
+    border: 2px solid #000000;
+    height: 160px !important; /* control the width of the slider thumb */
+    border-radius: 50%;
+    box-shadow: -210px 0 0 200px rgb(43, 173, 43);
+    width: 8% !important;
+    border-radius: 0px !important;
+    background:rgb(154, 214, 235) !important;
+    cursor: pointer !important;
+    -webkit-appearance: none !important;
+}
+
+input[name=slider_two] {
+    -webkit-appearance: none;
+}
+
+input[name=slider_two]:focus {
+    outline: none;
+}
+
+/* the track itself */
+input[name=slider_two]::-webkit-slider-runnable-track {
+    overflow:hidden;
+    height: 160px; /* control the width of the bars */
+    cursor: pointer;
+    background: #d3d3d3;
+    border-radius: 0px;
+    border: 1px solid #000000;
+}
+
+/* hide original slider thumb */
+input[name=slider_two]::-webkit-slider-thumb {
+    border: 0px;
+    height: 0px;
+    width: 0px;
+    border-radius: 0px;
+    -webkit-appearance: none;
+}
+
+.left-bubble-zero {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    height: 23px;
+    left: 675%;
+    top: 3px;
+    width: 70px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+    z-index: 10;
+}
+
+.left-bubble-one {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    top: 3px;
+    height: 23px;
+    width: 70px;
+    left: 675%;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+    z-index: 10;
+}
+
+.left-bubble-two {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    left: 675%;
+    top: 3px;
+    height: 23px;
+    width: 70px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+    z-index: 10;
+}
+.left-bubble-three {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    height: 23px;
+    top: 3px;
+    left: 675%;
+    width: 70px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+    z-index: 10;
+}
+.left-bubble-four {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    height: 23px;
+    width: 70px;
+    top: 3px;
+    left: 675%;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+    z-index: 10;
+}
+.left-bubble-five {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    height: 23px;
+    top: 3px;
+    width: 70px;
+    left: 675%;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+    z-index: 10;
+}
+.left-bubble-six {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    height: 23px;
+    top: 3px;
+    width: 70px;
+    left: 675%;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+    z-index: 10;
+}
+.left-bubble-seven {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    height: 23px;
+    top: 3px;
+    width: 70px;
+    left: 675%;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+    z-index: 10;
+}
+.left-bubble-eight {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    height: 23px;
+    top: 3px;
+    width: 70px;
+    left: 675%;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+    z-index: 10;
+}
+.left-bubble-nine {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    height: 23px;
+    top: 3px;
+    width: 70px;
+    left: 675%;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+    z-index: 10;
+}
+.left-bubble-ten {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    height: 23px;
+    width: 70px;
+    left: 675%;
+    top: 1px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+    z-index: 10;
+}
+
+.right-bubble-zero {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    left: -305%;
+    height: 23px;
+    top: 3px;
+    width: 70px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+    z-index: 10;
+}
+
+.right-bubble-one {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    left: -305%;
+    top: 3px;
+    height: 23px;
+    width: 70px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+    z-index: 10;
+}
+
+.right-bubble-two {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    left: -305%;
+    top: 3px;
+    height: 23px;
+    width: 70px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+    z-index: 10;
+}
+.right-bubble-three {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    height: 23px;
+    top: 3px;
+    left: -305%;
+    width: 70px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+    z-index: 10;
+}
+.right-bubble-four {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    height: 23px;
+    width: 70px;
+    top: 3px;
+    left: -305%;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+}
+.right-bubble-five {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    height: 23px;
+    top: 3px;
+    width: 70px;
+    left: -305%;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+    z-index: 10;
+}
+.right-bubble-six {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    height: 23px;
+    top: 3px;
+    width: 70px;
+    left: -305%;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+    z-index: 10;
+}
+.right-bubble-seven {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    height: 23px;
+    top: 3px;
+    width: 70px;
+    left: -305%;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+    z-index: 10;
+}
+.right-bubble-eight {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    height: 23px;
+    top: 3px;
+    width: 70px;
+    left: -305%;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+    z-index: 10;
+}
+.right-bubble-nine {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    height: 23px;
+    top: 3px;
+    width: 70px;
+    left: -305%;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+    z-index: 10;
+}
+.right-bubble-ten {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    height: 23px;
+    width: 70px;
+    left: -305%;
+    top: 1px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+    z-index: 10;
+}
+
+.center-bubble-zero {
+    background: white;
+    color: black;
+    position: relative;
+    height: 23px;
+    top: 3px;
+        width: 200%;
+    left: -150px;
+    
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+    z-index: -1;
+}
+.center-bubble-one {
+    background: white;
+    color: black;
+    position: relative;
+    height: 23px;
+    top: 3px;
+    width: 200%;
+    left: -150px;
+    
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+    z-index: -1;
+}
+.center-bubble-two {
+    background: white;
+    color: black;
+    position: relative;
+    height: 23px;
+    top: 3px;
+        width: 200%;
+    left: -150px;
+    
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+    z-index: -1;
+}
+.center-bubble-three {
+    background: white;
+    color: black;
+    position: relative;
+    height: 23px;
+    top: 3px;
+        width: 200%;
+    left: -150px;
+    
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+    z-index: -1;
+}
+.center-bubble-four {
+    background: white;
+    color: black;
+    position: relative;
+    height: 23px;
+    top: 3px;
+        width: 200%;
+    left: -150px;
+    
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+    z-index: -1;
+}
+.center-bubble-five {
+    background: white;
+    color: black;
+    position: relative;
+    height: 23px;
+    top: 3px;
+        width: 200%;
+    left: -150px;
+    
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+    z-index: -1;
+}
+.center-bubble-six {
+    background: white;
+    color: black;
+    position: relative;
+    height: 23px;
+    top: 3px;
+        width: 200%;
+    left: -150px;
+    
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+    z-index: -1;
+}
+.center-bubble-seven {
+    background: white;
+    color: black;
+    position: relative;
+    height: 23px;
+    top: 3px;
+    width: 200%;
+    left: -150px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+    z-index: -1;
+}
+.center-bubble-eight {
+    background: white;
+    color: black;
+    position: relative;
+    height: 23px;
+    top: 3px;
+        width: 200%;
+    left: -150px;
+    
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+    z-index: -1;
+}
+.center-bubble-nine {
+    background: white;
+    color: black;
+    position: relative;
+    height: 23px;
+    top: 3px;
+        width: 200%;
+    left: -150px;
+    
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+    z-index: -1;
+}
+.center-bubble-ten {
+    background: white;
+    color: black;
+    position: relative;
+    height: 23px;
+    top: 1px;
+    width: 200%;
+    left: -150px;
+    
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+    z-index: -1;
+}
+
+/* .left-placeholder {
+    background: white;
+    color: black;
+    position: relative;
+    height: 0px;
+    width: 0px;
+
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+} */
+.center-placeholder {
+    background: white;
+    color: black;
+    position: relative;
+    height: 0px;
+    width: 70px; /* control gap between sliders */
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+    z-index: -1;
+}
+/* .right-placeholder {
+    background: white;
+    color: black;
+    position: relative;
+    height: 0px;
+    width: 70px;
+    
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+} */
