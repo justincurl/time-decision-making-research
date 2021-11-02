@@ -338,6 +338,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     left: -163%;
     text-align: center;
     border-radius: 4px;
+    pointer-events: none;
 }
 .right-bubble-five {
     background: #d3d3d3;
