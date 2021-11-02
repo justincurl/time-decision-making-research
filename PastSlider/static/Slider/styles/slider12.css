@@ -46,6 +46,7 @@
     margin-left: -95px;
 }
 
+/* control what sliders look like */
 
 /* make sliders vertical */
 .rotate {
@@ -78,7 +79,6 @@ input[name=slider_one]::-webkit-slider-runnable-track {
     height: 160px; /* control the width of the bars */
     cursor: pointer;
     background: transparent;
-    border: 1px solid black;
     pointer-events: auto;
 }
 
@@ -116,7 +116,6 @@ input[name=slider_two]::-webkit-slider-runnable-track {
     height: 160px; /* control the width of the bars */
     cursor: pointer;
     background: transparent;
-    border: 1px solid black;
     pointer-events: auto;
 }
 
