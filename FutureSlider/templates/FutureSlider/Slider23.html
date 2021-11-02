@@ -10,388 +10,6 @@
     {{ form.check_slider_one.errors }}
     {{ form.check_slider_two.errors }}
 
-    <style>
-        /* center sliders in page */
-.center {
-    margin-left: auto;
-    margin-right: auto;
-    vertical-align: bottom;
-}
-
-/* make sliders vertical */
-.rotate {
-    width: 450px; /* change the height of the bars (use width marker because of rotation) */
-    transform: rotate(270deg);
-    vertical-align: bottom;
-}
-
-/* new thumb that appears when clicked */
-.slider_one_thumb::-webkit-slider-thumb {
-    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #007afe;
-    border: 2px solid #000000;
-    height: 230px !important;
-    border-radius: 50%;
-    box-shadow: 210px 0 0 200px rgb(43, 173, 43);
-    width: 8% !important;
-    border-radius: 0px !important;
-    background: rgb(154, 214, 235) !important;
-    cursor: pointer !important;
-    -webkit-appearance: none !important;
-}
-
-
-input[name=slider_one] {
-    -webkit-appearance: none;
-}
-
-input[name=slider_one]:focus {
-    outline: none;
-}
-
-/* the track itself */
-input[name=slider_one]::-webkit-slider-runnable-track {
-    overflow:hidden;
-    height: 200px; /* control the width of the bars */
-    cursor: pointer;
-    background: #d3d3d3;
-    border-radius: 0px;
-    border: 1px solid #000000;
-}
-
-/* hide original thumb */
-input[name=slider_one]::-webkit-slider-thumb {
-    border: 0px;
-    height: 0px;
-    width: 0px;
-    border-radius: 0px;
-    -webkit-appearance: none;
-}
-
-/* for slider two */
-/* new thumb that appears when clicked */
-.slider_two_thumb::-webkit-slider-thumb {
-    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #007afe;
-    border: 2px solid #000000;
-    height: 230px !important;
-    border-radius: 50%;
-    box-shadow: -210px 0 0 200px rgb(43, 173, 43);
-    width: 8% !important;
-    border-radius: 0px !important;
-    background:rgb(154, 214, 235) !important;
-    cursor: pointer !important;
-    -webkit-appearance: none !important;
-}
-
-input[name=slider_two] {
-    -webkit-appearance: none;
-}
-
-input[name=slider_two]:focus {
-    outline: none;
-}
-
-/* the track itself */
-input[name=slider_two]::-webkit-slider-runnable-track {
-    overflow:hidden;
-    height: 200px; /* control the width of the bars */
-    cursor: pointer;
-    background: #d3d3d3;
-    border-radius: 0px;
-    border: 1px solid #000000;
-}
-
-/* hide original slider thumb */
-input[name=slider_two]::-webkit-slider-thumb {
-    border: 0px;
-    height: 0px;
-    width: 0px;
-    border-radius: 0px;
-    -webkit-appearance: none;
-}
-
-.left-bubble-zero {
-    background: rgb(154, 214, 235);
-    color: black;
-    position: relative;
-    left: 76%;
-    height: 35px;
-    top: 3px;
-    width: 150px;
-    font-weight: bold;
-    text-align: center;
-    border-radius: 4px;
-}
-
-.left-bubble-one {
-    background: rgb(154, 214, 235);
-    color: black;
-    position: relative;
-    left: 76%;
-    top: 3px;
-    height: 35px;
-    width: 150px;
-    font-weight: bold;
-    text-align: center;
-    border-radius: 4px;
-}
-
-.left-bubble-two {
-    background: rgb(154, 214, 235);
-    color: black;
-    position: relative;
-    left: 76%;
-    top: 3px;
-    height: 35px;
-    width: 150px;
-    font-weight: bold;
-    text-align: center;
-    border-radius: 4px;
-}
-.left-bubble-three {
-    background: rgb(154, 214, 235);
-    color: black;
-    position: relative;
-    height: 35px;
-    top: 3px;
-    left: 76%;
-    width: 150px;
-    font-weight: bold;
-    text-align: center;
-    border-radius: 4px;
-}
-.left-bubble-four {
-    background: rgb(154, 214, 235);
-    color: black;
-    position: relative;
-    height: 35px;
-    width: 150px;
-    top: 3px;
-    left: 76%;
-    font-weight: bold;
-    text-align: center;
-    border-radius: 4px;
-}
-.left-bubble-five {
-    background: rgb(154, 214, 235);
-    color: black;
-    position: relative;
-    height: 35px;
-    top: 3px;
-    width: 150px;
-    left: 76%;
-    font-weight: bold;
-    text-align: center;
-    border-radius: 4px;
-}
-.left-bubble-six {
-    background: rgb(154, 214, 235);
-    color: black;
-    position: relative;
-    height: 35px;
-    top: 3px;
-    width: 150px;
-    left: 76%;
-    font-weight: bold;
-    text-align: center;
-    border-radius: 4px;
-}
-.left-bubble-seven {
-    background: rgb(154, 214, 235);
-    color: black;
-    position: relative;
-    height: 35px;
-    top: 3px;
-    width: 150px;
-    left: 76%;
-    font-weight: bold;
-    text-align: center;
-    border-radius: 4px;
-}
-.left-bubble-eight {
-    background: rgb(154, 214, 235);
-    color: black;
-    position: relative;
-    height: 35px;
-    top: 3px;
-    width: 150px;
-    left: 76%;
-    font-weight: bold;
-    text-align: center;
-    border-radius: 4px;
-}
-.left-bubble-nine {
-    background: rgb(154, 214, 235);
-    color: black;
-    position: relative;
-    height: 35px;
-    top: 3px;
-    width: 150px;
-    left: 76%;
-    font-weight: bold;
-    text-align: center;
-    border-radius: 4px;
-}
-.left-bubble-ten {
-    background: rgb(154, 214, 235);
-    color: black;
-    position: relative;
-    height: 35px;
-    top: 3px;
-    width: 150px;
-    left: 76%;
-    font-weight: bold;
-    text-align: center;
-    border-radius: 4px;
-}
-
-.right-bubble-zero {
-    background: rgb(154, 214, 235);
-    color: black;
-    position: relative;
-    left: -76%;
-    height: 35px;
-    top: 3px;
-    width: 150px;
-    font-weight: bold;
-    text-align: center;
-    border-radius: 4px;
-}
-
-.right-bubble-one {
-    background: rgb(154, 214, 235);
-    color: black;
-    position: relative;
-    left: -76%;
-    top: 3px;
-    height: 35px;
-    width: 150px;
-    font-weight: bold;
-    text-align: center;
-    border-radius: 4px;
-}
-
-.right-bubble-two {
-    background: rgb(154, 214, 235);
-    color: black;
-    position: relative;
-    left: -76%;
-    top: 3px;
-    height: 35px;
-    width: 150px;
-    font-weight: bold;
-    text-align: center;
-    border-radius: 4px;
-}
-.right-bubble-three {
-    background: rgb(154, 214, 235);
-    color: black;
-    position: relative;
-    height: 35px;
-    top: 3px;
-    left: -76%;
-    width: 150px;
-    font-weight: bold;
-    text-align: center;
-    border-radius: 4px;
-}
-.right-bubble-four {
-    background: rgb(154, 214, 235);
-    color: black;
-    position: relative;
-    height: 35px;
-    width: 150px;
-    top: 3px;
-    left: -76%;
-    font-weight: bold;
-    text-align: center;
-    border-radius: 4px;
-}
-.right-bubble-five {
-    background: rgb(154, 214, 235);
-    color: black;
-    position: relative;
-    height: 35px;
-    top: 3px;
-    width: 150px;
-    left: -76%;
-    font-weight: bold;
-    text-align: center;
-    border-radius: 4px;
-}
-.right-bubble-six {
-    background: rgb(154, 214, 235);
-    color: black;
-    position: relative;
-    height: 35px;
-    top: 3px;
-    width: 150px;
-    left: -76%;
-    font-weight: bold;
-    text-align: center;
-    border-radius: 4px;
-}
-.right-bubble-seven {
-    background: rgb(154, 214, 235);
-    color: black;
-    position: relative;
-    height: 35px;
-    top: 3px;
-    width: 150px;
-    left: -76%;
-    font-weight: bold;
-    text-align: center;
-    border-radius: 4px;
-}
-.right-bubble-eight {
-    background: rgb(154, 214, 235);
-    color: black;
-    position: relative;
-    height: 35px;
-    top: 3px;
-    width: 150px;
-    left: -76%;
-    font-weight: bold;
-    text-align: center;
-    border-radius: 4px;
-}
-.right-bubble-nine {
-    background: rgb(154, 214, 235);
-    color: black;
-    position: relative;
-    height: 35px;
-    top: 3px;
-    width: 150px;
-    left: -76%;
-    font-weight: bold;
-    text-align: center;
-    border-radius: 4px;
-}
-.right-bubble-ten {
-    background: rgb(154, 214, 235);
-    color: black;
-    position: relative;
-    height: 35px;
-    top: 3px;
-    width: 150px;
-    left: -76%;
-    font-weight: bold;
-    text-align: center;
-    border-radius: 4px;
-}
-
-
-.bubble-center {
-    background: rgb(154, 214, 235);
-    color: black;
-    width: 600%;
-    height: 35px;
-    position: relative;
-    left: -250%;
-    border-radius: 4px;
-    z-index: -1;
-}
-    </style>
-
     <input type="hidden" name="check_slider_one" value="" id="id_check_slider_one"/>
     <input type="hidden" name="check_slider_two" value="" id="id_check_slider_two"/>
 
@@ -399,70 +17,79 @@ input[name=slider_two]::-webkit-slider-thumb {
     <hr>
     <br>
     
-    <table class="center">
+    <table style="margin-left: auto; margin-right: auto;">
         <tr>
             <td>
-                    <table>
-                        <tr><div class="left-bubble-zero" id="left_feedback_0"></div><div style="height:6px;"></div></tr>
-                        <tr><div class="left-bubble-one" id="left_feedback_1"></div><div style="height:6px;"></div></tr>
-                        <tr><div class="left-bubble-two" id="left_feedback_2"></div><div style="height:6px;"></div></tr>
-                        <tr><div class="left-bubble-three" id="left_feedback_3"></div><div style="height:6px;"></div></tr>
-                        <tr><div class="left-bubble-four" id="left_feedback_4"></div><div style="height:6px;"></div></tr>
-                        <tr><div class="left-bubble-five" id="left_feedback_5"></div><div style="height:6px;"></div></tr>
-                        <tr><div class="left-bubble-six" id="left_feedback_6"></div><div style="height:6px;"></div></tr>
-                        <tr><div class="left-bubble-seven" id="left_feedback_7"></div><div style="height:6px;"></div></tr>
-                        <tr><div class="left-bubble-eight" id="left_feedback_8"></div><div style="height:6px;"></div></tr>
-                        <tr><div class="left-bubble-nine" id="left_feedback_9"></div><div style="height:6px;"></div></tr>
-                        <tr><div class="left-bubble-ten" id="left_feedback_10"></div><div style="height:6px;"></div></tr>
-                    </table>
-            </td>
-            <td>
-                <input type="range" name="slider_one" step=10 min=0 max={{earlier_max}} value="None" id="id_slider_one" class="rotate" class="form-control"/>
-            </td>
-            <td>
-                <table>
-                    <tr><div class="center-bubble-zero" id="center_feedback_zero"></div><div style="height:6px;"></div></tr>
-                    <tr><div class="center-bubble-one" id="center_feedback_one"></div><div style="height:6px;"></div></tr>
-                    <tr><div class="center-bubble-two" id="center_feedback_two"></div><div style="height:6px;"></div></tr>
-                    <tr><div class="center-bubble-three" id="center_feedback_three"></div><div style="height:6px;"></div></tr>
-                    <tr><div class="center-bubble-four" id="center_feedback_four"></div><div style="height:6px;"></div></tr>
-                    <tr><div class="center-bubble-five" id="center_feedback_five"></div><div style="height:6px;"></div></tr>
-                    <tr><div class="center-bubble-six" id="center_feedback_six"></div><div style="height:6px;"></div></tr>
-                    <tr><div class="center-bubble-seven" id="center_feedback_seven"></div><div style="height:6px;"></div></tr>
-                    <tr><div class="center-bubble-eight" id="center_feedback_eight"></div><div style="height:6px;"></div></tr>
-                    <tr><div class="center-bubble-nine" id="center_feedback_nine"></div><div style="height:6px;"></div></tr>
-                    <tr><div class="center-bubble-ten" id="center_feedback_ten"></div><div style="height:6px;"></div></tr>
+                <table id="left-table">
+                    <tr><div class="left-placeholder"></div><div style="height:0px;"></div></tr>
+                    <tr><div class="left-bubble-zero" id="left_feedback_0"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="left-bubble-one" id="left_feedback_1"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="left-bubble-two" id="left_feedback_2"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="left-bubble-three" id="left_feedback_3"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="left-bubble-four" id="left_feedback_4"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="left-bubble-five" id="left_feedback_5"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="left-bubble-six" id="left_feedback_6"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="left-bubble-seven" id="left_feedback_7"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="left-bubble-eight" id="left_feedback_8"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="left-bubble-nine" id="left_feedback_9"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="left-bubble-ten" id="left_feedback_10"></div><div style="height:4.5px;"></div></tr>
                 </table>
             </td>
-            <td style="text-align: center;">
-                    <input type="range" name="slider_two" step=10 min=0 max={{later_max}} value="None" id="id_slider_two" class="rotate" class="form-control"/>
+            <td><div class="t1"></div></td>
+            <td></td>
+            <td>
+                <div class="t2_slider">
+                    <input type="range" name="slider_one" step=10 min=0 max={{earlier_max}} value="None" id="id_slider_one" class="rotate" class="form-control"/>
+                </div>
             </td>
             <td>
-                <table>
-                    <tr><div class="right-bubble-zero" id="right_feedback_0"></div><div style="height:6px;"></div></tr>
-                    <tr><div class="right-bubble-one" id="right_feedback_1"></div><div style="height:6px;"></div></tr>
-                    <tr><div class="right-bubble-two" id="right_feedback_2"></div><div style="height:6px;"></div></tr>
-                    <tr><div class="right-bubble-three" id="right_feedback_3"></div><div style="height:6px;"></div></tr>
-                    <tr><div class="right-bubble-four" id="right_feedback_4"></div><div style="height:6px;"></div></tr>
-                    <tr><div class="right-bubble-five" id="right_feedback_5"></div><div style="height:6px;"></div></tr>
-                    <tr><div class="right-bubble-six" id="right_feedback_6"></div><div style="height:6px;"></div></tr>
-                    <tr><div class="right-bubble-seven" id="right_feedback_7"></div><div style="height:6px;"></div></tr>
-                    <tr><div class="right-bubble-eight" id="right_feedback_8"></div><div style="height:6px;"></div></tr>
-                    <tr><div class="right-bubble-nine" id="right_feedback_9"></div><div style="height:6px;"></div></tr>
-                    <tr><div class="right-bubble-ten" id="right_feedback_10"></div><div style="height:6px;"></div></tr>
+                <div class="t2_t3_gap">
+                    <table id="center-table">
+                        <tr><div class="center-placeholder"></div><div style="height:0px;"></div></tr>
+                        <tr><div class="center-bubble-zero" id="center_feedback_0"></div><div style="height:4.5px;"></div></tr>
+                        <tr><div class="center-bubble-one" id="center_feedback_1"></div><div style="height:4.5px;"></div></tr>
+                        <tr><div class="center-bubble-two" id="center_feedback_2"></div><div style="height:4.5px;"></div></tr>
+                        <tr><div class="center-bubble-three" id="center_feedback_3"></div><div style="height:4.5px;"></div></tr>
+                        <tr><div class="center-bubble-four" id="center_feedback_4"></div><div style="height:4.5px;"></div></tr>
+                        <tr><div class="center-bubble-five" id="center_feedback_5"></div><div style="height:4.5px;"></div></tr>
+                        <tr><div class="center-bubble-six" id="center_feedback_6"></div><div style="height:4.5px;"></div></tr>
+                        <tr><div class="center-bubble-seven" id="center_feedback_7"></div><div style="height:4.5px;"></div></tr>
+                        <tr><div class="center-bubble-eight" id="center_feedback_8"></div><div style="height:4.5px;"></div></tr>
+                        <tr><div class="center-bubble-nine" id="center_feedback_9"></div><div style="height:4.5px;"></div></tr>
+                        <tr><div class="center-bubble-ten" id="center_feedback_10"></div><div style="height:4.5px;"></div></tr>
+                    </table>
+                </div>
+            </td>
+            <td>
+                <div class="t3_slider">
+                    <input type="range" name="slider_two" step=10 min=0 max={{later_max}} value="None" id="id_slider_two" class="rotate" class="form-control"/>
+                </div>
+            </td>
+            <td>
+                <table id="right-table">
+                    <tr><div class="right-placeholder"></div><div style="height:0px;"></div></tr>
+                    <tr><div class="right-bubble-zero" id="right_feedback_0"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="right-bubble-one" id="right_feedback_1"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="right-bubble-two" id="right_feedback_2"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="right-bubble-three" id="right_feedback_3"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="right-bubble-four" id="right_feedback_4"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="right-bubble-five" id="right_feedback_5"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="right-bubble-six" id="right_feedback_6"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="right-bubble-seven" id="right_feedback_7"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="right-bubble-eight" id="right_feedback_8"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="right-bubble-nine" id="right_feedback_9"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="right-bubble-ten" id="right_feedback_10"></div><div style="height:4.5px;"></div></tr>
                 </table>
             </td>
         </tr>
-        <tr style="border-top: solid thick"> 
+        <tr style="border-top: solid thick">
+            <td><div class="pre_t1"></div></td>
+            <td><div class="t1"><h5 style="text-transform: uppercase;">{{t_earliest}}</h5></div></td>
             <td></td>
-            <td style="text-align: center;">
-                <h5 style="text-transform: uppercase;">{{earlier_time}}</h5>
-            </td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;">
-                <h5 style="text-transform: uppercase;">{{later_time}}</h5>
-            </td>
-            <td></td>
+            <td><div class="t2_text"><h5 style="text-transform: uppercase;">{{t_middle}}</h5></div></td>
+            <td><div class="t2_t3_gap"></div></td>
+            <td><div class="t3_text"><h5 style="text-transform: uppercase;">{{t_latest}}</h5></div></td>
+            <td><div class="post_t3"></div></td>
         </tr>
     </table>
     <script>
@@ -472,11 +99,40 @@ input[name=slider_two]::-webkit-slider-thumb {
             var later_max = {{ later_max }};
             document.getElementById("id_slider_one").step = earlier_max/10;
             document.getElementById("id_slider_two").step = later_max/10;
+
+            left_block_size = numberWithCommas(earlier_max/10);
+            right_block_size = numberWithCommas(later_max/10);
+
+            // document.getElementById("left_feedback_0").innerText = left_block_size;
+            document.getElementById("left_feedback_1").innerText = left_block_size;
+            document.getElementById("left_feedback_2").innerText = left_block_size;
+            document.getElementById("left_feedback_3").innerText = left_block_size;
+            document.getElementById("left_feedback_4").innerText = left_block_size;
+            document.getElementById("left_feedback_5").innerText = left_block_size;
+            document.getElementById("left_feedback_6").innerText = left_block_size;
+            document.getElementById("left_feedback_7").innerText = left_block_size;
+            document.getElementById("left_feedback_8").innerText = left_block_size;
+            document.getElementById("left_feedback_9").innerText = left_block_size;
+            document.getElementById("left_feedback_10").innerText = left_block_size;
+
+            // document.getElementById("right_feedback_0").innerText = right_block_size;
+            document.getElementById("right_feedback_1").innerText = right_block_size;
+            document.getElementById("right_feedback_2").innerText = right_block_size;
+            document.getElementById("right_feedback_3").innerText = right_block_size;
+            document.getElementById("right_feedback_4").innerText = right_block_size;
+            document.getElementById("right_feedback_5").innerText = right_block_size;
+            document.getElementById("right_feedback_6").innerText = right_block_size;
+            document.getElementById("right_feedback_7").innerText = right_block_size;
+            document.getElementById("right_feedback_8").innerText = right_block_size;
+            document.getElementById("right_feedback_9").innerText = right_block_size;
+            document.getElementById("right_feedback_10").innerText = right_block_size;
+            
         
             // hide slider thumb until initial click
-            $('input[name=slider_one]').on('input change', function () {
+            $('input[name=slider_one]').on('input', function () {
                 $('input[name=slider_one]').addClass('slider_one_thumb');
                 $('input[name=slider_two]').addClass('slider_two_thumb');
+                // addLabels();
                 var slider_one_actual_val = $(this).val()
                 var slider_one_display_val = earlier_max - $(this).val();
                 var slider_two_val = $(this).val()*later_max/earlier_max;
@@ -485,7 +141,7 @@ input[name=slider_two]::-webkit-slider-thumb {
             });
         
             // handle changes in slider value
-            $('input[name=slider_one]').on('input', function() {
+            $('input[name=slider_one]').on('input change', function() {
                 var slider_one_actual_val = $(this).val()
                 var slider_one_display_val = earlier_max - $(this).val();
                 var slider_two_val = $(this).val()*later_max/earlier_max;
@@ -498,9 +154,10 @@ input[name=slider_two]::-webkit-slider-thumb {
             // functions for slider 2
         
             // hide slider thumb until initial click
-            $('input[name=slider_two]').on('input change', function () {
+            $('input[name=slider_two]').on('input', function () {
                 $('input[name=slider_one]').addClass('slider_one_thumb');
                 $('input[name=slider_two]').addClass('slider_two_thumb');
+                // addLabels();
                 var slider_two_val = $(this).val();
                 var slider_one_actual_val = slider_two_val*earlier_max/later_max;
                 var slider_one_display_val = earlier_max - slider_one_actual_val;
@@ -509,7 +166,7 @@ input[name=slider_two]::-webkit-slider-thumb {
             });
         
             // handle changes in slider value
-            $('input[name=slider_two]').on('input', function() {
+            $('input[name=slider_two]').on('input change', function() {
                 var slider_two_val = $(this).val();
                 var slider_one_actual_val = slider_two_val*earlier_max/later_max;
                 var slider_one_display_val = earlier_max - slider_one_actual_val;
@@ -518,39 +175,59 @@ input[name=slider_two]::-webkit-slider-thumb {
                 $('#check_slider_one').val(1);
                 $('#check_slider_two').val(1);
             });
-           
+
+            function numberWithCommas(x) {
+                return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            }
+
             function updateLabels(slider_one_location, slider_one_display_val, slider_two_val, left_block_size, right_block_size) {
+                slider_one_display_val = numberWithCommas(slider_one_display_val);
+                slider_two_val = numberWithCommas(slider_two_val);
+                left_block_size = numberWithCommas(left_block_size);
+                right_block_size = numberWithCommas(right_block_size);
                 if (slider_one_location > 0) {
                     document.getElementById("left_feedback_0").style.background = "rgb(43, 173, 43)";
                     document.getElementById("left_feedback_0").innerText = left_block_size;
                     document.getElementById("right_feedback_0").style.background = "#d3d3d3";
                     document.getElementById("right_feedback_0").innerText = right_block_size;
+                    document.getElementById("center_feedback_0").style.background = "white";
+                    document.getElementById("center_feedback_0").innerText = "";
                 } else if (slider_one_location == 0) {
                     document.getElementById("left_feedback_0").style.background = "rgb(154, 214, 235)";
-                    document.getElementById("left_feedback_0").innerText = slider_one_display_val+" earlier";
+                    document.getElementById("left_feedback_0").innerText = "";
                     document.getElementById("right_feedback_0").style.background = "rgb(154, 214, 235)";
-                    document.getElementById("right_feedback_0").innerText = slider_two_val+" later";
+                    document.getElementById("right_feedback_0").innerText = "";
+                    document.getElementById("center_feedback_0").innerText = slider_one_display_val+" earlier | "+slider_two_val+" later";
+                    document.getElementById("center_feedback_0").style.background = "rgb(154, 214, 235)";
                 } else {
                     document.getElementById("left_feedback_0").style.background = "#d3d3d3";
                     document.getElementById("left_feedback_0").innerText = left_block_size;
                     document.getElementById("right_feedback_0").style.background = "rgb(43, 173, 43)";
                     document.getElementById("right_feedback_0").innerText = right_block_size;
+                    document.getElementById("center_feedback_0").style.background = "white";
+                    document.getElementById("center_feedback_0").innerText = "";
                 }
                 if (slider_one_location > 1) {
                     document.getElementById("left_feedback_1").style.background = "rgb(43, 173, 43)";
                     document.getElementById("left_feedback_1").innerText = left_block_size;
                     document.getElementById("right_feedback_1").style.background = "#d3d3d3";
                     document.getElementById("right_feedback_1").innerText = right_block_size;
+                    document.getElementById("center_feedback_1").style.background = "white";
+                    document.getElementById("center_feedback_1").innerText = "";
                 } else if (slider_one_location == 1) {
                     document.getElementById("left_feedback_1").style.background = "rgb(154, 214, 235)";
-                    document.getElementById("left_feedback_1").innerText = slider_one_display_val+" earlier";
+                    document.getElementById("left_feedback_1").innerText = "";
                     document.getElementById("right_feedback_1").style.background = "rgb(154, 214, 235)";
-                    document.getElementById("right_feedback_1").innerText = slider_two_val+" later";
+                    document.getElementById("right_feedback_1").innerText = "";
+                    document.getElementById("center_feedback_1").innerText = slider_one_display_val+" earlier | "+slider_two_val+" later";
+                    document.getElementById("center_feedback_1").style.background = "rgb(154, 214, 235)";
                 } else {
                     document.getElementById("left_feedback_1").style.background = "#d3d3d3";
                     document.getElementById("left_feedback_1").innerText = left_block_size;
                     document.getElementById("right_feedback_1").style.background = "rgb(43, 173, 43)";
                     document.getElementById("right_feedback_1").innerText = right_block_size;
+                    document.getElementById("center_feedback_1").style.background = "white";
+                    document.getElementById("center_feedback_1").innerText = "";
                 }
 
                 if (slider_one_location > 2) {
@@ -558,16 +235,22 @@ input[name=slider_two]::-webkit-slider-thumb {
                     document.getElementById("left_feedback_2").innerText = left_block_size;
                     document.getElementById("right_feedback_2").style.background = "#d3d3d3";
                     document.getElementById("right_feedback_2").innerText = right_block_size;
+                    document.getElementById("center_feedback_2").style.background = "white";
+                    document.getElementById("center_feedback_2").innerText = "";
                 } else if (slider_one_location == 2) {
                     document.getElementById("left_feedback_2").style.background = "rgb(154, 214, 235)";
-                    document.getElementById("left_feedback_2").innerText = slider_one_display_val+" earlier";
+                    document.getElementById("left_feedback_2").innerText = "";
                     document.getElementById("right_feedback_2").style.background = "rgb(154, 214, 235)";
-                    document.getElementById("right_feedback_2").innerText = slider_two_val+" later";
+                    document.getElementById("right_feedback_2").innerText = "";
+                    document.getElementById("center_feedback_2").innerText = slider_one_display_val+" earlier | "+slider_two_val+" later";
+                    document.getElementById("center_feedback_2").style.background = "rgb(154, 214, 235)";
                 } else {
                     document.getElementById("left_feedback_2").style.background = "#d3d3d3";
                     document.getElementById("left_feedback_2").innerText = left_block_size;
                     document.getElementById("right_feedback_2").style.background = "rgb(43, 173, 43)";
                     document.getElementById("right_feedback_2").innerText = right_block_size;
+                    document.getElementById("center_feedback_2").style.background = "white";
+                    document.getElementById("center_feedback_2").innerText = "";
                 }
 
                 if (slider_one_location > 3) {
@@ -575,16 +258,22 @@ input[name=slider_two]::-webkit-slider-thumb {
                     document.getElementById("left_feedback_3").innerText = left_block_size;
                     document.getElementById("right_feedback_3").style.background = "#d3d3d3";
                     document.getElementById("right_feedback_3").innerText = right_block_size;
+                    document.getElementById("center_feedback_3").style.background = "white";
+                    document.getElementById("center_feedback_3").innerText = "";
                 } else if (slider_one_location == 3) {
                     document.getElementById("left_feedback_3").style.background = "rgb(154, 214, 235)";
-                    document.getElementById("left_feedback_3").innerText = slider_one_display_val+" earlier";
+                    document.getElementById("left_feedback_3").innerText = "";
                     document.getElementById("right_feedback_3").style.background = "rgb(154, 214, 235)";
-                    document.getElementById("right_feedback_3").innerText = slider_two_val+" later";
+                    document.getElementById("right_feedback_3").innerText = "";
+                    document.getElementById("center_feedback_3").innerText = slider_one_display_val+" earlier | "+slider_two_val+" later";
+                    document.getElementById("center_feedback_3").style.background = "rgb(154, 214, 235)";
                 } else {
                     document.getElementById("left_feedback_3").style.background = "#d3d3d3";
                     document.getElementById("left_feedback_3").innerText = left_block_size;
                     document.getElementById("right_feedback_3").style.background = "rgb(43, 173, 43)";
                     document.getElementById("right_feedback_3").innerText = right_block_size;
+                    document.getElementById("center_feedback_3").style.background = "white";
+                    document.getElementById("center_feedback_3").innerText = "";
                 }
 
                 if (slider_one_location > 4) {
@@ -592,16 +281,22 @@ input[name=slider_two]::-webkit-slider-thumb {
                     document.getElementById("left_feedback_4").innerText = left_block_size;
                     document.getElementById("right_feedback_4").style.background = "#d3d3d3";
                     document.getElementById("right_feedback_4").innerText = right_block_size;
+                    document.getElementById("center_feedback_4").style.background = "white";
+                    document.getElementById("center_feedback_4").innerText = "";
                 } else if (slider_one_location == 4) {
                     document.getElementById("left_feedback_4").style.background = "rgb(154, 214, 235)";
-                    document.getElementById("left_feedback_4").innerText = slider_one_display_val+" earlier";
+                    document.getElementById("left_feedback_4").innerText = "";
                     document.getElementById("right_feedback_4").style.background = "rgb(154, 214, 235)";
-                    document.getElementById("right_feedback_4").innerText = slider_two_val+" later";
+                    document.getElementById("right_feedback_4").innerText = "";
+                    document.getElementById("center_feedback_4").innerText = slider_one_display_val+" earlier | "+slider_two_val+" later";
+                    document.getElementById("center_feedback_4").style.background = "rgb(154, 214, 235)";
                 } else {
                     document.getElementById("left_feedback_4").style.background = "#d3d3d3";
                     document.getElementById("left_feedback_4").innerText = left_block_size;
                     document.getElementById("right_feedback_4").style.background = "rgb(43, 173, 43)";
                     document.getElementById("right_feedback_4").innerText = right_block_size;
+                    document.getElementById("center_feedback_4").style.background = "white";
+                    document.getElementById("center_feedback_4").innerText = "";
                 }
 
                 if (slider_one_location > 5) {
@@ -609,16 +304,22 @@ input[name=slider_two]::-webkit-slider-thumb {
                     document.getElementById("left_feedback_5").innerText = left_block_size;
                     document.getElementById("right_feedback_5").style.background = "#d3d3d3";
                     document.getElementById("right_feedback_5").innerText = right_block_size;
+                    document.getElementById("center_feedback_5").style.background = "white";
+                    document.getElementById("center_feedback_5").innerText = "";
                 } else if (slider_one_location == 5) {
                     document.getElementById("left_feedback_5").style.background = "rgb(154, 214, 235)";
-                    document.getElementById("left_feedback_5").innerText = slider_one_display_val+" earlier";
+                    document.getElementById("left_feedback_5").innerText = "";
                     document.getElementById("right_feedback_5").style.background = "rgb(154, 214, 235)";
-                    document.getElementById("right_feedback_5").innerText = slider_two_val+" later";
+                    document.getElementById("right_feedback_5").innerText = "";
+                    document.getElementById("center_feedback_5").innerText = slider_one_display_val+" earlier | "+slider_two_val+" later";
+                    document.getElementById("center_feedback_5").style.background = "rgb(154, 214, 235)";
                 } else {
                     document.getElementById("left_feedback_5").style.background = "#d3d3d3";
                     document.getElementById("left_feedback_5").innerText = left_block_size;
                     document.getElementById("right_feedback_5").style.background = "rgb(43, 173, 43)";
                     document.getElementById("right_feedback_5").innerText = right_block_size;
+                    document.getElementById("center_feedback_5").style.background = "white";
+                    document.getElementById("center_feedback_5").innerText = "";
                 }
 
                 if (slider_one_location > 6) {
@@ -626,16 +327,22 @@ input[name=slider_two]::-webkit-slider-thumb {
                     document.getElementById("left_feedback_6").innerText = left_block_size;
                     document.getElementById("right_feedback_6").style.background = "#d3d3d3";
                     document.getElementById("right_feedback_6").innerText = right_block_size;
+                    document.getElementById("center_feedback_6").style.background = "white";
+                    document.getElementById("center_feedback_6").innerText = "";
                 } else if (slider_one_location == 6) {
                     document.getElementById("left_feedback_6").style.background = "rgb(154, 214, 235)";
-                    document.getElementById("left_feedback_6").innerText = slider_one_display_val+" earlier";
+                    document.getElementById("left_feedback_6").innerText = "";
                     document.getElementById("right_feedback_6").style.background = "rgb(154, 214, 235)";
-                    document.getElementById("right_feedback_6").innerText = slider_two_val+" later";
+                    document.getElementById("right_feedback_6").innerText = "";
+                    document.getElementById("center_feedback_6").innerText = slider_one_display_val+" earlier | "+slider_two_val+" later";
+                    document.getElementById("center_feedback_6").style.background = "rgb(154, 214, 235)";
                 } else {
                     document.getElementById("left_feedback_6").style.background = "#d3d3d3";
                     document.getElementById("left_feedback_6").innerText = left_block_size;
                     document.getElementById("right_feedback_6").style.background = "rgb(43, 173, 43)";
                     document.getElementById("right_feedback_6").innerText = right_block_size;
+                    document.getElementById("center_feedback_6").style.background = "white";
+                    document.getElementById("center_feedback_6").innerText = "";
                 }
 
                 if (slider_one_location > 7) {
@@ -643,16 +350,22 @@ input[name=slider_two]::-webkit-slider-thumb {
                     document.getElementById("left_feedback_7").innerText = left_block_size;
                     document.getElementById("right_feedback_7").style.background = "#d3d3d3";
                     document.getElementById("right_feedback_7").innerText = right_block_size;
+                    document.getElementById("center_feedback_7").style.background = "white";
+                    document.getElementById("center_feedback_7").innerText = "";
                 } else if (slider_one_location == 7) {
                     document.getElementById("left_feedback_7").style.background = "rgb(154, 214, 235)";
-                    document.getElementById("left_feedback_7").innerText = slider_one_display_val+" earlier";
+                    document.getElementById("left_feedback_7").innerText = "";
                     document.getElementById("right_feedback_7").style.background = "rgb(154, 214, 235)";
-                    document.getElementById("right_feedback_7").innerText = slider_two_val+" later";
+                    document.getElementById("right_feedback_7").innerText = "";
+                    document.getElementById("center_feedback_7").innerText = slider_one_display_val+" earlier | "+slider_two_val+" later";
+                    document.getElementById("center_feedback_7").style.background = "rgb(154, 214, 235)";
                 } else {
                     document.getElementById("left_feedback_7").style.background = "#d3d3d3";
                     document.getElementById("left_feedback_7").innerText = left_block_size;
                     document.getElementById("right_feedback_7").style.background = "rgb(43, 173, 43)";
                     document.getElementById("right_feedback_7").innerText = right_block_size;
+                    document.getElementById("center_feedback_7").style.background = "white";
+                    document.getElementById("center_feedback_7").innerText = "";
                 }
 
                 if (slider_one_location > 8) {
@@ -660,16 +373,22 @@ input[name=slider_two]::-webkit-slider-thumb {
                     document.getElementById("left_feedback_8").innerText = left_block_size;
                     document.getElementById("right_feedback_8").style.background = "#d3d3d3";
                     document.getElementById("right_feedback_8").innerText = right_block_size;
+                    document.getElementById("center_feedback_8").style.background = "white";
+                    document.getElementById("center_feedback_8").innerText = "";
                 } else if (slider_one_location == 8) {
                     document.getElementById("left_feedback_8").style.background = "rgb(154, 214, 235)";
-                    document.getElementById("left_feedback_8").innerText = slider_one_display_val+" earlier";
+                    document.getElementById("left_feedback_8").innerText = "";
                     document.getElementById("right_feedback_8").style.background = "rgb(154, 214, 235)";
-                    document.getElementById("right_feedback_8").innerText = slider_two_val+" later";
+                    document.getElementById("right_feedback_8").innerText = "";
+                    document.getElementById("center_feedback_8").innerText = slider_one_display_val+" earlier | "+slider_two_val+" later";
+                    document.getElementById("center_feedback_8").style.background = "rgb(154, 214, 235)";
                 } else {
                     document.getElementById("left_feedback_8").style.background = "#d3d3d3";
                     document.getElementById("left_feedback_8").innerText = left_block_size;
                     document.getElementById("right_feedback_8").style.background = "rgb(43, 173, 43)";
                     document.getElementById("right_feedback_8").innerText = right_block_size;
+                    document.getElementById("center_feedback_8").style.background = "white";
+                    document.getElementById("center_feedback_8").innerText = "";
                 }
 
                 if (slider_one_location > 9) {
@@ -677,16 +396,22 @@ input[name=slider_two]::-webkit-slider-thumb {
                     document.getElementById("left_feedback_9").innerText = left_block_size;
                     document.getElementById("right_feedback_9").style.background = "#d3d3d3";
                     document.getElementById("right_feedback_9").innerText = right_block_size;
+                    document.getElementById("center_feedback_9").style.background = "white";
+                    document.getElementById("center_feedback_9").innerText = "";
                 } else if (slider_one_location == 9) {
                     document.getElementById("left_feedback_9").style.background = "rgb(154, 214, 235)";
-                    document.getElementById("left_feedback_9").innerText = slider_one_display_val+" earlier";
+                    document.getElementById("left_feedback_9").innerText = "";
                     document.getElementById("right_feedback_9").style.background = "rgb(154, 214, 235)";
-                    document.getElementById("right_feedback_9").innerText = slider_two_val+" later";
+                    document.getElementById("right_feedback_9").innerText = "";
+                    document.getElementById("center_feedback_9").innerText = slider_one_display_val+" earlier | "+slider_two_val+" later";
+                    document.getElementById("center_feedback_9").style.background = "rgb(154, 214, 235)";
                 } else {
                     document.getElementById("left_feedback_9").style.background = "#d3d3d3";
                     document.getElementById("left_feedback_9").innerText = left_block_size;
                     document.getElementById("right_feedback_9").style.background = "rgb(43, 173, 43)";
                     document.getElementById("right_feedback_9").innerText = right_block_size;
+                    document.getElementById("center_feedback_9").style.background = "white";
+                    document.getElementById("center_feedback_9").innerText = "";
                 }
 
                 if (slider_one_location > 10) {
@@ -694,16 +419,22 @@ input[name=slider_two]::-webkit-slider-thumb {
                     document.getElementById("left_feedback_10").innerText = left_block_size;
                     document.getElementById("right_feedback_10").style.background = "#d3d3d3";
                     document.getElementById("right_feedback_10").innerText = right_block_size;
+                    document.getElementById("center_feedback_10").style.background = "white";
+                    document.getElementById("center_feedback_10").innerText = "";
                 } else if (slider_one_location == 10) {
                     document.getElementById("left_feedback_10").style.background = "rgb(154, 214, 235)";
-                    document.getElementById("left_feedback_10").innerText = slider_one_display_val+" earlier";
+                    document.getElementById("left_feedback_10").innerText = "";
                     document.getElementById("right_feedback_10").style.background = "rgb(154, 214, 235)";
-                    document.getElementById("right_feedback_10").innerText = slider_two_val+" later";
+                    document.getElementById("right_feedback_10").innerText = "";
+                    document.getElementById("center_feedback_10").innerText = slider_one_display_val+" earlier | "+slider_two_val+" later";
+                    document.getElementById("center_feedback_10").style.background = "rgb(154, 214, 235)";
                 } else {
                     document.getElementById("left_feedback_10").style.background = "#d3d3d3";
                     document.getElementById("left_feedback_10").innerText = left_block_size;
                     document.getElementById("right_feedback_10").style.background = "rgb(43, 173, 43)";
                     document.getElementById("right_feedback_10").innerText = right_block_size;
+                    document.getElementById("center_feedback_10").style.background = "white";
+                    document.getElementById("center_feedback_10").innerText = "";
                 }
             }
         });   
@@ -730,4 +461,8 @@ input[name=slider_two]::-webkit-slider-thumb {
     </div>
     
     <script>jQuery(".next-button").hide();</script>
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'Slider/styles/slider23.css' %}" />
 {% endblock %}

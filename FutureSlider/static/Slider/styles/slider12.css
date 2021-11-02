@@ -1,0 +1,564 @@
+/* control gaps between times */
+
+.pre-t1 {
+    width: 0px !important;
+}
+
+.t1_text {
+    width: 450px !important;
+    text-align: left !important;
+    margin-left: -164px !important; /* 70 for label button width + 4 for label utton padding */
+}
+
+.t1_slider {
+    width: 450px !important;
+    text-align: left !important;
+    margin-left: -250px !important; /* 70 for label button width + 4 for label utton padding */
+}
+
+.t2_slider {
+    width: 230px !important;
+    margin-left: -110px;
+}
+
+.t2_text {
+    width: 230px !important;
+    text-align: left !important;    
+}
+
+.t2_t3_gap {
+    width: 180px  !important;
+    text-align: left  !important;
+}
+
+.t3_slider {
+    width: 230px !important;
+    margin-left: -120px !important;
+}
+
+.t3_text {
+    width: 230px !important;
+    text-align: left !important;
+}
+
+.post_t3 {
+    width: 0px !important;
+    margin-left: -95px;
+}
+
+/* control what sliders look like */
+
+/* make sliders vertical */
+.rotate {
+    width: 340px; /* change the height of the bars (use width marker because of rotation) */
+    transform: rotate(270deg);
+    vertical-align: bottom;
+}
+
+/* new thumb that appears when clicked */
+.slider_one_thumb::-webkit-slider-thumb {
+    height: 160px !important; /* control the width of the slider thumb */
+    width: 8% !important;
+    background: rgb(154, 214, 235) !important;
+    cursor: pointer !important;
+    -webkit-appearance: none !important;
+}
+
+
+input[name=slider_one] {
+    -webkit-appearance: none;
+}
+
+input[name=slider_one]:focus {
+    outline: none;
+}
+
+/* the track itself */
+input[name=slider_one]::-webkit-slider-runnable-track {
+    overflow:hidden;
+    height: 160px; /* control the width of the bars */
+    cursor: pointer;
+    background: transparent;
+    pointer-events: auto;
+}
+
+/* hide original thumb */
+input[name=slider_one]::-webkit-slider-thumb {
+    border: 0px;
+    height: 0px;
+    width: 0px;
+    border-radius: 0px;
+    -webkit-appearance: none;
+}
+
+/* for slider two */
+/* new thumb that appears when clicked */
+.slider_two_thumb::-webkit-slider-thumb {
+    height: 160px !important; /* control the width of the slider thumb */
+    width: 8% !important;
+    background:rgb(154, 214, 235) !important;
+    cursor: pointer !important;
+    -webkit-appearance: none !important;
+    pointer-events: auto; 
+}
+
+input[name=slider_two] {
+    -webkit-appearance: none;
+}
+
+input[name=slider_two]:focus {
+    outline: none;
+}
+
+/* the track itself */
+input[name=slider_two]::-webkit-slider-runnable-track {
+    overflow:hidden;
+    height: 160px; /* control the width of the bars */
+    cursor: pointer;
+    background: transparent;
+    pointer-events: auto;
+}
+
+/* hide original slider thumb */
+input[name=slider_two]::-webkit-slider-thumb {
+    border: 0px;
+    height: 0px;
+    width: 0px;
+    border-radius: 0px;
+    -webkit-appearance: none;
+}
+
+.left-bubble-zero {
+    background: transparent;
+    color: black;
+    position: relative;
+    height: 27px;
+    left: 1%;
+    top: 3px;
+    width: 160px;
+    text-align: center;
+    z-index: 5;
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+.left-bubble-one {
+    background: rgb(43, 173, 43);
+    color: black;
+    position: relative;
+    top: 3px;
+    height: 27px;
+    width: 160px;
+    z-index: 5;
+    left: 1%;
+    text-align: center;
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+.left-bubble-two {
+    background: rgb(43, 173, 43);
+    color: black;
+    position: relative;
+    left: 1%;
+    top: 3px;
+    z-index: 5;
+    height: 27px;
+    width: 160px;
+    text-align: center;
+    border-radius: 4px;
+    pointer-events: none;
+}
+.left-bubble-three {
+    background: rgb(43, 173, 43);
+    color: black;
+    position: relative;
+    height: 27px;
+    top: 3px;
+    left: 1%;
+    z-index: 5;
+    width: 160px;
+    text-align: center;
+    border-radius: 4px;
+    pointer-events: none;
+}
+.left-bubble-four {
+    background: rgb(43, 173, 43);
+    color: black;
+    position: relative;
+    height: 27px;
+    width: 160px;
+    z-index: 5;
+    top: 3px;
+    left: 1%;
+    text-align: center;
+    border-radius: 4px;
+    pointer-events: none;
+}
+.left-bubble-five {
+    background: rgb(43, 173, 43);
+    color: black;
+    position: relative;
+    height: 27px;
+    top: 3px;
+    width: 160px;
+    left: 1%;
+    z-index: 5;
+    text-align: center;
+    border-radius: 4px;
+    pointer-events: none;
+}
+.left-bubble-six {
+    background: rgb(43, 173, 43);
+    color: black;
+    position: relative;
+    height: 27px;
+    top: 3px;
+    width: 160px;
+    z-index: 5;
+    left: 1%;
+    text-align: center;
+    border-radius: 4px;
+    pointer-events: none;
+}
+.left-bubble-seven {
+    background: rgb(43, 173, 43);
+    color: black;
+    position: relative;
+    height: 27px;
+    top: 3px;
+    width: 160px;
+    z-index: 5;
+    left: 1%;
+    text-align: center;
+    border-radius: 4px;
+    pointer-events: none;
+}
+.left-bubble-eight {
+    background: rgb(43, 173, 43);
+    color: black;
+    position: relative;
+    height: 27px;
+    top: 3px;
+    width: 160px;
+    z-index: 5;
+    left: 1%;
+    text-align: center;
+    border-radius: 4px;
+    pointer-events: none;
+}
+.left-bubble-nine {
+    background: rgb(43, 173, 43);
+    color: black;
+    position: relative;
+    height: 27px;
+    top: 3px;
+    width: 160px;
+    left: 1%;
+    text-align: center;
+    z-index: 5;
+    border-radius: 4px;
+    pointer-events: none;
+}
+.left-bubble-ten {
+    background: rgb(43, 173, 43);
+    color: black;
+    position: relative;
+    height: 27px;
+    width: 160px;
+    left: 1%;
+    top: 3px;
+    z-index: 5;
+    text-align: center;
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+.right-bubble-zero {
+    background: transparent;
+    color: black;
+    position: relative;
+    left: -416%;
+    height: 27px;
+    top: 3px;
+    width: 160px;
+    z-index: 5;
+    text-align: center;
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+.right-bubble-one {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    left: -416%;
+    top: 3px;
+    height: 27px;
+    z-index: 5;
+    width: 160px;
+    text-align: center;
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+.right-bubble-two {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    left: -416%;
+    top: 3px;
+    z-index: 5;
+    height: 27px;
+    width: 160px;
+    text-align: center;
+    border-radius: 4px;
+    pointer-events: none;
+}
+.right-bubble-three {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    height: 27px;
+    top: 3px;
+    z-index: 5;
+    left: -416%;
+    width: 160px;
+    text-align: center;
+    border-radius: 4px;
+    pointer-events: none;
+}
+.right-bubble-four {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    height: 27px;
+    width: 160px;
+    z-index: 5;
+    top: 3px;
+    left: -416%;
+    text-align: center;
+    border-radius: 4px;
+}
+.right-bubble-five {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    height: 27px;
+    top: 3px;
+    width: 160px;
+    left: -416%;
+    z-index: 5;
+    text-align: center;
+    border-radius: 4px;
+    pointer-events: none;
+}
+.right-bubble-six {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    height: 27px;
+    z-index: 5;
+    top: 3px;
+    width: 160px;
+    left: -416%;
+    text-align: center;
+    border-radius: 4px;
+    pointer-events: none;
+}
+.right-bubble-seven {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    height: 27px;
+    top: 3px;
+    width: 160px;
+    left: -416%;
+    z-index: 5;
+    text-align: center;
+    border-radius: 4px;
+    pointer-events: none;
+}
+.right-bubble-eight {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    height: 27px;
+    top: 3px;
+    width: 160px;
+    left: -416%;
+    z-index: 5;
+    text-align: center;
+    border-radius: 4px;
+    pointer-events: none;
+}
+.right-bubble-nine {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    height: 27px;
+    top: 3px;
+    width: 160px;
+    left: -416%;
+    z-index: 5;
+    text-align: center;
+    border-radius: 4px;
+    pointer-events: none;
+}
+.right-bubble-ten {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    height: 27px;
+    width: 160px;
+    z-index: 5;
+    left: -416%;
+    top: 3px;
+    text-align: center;
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+.center-bubble-zero {
+    background: white;
+    color: black;
+    position: relative;
+    height: 27px;
+    top: 3px;        
+    width: 200%;
+    left: -565px;
+    text-align: center;
+    border-radius: 4px;
+    z-index: -1;
+}
+.center-bubble-one {
+    background: white;
+    color: black;
+    position: relative;
+    height: 27px;
+    top: 3px;
+    width: 200%;
+    left: -565px;
+    text-align: center;
+    border-radius: 4px;
+    z-index: -1;
+}
+.center-bubble-two {
+    background: white;
+    color: black;
+    position: relative;
+    height: 27px;
+    top: 3px;
+    width: 200%;
+    left: -565px;
+    text-align: center;
+    border-radius: 4px;
+    z-index: -1;
+}
+.center-bubble-three {
+    background: white;
+    color: black;
+    position: relative;
+    height: 27px;
+    top: 3px;
+    width: 200%;
+    left: -565px;
+    text-align: center;
+    border-radius: 4px;
+    z-index: -1;
+}
+.center-bubble-four {
+    background: white;
+    color: black;
+    position: relative;
+    height: 27px;
+    top: 3px;
+    width: 200%;
+    left: -565px;
+    text-align: center;
+    border-radius: 4px;
+    z-index: -1;
+}
+.center-bubble-five {
+    background: white;
+    color: black;
+    position: relative;
+    height: 27px;
+    top: 3px;
+    width: 200%;
+    left: -565px;
+    text-align: center;
+    border-radius: 4px;
+    z-index: -1;
+}
+.center-bubble-six {
+    background: white;
+    color: black;
+    position: relative;
+    height: 27px;
+    top: 3px;
+    width: 200%;
+    left: -565px;
+    text-align: center;
+    border-radius: 4px;
+    z-index: -1;
+}
+.center-bubble-seven {
+    background: white;
+    color: black;
+    position: relative;
+    height: 27px;
+    top: 3px;
+    width: 200%;
+    left: -565px;
+    text-align: center;
+    border-radius: 4px;
+    z-index: -1;
+}
+.center-bubble-eight {
+    background: white;
+    color: black;
+    position: relative;
+    height: 27px;
+    top: 3px;
+    width: 200%;
+    left: -565px;
+    text-align: center;
+    border-radius: 4px;
+    z-index: -1;
+}
+.center-bubble-nine {
+    background: white;
+    color: black;
+    position: relative;
+    height: 27px;
+    top: 3px;
+    width: 200%;
+    left: -565px;   
+    text-align: center;
+    border-radius: 4px;
+    z-index: -1;
+}
+.center-bubble-ten {
+    background: white;
+    color: black;
+    position: relative;
+    height: 27px;
+    top: 1px;
+    width: 200%;
+    left: -565px;
+    text-align: center;
+    border-radius: 4px;
+    z-index: -1;
+}
+
+.center-placeholder {
+    background: white;
+    color: black;
+    position: relative;
+    height: 0px;
+    width: 160px; /* control gap between sliders */
+    text-align: center;
+    border-radius: 4px;
+    z-index: -1;
+}

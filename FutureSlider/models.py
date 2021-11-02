@@ -22,6 +22,7 @@ class Constants(BaseConstants):
 
 class Subsession(BaseSubsession):
     def creating_session(self):
+        t_options = self.session.config['future_t_options'].split(', ')
         t_earliers = self.session.config['future_t_earliers'].split(', ')
         t_laters = self.session.config['future_t_laters'].split(', ')
         payment_earliers = self.session.config['future_payment_earliers'].split(', ')
@@ -32,6 +33,9 @@ class Subsession(BaseSubsession):
             round_configs.append((t_earliers[i], t_laters[i], payment_earliers[i], payment_laters[i]))
 
         for i, p in enumerate(self.get_players()):
+            p.t_earliest = t_options[0]
+            p.t_middle = t_options[1]
+            p.t_latest = t_options[2]
             if self.session.config["future_randomize_sliders"]:
                 if self.round_number == 1:
                     # randomize slider order for each player
@@ -60,6 +64,10 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
+    t_earliest = models.StringField()
+    t_middle = models.StringField()
+    t_latest = models.StringField()
+    
     slider_order = models.StringField()
     start_time = models.StringField()
     finish_time = models.StringField()

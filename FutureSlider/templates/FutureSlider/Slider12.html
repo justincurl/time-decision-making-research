@@ -1,0 +1,468 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+	Slider
+{% endblock %}
+
+{% block content %}
+
+    {{ form.check_slider_one.errors }}
+    {{ form.check_slider_two.errors }}
+
+    <input type="hidden" name="check_slider_one" value="" id="id_check_slider_one"/>
+    <input type="hidden" name="check_slider_two" value="" id="id_check_slider_two"/>
+
+    <h5>Please click and drag the sliders to choose an allocation of check payment between {{earlier_time}} and {{later_time}}. <br><br>Note: Delaying your payment will increase the overall size of the payment </h5>
+    <hr>
+    <br>
+    
+    <table style="margin-left: auto; margin-right: auto;">
+        <tr>
+            <td>
+                <table id="left-table">
+                    <tr><div class="left-placeholder"></div><div style="height:0px;"></div></tr>
+                    <tr><div class="left-bubble-zero" id="left_feedback_0"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="left-bubble-one" id="left_feedback_1"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="left-bubble-two" id="left_feedback_2"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="left-bubble-three" id="left_feedback_3"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="left-bubble-four" id="left_feedback_4"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="left-bubble-five" id="left_feedback_5"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="left-bubble-six" id="left_feedback_6"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="left-bubble-seven" id="left_feedback_7"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="left-bubble-eight" id="left_feedback_8"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="left-bubble-nine" id="left_feedback_9"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="left-bubble-ten" id="left_feedback_10"></div><div style="height:4.5px;"></div></tr>
+                </table>
+            </td>
+            <td><div class="t1_slider">
+                <input type="range" name="slider_one" step=10 min=0 max={{earlier_max}} value="None" id="id_slider_one" class="rotate" class="form-control"/>
+            </div></td>
+            <td></td>
+            <td>
+                <div class="t2_slider">
+                    <input type="range" name="slider_two" step=10 min=0 max={{later_max}} value="None" id="id_slider_two" class="rotate" class="form-control"/>
+                </div>
+            </td>
+            <td>
+                <div class="t2_t3_gap">
+                    <table id="center-table">
+                        <tr><div class="center-placeholder"></div><div style="height:0px;"></div></tr>
+                        <tr><div class="center-bubble-zero" id="center_feedback_0"></div><div style="height:4.5px;"></div></tr>
+                        <tr><div class="center-bubble-one" id="center_feedback_1"></div><div style="height:4.5px;"></div></tr>
+                        <tr><div class="center-bubble-two" id="center_feedback_2"></div><div style="height:4.5px;"></div></tr>
+                        <tr><div class="center-bubble-three" id="center_feedback_3"></div><div style="height:4.5px;"></div></tr>
+                        <tr><div class="center-bubble-four" id="center_feedback_4"></div><div style="height:4.5px;"></div></tr>
+                        <tr><div class="center-bubble-five" id="center_feedback_5"></div><div style="height:4.5px;"></div></tr>
+                        <tr><div class="center-bubble-six" id="center_feedback_6"></div><div style="height:4.5px;"></div></tr>
+                        <tr><div class="center-bubble-seven" id="center_feedback_7"></div><div style="height:4.5px;"></div></tr>
+                        <tr><div class="center-bubble-eight" id="center_feedback_8"></div><div style="height:4.5px;"></div></tr>
+                        <tr><div class="center-bubble-nine" id="center_feedback_9"></div><div style="height:4.5px;"></div></tr>
+                        <tr><div class="center-bubble-ten" id="center_feedback_10"></div><div style="height:4.5px;"></div></tr>
+                    </table>
+                </div>
+            </td>
+            <td>
+                <div class="t3_slider"></div>
+            </td>
+            <td>
+                <table id="right-table">
+                    <tr><div class="right-placeholder"></div><div style="height:0px;"></div></tr>
+                    <tr><div class="right-bubble-zero" id="right_feedback_0"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="right-bubble-one" id="right_feedback_1"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="right-bubble-two" id="right_feedback_2"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="right-bubble-three" id="right_feedback_3"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="right-bubble-four" id="right_feedback_4"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="right-bubble-five" id="right_feedback_5"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="right-bubble-six" id="right_feedback_6"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="right-bubble-seven" id="right_feedback_7"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="right-bubble-eight" id="right_feedback_8"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="right-bubble-nine" id="right_feedback_9"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="right-bubble-ten" id="right_feedback_10"></div><div style="height:4.5px;"></div></tr>
+                </table>
+            </td>
+        </tr>
+        <tr style="border-top: solid thick">
+            <td><div class="pre_t1"></div></td>
+            <td><div class="t1_text"><h5 style="text-transform: uppercase;">{{t_earliest}}</h5></div></td>
+            <td></td>
+            <td><div class="t2_text"><h5 style="text-transform: uppercase;">{{t_middle}}</h5></div></td>
+            <td><div class="t2_t3_gap"></div></td>
+            <td><div class="t3_text"><h5 style="text-transform: uppercase;">{{t_latest}}</h5></div></td>
+            <td><div class="post_t3"></div></td>
+        </tr>
+    </table>
+    <script>
+        $(document).ready(function () {
+            // set step size
+            var earlier_max = {{ earlier_max }};
+            var later_max = {{ later_max }};
+            document.getElementById("id_slider_one").step = earlier_max/10;
+            document.getElementById("id_slider_two").step = later_max/10;
+
+            left_block_size = numberWithCommas(earlier_max/10);
+            right_block_size = numberWithCommas(later_max/10);
+
+            // document.getElementById("left_feedback_0").innerText = left_block_size;
+            document.getElementById("left_feedback_1").innerText = left_block_size;
+            document.getElementById("left_feedback_2").innerText = left_block_size;
+            document.getElementById("left_feedback_3").innerText = left_block_size;
+            document.getElementById("left_feedback_4").innerText = left_block_size;
+            document.getElementById("left_feedback_5").innerText = left_block_size;
+            document.getElementById("left_feedback_6").innerText = left_block_size;
+            document.getElementById("left_feedback_7").innerText = left_block_size;
+            document.getElementById("left_feedback_8").innerText = left_block_size;
+            document.getElementById("left_feedback_9").innerText = left_block_size;
+            document.getElementById("left_feedback_10").innerText = left_block_size;
+
+            // document.getElementById("right_feedback_0").innerText = right_block_size;
+            document.getElementById("right_feedback_1").innerText = right_block_size;
+            document.getElementById("right_feedback_2").innerText = right_block_size;
+            document.getElementById("right_feedback_3").innerText = right_block_size;
+            document.getElementById("right_feedback_4").innerText = right_block_size;
+            document.getElementById("right_feedback_5").innerText = right_block_size;
+            document.getElementById("right_feedback_6").innerText = right_block_size;
+            document.getElementById("right_feedback_7").innerText = right_block_size;
+            document.getElementById("right_feedback_8").innerText = right_block_size;
+            document.getElementById("right_feedback_9").innerText = right_block_size;
+            document.getElementById("right_feedback_10").innerText = right_block_size;
+            
+        
+            // hide slider thumb until initial click
+            $('input[name=slider_one]').on('input', function () {
+                $('input[name=slider_one]').addClass('slider_one_thumb');
+                $('input[name=slider_two]').addClass('slider_two_thumb');
+                // addLabels();
+                var slider_one_actual_val = $(this).val()
+                var slider_one_display_val = earlier_max - $(this).val();
+                var slider_two_val = $(this).val()*later_max/earlier_max;
+                document.getElementById("id_slider_two").value = slider_one_actual_val*later_max/earlier_max;
+                updateLabels(slider_one_display_val/earlier_max*10, slider_one_display_val, slider_two_val, document.getElementById("id_slider_one").step, document.getElementById("id_slider_two").step);
+            });
+        
+            // handle changes in slider value
+            $('input[name=slider_one]').on('input change', function() {
+                var slider_one_actual_val = $(this).val()
+                var slider_one_display_val = earlier_max - $(this).val();
+                var slider_two_val = $(this).val()*later_max/earlier_max;
+                document.getElementById("id_slider_two").value = slider_two_val; // links the two slider values together
+                updateLabels(slider_one_display_val/earlier_max*10, slider_one_display_val, slider_two_val, document.getElementById("id_slider_one").step, document.getElementById("id_slider_two").step);
+                $('#check_slider_one').val(1);
+                $('#check_slider_two').val(1);
+            });
+        
+            // functions for slider 2
+        
+            // hide slider thumb until initial click
+            $('input[name=slider_two]').on('input', function () {
+                $('input[name=slider_one]').addClass('slider_one_thumb');
+                $('input[name=slider_two]').addClass('slider_two_thumb');
+                // addLabels();
+                var slider_two_val = $(this).val();
+                var slider_one_actual_val = slider_two_val*earlier_max/later_max;
+                var slider_one_display_val = earlier_max - slider_one_actual_val;
+                document.getElementById("id_slider_one").value = slider_one_actual_val;
+                updateLabels(slider_one_display_val/earlier_max*10, slider_one_display_val, slider_two_val, document.getElementById("id_slider_one").step, document.getElementById("id_slider_two").step);
+            });
+        
+            // handle changes in slider value
+            $('input[name=slider_two]').on('input change', function() {
+                var slider_two_val = $(this).val();
+                var slider_one_actual_val = slider_two_val*earlier_max/later_max;
+                var slider_one_display_val = earlier_max - slider_one_actual_val;
+                document.getElementById("id_slider_one").value = slider_one_actual_val;
+                updateLabels(slider_one_display_val/earlier_max*10, slider_one_display_val, slider_two_val, document.getElementById("id_slider_one").step, document.getElementById("id_slider_two").step);
+                $('#check_slider_one').val(1);
+                $('#check_slider_two').val(1);
+            });
+
+            function numberWithCommas(x) {
+                return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            }
+           
+            function updateLabels(slider_one_location, slider_one_display_val, slider_two_val, left_block_size, right_block_size) {
+                slider_one_display_val = numberWithCommas(slider_one_display_val);
+                slider_two_val = numberWithCommas(slider_two_val);
+                left_block_size = numberWithCommas(left_block_size);
+                right_block_size = numberWithCommas(right_block_size);
+                if (slider_one_location > 0) {
+                    document.getElementById("left_feedback_0").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("left_feedback_0").innerText = left_block_size;
+                    document.getElementById("right_feedback_0").style.background = "#d3d3d3";
+                    document.getElementById("right_feedback_0").innerText = right_block_size;
+                    document.getElementById("center_feedback_0").style.background = "white";
+                    document.getElementById("center_feedback_0").innerText = "";
+                } else if (slider_one_location == 0) {
+                    document.getElementById("left_feedback_0").style.background = "rgb(154, 214, 235)";
+                    document.getElementById("left_feedback_0").innerText = "";
+                    document.getElementById("right_feedback_0").style.background = "rgb(154, 214, 235)";
+                    document.getElementById("right_feedback_0").innerText = "";
+                    document.getElementById("center_feedback_0").innerText = slider_one_display_val+" earlier | "+slider_two_val+" later";
+                    document.getElementById("center_feedback_0").style.background = "rgb(154, 214, 235)";
+                } else {
+                    document.getElementById("left_feedback_0").style.background = "#d3d3d3";
+                    document.getElementById("left_feedback_0").innerText = left_block_size;
+                    document.getElementById("right_feedback_0").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("right_feedback_0").innerText = right_block_size;
+                    document.getElementById("center_feedback_0").style.background = "white";
+                    document.getElementById("center_feedback_0").innerText = "";
+                }
+                if (slider_one_location > 1) {
+                    document.getElementById("left_feedback_1").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("left_feedback_1").innerText = left_block_size;
+                    document.getElementById("right_feedback_1").style.background = "#d3d3d3";
+                    document.getElementById("right_feedback_1").innerText = right_block_size;
+                    document.getElementById("center_feedback_1").style.background = "white";
+                    document.getElementById("center_feedback_1").innerText = "";
+                } else if (slider_one_location == 1) {
+                    document.getElementById("left_feedback_1").style.background = "rgb(154, 214, 235)";
+                    document.getElementById("left_feedback_1").innerText = "";
+                    document.getElementById("right_feedback_1").style.background = "rgb(154, 214, 235)";
+                    document.getElementById("right_feedback_1").innerText = "";
+                    document.getElementById("center_feedback_1").innerText = slider_one_display_val+" earlier | "+slider_two_val+" later";
+                    document.getElementById("center_feedback_1").style.background = "rgb(154, 214, 235)";
+                } else {
+                    document.getElementById("left_feedback_1").style.background = "#d3d3d3";
+                    document.getElementById("left_feedback_1").innerText = left_block_size;
+                    document.getElementById("right_feedback_1").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("right_feedback_1").innerText = right_block_size;
+                    document.getElementById("center_feedback_1").style.background = "white";
+                    document.getElementById("center_feedback_1").innerText = "";
+                }
+
+                if (slider_one_location > 2) {
+                    document.getElementById("left_feedback_2").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("left_feedback_2").innerText = left_block_size;
+                    document.getElementById("right_feedback_2").style.background = "#d3d3d3";
+                    document.getElementById("right_feedback_2").innerText = right_block_size;
+                    document.getElementById("center_feedback_2").style.background = "white";
+                    document.getElementById("center_feedback_2").innerText = "";
+                } else if (slider_one_location == 2) {
+                    document.getElementById("left_feedback_2").style.background = "rgb(154, 214, 235)";
+                    document.getElementById("left_feedback_2").innerText = "";
+                    document.getElementById("right_feedback_2").style.background = "rgb(154, 214, 235)";
+                    document.getElementById("right_feedback_2").innerText = "";
+                    document.getElementById("center_feedback_2").innerText = slider_one_display_val+" earlier | "+slider_two_val+" later";
+                    document.getElementById("center_feedback_2").style.background = "rgb(154, 214, 235)";
+                } else {
+                    document.getElementById("left_feedback_2").style.background = "#d3d3d3";
+                    document.getElementById("left_feedback_2").innerText = left_block_size;
+                    document.getElementById("right_feedback_2").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("right_feedback_2").innerText = right_block_size;
+                    document.getElementById("center_feedback_2").style.background = "white";
+                    document.getElementById("center_feedback_2").innerText = "";
+                }
+
+                if (slider_one_location > 3) {
+                    document.getElementById("left_feedback_3").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("left_feedback_3").innerText = left_block_size;
+                    document.getElementById("right_feedback_3").style.background = "#d3d3d3";
+                    document.getElementById("right_feedback_3").innerText = right_block_size;
+                    document.getElementById("center_feedback_3").style.background = "white";
+                    document.getElementById("center_feedback_3").innerText = "";
+                } else if (slider_one_location == 3) {
+                    document.getElementById("left_feedback_3").style.background = "rgb(154, 214, 235)";
+                    document.getElementById("left_feedback_3").innerText = "";
+                    document.getElementById("right_feedback_3").style.background = "rgb(154, 214, 235)";
+                    document.getElementById("right_feedback_3").innerText = "";
+                    document.getElementById("center_feedback_3").innerText = slider_one_display_val+" earlier | "+slider_two_val+" later";
+                    document.getElementById("center_feedback_3").style.background = "rgb(154, 214, 235)";
+                } else {
+                    document.getElementById("left_feedback_3").style.background = "#d3d3d3";
+                    document.getElementById("left_feedback_3").innerText = left_block_size;
+                    document.getElementById("right_feedback_3").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("right_feedback_3").innerText = right_block_size;
+                    document.getElementById("center_feedback_3").style.background = "white";
+                    document.getElementById("center_feedback_3").innerText = "";
+                }
+
+                if (slider_one_location > 4) {
+                    document.getElementById("left_feedback_4").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("left_feedback_4").innerText = left_block_size;
+                    document.getElementById("right_feedback_4").style.background = "#d3d3d3";
+                    document.getElementById("right_feedback_4").innerText = right_block_size;
+                    document.getElementById("center_feedback_4").style.background = "white";
+                    document.getElementById("center_feedback_4").innerText = "";
+                } else if (slider_one_location == 4) {
+                    document.getElementById("left_feedback_4").style.background = "rgb(154, 214, 235)";
+                    document.getElementById("left_feedback_4").innerText = "";
+                    document.getElementById("right_feedback_4").style.background = "rgb(154, 214, 235)";
+                    document.getElementById("right_feedback_4").innerText = "";
+                    document.getElementById("center_feedback_4").innerText = slider_one_display_val+" earlier | "+slider_two_val+" later";
+                    document.getElementById("center_feedback_4").style.background = "rgb(154, 214, 235)";
+                } else {
+                    document.getElementById("left_feedback_4").style.background = "#d3d3d3";
+                    document.getElementById("left_feedback_4").innerText = left_block_size;
+                    document.getElementById("right_feedback_4").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("right_feedback_4").innerText = right_block_size;
+                    document.getElementById("center_feedback_4").style.background = "white";
+                    document.getElementById("center_feedback_4").innerText = "";
+                }
+
+                if (slider_one_location > 5) {
+                    document.getElementById("left_feedback_5").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("left_feedback_5").innerText = left_block_size;
+                    document.getElementById("right_feedback_5").style.background = "#d3d3d3";
+                    document.getElementById("right_feedback_5").innerText = right_block_size;
+                    document.getElementById("center_feedback_5").style.background = "white";
+                    document.getElementById("center_feedback_5").innerText = "";
+                } else if (slider_one_location == 5) {
+                    document.getElementById("left_feedback_5").style.background = "rgb(154, 214, 235)";
+                    document.getElementById("left_feedback_5").innerText = "";
+                    document.getElementById("right_feedback_5").style.background = "rgb(154, 214, 235)";
+                    document.getElementById("right_feedback_5").innerText = "";
+                    document.getElementById("center_feedback_5").innerText = slider_one_display_val+" earlier | "+slider_two_val+" later";
+                    document.getElementById("center_feedback_5").style.background = "rgb(154, 214, 235)";
+                } else {
+                    document.getElementById("left_feedback_5").style.background = "#d3d3d3";
+                    document.getElementById("left_feedback_5").innerText = left_block_size;
+                    document.getElementById("right_feedback_5").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("right_feedback_5").innerText = right_block_size;
+                    document.getElementById("center_feedback_5").style.background = "white";
+                    document.getElementById("center_feedback_5").innerText = "";
+                }
+
+                if (slider_one_location > 6) {
+                    document.getElementById("left_feedback_6").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("left_feedback_6").innerText = left_block_size;
+                    document.getElementById("right_feedback_6").style.background = "#d3d3d3";
+                    document.getElementById("right_feedback_6").innerText = right_block_size;
+                    document.getElementById("center_feedback_6").style.background = "white";
+                    document.getElementById("center_feedback_6").innerText = "";
+                } else if (slider_one_location == 6) {
+                    document.getElementById("left_feedback_6").style.background = "rgb(154, 214, 235)";
+                    document.getElementById("left_feedback_6").innerText = "";
+                    document.getElementById("right_feedback_6").style.background = "rgb(154, 214, 235)";
+                    document.getElementById("right_feedback_6").innerText = "";
+                    document.getElementById("center_feedback_6").innerText = slider_one_display_val+" earlier | "+slider_two_val+" later";
+                    document.getElementById("center_feedback_6").style.background = "rgb(154, 214, 235)";
+                } else {
+                    document.getElementById("left_feedback_6").style.background = "#d3d3d3";
+                    document.getElementById("left_feedback_6").innerText = left_block_size;
+                    document.getElementById("right_feedback_6").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("right_feedback_6").innerText = right_block_size;
+                    document.getElementById("center_feedback_6").style.background = "white";
+                    document.getElementById("center_feedback_6").innerText = "";
+                }
+
+                if (slider_one_location > 7) {
+                    document.getElementById("left_feedback_7").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("left_feedback_7").innerText = left_block_size;
+                    document.getElementById("right_feedback_7").style.background = "#d3d3d3";
+                    document.getElementById("right_feedback_7").innerText = right_block_size;
+                    document.getElementById("center_feedback_7").style.background = "white";
+                    document.getElementById("center_feedback_7").innerText = "";
+                } else if (slider_one_location == 7) {
+                    document.getElementById("left_feedback_7").style.background = "rgb(154, 214, 235)";
+                    document.getElementById("left_feedback_7").innerText = "";
+                    document.getElementById("right_feedback_7").style.background = "rgb(154, 214, 235)";
+                    document.getElementById("right_feedback_7").innerText = "";
+                    document.getElementById("center_feedback_7").innerText = slider_one_display_val+" earlier | "+slider_two_val+" later";
+                    document.getElementById("center_feedback_7").style.background = "rgb(154, 214, 235)";
+                } else {
+                    document.getElementById("left_feedback_7").style.background = "#d3d3d3";
+                    document.getElementById("left_feedback_7").innerText = left_block_size;
+                    document.getElementById("right_feedback_7").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("right_feedback_7").innerText = right_block_size;
+                    document.getElementById("center_feedback_7").style.background = "white";
+                    document.getElementById("center_feedback_7").innerText = "";
+                }
+
+                if (slider_one_location > 8) {
+                    document.getElementById("left_feedback_8").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("left_feedback_8").innerText = left_block_size;
+                    document.getElementById("right_feedback_8").style.background = "#d3d3d3";
+                    document.getElementById("right_feedback_8").innerText = right_block_size;
+                    document.getElementById("center_feedback_8").style.background = "white";
+                    document.getElementById("center_feedback_8").innerText = "";
+                } else if (slider_one_location == 8) {
+                    document.getElementById("left_feedback_8").style.background = "rgb(154, 214, 235)";
+                    document.getElementById("left_feedback_8").innerText = "";
+                    document.getElementById("right_feedback_8").style.background = "rgb(154, 214, 235)";
+                    document.getElementById("right_feedback_8").innerText = "";
+                    document.getElementById("center_feedback_8").innerText = slider_one_display_val+" earlier | "+slider_two_val+" later";
+                    document.getElementById("center_feedback_8").style.background = "rgb(154, 214, 235)";
+                } else {
+                    document.getElementById("left_feedback_8").style.background = "#d3d3d3";
+                    document.getElementById("left_feedback_8").innerText = left_block_size;
+                    document.getElementById("right_feedback_8").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("right_feedback_8").innerText = right_block_size;
+                    document.getElementById("center_feedback_8").style.background = "white";
+                    document.getElementById("center_feedback_8").innerText = "";
+                }
+
+                if (slider_one_location > 9) {
+                    document.getElementById("left_feedback_9").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("left_feedback_9").innerText = left_block_size;
+                    document.getElementById("right_feedback_9").style.background = "#d3d3d3";
+                    document.getElementById("right_feedback_9").innerText = right_block_size;
+                    document.getElementById("center_feedback_9").style.background = "white";
+                    document.getElementById("center_feedback_9").innerText = "";
+                } else if (slider_one_location == 9) {
+                    document.getElementById("left_feedback_9").style.background = "rgb(154, 214, 235)";
+                    document.getElementById("left_feedback_9").innerText = "";
+                    document.getElementById("right_feedback_9").style.background = "rgb(154, 214, 235)";
+                    document.getElementById("right_feedback_9").innerText = "";
+                    document.getElementById("center_feedback_9").innerText = slider_one_display_val+" earlier | "+slider_two_val+" later";
+                    document.getElementById("center_feedback_9").style.background = "rgb(154, 214, 235)";
+                } else {
+                    document.getElementById("left_feedback_9").style.background = "#d3d3d3";
+                    document.getElementById("left_feedback_9").innerText = left_block_size;
+                    document.getElementById("right_feedback_9").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("right_feedback_9").innerText = right_block_size;
+                    document.getElementById("center_feedback_9").style.background = "white";
+                    document.getElementById("center_feedback_9").innerText = "";
+                }
+
+                if (slider_one_location > 10) {
+                    document.getElementById("left_feedback_10").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("left_feedback_10").innerText = left_block_size;
+                    document.getElementById("right_feedback_10").style.background = "#d3d3d3";
+                    document.getElementById("right_feedback_10").innerText = right_block_size;
+                    document.getElementById("center_feedback_10").style.background = "white";
+                    document.getElementById("center_feedback_10").innerText = "";
+                } else if (slider_one_location == 10) {
+                    document.getElementById("left_feedback_10").style.background = "rgb(154, 214, 235)";
+                    document.getElementById("left_feedback_10").innerText = "";
+                    document.getElementById("right_feedback_10").style.background = "rgb(154, 214, 235)";
+                    document.getElementById("right_feedback_10").innerText = "";
+                    document.getElementById("center_feedback_10").innerText = slider_one_display_val+" earlier | "+slider_two_val+" later";
+                    document.getElementById("center_feedback_10").style.background = "rgb(154, 214, 235)";
+                } else {
+                    document.getElementById("left_feedback_10").style.background = "#d3d3d3";
+                    document.getElementById("left_feedback_10").innerText = left_block_size;
+                    document.getElementById("right_feedback_10").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("right_feedback_10").innerText = right_block_size;
+                    document.getElementById("center_feedback_10").style.background = "white";
+                    document.getElementById("center_feedback_10").innerText = "";
+                }
+            }
+        });   
+    </script>
+    <script>
+        function alertFunction() {
+            alert("In order for your answers to be most helpful to us, it is really important that you respond to all questions.")
+            jQuery('.waiting').hide();
+            jQuery('.next-button').show();
+            return false
+        }
+        jQuery(".rotate").on("click", function () {
+            jQuery(".next-button").show();
+            jQuery(".waiting").hide();
+        });
+    </script>
+    
+    <div class="waiting" onclick="return alertFunction();">
+        {% next_button %}
+    </div>
+    
+    <div class="next-button">
+        {% next_button %}
+    </div>
+    
+    <script>jQuery(".next-button").hide();</script>
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'Slider/styles/slider12.css' %}" />
+{% endblock %}

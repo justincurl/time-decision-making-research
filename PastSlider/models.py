@@ -67,6 +67,7 @@ class Player(BasePlayer):
     t_earliest = models.StringField()
     t_middle = models.StringField()
     t_latest = models.StringField()
+    
     slider_order = models.StringField()
     start_time = models.StringField()
     finish_time = models.StringField()
