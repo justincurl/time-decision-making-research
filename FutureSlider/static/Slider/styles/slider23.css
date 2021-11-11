@@ -1,44 +1,53 @@
 /* control gaps between times */
 
-.pre-t1 {
+.pre_t1 {
     width: 0px !important;
 }
 
-.t1 {
-    width: 450px !important;
-    text-align: left !important;
-    margin-left: -164px !important; /* 70 for label button width + 4 for label button padding */
+.t1_text {
+    width: 200px !important;
+    text-align: center !important;
+    margin-left: -170px;
 }
 
+.t1_slider {
+    width: 0px !important;
+    text-align: left !important;
+}
+
+.t1_t2_gap {
+    width: 110px !important; /* gap between t1 and t2 */
+    text-align: left !important;
+}
+
+
 .t2_slider {
-    width: 230px !important;
-    margin-left: -110px;
+    width: 200px !important;
+    margin-left: -100px; /* control positioning of left slider */
 }
 
 .t2_text {
-    width: 230px !important;
-    text-align: left !important;    
+    width: 200px !important;
+    text-align: center !important; 
+    margin-left: -31px;   
 }
 
 .t2_t3_gap {
-    width: 180px  !important;
-    text-align: left  !important;
+    width: 200px  !important; /* controls gap between sliders */
+    text-align: left  !important; 
 }
 
 .t3_slider {
-    width: 230px !important;
-    margin-left: -120px !important;
+    width: 200px !important;
+    margin-right: -160px !important; /* controls right slider */
 }
 
 .t3_text {
-    width: 230px !important;
-    text-align: left !important;
+    width: 200px !important;
+    text-align: center !important;
+    margin-left: 28px; /* control right-most text */
 }
 
-.post_t3 {
-    width: 0px !important;
-    margin-left: -95px;
-}
 
 /* control what sliders look like */
 
@@ -56,7 +65,6 @@
     border-radius: 50%;
     width: 8% !important;
     border-radius: 0px !important;
-    background: rgb(154, 214, 235) !important;
     cursor: pointer !important;
     -webkit-appearance: none !important;
 }
@@ -76,6 +84,8 @@ input[name=slider_one]::-webkit-slider-runnable-track {
     height: 160px; /* control the width of the bars */
     cursor: pointer;
     background: transparent;
+    /* add border when trying to line up sliders and the blocks  */
+    /* border: 1px solid black;  */
     pointer-events: auto;
 }
 
@@ -95,7 +105,6 @@ input[name=slider_one]::-webkit-slider-thumb {
     border-radius: 50%;
     width: 8% !important;
     border-radius: 0px !important;
-    background:rgb(154, 214, 235) !important;
     cursor: pointer !important;
     -webkit-appearance: none !important;
     pointer-events: auto; 
@@ -114,6 +123,8 @@ input[name=slider_two]::-webkit-slider-runnable-track {
     overflow:hidden;
     height: 160px; /* control the width of the bars */
     cursor: pointer;
+    /* add border when trying to line up sliders and the blocks */
+    /* border: 1px solid black;  */
     background: transparent;
     pointer-events: auto;
 }
@@ -132,432 +143,444 @@ input[name=slider_two]::-webkit-slider-thumb {
     color: black;
     position: relative;
     height: 27px;
-    left: 270%;
+    left: 186%;
     top: 3px;
     width: 160px;
     text-align: center;
     z-index: 5;
     border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 
 .left-bubble-one {
-    background: rgb(43, 173, 43);
+    background: #d3d3d3;
     color: black;
     position: relative;
     top: 3px;
     height: 27px;
     width: 160px;
     z-index: 5;
-    left: 270%;
+    left: 186%;
     text-align: center;
     border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 
 .left-bubble-two {
-    background: rgb(43, 173, 43);
+    background: #d3d3d3;
     color: black;
     position: relative;
-    left: 270%;
+    left: 186%;
     top: 3px;
     z-index: 5;
     height: 27px;
     width: 160px;
     text-align: center;
     border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 .left-bubble-three {
-    background: rgb(43, 173, 43);
+    background: #d3d3d3;
     color: black;
     position: relative;
     height: 27px;
     top: 3px;
-    left: 270%;
+    left: 186%;
     z-index: 5;
     width: 160px;
     text-align: center;
     border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 .left-bubble-four {
-    background: rgb(43, 173, 43);
+    background: #d3d3d3;
     color: black;
     position: relative;
     height: 27px;
     width: 160px;
     z-index: 5;
     top: 3px;
-    left: 270%;
+    left: 186%;
     text-align: center;
     border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 .left-bubble-five {
-    background: rgb(43, 173, 43);
+    background: #d3d3d3;
     color: black;
     position: relative;
     height: 27px;
     top: 3px;
     width: 160px;
-    left: 270%;
+    left: 186%;
     z-index: 5;
     text-align: center;
     border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 .left-bubble-six {
-    background: rgb(43, 173, 43);
+    background: #d3d3d3;
     color: black;
     position: relative;
     height: 27px;
     top: 3px;
     width: 160px;
     z-index: 5;
-    left: 270%;
+    left: 186%;
     text-align: center;
     border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 .left-bubble-seven {
-    background: rgb(43, 173, 43);
+    background: #d3d3d3;
     color: black;
     position: relative;
     height: 27px;
     top: 3px;
     width: 160px;
     z-index: 5;
-    left: 270%;
+    left: 186%;
     text-align: center;
     border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 .left-bubble-eight {
-    background: rgb(43, 173, 43);
+    background: #d3d3d3;
     color: black;
     position: relative;
     height: 27px;
     top: 3px;
     width: 160px;
     z-index: 5;
-    left: 270%;
+    left: 186%;
     text-align: center;
     border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 .left-bubble-nine {
-    background: rgb(43, 173, 43);
+    background: #d3d3d3;
     color: black;
     position: relative;
     height: 27px;
     top: 3px;
     width: 160px;
-    left: 270%;
+    border-radius: 4px;
+    left: 186%;
     text-align: center;
     z-index: 5;
-    border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 .left-bubble-ten {
-    background: rgb(43, 173, 43);
+    background: #d3d3d3;
     color: black;
     position: relative;
     height: 27px;
     width: 160px;
-    left: 270%;
+    left: 186%;
     top: 3px;
     z-index: 5;
     text-align: center;
     border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 
 .right-bubble-zero {
     background: transparent;
     color: black;
     position: relative;
-    left: -163%;
+    left: 21%;
     height: 27px;
     top: 3px;
     width: 160px;
     z-index: 5;
     text-align: center;
     border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 
 .right-bubble-one {
-    background: #d3d3d3;
+    background: rgb(43, 173, 43);
     color: black;
     position: relative;
-    left: -163%;
+    left: 21%;
     top: 3px;
     height: 27px;
     z-index: 5;
     width: 160px;
     text-align: center;
     border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 
 .right-bubble-two {
-    background: #d3d3d3;
+    background: rgb(43, 173, 43);
     color: black;
     position: relative;
-    left: -163%;
+    left: 21%;
     top: 3px;
     z-index: 5;
     height: 27px;
     width: 160px;
     text-align: center;
     border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 .right-bubble-three {
-    background: #d3d3d3;
+    background: rgb(43, 173, 43);
     color: black;
     position: relative;
     height: 27px;
     top: 3px;
     z-index: 5;
-    left: -163%;
+    left: 21%;
     width: 160px;
     text-align: center;
     border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 .right-bubble-four {
-    background: #d3d3d3;
+    background: rgb(43, 173, 43);
     color: black;
     position: relative;
     height: 27px;
     width: 160px;
     z-index: 5;
     top: 3px;
-    left: -163%;
+    left: 21%;
     text-align: center;
     border-radius: 4px;
+    pointer-events: none !important;
 }
 .right-bubble-five {
-    background: #d3d3d3;
+    background: rgb(43, 173, 43);
     color: black;
     position: relative;
     height: 27px;
     top: 3px;
     width: 160px;
-    left: -163%;
+    left: 21%;
     z-index: 5;
     text-align: center;
     border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 .right-bubble-six {
-    background: #d3d3d3;
+    background: rgb(43, 173, 43);
     color: black;
     position: relative;
     height: 27px;
     z-index: 5;
     top: 3px;
     width: 160px;
-    left: -163%;
+    left: 21%;
     text-align: center;
     border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 .right-bubble-seven {
-    background: #d3d3d3;
+    background: rgb(43, 173, 43);
     color: black;
     position: relative;
     height: 27px;
     top: 3px;
     width: 160px;
-    left: -163%;
+    left: 21%;
     z-index: 5;
     text-align: center;
     border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 .right-bubble-eight {
-    background: #d3d3d3;
+    background: rgb(43, 173, 43);
     color: black;
     position: relative;
     height: 27px;
     top: 3px;
     width: 160px;
-    left: -163%;
+    left: 21%;
     z-index: 5;
     text-align: center;
     border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 .right-bubble-nine {
-    background: #d3d3d3;
+    background: rgb(43, 173, 43);
     color: black;
     position: relative;
     height: 27px;
     top: 3px;
     width: 160px;
-    left: -163%;
+    left: 21%;
     z-index: 5;
     text-align: center;
     border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 .right-bubble-ten {
-    background: #d3d3d3;
+    background: rgb(43, 173, 43);
     color: black;
     position: relative;
     height: 27px;
     width: 160px;
     z-index: 5;
-    left: -163%;
+    left: 21%;
     top: 3px;
     text-align: center;
     border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 
 .center-bubble-zero {
-    background: white;
+    background: transparent;
     color: black;
     position: relative;
     height: 27px;
     top: 3px;        
-    width: 201%;
-    left: -150px;
+    width: 632px;
+    left: -180px;
     text-align: center;
     border-radius: 4px;
-    z-index: -1;
+    z-index: 6;
+    pointer-events: none !important;
 }
 .center-bubble-one {
-    background: white;
+    background: transparent;
     color: black;
     position: relative;
     height: 27px;
     top: 3px;
-    width: 201%;
-    left: -150px;
+    width: 632px;
+    left: -180px;
     text-align: center;
     border-radius: 4px;
-    z-index: -1;
+    z-index: 6;
+    pointer-events: none !important;
 }
 .center-bubble-two {
-    background: white;
+    background: transparent;
     color: black;
     position: relative;
     height: 27px;
     top: 3px;
-    width: 201%;
-    left: -150px;
+    width: 632px;
+    left: -180px;
     text-align: center;
     border-radius: 4px;
-    z-index: -1;
+    z-index: 6;
+    pointer-events: none !important;
 }
 .center-bubble-three {
-    background: white;
+    background: transparent;
     color: black;
     position: relative;
     height: 27px;
     top: 3px;
-    width: 201%;
-    left: -150px;
+    width: 632px;
+    left: -180px;
     text-align: center;
     border-radius: 4px;
-    z-index: -1;
+    z-index: 6;
+    pointer-events: none !important;
 }
 .center-bubble-four {
-    background: white;
+    background: transparent;
     color: black;
     position: relative;
     height: 27px;
     top: 3px;
-    width: 201%;
-    left: -150px;
+    width: 632px;
+    left: -180px;
     text-align: center;
     border-radius: 4px;
-    z-index: -1;
+    z-index: 6;
+    pointer-events: none !important;
 }
 .center-bubble-five {
-    background: white;
+    background: transparent;
     color: black;
     position: relative;
     height: 27px;
     top: 3px;
-    width: 201%;
-    left: -150px;
+    width: 632px;
+    left: -180px;
     text-align: center;
     border-radius: 4px;
-    z-index: -1;
+    z-index: 6;
+    pointer-events: none !important;
 }
 .center-bubble-six {
-    background: white;
+    background: transparent;
     color: black;
     position: relative;
     height: 27px;
     top: 3px;
-    width: 201%;
-    left: -150px;
+    width: 632px;
+    left: -180px;
     text-align: center;
     border-radius: 4px;
-    z-index: -1;
+    z-index: 6;
+    pointer-events: none !important;
 }
 .center-bubble-seven {
-    background: white;
+    background: transparent;
     color: black;
     position: relative;
     height: 27px;
     top: 3px;
-    width: 201%;
-    left: -150px;
+    width: 632px;
+    left: -180px;
     text-align: center;
     border-radius: 4px;
-    z-index: -1;
+    z-index: 6;
+    pointer-events: none !important;
 }
 .center-bubble-eight {
-    background: white;
+    background: transparent;
     color: black;
     position: relative;
     height: 27px;
     top: 3px;
-        width: 201%;
-    left: -150px;
+    width: 632px;
+    left: -180px;
     text-align: center;
     border-radius: 4px;
-    z-index: -1;
+    z-index: 6;
+    pointer-events: none !important;
 }
 .center-bubble-nine {
-    background: white;
+    background: transparent;
     color: black;
     position: relative;
     height: 27px;
     top: 3px;
-    width: 201%;
-    left: -150px;
+    width: 632px;
+    left: -180px;
     text-align: center;
     border-radius: 4px;
-    z-index: -1;
+    z-index: 6;
+    pointer-events: none !important;
 } 
 .center-bubble-ten {
-    background: white;
+    background: transparent;
     color: black;
     position: relative;
     height: 27px;
     top: 3px;
-    width: 201%;
-    left: -150px;
+    width: 632px;
+    left: -180px;
     text-align: center;
     border-radius: 4px;
-    z-index: -1;
+    z-index: 6;
+    pointer-events: none !important;
 }
 
 .center-placeholder {
-    background: white;
+    background: transparent;
     color: black;
     position: relative;
     height: 0px;
     width: 160px; /* control gap between sliders */
     text-align: center;
-    border-radius: 4px;
-    z-index: -1;
+    z-index: 6;
+    pointer-events: none !important;
 }

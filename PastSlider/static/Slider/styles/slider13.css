@@ -148,7 +148,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     text-align: center;
     z-index: 5;
     border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 
 .left-bubble-one {
@@ -162,7 +162,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     left: 20%;
     text-align: center;
     border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 
 .left-bubble-two {
@@ -176,7 +176,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     width: 160px;
     text-align: center;
     border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 .left-bubble-three {
     background: #d3d3d3;
@@ -189,7 +189,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     width: 160px;
     text-align: center;
     border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 .left-bubble-four {
     background: #d3d3d3;
@@ -202,7 +202,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     left: 20%;
     text-align: center;
     border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 .left-bubble-five {
     background: #d3d3d3;
@@ -215,7 +215,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     z-index: 5;
     text-align: center;
     border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 .left-bubble-six {
     background: #d3d3d3;
@@ -228,7 +228,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     left: 20%;
     text-align: center;
     border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 .left-bubble-seven {
     background: #d3d3d3;
@@ -241,7 +241,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     left: 20%;
     text-align: center;
     border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 .left-bubble-eight {
     background: #d3d3d3;
@@ -254,7 +254,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     left: 20%;
     text-align: center;
     border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 .left-bubble-nine {
     background: #d3d3d3;
@@ -267,7 +267,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     left: 20%;
     text-align: center;
     z-index: 5;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 .left-bubble-ten {
     background: #d3d3d3;
@@ -280,7 +280,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     z-index: 5;
     text-align: center;
     border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 
 .right-bubble-zero {
@@ -294,7 +294,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     z-index: 5;
     text-align: center;
     border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 
 .right-bubble-one {
@@ -308,7 +308,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     width: 160px;
     text-align: center;
     border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 
 .right-bubble-two {
@@ -322,7 +322,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     width: 160px;
     text-align: center;
     border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 .right-bubble-three {
     background: rgb(43, 173, 43);
@@ -335,7 +335,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     width: 160px;
     text-align: center;
     border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 .right-bubble-four {
     background: rgb(43, 173, 43);
@@ -348,7 +348,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     left: 21%;
     text-align: center;
     border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 .right-bubble-five {
     background: rgb(43, 173, 43);
@@ -361,7 +361,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     z-index: 5;
     text-align: center;
     border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 .right-bubble-six {
     background: rgb(43, 173, 43);
@@ -374,7 +374,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     left: 21%;
     text-align: center;
     border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 .right-bubble-seven {
     background: rgb(43, 173, 43);
@@ -387,7 +387,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     z-index: 5;
     text-align: center;
     border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 .right-bubble-eight {
     background: rgb(43, 173, 43);
@@ -400,7 +400,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     z-index: 5;
     text-align: center;
     border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 .right-bubble-nine {
     background: rgb(43, 173, 43);
@@ -413,7 +413,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     z-index: 5;
     text-align: center;
     border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 .right-bubble-ten {
     background: rgb(43, 173, 43);
@@ -426,7 +426,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     top: 3px;
     text-align: center;
     border-radius: 4px;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 
 .center-bubble-zero {
@@ -440,7 +440,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     text-align: center;
     border-radius: 4px;
     z-index: 6;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 .center-bubble-one {
     background: transparent;
@@ -453,7 +453,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     text-align: center;
     border-radius: 4px;
     z-index: 6;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 .center-bubble-two {
     background: transparent;
@@ -466,7 +466,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     text-align: center;
     border-radius: 4px;
     z-index: 6;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 .center-bubble-three {
     background: transparent;
@@ -479,7 +479,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     text-align: center;
     border-radius: 4px;
     z-index: 6;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 .center-bubble-four {
     background: transparent;
@@ -492,7 +492,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     text-align: center;
     border-radius: 4px;
     z-index: 6;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 .center-bubble-five {
     background: transparent;
@@ -505,7 +505,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     text-align: center;
     border-radius: 4px;
     z-index: 6;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 .center-bubble-six {
     background: transparent;
@@ -518,7 +518,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     text-align: center;
     border-radius: 4px;
     z-index: 6;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 .center-bubble-seven {
     background: transparent;
@@ -531,7 +531,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     text-align: center;
     border-radius: 4px;
     z-index: 6;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 .center-bubble-eight {
     background: transparent;
@@ -544,7 +544,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     text-align: center;
     border-radius: 4px;
     z-index: 6;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 .center-bubble-nine {
     background: transparent;
@@ -557,7 +557,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     text-align: center;
     border-radius: 4px;
     z-index: 6;
-    pointer-events: none;
+    pointer-events: none !important;
 } 
 .center-bubble-ten {
     background: transparent;
@@ -570,7 +570,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     text-align: center;
     border-radius: 4px;
     z-index: 6;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 
 .center-placeholder {
@@ -581,5 +581,5 @@ input[name=slider_two]::-webkit-slider-thumb {
     width: 160px; /* control gap between sliders */
     text-align: center;
     z-index: 6;
-    pointer-events: none;
+    pointer-events: none !important;
 }
