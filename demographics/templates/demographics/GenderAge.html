@@ -2,23 +2,18 @@
 {% load otree static %}
 
 {% block content %}
-
-<div class="progress">
-    <div class="progress-bar" style="width: {{ progress }}%"></div>
-</div>
 <br>
-
 <div class="results" align="justify">
-    <p>Now we only have a few more questions about your demographic background.</p>
+    <p style="font-size: larger">Now we only have a few more questions about your demographic background.</p>
     <br>
-    <p>What is your gender?</p>
-    <div class="formfield">{% formfield player.gender label="" %}</div>
+    <p style="font-size: larger">What is your gender?</p>
+    <div style="font-size: larger" class="formfield">{% formfield player.gender label="" %}</div>
 </div>
 </div>
 
 <div class="results" align="justify">
-    <p>What is your age?</p>
-    <div class="formfield-age">{% formfield player.age label="" %}</div>
+    <p style="font-size: larger">What is your age?</p>
+    <div style="font-size: larger" class="formfield-age">{% formfield player.age label="" %}</div>
 </div>
 
 <script>

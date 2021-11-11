@@ -2,14 +2,10 @@
 {% load otree static %}
 
 {% block content %}
-
-<div class="progress">
-    <div class="progress-bar" style="width: {{ progress }}%"></div>
-</div>
 <br>
-<div class="results" align="justify">
+<div class="results" align="justify" style="font-size: larger">
     <p>What is the highest degree or level of school that you have completed?</p>
-    <div class="formfield">
+    <div class="formfield" style="font-size: large">
         {% formfield player.education label="" %}
     </div>
 </div>

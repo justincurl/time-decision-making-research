@@ -4,23 +4,19 @@
 
 {% block content %}
 
-<div class="progress">
-    <div class="progress-bar" style="width: {{ progress }}%"></div>
-</div>
 <br>
-
-<div class="results" align="justify">
-    <p>Are you of Hispanic, Latino or Spanish Origin?</p>
-    <div class="formfield">{% formfield player.ethnicity label="" %}
+<div class="results" align="justify" style="font-size: larger">
+    <p style="font-size: larger">Are you of Hispanic, Latino or Spanish Origin?</p>
+    <div style="font-size: large" class="formfield">{% formfield player.ethnicity label="" %}
     </div>
 </div>
 </div>
 
-<div class="question" align="justify">
+<div class="question" align="justify" style="font-size: larger">
     <p>What is your race?</p>
 </div>
 <div>
-    <div class="race-choices">
+    <div class="race-choices" style="font-size: larger">
         {% for value in values %}
         <div class="race-choice-line">
             <input id="race-choice-{{ forloop.counter }}" type="checkbox" name="race-choice-{{ forloop.counter }}"

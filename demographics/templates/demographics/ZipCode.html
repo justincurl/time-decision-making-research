@@ -2,14 +2,10 @@
 {% load otree static %}
 
 {% block content %}
-
-<div class="progress">
-    <div class="progress-bar" style="width: {{ progress }}%"></div>
-</div>
 <br>
 <div class="results" align="justify">
-    <p>What is your zipcode?</p>
-    <div class="formfield">{% formfield player.zipcode label="" %}</div>
+    <p style="font-size: larger">What is your zipcode?</p>
+    <div style="font-size: larger" class="formfield">{% formfield player.zipcode label="" %}</div>
 </div>
 </div>
 
