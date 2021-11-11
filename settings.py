@@ -84,7 +84,7 @@ SESSION_CONFIGS = [
     ),
     dict(
         name="Slider_CTB_Demo",
-        display_name="Sliders and CTB 11.04 Demo",
+        display_name="Sliders and CTB 11.11 Demo",
         num_demo_participants=20,
         app_sequence=["consent", "PastCTB","FutureCTB", "FutureSlider", "PastSlider", "demographics"],
         past_t_earliers="1 year ago, 1 year ago, 1 year ago, 1 year ago, 1 year ago, 1 year ago | 5 years ago, 5 years ago, 5 years ago, 5 years ago, 5 years ago, 5 years ago | 5 years ago, 5 years ago, 5 years ago, 5 years ago, 5 years ago, 5 years ago",
