@@ -19,23 +19,16 @@
     <input type="hidden" value={{later_max}} id="later_max"/>
     
     <div align="center">
-        <h4 text-align="center">
-            <strong style="text-transform: uppercase; color: purple;">FUTURE: </strong><span style="text-transform: uppercase;">{{earlier_time}}</span> and <span style="text-transform: uppercase;">{{later_time}}</span>
-        </h4>
+        <h2 text-align="center">
+            <strong style="text-transform: uppercase; color: orange;">FUTURE: </strong><span style="text-transform: uppercase;">{{earlier_time}}</span> and <span style="text-transform: uppercase;">{{later_time}}</span>
+        </h2>
     </div>
     <br>
-    <div text-align="justify">
-        Which combination of temporary jobs created {{earlier_time}} and {{later_time}} is the best economy? 
+    <div text-align="center" style="font-size: larger; text-align: center">
+        Which combination of temporary jobs created <strong>{{earlier_time}}</strong> and <strong>{{later_time}}</strong> is the best economy? 
+    </div>
     </div>
     <br>
-    <div text-align="justify">
-        Click anywhere in the blocks to make the blue horizontal bar appear. Move blocks of jobs to 
-        {{later_time}} (and back) by dragging the bar up and down. When you are confident that the 
-        combination of blocks shows the best economy, click the “Next” button. 
-    </div>
-    <br>
-    <br>
-    
     <table style="margin-left: auto; margin-right: auto;">
         <tr>
             <td>
@@ -94,16 +87,24 @@
                 </table>
             </td>
         </tr>
-        <tr style="border-top: solid thick">
+        <tr style="border-top: solid thick"><tr>
+        <tr style="height: 60px;">
             <td><div class="pre_t1"></div></td>
             <td><div class="t1_text"><h5 style="text-transform: uppercase;">{{t_earliest}}</h5></div></td>
             <td><div class="t1_t2_gap"></div></td>
-            <td><div class="t2_text"><h5 style="text-transform: uppercase;">{{t_middle}}</h5></div></td>
+            <td><div class="t2_text"><h5 style="text-transform: uppercase; color: #d3d3d3">{{t_middle}}</h5></div></td>
             <td><div class="t2_t3_gap"></div></td>
             <td><div class="pre_t3"></div></td>
             <td><div class="t3_text"><h5 style="text-transform: uppercase;">{{t_latest}}</h5></div></td>
         </tr>
     </table>
+    <br>
+    <div text-align="justify" style="font-size: small">
+        Click anywhere in the blocks to make the blue horizontal bar appear. Move blocks of jobs to 
+        <strong>{{later_time}}</strong> (and back) by dragging the bar up and down. When you are confident that the 
+        combination of blocks shows the <strong>best economy</strong>, click the “Next” button. 
+    </div>
+
     <script>
         $(document).ready(function () {
             // set step size
@@ -423,6 +424,9 @@
             jQuery(".waiting").hide();
         });
     </script>
+
+    <br>
+    <br>
     
     <div class="waiting" onclick="return alertFunction();" style="text-align: center;">
         {% next_button %}

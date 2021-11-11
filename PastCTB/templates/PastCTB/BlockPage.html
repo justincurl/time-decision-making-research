@@ -5,17 +5,13 @@
 {% block content %}
 
 <div align="center">
-    <h4 text-align="center">
+    <h2 text-align="center">
         <strong style="text-transform: uppercase; color: fuchsia;">PAST: </strong><span style="text-transform: uppercase;">{{curr_block.text_total_end}}</span> and <span style="text-transform: uppercase;">{{curr_block.text_delay_start}}</span>
-    </h4>
+    </h2>
 </div>
 <br>
-<div text-align="justify">
+<div text-align="justify" style="font-size: larger;">
     Which combination of temporary jobs created <strong>{{curr_block.text_total_end}}</strong> and <strong>{{curr_block.text_delay_start}}</strong> is the best economy? 
-</div>
-<br>
-<div text-align="justify">
-    Mark the response button that you think shows the best economy. 
 </div>
 <br>
 <br>
@@ -60,6 +56,13 @@
             <!-- // endfor: curr_block.questions -->
     </tbody>
 </table>
+<br>
+<br>
+<div text-align="justify">
+    Mark the response button that you think shows the best economy. 
+</div>
+<br>
+<br>
 
 <input id="timepref__answers" type="hidden" name="question_answers" data-block-index="{{ block_index }}"
     value="{{player.question_answers}}">

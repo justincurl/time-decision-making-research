@@ -210,7 +210,6 @@ def generate_page_sequence():
     return (
         [PastALL] +
         [PastVisual] +
-        [SectionDivider1] +
         [SectionDivider2] +
         [SectionDivider3] +
         [Slider12] +
