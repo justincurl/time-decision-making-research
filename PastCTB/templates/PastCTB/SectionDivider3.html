@@ -2,10 +2,6 @@
 {% load staticfiles otree %}
 {% load staticfiles %}
 
-{% block title %}
-Instructions
-{% endblock %}
-
 {% block content %}
 
 <div align="center">
@@ -19,6 +15,8 @@ Instructions
     There is one more pair of periods left. Now, we will ask you several questions about temporary (1-year contract)
     jobs created <strong>{{curr_block.text_total_end}}</strong> and temporary jobs created <strong>{{curr_block.text_delay_start}}</strong>. 
 </div>
+<br>
+<br>
 
 <div class="next-button"  style="text-align: center;">
     {% next_button %}
