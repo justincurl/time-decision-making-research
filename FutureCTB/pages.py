@@ -48,20 +48,62 @@ class BlockPage(Page):
         self.player.goto_next_block_step()
 
 
-class FutureInstructions(Page):
-    def error_message(self, values):
-        pass
-
+class FutureALL(Page):
+    def vars_for_template(self):
+        current_block = self.player.get_current_block()
+        return dict(
+            curr_block=current_block
+        )
     def is_displayed(self):
-        return json.loads(self.participant.vars["consent_answer"]) == 1
+        return (
+            self.round_number == 1 and
+            json.loads(self.participant.vars["consent_answer"]) == 1
+        )
 
+class FutureCTB(Page):
+    def vars_for_template(self):
+        current_block = self.player.get_current_block()
+        return dict(
+            curr_block=current_block
+        )
+    def is_displayed(self):
+        return (
+            self.round_number == 1 and
+            json.loads(self.participant.vars["consent_answer"]) == 1
+        )
 
+class SectionDivider1(Page):
+    def vars_for_template(self):
+        current_block = self.player.get_current_block()
+        return dict(
+            curr_block=current_block
+        )
+
+class SectionDivider2(Page):
+    def vars_for_template(self):
+        current_block = self.player.get_current_block()
+        return dict(
+            curr_block=current_block
+        )
+
+class SectionDivider3(Page):
+    def vars_for_template(self):
+        current_block = self.player.get_current_block()
+        return dict(
+            curr_block=current_block
+        )
 
 
 def generate_page_sequence():
     return (
-        [FutureInstructions]
-        + [BlockPage] * Constants.max_blocks
+        [FutureALL]
+        + [FutureCTB]
+        + [SectionDivider1]
+        + [BlockPage] * 6
+        + [SectionDivider2]
+        + [BlockPage] * 6
+        + [SectionDivider3]
+        + [BlockPage] * 6
     )
 
 page_sequence = generate_page_sequence()

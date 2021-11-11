@@ -6,8 +6,8 @@ class Block:
     def __init__(self,
                  left_values: List[float],
                  right_values: List[float],
-                 t_earlier: str,
-                 t_later: str,
+                 earlier_time: str,
+                 later_time: str,
                  number_of_choices: int,
                  block_index: int,
                  show_least_initial_value_first: bool = False):
@@ -29,8 +29,8 @@ class Block:
         self.block_index = block_index
         self.left_values = left_values
         self.right_values = right_values
-        self.t_later = t_later
-        self.t_earlier = t_earlier
+        self.later_time = later_time
+        self.earlier_time = earlier_time
         self.number_of_choices = number_of_choices
         self.show_least_initial_value_first = show_least_initial_value_first     
 
@@ -45,11 +45,11 @@ class Block:
         """Returns a human readable text describing the start of the block (e.g. in 1 year) from today.
         :return: Human readable start of block from today
         """
-        return self.t_earlier
+        return self.earlier_time
 
     def text_total_end(self) -> str:
         """Returns a human readable text describing the end of the block (e.g. in 2 years) from today.
 
         :return: Human readable end of block from today
         """
-        return self.t_later
+        return self.later_time

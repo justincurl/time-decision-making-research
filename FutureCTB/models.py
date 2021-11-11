@@ -47,8 +47,8 @@ class Subsession(BaseSubsession):
             Blocks.append(Block(
                 left_values=CTB_blocks_left[i],
                 right_values=CTB_blocks_right[i],
-                t_earlier=CTB_t_earliers[i],
-                t_later=CTB_t_laters[i],
+                earlier_time=CTB_t_earliers[i],
+                later_time=CTB_t_laters[i],
                 number_of_choices=6,
                 block_index=i
                 )
