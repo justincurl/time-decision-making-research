@@ -1,0 +1,44 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load staticfiles %}
+
+{% block title %}
+Instructions
+{% endblock %}
+
+{% block content %}
+
+<div text-align="justify">
+    For each question, you will see 10 green blocks, each representing 100,000 jobs created <strong>{{later_time}}</strong>. 
+    After your first click on any of the blocks, a blue horizontal bar will appear. By dragging the blue bar up and down, 
+    you can move each green block between <strong>{{later_time}}</strong> and <strong>{{earlier_time}}</strong>. The blue 
+    bar lists the number of jobs created in each period. We would like you to arrange the blocks so they show the distribution 
+    of jobs across the two periods that you think is the best economy.  
+    <br>
+    <br>
+    In some questions, moving a block from <strong>{{later_time}}</strong> to <strong>{{earlier_time}}</strong> increases the 
+    number of jobs created earlier. In other questions, it will decrease it or leave it unchanged. So, the total number of
+    jobs created over the two periods varies across questions. 
+    <br>
+    <br>
+    Here is an example: [show screenshot of visual CTB with four blocks moved] 
+    <br>
+    <br>
+    The respondent in this example thought four blocks of 100,000 job <strong>{{later_time}}</strong> and 
+    six blocks of 120,000 jobs <strong>{{earlier_time}}</strong> is the best economy. 
+    <br>
+    <br>
+    How about you? When you are ready to select the combination of jobs created that YOU think represents the
+    best economy, click “Next”. Remember, there are no “right” or “wrong” answers. 
+    <br>
+    <br>
+</div>
+<div style="text-align: center;">
+    {% next_button %}
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'consent/scripts/consent.js' %}"></script>
+{% endblock %}

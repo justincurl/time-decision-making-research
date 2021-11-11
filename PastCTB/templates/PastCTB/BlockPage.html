@@ -4,17 +4,21 @@
 
 {% block content %}
 
+<div align="center">
+    <h4 text-align="center">
+        <strong style="text-transform: uppercase; color: fuchsia;">PAST: </strong><span style="text-transform: uppercase;">{{curr_block.text_total_end}}</span> and <span style="text-transform: uppercase;">{{curr_block.text_delay_start}}</span>
+    </h4>
+</div>
 <br>
-
-<h4 align="center" style="text-transform: uppercase;">{{curr_block.text_delay_start}} and {{curr_block.text_total_end}}
-</h4>
+<div text-align="justify">
+    Which combination of temporary jobs created <strong>{{curr_block.text_total_end}}</strong> and <strong>{{curr_block.text_delay_start}}</strong> is the best economy? 
+</div>
 <br>
-
-<h6>
-    For each decision below, decide on the number of temporary jobs created {{curr_block.text_delay_start}} and {{curr_block.text_total_end}} by checking 
-    the corresponding box. Only check one box per decision.
-</h6>
-
+<div text-align="justify">
+    Mark the response button that you think shows the best economy. 
+</div>
+<br>
+<br>
 
 <table class="table table-bordered">
     <tbody>
@@ -22,14 +26,14 @@
         <tr
             class="timepref__question-start timepref__question-unanswered timepref__question-index-{{questions_to_page|add:question.index}}">
             <th rowspan="3" width="10">{{questions_to_page|add:question.index}}.</th>
-            <td>{{question_instructions}} <strong>{{ curr_block.text_delay_start }}</strong></span>
+            <td>{{question_instructions}} <strong>{{ curr_block.text_total_end }}</strong></span>
             </td>
             {% for value in question.start_values %}
             <td class="text-center">{{ value }}</td>
             {% endfor %}
         </tr>
         <tr class="timepref__question-end">
-            <td>{{question_instructions}} <strong>{{ curr_block.text_total_end }}</strong></td>
+            <td>{{question_instructions}} <strong>{{ curr_block.text_delay_start }}</strong></td>
             {% for value in question.end_values %}
             <td class="text-center">{{ value }}</td>
             {% endfor %}
