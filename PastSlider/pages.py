@@ -33,8 +33,8 @@ class Slider12(Page):
         if self.player.t_earliest == self.player.earlier_time and self.player.t_middle == self.player.later_time:
             display = True
         return (
-            display and
-            (self.player.round_number <= self.player.session.config["past_num_sliders"]) and 
+            display and 
+            (self.round_number <= self.player.session.config["past_num_sliders"]) and 
             (json.loads(self.participant.vars["consent_answer"]) == 1)
         )
 
@@ -79,7 +79,7 @@ class Slider13(Page):
             display = True
         return (
             display and
-            (self.player.round_number <= self.player.session.config["past_num_sliders"]) and 
+            (self.round_number <= self.player.session.config["past_num_sliders"]) and 
             (json.loads(self.participant.vars["consent_answer"]) == 1)
         )
 
@@ -124,7 +124,7 @@ class Slider23(Page):
             display = True
         return (
             display and
-            (self.player.round_number <= self.player.session.config["past_num_sliders"]) and 
+            (self.round_number <= self.player.session.config["past_num_sliders"]) and 
             (json.loads(self.participant.vars["consent_answer"]) == 1)
         )
 
@@ -152,9 +152,49 @@ class PastInstructions(Page):
             json.loads(self.participant.vars["consent_answer"]) == 1
         )
 
+class SectionDivider12(Page):
+    def vars_for_template(self):
+        return dict(
+            earlier_time=self.player.earlier_time,
+            later_time=self.player.later_time,
+        )
+
+    def is_displayed(self):
+        display = False
+        if self.player.t_earliest == self.player.earlier_time and self.player.t_middle == self.player.later_time:
+            display = True
+        return display and self.round_number == 1 or self.round_number == 7 or self.round_number == 13
+
+class SectionDivider13(Page):
+    def vars_for_template(self):
+        return dict(
+            earlier_time=self.player.earlier_time,
+            later_time=self.player.later_time,
+        )
+    def is_displayed(self):
+        display = False
+        if self.player.t_earliest == self.player.earlier_time and self.player.t_latest == self.player.later_time:
+            display = True
+        return display and self.round_number == 1 or self.round_number == 7 or self.round_number == 13
+
+class SectionDivider23(Page):
+    def vars_for_template(self):
+        return dict(
+            earlier_time=self.player.earlier_time,
+            later_time=self.player.later_time,
+        )
+    def is_displayed(self):
+        display = False
+        if self.player.t_middle == self.player.earlier_time and self.player.t_latest == self.player.later_time:
+            display = True
+        return display and self.round_number == 1 or self.round_number == 7 or self.round_number == 13
+
 def generate_page_sequence():
     return (
         [PastInstructions] +
+        [SectionDivider12] +
+        [SectionDivider13] +
+        [SectionDivider23] +
         [Slider12] +
         [Slider13] + 
         [Slider23]

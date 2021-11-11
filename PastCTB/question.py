@@ -36,13 +36,13 @@ class Question:
         """
         values = [self.left_value + x*(0-self.left_value)/(6-1) for x in range(6)]
         for i in range(len(values)):
-            values[i] = "{:.0f}".format(float(values[i]))
+            values[i] = "{:,.0f}".format(float(values[i]))
         return values
 
     def end_values(self) -> List[str]:
         values = [0 + x*(self.right_value)/(6-1) for x in range(6)]
         for i in range(len(values)):
-            values[i] = "{:.0f}".format(float(values[i]))
+            values[i] = "{:,.0f}".format(float(values[i]))
         return values
 
     def choice_index(self) -> range:

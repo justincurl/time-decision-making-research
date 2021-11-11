@@ -18,7 +18,7 @@ class Constants(BaseConstants):
     name_in_url = "FutureCTB"
     players_per_group = None
     num_rounds = 1
-    max_blocks = 6
+    max_blocks = 20
 
 
 class Subsession(BaseSubsession):
@@ -56,9 +56,13 @@ class Subsession(BaseSubsession):
 
         for player in self.get_players():
             player.blocks = codecs.encode(pickle.dumps(Blocks), "base64").decode()
-            if self.session.config["future_randomize_blocks"]:
-                random.shuffle(block_order)
+            if self.round_number == 1:
+                if self.session.config["future_randomize_blocks"]:
+                    random.shuffle(block_order)
+            else:
+                block_order = player.in_round(self.round_number - 1).block_order
             player.block_order = json.dumps(block_order)
+            
 
 class Group(BaseGroup):
     pass
