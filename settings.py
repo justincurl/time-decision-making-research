@@ -86,7 +86,7 @@ SESSION_CONFIGS = [
         name="Slider_CTB_Demo",
         display_name="Sliders and CTB 11.04 Demo",
         num_demo_participants=20,
-        app_sequence=["consent", "PastSlider","PastCTB", "FutureSlider", "FutureCTB", "demographics"],
+        app_sequence=["consent", "PastCTB","FutureCTB", "FutureSlider", "PastSlider", "demographics"],
         past_t_earliers="1 year ago, 1 year ago, 1 year ago, 1 year ago, 1 year ago, 1 year ago | 5 years ago, 5 years ago, 5 years ago, 5 years ago, 5 years ago, 5 years ago | 5 years ago, 5 years ago, 5 years ago, 5 years ago, 5 years ago, 5 years ago",
         past_t_laters="now, now, now, now, now, now | now, now, now, now, now, now | 1 year ago, 1 year ago, 1 year ago, 1 year ago, 1 year ago, 1 year ago",
         past_payment_laters="1000000, 1000000, 1000000, 1000000, 1000000, 1000000 | 1000000, 1000000, 1000000, 1000000, 1000000, 1000000 | 1000000, 1000000, 1000000, 1000000, 1000000, 1000000",
@@ -100,7 +100,7 @@ SESSION_CONFIGS = [
         future_payment_laters="500000, 750000, 1000000, 1250000, 1500000, 1850000 | 500000, 750000, 1000000, 1250000, 1500000, 1850000 | 500000, 750000, 1000000, 1250000, 1500000, 1850000",
         future_t_options="now, 1 year from now, 5 years from now",
         future_num_sliders=18,
-        future_randomize_sliders=False,
+        future_randomize_sliders=True,
         past_CTB_left_values = "1000000, 1000000, 1000000, 1500000, 1000000, 1000000, 1000000, 1000000, 1000000, 1500000, 1000000, 1000000, 1000000, 1000000, 1000000, 1500000, 1000000, 1000000",
         past_CTB_right_values = "500000, 750000, 1000000, 1250000, 1500000, 1850000, 500000, 750000, 1000000, 1250000, 1500000, 1850000, 500000, 750000, 1000000, 1250000, 1500000, 1850000",
         past_CTB_t_earliers="1 year ago, 1 year ago, 1 year ago, 1 year ago, 1 year ago, 1 year ago, 5 years ago, 5 years ago, 5 years ago, 5 years ago, 5 years ago, 5 years ago, 5 years ago, 5 years ago, 5 years ago, 5 years ago, 5 years ago, 5 years ago",
@@ -114,7 +114,7 @@ SESSION_CONFIGS = [
         future_CTB_t_laters="1 year from now, 1 year from now, 1 year from now, 1 year from now, 1 year from now, 1 year from now, 5 years from now, 5 years from now, 5 years from now, 5 years from now, 5 years from now, 5 years from now, 5 years from now, 5 years from now, 5 years from now, 5 years from now, 5 years from now, 5 years from now",
         future_num_blocks=18,
         future_block_size=1,
-        future_randomize_blocks=False,
+        future_randomize_blocks=True,
     )
 ]
 

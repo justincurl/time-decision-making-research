@@ -19,6 +19,7 @@ class Constants(BaseConstants):
     players_per_group = None
     num_rounds = 1
     max_blocks = 20
+    questions_per_section = 6
 
 
 class Subsession(BaseSubsession):
@@ -58,7 +59,11 @@ class Subsession(BaseSubsession):
             player.blocks = codecs.encode(pickle.dumps(Blocks), "base64").decode()
             if self.round_number == 1:
                 if self.session.config["past_randomize_blocks"]:
-                    random.shuffle(block_order)
+                    to_shuffle_block_order = [block_order[0:Constants.questions_per_section], block_order[Constants.questions_per_section:2*Constants.questions_per_section], block_order[2*Constants.questions_per_section:3*Constants.questions_per_section]]
+                    random.shuffle(to_shuffle_block_order)
+                    block_order = []
+                    for i in range(len(to_shuffle_block_order)):
+                        block_order += to_shuffle_block_order[i]
             else:
                 block_order = player.in_round(self.round_number - 1).block_order
             player.block_order = json.dumps(block_order)

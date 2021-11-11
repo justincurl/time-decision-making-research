@@ -15,7 +15,7 @@ use Convex Time Budget analysis to analyze
 
 
 class Constants(BaseConstants):
-    name_in_url = "FutureCTB"
+    name_in_url = "PastCTB"
     players_per_group = None
     num_rounds = 1
     max_blocks = 20
@@ -27,19 +27,35 @@ class Subsession(BaseSubsession):
         """Initializes the 
         session and creates the order in which the Blocks should be run through
         """
-        CTB_right_values = self.session.config["future_CTB_right_values"].split(", ")
-        CTB_right_values = [float(i) for i in CTB_right_values]
-        CTB_left_values = self.session.config["future_CTB_left_values"].split(", ")
-        CTB_left_values = [float(i) for i in CTB_left_values]
-        CTB_t_earliers = self.session.config['future_CTB_t_earliers'].split(', ')
-        CTB_t_laters = self.session.config['future_CTB_t_laters'].split(', ')
-        block_order = [i for i in range(self.session.config["future_num_blocks"])]
+        CTB_right_values = self.session.config["past_CTB_right_values"].split(" | ")
+        for i in range(len(CTB_right_values)):
+            CTB_right_values[i] = CTB_right_values[i].split(", ")
 
-        block_size = self.session.config["future_block_size"]
+        CTB_left_values = self.session.config["past_CTB_left_values"].split(" | ")
+        for i in range(len(CTB_left_values)):
+            CTB_left_values[i] = CTB_left_values[i].split(", ")
+
+        CTB_t_earliers = self.session.config['past_CTB_t_earliers'].split(' | ')
+        for i in range(len(CTB_t_earliers)):
+            CTB_t_earliers[i] = CTB_t_earliers[i].split(", ")
+
+        CTB_t_laters = self.session.config['past_CTB_t_laters'].split(' | ')
+        for i in range(len(CTB_t_laters)):
+            CTB_t_laters[i] = CTB_t_laters[i].split(", ")
+
+        block_configs = []
+        section_configs = []
+        for i in range(len(CTB_t_earliers)):
+            for j in range(Constants.questions_per_section):
+                section_configs.append((CTB_t_earliers[i][j], CTB_left_values[i][j], CTB_t_laters[i][j], CTB_right_values[i][j]))
+            block_configs.append(section_configs)
+            section_configs = []
+
+        block_size = self.session.config["past_block_size"]
 
         CTB_blocks_left = []
         CTB_blocks_right = []
-        for i in range(self.session.config["future_num_blocks"]):
+        for i in range(self.session.config["past_num_blocks"]):
             CTB_blocks_left.append(CTB_left_values[i*block_size:(i+1)*block_size])
             CTB_blocks_right.append(CTB_right_values[i*block_size:(i+1)*block_size])
 
@@ -48,8 +64,8 @@ class Subsession(BaseSubsession):
             Blocks.append(Block(
                 left_values=CTB_blocks_left[i],
                 right_values=CTB_blocks_right[i],
-                earlier_time=CTB_t_earliers[i],
-                later_time=CTB_t_laters[i],
+                t_earlier=CTB_t_earliers[i],
+                t_later=CTB_t_laters[i],
                 number_of_choices=6,
                 block_index=i
                 )
@@ -58,12 +74,8 @@ class Subsession(BaseSubsession):
         for player in self.get_players():
             player.blocks = codecs.encode(pickle.dumps(Blocks), "base64").decode()
             if self.round_number == 1:
-                if self.session.config["future_randomize_blocks"]:
-                    to_shuffle_block_order = [block_order[0:Constants.questions_per_section], block_order[Constants.questions_per_section:2*Constants.questions_per_section], block_order[2*Constants.questions_per_section:3*Constants.questions_per_section]]
-                    random.shuffle(to_shuffle_block_order)
-                    block_order = []
-                    for i in range(len(to_shuffle_block_order)):
-                        block_order += to_shuffle_block_order[i]
+                if self.session.config["past_randomize_blocks"]:
+                    random.shuffle(block_order)
             else:
                 block_order = player.in_round(self.round_number - 1).block_order
             player.block_order = json.dumps(block_order)
