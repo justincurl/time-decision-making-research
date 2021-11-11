@@ -1,0 +1,37 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load staticfiles %}
+
+{% block title %}
+Instructions
+{% endblock %}
+
+{% block content %}
+
+<div align="center">
+    <h4 text-align="center">
+        <strong style="text-transform: uppercase; color: purple;">FUTURE: </strong><span style="text-transform: uppercase;">{{earlier_time}}</span> and <span style="text-transform: uppercase;">{{later_time}}</span>
+    </h4>
+</div>
+<br>
+<div text-align="justify">
+    There is one more pair of periods left. Now, we will ask you several questions about temporary (1-year contract)
+    jobs created <strong>{{earlier_time}}</strong>> and temporary jobs created <strong>{{later_time}}</strong>>. 
+    <br>
+    Which combination of temporary jobs created <strong>{{earlier_time}}</strong> and <strong>{{later_time}}</strong> is the best economy? 
+</div>
+<br>
+<div text-align="justify">
+    Click anywhere in the blocks to make the blue horizontal bar appear. Move blocks of jobs to 
+    {{later_time}} (and back) by dragging the bar up and down. When you are confident that the 
+    combination of blocks shows the best economy, click the “Next” button. 
+</div>
+<br>
+<br>
+
+<div class="next-button"  style="text-align: center;">
+    {% next_button %}
+</div>
+
+
+{% endblock %}

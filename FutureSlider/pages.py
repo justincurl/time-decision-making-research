@@ -6,6 +6,10 @@ from ._builtin import Page, WaitPage
 from otree.api import safe_json
 
 
+class Start(Page):
+    pass
+
+
 class Slider12(Page):
     form_model = 'player'
     form_fields = ['slider_one', 'check_slider_one', 'slider_two', 'check_slider_two']
@@ -29,8 +33,8 @@ class Slider12(Page):
         if self.player.t_earliest == self.player.earlier_time and self.player.t_middle == self.player.later_time:
             display = True
         return (
-            display and
-            (self.player.round_number <= self.player.session.config["past_num_sliders"]) and 
+            display and 
+            (self.round_number <= self.player.session.config["future_num_sliders"]) and 
             (json.loads(self.participant.vars["consent_answer"]) == 1)
         )
 
@@ -75,7 +79,7 @@ class Slider13(Page):
             display = True
         return (
             display and
-            (self.player.round_number <= self.player.session.config["past_num_sliders"]) and 
+            (self.round_number <= self.player.session.config["future_num_sliders"]) and 
             (json.loads(self.participant.vars["consent_answer"]) == 1)
         )
 
@@ -120,7 +124,7 @@ class Slider23(Page):
             display = True
         return (
             display and
-            (self.player.round_number <= self.player.session.config["past_num_sliders"]) and 
+            (self.round_number <= self.player.session.config["future_num_sliders"]) and 
             (json.loads(self.participant.vars["consent_answer"]) == 1)
         )
 
@@ -141,16 +145,74 @@ class Slider23(Page):
         self.player.slider_one = self.player.earlier_max - self.player.slider_one
         return super().before_next_page()
 
-class FutureInstructions(Page):
+class FutureALL(Page):
+    def vars_for_template(self):
+        return dict(
+            earlier_time=self.player.earlier_time,
+            later_time=self.player.later_time,
+        )
     def is_displayed(self):
         return (
             self.round_number == 1 and
             json.loads(self.participant.vars["consent_answer"]) == 1
         )
 
+class FutureVisual(Page):
+    def vars_for_template(self):
+        return dict(
+            earlier_time=self.player.earlier_time,
+            later_time=self.player.later_time,
+        )
+    def is_displayed(self):
+        return (
+            self.round_number == 1 and
+            json.loads(self.participant.vars["consent_answer"]) == 1
+        )
+
+class SectionDivider1(Page):
+    def vars_for_template(self):
+        return dict(
+            earlier_time=self.player.earlier_time,
+            later_time=self.player.later_time,
+        )
+
+    def is_displayed(self):
+        # display = False
+        # if self.player.t_earliest == self.player.earlier_time and self.player.t_middle == self.player.later_time:
+        #     display = True
+        return self.round_number == 1
+
+class SectionDivider2(Page):
+    def vars_for_template(self):
+        return dict(
+            earlier_time=self.player.earlier_time,
+            later_time=self.player.later_time,
+        )
+    def is_displayed(self):
+        # display = False
+        # if self.player.t_earliest == self.player.earlier_time and self.player.t_latest == self.player.later_time:
+        #     display = True
+        return self.round_number == 7
+
+class SectionDivider3(Page):
+    def vars_for_template(self):
+        return dict(
+            earlier_time=self.player.earlier_time,
+            later_time=self.player.later_time,
+        )
+    def is_displayed(self):
+        # display = False
+        # if self.player.t_middle == self.player.earlier_time and self.player.t_latest == self.player.later_time:
+        #     display = True
+        return self.round_number == 13
+
 def generate_page_sequence():
     return (
-        [FutureInstructions] +
+        [FutureALL] +
+        [FutureVisual] +
+        [SectionDivider1] +
+        [SectionDivider2] +
+        [SectionDivider3] +
         [Slider12] +
         [Slider13] + 
         [Slider23]

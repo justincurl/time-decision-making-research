@@ -4,16 +4,21 @@
 
 {% block content %}
 
+<div align="center">
+    <h4 text-align="center">
+        <strong style="text-transform: uppercase; color: purple;">FUTURE: </strong><span style="text-transform: uppercase;">{{earlier_time}}</span> and <span style="text-transform: uppercase;">{{later_time}}</span>
+    </h4>
+</div>
 <br>
-
-<h4 align="center" style="text-transform: uppercase;">{{curr_block.text_delay_start}} and {{curr_block.text_total_end}}
-</h4>
+<div text-align="justify">
+    Which combination of temporary jobs created <strong>{{earlier_time}}</strong> and <strong>{{later_time}}</strong> is the best economy? 
+</div>
 <br>
-
-<h6>
-    For each decision below, decide on the number of temporary jobs created {{curr_block.text_delay_start}} and {{curr_block.text_total_end}} by checking 
-    the corresponding box. Only check one box per decision.
-</h6>
+<div text-align="justify">
+    Mark the response button that you think shows the best economy. 
+</div>
+<br>
+<br>
 
 
 <table class="table table-bordered">

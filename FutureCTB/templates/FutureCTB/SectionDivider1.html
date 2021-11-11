@@ -1,0 +1,32 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load staticfiles %}
+
+{% block title %}
+Instructions
+{% endblock %}
+
+{% block content %}
+
+<div align="center">
+    <h4 text-align="center">
+        <strong style="text-transform: uppercase; color: purple;">FUTURE: </strong><span style="text-transform: uppercase;">{{earlier_time}}</span> and <span style="text-transform: uppercase;">{{later_time}}</span>
+    </h4>
+</div>
+<br>
+<div text-align="justify">
+    Which combination of temporary jobs created <strong>{{earlier_time}}</strong> and <strong>{{later_time}}</strong> is the best economy? 
+</div>
+<br>
+<div text-align="justify">
+    Mark the response button that you think shows the best economy. 
+</div>
+<br>
+<br>
+
+<div class="next-button"  style="text-align: center;">
+    {% next_button %}
+</div>
+
+
+{% endblock %}
