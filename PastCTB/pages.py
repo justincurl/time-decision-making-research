@@ -98,11 +98,11 @@ def generate_page_sequence():
     return (
         [PastALL]
         + [PastCTB]
-        + [BlockPage] * 6
+        + [BlockPage] * 5
         + [SectionDivider2]
-        + [BlockPage] * 6
+        + [BlockPage] * 5
         + [SectionDivider3]
-        + [BlockPage] * 6
+        + [BlockPage] * 5
     )
 
 page_sequence = generate_page_sequence()

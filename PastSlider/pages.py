@@ -192,7 +192,7 @@ class SectionDivider2(Page):
         # display = False
         # if self.player.t_earliest == self.player.earlier_time and self.player.t_latest == self.player.later_time:
         #     display = True
-        return self.round_number == 7
+        return self.round_number == 6
 
 class SectionDivider3(Page):
     def vars_for_template(self):
@@ -204,7 +204,7 @@ class SectionDivider3(Page):
         # display = False
         # if self.player.t_middle == self.player.earlier_time and self.player.t_latest == self.player.later_time:
         #     display = True
-        return self.round_number == 13
+        return self.round_number == 11
 
 def generate_page_sequence():
     return (

@@ -19,7 +19,7 @@ class Constants(BaseConstants):
     name_in_url = "FutureSlider"
     players_per_group = None
     num_rounds = 21
-    sliders_per_section = 6
+    sliders_per_section = 5
 
 class Subsession(BaseSubsession):
     def creating_session(self):
