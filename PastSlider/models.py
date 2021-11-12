@@ -62,7 +62,7 @@ class Subsession(BaseSubsession):
                 
             if self.round_number <= self.session.config['past_num_sliders']:
                 # only go for the configurable number of sliders
-                player_config = json.loads(p.round_configs)[(self.round_number - 1)//6][(self.round_number - 1) % 6]
+                player_config = json.loads(p.round_configs)[(self.round_number - 1)//Constants.sliders_per_section][(self.round_number - 1) % Constants.sliders_per_section]
                 p.earlier_time = player_config[0]  # example: today
                 p.earlier_max = int(player_config[1])
                 p.later_time = player_config[2]

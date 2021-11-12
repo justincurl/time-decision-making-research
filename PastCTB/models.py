@@ -19,7 +19,7 @@ class Constants(BaseConstants):
     players_per_group = None
     num_rounds = 1
     max_blocks = 20
-    questions_per_section = 4
+    questions_per_section = 5
 
 
 class Subsession(BaseSubsession):
