@@ -152,7 +152,7 @@ input[name=slider_two]::-webkit-slider-thumb {
 }
 
 .left-bubble-one {
-    background: #d3d3d3;
+    background: rgb(43, 173, 43);
     color: black;
     position: relative;
     top: 3px;
@@ -166,7 +166,7 @@ input[name=slider_two]::-webkit-slider-thumb {
 }
 
 .left-bubble-two {
-    background: #d3d3d3;
+    background: rgb(43, 173, 43);
     color: black;
     position: relative;
     left: 20%;
@@ -179,7 +179,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     pointer-events: none !important;
 }
 .left-bubble-three {
-    background: #d3d3d3;
+    background: rgb(43, 173, 43);
     color: black;
     position: relative;
     height: 27px;
@@ -192,7 +192,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     pointer-events: none !important;
 }
 .left-bubble-four {
-    background: #d3d3d3;
+    background: rgb(43, 173, 43);
     color: black;
     position: relative;
     height: 27px;
@@ -205,7 +205,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     pointer-events: none !important;
 }
 .left-bubble-five {
-    background: #d3d3d3;
+    background: rgb(43, 173, 43);
     color: black;
     position: relative;
     height: 27px;
@@ -218,7 +218,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     pointer-events: none !important;
 }
 .left-bubble-six {
-    background: #d3d3d3;
+    background: rgb(43, 173, 43);
     color: black;
     position: relative;
     height: 27px;
@@ -231,7 +231,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     pointer-events: none !important;
 }
 .left-bubble-seven {
-    background: #d3d3d3;
+    background: rgb(43, 173, 43);
     color: black;
     position: relative;
     height: 27px;
@@ -244,7 +244,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     pointer-events: none !important;
 }
 .left-bubble-eight {
-    background: #d3d3d3;
+    background: rgb(43, 173, 43);
     color: black;
     position: relative;
     height: 27px;
@@ -257,7 +257,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     pointer-events: none !important;
 }
 .left-bubble-nine {
-    background: #d3d3d3;
+    background: rgb(43, 173, 43);
     color: black;
     position: relative;
     height: 27px;
@@ -270,7 +270,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     pointer-events: none !important;
 }
 .left-bubble-ten {
-    background: #d3d3d3;
+    background: rgb(43, 173, 43);
     color: black;
     position: relative;
     height: 27px;
@@ -298,7 +298,7 @@ input[name=slider_two]::-webkit-slider-thumb {
 }
 
 .right-bubble-one {
-    background: rgb(43, 173, 43);
+    background: #d3d3d3;
     color: black;
     position: relative;
     left: 21%;
@@ -312,7 +312,7 @@ input[name=slider_two]::-webkit-slider-thumb {
 }
 
 .right-bubble-two {
-    background: rgb(43, 173, 43);
+    background: #d3d3d3;
     color: black;
     position: relative;
     left: 21%;
@@ -325,7 +325,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     pointer-events: none !important;
 }
 .right-bubble-three {
-    background: rgb(43, 173, 43);
+    background: #d3d3d3;
     color: black;
     position: relative;
     height: 27px;
@@ -338,7 +338,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     pointer-events: none !important;
 }
 .right-bubble-four {
-    background: rgb(43, 173, 43);
+    background: #d3d3d3;
     color: black;
     position: relative;
     height: 27px;
@@ -351,7 +351,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     pointer-events: none !important;
 }
 .right-bubble-five {
-    background: rgb(43, 173, 43);
+    background: #d3d3d3;
     color: black;
     position: relative;
     height: 27px;
@@ -364,7 +364,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     pointer-events: none !important;
 }
 .right-bubble-six {
-    background: rgb(43, 173, 43);
+    background: #d3d3d3;
     color: black;
     position: relative;
     height: 27px;
@@ -377,7 +377,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     pointer-events: none !important;
 }
 .right-bubble-seven {
-    background: rgb(43, 173, 43);
+    background: #d3d3d3;
     color: black;
     position: relative;
     height: 27px;
@@ -390,7 +390,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     pointer-events: none !important;
 }
 .right-bubble-eight {
-    background: rgb(43, 173, 43);
+    background: #d3d3d3;
     color: black;
     position: relative;
     height: 27px;
@@ -403,7 +403,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     pointer-events: none !important;
 }
 .right-bubble-nine {
-    background: rgb(43, 173, 43);
+    background: #d3d3d3;
     color: black;
     position: relative;
     height: 27px;
@@ -416,7 +416,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     pointer-events: none !important;
 }
 .right-bubble-ten {
-    background: rgb(43, 173, 43);
+    background: #d3d3d3;
     color: black;
     position: relative;
     height: 27px;
