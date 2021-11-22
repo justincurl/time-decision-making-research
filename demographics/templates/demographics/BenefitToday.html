@@ -1,0 +1,95 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block content %}
+
+<style>
+    table {
+        table-layout: fixed;
+        width: 100%;
+    }
+
+    td {
+        width: 25%;
+    }
+</style>
+
+<br><br>
+<div class="results" align="justify">
+    <p>
+        How willing are you to give up something that is beneficial for you today in order to benefit more from that in
+        the future?
+        <br><br>
+        Please answer on a scale from 0 to 10, where 0 means completely unwilling to do so, and 10 means very willing to
+        do so.
+    </p>
+    <table style="width: 100%" class="table text-center">
+        <tbody>
+            <form>
+                <tr>
+                    <td>
+                        completely unwilling to do so
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        very willing to do so
+                    </td>
+                </tr>
+                <tr>
+                    {% for choice in form.benefit_today %}
+                    <td>
+                        <label class="benefit_today-labels"
+                            for="benefit_today_{{forloop.counter}}">{{choice.choice_label}}</label>
+                    </td>
+                    {% endfor %}
+                </tr>
+                <br>
+                <tr>
+                    {% for choice in form.benefit_today %}
+                    <td>
+                        <input class="benefit_today-choices" id="benefit_today_{{forloop.counter}}" name="benefit_today"
+                            type="radio" value={{choice.choice_label}} />
+                    </td>
+                    {% endfor %}
+                </tr>
+            </form>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function alertFunction() {
+        alert("In order for your answers to be most helpful to us, it is really important that you respond to all questions.")
+        jQuery('.waiting').hide();
+        jQuery('.next-button').show();
+        return false
+    }
+    jQuery(".benefit_today-choices").on("click", function () {
+        jQuery(".next-button").show();
+        jQuery(".waiting").hide();
+    });
+</script>
+
+<div class="waiting" onclick="return alertFunction();">
+    {% next_button %}
+</div>
+
+<div class="next-button">
+    {% next_button %}
+</div>
+
+<script>jQuery(".next-button").hide();</script>
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'CTB/styles/block.css' %}" />
+{% endblock %}
+
+{% endblock %}

@@ -115,6 +115,12 @@ SESSION_CONFIGS = [
         future_num_blocks=15,
         future_block_size=1,
         future_randomize_blocks=True,
+    ),
+    dict(
+        name="Module2",
+        display_name="Module 2",
+        num_demo_participants=20,
+        app_sequence=["Module2", "demographics"]
     )
 ]
 
