@@ -1,0 +1,110 @@
+
+    {% extends "global/Page.html" %}
+    {% load otree static %}
+    
+    
+    {% block content %}
+
+
+    <div class="results" align="justify">
+        <p style="font-size: larger">If you had to choose, would you prefer personal income growth of 4% this year and none next year, or 4% next year and none this year? </p>
+        <div id="direct_growth_question" style="font-size: larger" class="formfield-direct-growth">{% formfield player.direct_growth label="" %}</div>
+    </div>
+    <br>
+
+    <input type="hidden" name="check_slider_direct_growth" value="" id="id_check_slider_direct_growth"/>
+
+    {{ form.slider_direct_growth.errors }}
+
+    <div id="container">
+        <div class="results" align="justify" style="font-size:larger;">
+            If you could choose some personal income growth in both years, which allocation would you choose?” 
+        </div> 
+        <br>
+        <br>
+        <output id="output_this_year" class="this-year" for="slider_direct_growth"></output>
+        <input type="range" name="slider_direct_growth" value="None" step="0.1" align="center" min="0" max="4" id="id_slider_direct_growth"/>
+        <output id="output_next_year" class="next-year" for="slider_direct_growth"></output>
+        <br>
+        <br>
+        <br>
+    </div>
+    
+
+
+    <script>
+        $(document).ready(function () {
+            $('input[name=slider_direct_growth]').on('input', function () {
+                $('input[name=slider_direct_growth]').addClass('direct-growth-thumb');
+                document.getElementById("id_slider_direct_growth").style.background = "orange";
+            });
+            $('input[name=slider_direct_growth]').on('input change', function() {
+                $('#id_check_slider_direct_growth').val(1);
+                document.getElementById("id_slider_direct_growth").style.background = "orange";
+                setBubbles(document.getElementById("id_slider_direct_growth").value, document.getElementById("output_this_year"), document.getElementById("output_next_year"));
+            });
+    
+            function setBubbles(value, bubble_this_year, bubble_next_year) {
+                const next_year_val = parseFloat(value).toFixed(1);
+                var this_year_val = (4 - next_year_val).toFixed(1);
+
+                bubble_next_year.style.background = "orange";
+                bubble_this_year.style.background = "#007afe"
+                
+                bubble_next_year.value = next_year_val+"% next year";
+                bubble_this_year.value = this_year_val+"% this year";
+    
+                var location = 900/4 * next_year_val - 45;
+                
+                // Sorta magic numbers based on size of the native UI thumb
+                bubble_next_year.style.left = location+"px";
+                bubble_this_year.style.left = location+"px";
+            }
+        });
+    
+    </script>
+    
+    <script>
+        function alertFunction() {
+            alert("In order for your answers to be most helpful to us, it is really important that you respond to all questions.")
+            jQuery('.waiting').hide();
+            jQuery('.next-button').show();
+            return false
+        }
+        
+        jQuery("#id_slider_direct_growth").on("click", function () {
+            jQuery(".next-button").show();
+            jQuery(".waiting").hide();
+        });
+
+         function revealFunction() {
+            jQuery('.reveal-slider').hide();
+            jQuery('.waiting').show();
+            $("#container").show();
+            return false
+        }
+    </script>
+    
+    <div class="reveal-slider" onclick="return revealFunction();" style="text-align: center;">
+        {% next_button %}
+    </div>
+
+    <div class="waiting" onclick="return alertFunction();" style="text-align: center;">
+        {% next_button %}
+    </div>
+    
+    <div class="next-button" style="text-align: center;">
+        {% next_button %}
+    </div>
+    
+    <script>
+        jQuery(".next-button").hide();
+        jQuery(".waiting").hide();
+        jQuery("#container").hide();
+    </script>
+    
+    {% endblock %}
+    
+    {% block styles %}
+    <link rel="stylesheet" href="{% static 'Module2/styles/DirectGrowth.css' %}" />
+    {% endblock %}
