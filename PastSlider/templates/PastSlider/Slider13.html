@@ -112,9 +112,6 @@
             var earlier_max = document.getElementById("earlier_max").value;
             var later_max = document.getElementById("later_max").value;
 
-            console.log(earlier_time)
-            console.log(later_time)
-
             document.getElementById("id_slider_one").step = earlier_max/10;
             document.getElementById("id_slider_two").step = later_max/10;
 
@@ -148,23 +145,11 @@
             $('input[name=slider_one]').on('input', function () {
                 $('input[name=slider_one]').addClass('slider_one_thumb');
                 $('input[name=slider_two]').addClass('slider_two_thumb');
-                // addLabels();
                 var slider_one_actual_val = $(this).val()
                 var slider_one_display_val = earlier_max - $(this).val();
                 var slider_two_val = $(this).val()*later_max/earlier_max;
                 document.getElementById("id_slider_two").value = slider_one_actual_val*later_max/earlier_max;
                 updateLabels(slider_one_display_val/earlier_max*10, slider_one_display_val, slider_two_val, document.getElementById("id_slider_one").step, document.getElementById("id_slider_two").step, earlier_time, later_time);
-            });
-        
-            // handle changes in slider value
-            $('input[name=slider_one]').on('input change', function() {
-                var slider_one_actual_val = $(this).val()
-                var slider_one_display_val = earlier_max - $(this).val();
-                var slider_two_val = $(this).val()*later_max/earlier_max;
-                document.getElementById("id_slider_two").value = slider_two_val; // links the two slider values together
-                updateLabels(slider_one_display_val/earlier_max*10, slider_one_display_val, slider_two_val, document.getElementById("id_slider_one").step, document.getElementById("id_slider_two").step, earlier_time, later_time);
-                $('#check_slider_one').val(1);
-                $('#check_slider_two').val(1);
             });
         
             // functions for slider 2
@@ -173,7 +158,6 @@
             $('input[name=slider_two]').on('input', function () {
                 $('input[name=slider_one]').addClass('slider_one_thumb');
                 $('input[name=slider_two]').addClass('slider_two_thumb');
-                // addLabels();
                 var slider_two_val = $(this).val();
                 var slider_one_actual_val = slider_two_val*earlier_max/later_max;
                 var slider_one_display_val = earlier_max - slider_one_actual_val;
@@ -181,22 +165,13 @@
                 updateLabels(slider_one_display_val/earlier_max*10, slider_one_display_val, slider_two_val, document.getElementById("id_slider_one").step, document.getElementById("id_slider_two").step, earlier_time, later_time);
             });
         
-            // handle changes in slider value
-            $('input[name=slider_two]').on('input change', function() {
-                var slider_two_val = $(this).val();
-                var slider_one_actual_val = slider_two_val*earlier_max/later_max;
-                var slider_one_display_val = earlier_max - slider_one_actual_val;
-                document.getElementById("id_slider_one").value = slider_one_actual_val;
-                updateLabels(slider_one_display_val/earlier_max*10, slider_one_display_val, slider_two_val, document.getElementById("id_slider_one").step, document.getElementById("id_slider_two").step, earlier_time, later_time);
-                $('#check_slider_one').val(1);
-                $('#check_slider_two').val(1);
-            });
 
             function numberWithCommas(x) {
                 return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             }
 
             function updateLabels(slider_one_location, slider_one_display_val, slider_two_val, left_block_size, right_block_size, earlier_time, later_time) {
+                console.log('test')
                 slider_one_display_val = numberWithCommas(slider_one_display_val);
                 slider_two_val = numberWithCommas(slider_two_val);
                 left_block_size = numberWithCommas(left_block_size);

@@ -270,7 +270,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     pointer-events: none !important;
 }
 .left-bubble-ten {
-    background: rgb(43, 173, 43);
+    background: #d3d3d3;
     color: black;
     position: relative;
     height: 27px;
@@ -416,7 +416,7 @@ input[name=slider_two]::-webkit-slider-thumb {
     pointer-events: none !important;
 }
 .right-bubble-ten {
-    background: #d3d3d3;
+    background: rgb(43, 173, 43);
     color: black;
     position: relative;
     height: 27px;
