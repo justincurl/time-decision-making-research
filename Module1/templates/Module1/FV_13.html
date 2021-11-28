@@ -1,0 +1,441 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load staticfiles %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+
+    {{ form.future_check_slider_one.errors }}
+    {{ form.future_check_slider_two.errors }}
+
+    <input type="hidden" name="future_check_slider_one" value="" id="id_future_check_slider_one"/>
+    <input type="hidden" name="future_check_slider_two" value="" id="id_future_check_slider_two"/>
+
+    <input type="hidden" value="{{earlier_time}}" id="earlier_time"/>
+    <input type="hidden" value="{{later_time}}" id="later_time"/>
+    <input type="hidden" value={{earlier_max}} id="earlier_max"/>
+    <input type="hidden" value={{later_max}} id="later_max"/>
+    
+    <div align="center">
+        <h2 text-align="center">
+            <strong style="text-transform: uppercase; color: orange;">FUTURE: </strong><span style="text-transform: uppercase;">{{earlier_time}}</span> and <span style="text-transform: uppercase;">{{later_time}}</span>
+        </h2>
+    </div>
+    <br>
+    <div text-align="center" style="font-size: larger; text-align: center">
+        Which combination of temporary jobs created <strong>{{earlier_time}}</strong> and <strong>{{later_time}}</strong> is the best economy? 
+    </div>
+    </div>
+    <br>
+    <table style="margin-left: auto; margin-right: auto;">
+        <tr>
+            <td>
+                <table id="left-table">
+                    <tr><div class="left-bubble-zero" id="left_feedback_0"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="left-bubble-one" id="left_feedback_1"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="left-bubble-two" id="left_feedback_2"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="left-bubble-three" id="left_feedback_3"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="left-bubble-four" id="left_feedback_4"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="left-bubble-five" id="left_feedback_5"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="left-bubble-six" id="left_feedback_6"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="left-bubble-seven" id="left_feedback_7"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="left-bubble-eight" id="left_feedback_8"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="left-bubble-nine" id="left_feedback_9"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="left-bubble-ten" id="left_feedback_10"></div><div style="height:4.5px;"></div></tr>
+                </table>
+            </td>
+            <td><div class="t1_slider"><input type="range" name="future_slider_one" step=10 min=0 max={{earlier_max}} value={{earlier_max}} id="id_future_slider_one" class="rotate" class="form-control"/></div></td>
+            <td><div class="t1_t2_gap"></div></td>
+            <td><div class="t2_slider"></div></td>
+            <td>
+                <div class="t2_t3_gap">
+                    <table id="center-table">
+                        <tr><div class="center-bubble-zero" id="center_feedback_0"></div><div style="height:4.5px;"></div></tr>
+                        <tr><div class="center-bubble-one" id="center_feedback_1"></div><div style="height:4.5px;"></div></tr>
+                        <tr><div class="center-bubble-two" id="center_feedback_2"></div><div style="height:4.5px;"></div></tr>
+                        <tr><div class="center-bubble-three" id="center_feedback_3"></div><div style="height:4.5px;"></div></tr>
+                        <tr><div class="center-bubble-four" id="center_feedback_4"></div><div style="height:4.5px;"></div></tr>
+                        <tr><div class="center-bubble-five" id="center_feedback_5"></div><div style="height:4.5px;"></div></tr>
+                        <tr><div class="center-bubble-six" id="center_feedback_6"></div><div style="height:4.5px;"></div></tr>
+                        <tr><div class="center-bubble-seven" id="center_feedback_7"></div><div style="height:4.5px;"></div></tr>
+                        <tr><div class="center-bubble-eight" id="center_feedback_8"></div><div style="height:4.5px;"></div></tr>
+                        <tr><div class="center-bubble-nine" id="center_feedback_9"></div><div style="height:4.5px;"></div></tr>
+                        <tr><div class="center-bubble-ten" id="center_feedback_10"></div><div style="height:4.5px;"></div></tr>
+                    </table>
+                </div>
+            </td>
+            <td>
+                <div class="t3_slider">
+                    <input type="range" name="future_slider_two" step=10 min=0 max={{later_max}} value={{later_max}} id="id_future_slider_two" class="rotate" class="form-control"/>
+                </div>
+            </td>
+            <td>
+                <table id="right-table">
+                    <tr><div class="right-bubble-zero" id="right_feedback_0"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="right-bubble-one" id="right_feedback_1"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="right-bubble-two" id="right_feedback_2"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="right-bubble-three" id="right_feedback_3"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="right-bubble-four" id="right_feedback_4"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="right-bubble-five" id="right_feedback_5"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="right-bubble-six" id="right_feedback_6"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="right-bubble-seven" id="right_feedback_7"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="right-bubble-eight" id="right_feedback_8"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="right-bubble-nine" id="right_feedback_9"></div><div style="height:4.5px;"></div></tr>
+                    <tr><div class="right-bubble-ten" id="right_feedback_10"></div><div style="height:4.5px;"></div></tr>
+                </table>
+            </td>
+        </tr>
+        <tr style="border-top: solid thick"><tr>
+        <tr style="height: 60px;">
+            <td><div class="pre_t1"></div></td>
+            <td><div class="t1_text"><h5 style="text-transform: uppercase;">{{t_earliest}}</h5></div></td>
+            <td><div class="t1_t2_gap"></div></td>
+            <td><div class="t2_text"><h5 style="text-transform: uppercase; color: #d3d3d3">{{t_middle}}</h5></div></td>
+            <td><div class="t2_t3_gap"></div></td>
+            <td><div class="pre_t3"></div></td>
+            <td><div class="t3_text"><h5 style="text-transform: uppercase;">{{t_latest}}</h5></div></td>
+        </tr>
+    </table>
+    <br>
+    <div text-align="justify" style="font-size: small">
+        Click anywhere in the blocks to make the blue horizontal bar appear. Move blocks of jobs to 
+        <strong>{{later_time}}</strong> (and back) by dragging the bar up and down. When you are confident that the 
+        combination of blocks shows the <strong>best economy</strong>, click the “Next” button. 
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            // set step size
+            var earlier_time = document.getElementById("earlier_time").value;
+            var later_time = document.getElementById("later_time").value;
+            var earlier_max = document.getElementById("earlier_max").value;
+            var later_max = document.getElementById("later_max").value;
+
+            document.getElementById("id_future_slider_one").step = earlier_max/10;
+            document.getElementById("id_future_slider_two").step = later_max/10;
+
+            left_block_size = numberWithCommas(earlier_max/10);
+            right_block_size = numberWithCommas(later_max/10);
+
+            document.getElementById("left_feedback_1").innerHTML = left_block_size;
+            document.getElementById("left_feedback_2").innerHTML = left_block_size;
+            document.getElementById("left_feedback_3").innerHTML = left_block_size;
+            document.getElementById("left_feedback_4").innerHTML = left_block_size;
+            document.getElementById("left_feedback_5").innerHTML = left_block_size;
+            document.getElementById("left_feedback_6").innerHTML = left_block_size;
+            document.getElementById("left_feedback_7").innerHTML = left_block_size;
+            document.getElementById("left_feedback_8").innerHTML = left_block_size;
+            document.getElementById("left_feedback_9").innerHTML = left_block_size;
+            document.getElementById("left_feedback_10").innerHTML = left_block_size;
+
+            document.getElementById("right_feedback_1").innerHTML = right_block_size;
+            document.getElementById("right_feedback_2").innerHTML = right_block_size;
+            document.getElementById("right_feedback_3").innerHTML = right_block_size;
+            document.getElementById("right_feedback_4").innerHTML = right_block_size;
+            document.getElementById("right_feedback_5").innerHTML = right_block_size;
+            document.getElementById("right_feedback_6").innerHTML = right_block_size;
+            document.getElementById("right_feedback_7").innerHTML = right_block_size;
+            document.getElementById("right_feedback_8").innerHTML = right_block_size;
+            document.getElementById("right_feedback_9").innerHTML = right_block_size;
+            document.getElementById("right_feedback_10").innerHTML = right_block_size;
+            
+        
+            // hide slider thumb until initial click
+            $('input[name=future_slider_one]').on('input', function () {
+                $('input[name=future_slider_one]').addClass('future_slider_one_thumb');
+                $('input[name=future_slider_two]').addClass('future_slider_two_thumb');
+                // addLabels();
+                var future_slider_one_actual_val = $(this).val()
+                var future_slider_one_display_val = earlier_max - $(this).val();
+                var future_slider_two_val = $(this).val()*later_max/earlier_max;
+                document.getElementById("id_future_slider_two").value = future_slider_one_actual_val*later_max/earlier_max;
+                updateLabels(future_slider_one_display_val/earlier_max*10, future_slider_one_display_val, future_slider_two_val, document.getElementById("id_future_slider_one").step, document.getElementById("id_future_slider_two").step, earlier_time, later_time);
+            });
+        
+            // handle changes in slider value
+            $('input[name=future_slider_one]').on('input change', function() {
+                var future_slider_one_actual_val = $(this).val()
+                var future_slider_one_display_val = earlier_max - $(this).val();
+                var future_slider_two_val = $(this).val()*later_max/earlier_max;
+                document.getElementById("id_future_slider_two").value = future_slider_two_val; // links the two slider values together
+                updateLabels(future_slider_one_display_val/earlier_max*10, future_slider_one_display_val, future_slider_two_val, document.getElementById("id_future_slider_one").step, document.getElementById("id_future_slider_two").step, earlier_time, later_time);
+                $('#future_check_slider_one').val(1);
+                $('#future_check_slider_two').val(1);
+            });
+        
+            // functions for slider 2
+        
+            // hide slider thumb until initial click
+            $('input[name=future_slider_two]').on('input', function () {
+                $('input[name=future_slider_one]').addClass('future_slider_one_thumb');
+                $('input[name=future_slider_two]').addClass('future_slider_two_thumb');
+                // addLabels();
+                var future_slider_two_val = $(this).val();
+                var future_slider_one_actual_val = future_slider_two_val*earlier_max/later_max;
+                var future_slider_one_display_val = earlier_max - future_slider_one_actual_val;
+                document.getElementById("id_future_slider_one").value = future_slider_one_actual_val;
+                updateLabels(future_slider_one_display_val/earlier_max*10, future_slider_one_display_val, future_slider_two_val, document.getElementById("id_future_slider_one").step, document.getElementById("id_future_slider_two").step, earlier_time, later_time);
+            });
+        
+            // handle changes in slider value
+            $('input[name=future_slider_two]').on('input change', function() {
+                var future_slider_two_val = $(this).val();
+                var future_slider_one_actual_val = future_slider_two_val*earlier_max/later_max;
+                var future_slider_one_display_val = earlier_max - future_slider_one_actual_val;
+                document.getElementById("id_future_slider_one").value = future_slider_one_actual_val;
+                updateLabels(future_slider_one_display_val/earlier_max*10, future_slider_one_display_val, future_slider_two_val, document.getElementById("id_future_slider_one").step, document.getElementById("id_future_slider_two").step, earlier_time, later_time);
+                $('#future_check_slider_one').val(1);
+                $('#future_check_slider_two').val(1);
+            });
+
+            function numberWithCommas(x) {
+                return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            }
+
+            function updateLabels(future_slider_one_location, future_slider_one_display_val, future_slider_two_val, left_block_size, right_block_size, earlier_time, later_time) {
+                future_slider_one_display_val = numberWithCommas(future_slider_one_display_val);
+                future_slider_two_val = numberWithCommas(future_slider_two_val);
+                left_block_size = numberWithCommas(left_block_size);
+                right_block_size = numberWithCommas(right_block_size);
+                if (future_slider_one_location > 0) {
+                    document.getElementById("left_feedback_0").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("left_feedback_0").innerHTML = left_block_size;
+                    document.getElementById("right_feedback_0").style.background = "#d3d3d3";
+                    document.getElementById("right_feedback_0").innerHTML = right_block_size;
+                    document.getElementById("center_feedback_0").style.background = "transparent";
+                    document.getElementById("center_feedback_0").innerHTML = "";
+                } else if (future_slider_one_location == 0) {
+                    document.getElementById("center_feedback_0").innerHTML = "<strong>"+future_slider_one_display_val+"</strong> "+earlier_time+" and <strong>"+future_slider_two_val+"</strong> "+later_time;
+                    document.getElementById("center_feedback_0").style.background = "rgb(154, 214, 235)";
+                } else {
+                    document.getElementById("left_feedback_0").style.background = "#d3d3d3";
+                    document.getElementById("left_feedback_0").innerHTML = left_block_size;
+                    document.getElementById("right_feedback_0").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("right_feedback_0").innerHTML = right_block_size;
+                    document.getElementById("center_feedback_0").style.background = "transparent";
+                    document.getElementById("center_feedback_0").innerHTML = "";
+                }
+                if (future_slider_one_location > 1) {
+                    document.getElementById("left_feedback_1").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("left_feedback_1").innerHTML = left_block_size;
+                    document.getElementById("right_feedback_1").style.background = "#d3d3d3";
+                    document.getElementById("right_feedback_1").innerHTML = right_block_size;
+                    document.getElementById("center_feedback_1").style.background = "transparent";
+                    document.getElementById("center_feedback_1").innerHTML = "";
+                } else if (future_slider_one_location == 1) {
+                    document.getElementById("center_feedback_1").innerHTML = "<strong>"+future_slider_one_display_val+"</strong> "+earlier_time+" and <strong>"+future_slider_two_val+"</strong> "+later_time;
+                    document.getElementById("center_feedback_1").style.background = "rgb(154, 214, 235)";
+                } else {
+                    document.getElementById("left_feedback_1").style.background = "#d3d3d3";
+                    document.getElementById("left_feedback_1").innerHTML = left_block_size;
+                    document.getElementById("right_feedback_1").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("right_feedback_1").innerHTML = right_block_size;
+                    document.getElementById("center_feedback_1").style.background = "transparent";
+                    document.getElementById("center_feedback_1").innerHTML = "";
+                }
+
+                if (future_slider_one_location > 2) {
+                    document.getElementById("left_feedback_2").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("left_feedback_2").innerHTML = left_block_size;
+                    document.getElementById("right_feedback_2").style.background = "#d3d3d3";
+                    document.getElementById("right_feedback_2").innerHTML = right_block_size;
+                    document.getElementById("center_feedback_2").style.background = "transparent";
+                    document.getElementById("center_feedback_2").innerHTML = "";
+                } else if (future_slider_one_location == 2) {
+                    document.getElementById("center_feedback_2").innerHTML = "<strong>"+future_slider_one_display_val+"</strong> "+earlier_time+" and <strong>"+future_slider_two_val+"</strong> "+later_time;
+                    document.getElementById("center_feedback_2").style.background = "rgb(154, 214, 235)";
+                } else {
+                    document.getElementById("left_feedback_2").style.background = "#d3d3d3";
+                    document.getElementById("left_feedback_2").innerHTML = left_block_size;
+                    document.getElementById("right_feedback_2").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("right_feedback_2").innerHTML = right_block_size;
+                    document.getElementById("center_feedback_2").style.background = "transparent";
+                    document.getElementById("center_feedback_2").innerHTML = "";
+                }
+
+                if (future_slider_one_location > 3) {
+                    document.getElementById("left_feedback_3").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("left_feedback_3").innerHTML = left_block_size;
+                    document.getElementById("right_feedback_3").style.background = "#d3d3d3";
+                    document.getElementById("right_feedback_3").innerHTML = right_block_size;
+                    document.getElementById("center_feedback_3").style.background = "transparent";
+                    document.getElementById("center_feedback_3").innerHTML = "";
+                } else if (future_slider_one_location == 3) {
+                    document.getElementById("center_feedback_3").innerHTML = "<strong>"+future_slider_one_display_val+"</strong> "+earlier_time+" and <strong>"+future_slider_two_val+"</strong> "+later_time;
+                    document.getElementById("center_feedback_3").style.background = "rgb(154, 214, 235)";
+                } else {
+                    document.getElementById("left_feedback_3").style.background = "#d3d3d3";
+                    document.getElementById("left_feedback_3").innerHTML = left_block_size;
+                    document.getElementById("right_feedback_3").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("right_feedback_3").innerHTML = right_block_size;
+                    document.getElementById("center_feedback_3").style.background = "transparent";
+                    document.getElementById("center_feedback_3").innerHTML = "";
+                }
+
+                if (future_slider_one_location > 4) {
+                    document.getElementById("left_feedback_4").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("left_feedback_4").innerHTML = left_block_size;
+                    document.getElementById("right_feedback_4").style.background = "#d3d3d3";
+                    document.getElementById("right_feedback_4").innerHTML = right_block_size;
+                    document.getElementById("center_feedback_4").style.background = "transparent";
+                    document.getElementById("center_feedback_4").innerHTML = "";
+                } else if (future_slider_one_location == 4) {
+                    document.getElementById("center_feedback_4").innerHTML = "<strong>"+future_slider_one_display_val+"</strong> "+earlier_time+" and <strong>"+future_slider_two_val+"</strong> "+later_time;
+                    document.getElementById("center_feedback_4").style.background = "rgb(154, 214, 235)";
+                } else {
+                    document.getElementById("left_feedback_4").style.background = "#d3d3d3";
+                    document.getElementById("left_feedback_4").innerHTML = left_block_size;
+                    document.getElementById("right_feedback_4").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("right_feedback_4").innerHTML = right_block_size;
+                    document.getElementById("center_feedback_4").style.background = "transparent";
+                    document.getElementById("center_feedback_4").innerHTML = "";
+                }
+
+                if (future_slider_one_location > 5) {
+                    document.getElementById("left_feedback_5").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("left_feedback_5").innerHTML = left_block_size;
+                    document.getElementById("right_feedback_5").style.background = "#d3d3d3";
+                    document.getElementById("right_feedback_5").innerHTML = right_block_size;
+                    document.getElementById("center_feedback_5").style.background = "transparent";
+                    document.getElementById("center_feedback_5").innerHTML = "";
+                } else if (future_slider_one_location == 5) {
+                    document.getElementById("center_feedback_5").innerHTML = "<strong>"+future_slider_one_display_val+"</strong> "+earlier_time+" and <strong>"+future_slider_two_val+"</strong> "+later_time;
+                    document.getElementById("center_feedback_5").style.background = "rgb(154, 214, 235)";
+                } else {
+                    document.getElementById("left_feedback_5").style.background = "#d3d3d3";
+                    document.getElementById("left_feedback_5").innerHTML = left_block_size;
+                    document.getElementById("right_feedback_5").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("right_feedback_5").innerHTML = right_block_size;
+                    document.getElementById("center_feedback_5").style.background = "transparent";
+                    document.getElementById("center_feedback_5").innerHTML = "";
+                }
+
+                if (future_slider_one_location > 6) {
+                    document.getElementById("left_feedback_6").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("left_feedback_6").innerHTML = left_block_size;
+                    document.getElementById("right_feedback_6").style.background = "#d3d3d3";
+                    document.getElementById("right_feedback_6").innerHTML = right_block_size;
+                    document.getElementById("center_feedback_6").style.background = "transparent";
+                    document.getElementById("center_feedback_6").innerHTML = "";
+                } else if (future_slider_one_location == 6) {
+                    document.getElementById("center_feedback_6").innerHTML = "<strong>"+future_slider_one_display_val+"</strong> "+earlier_time+" and <strong>"+future_slider_two_val+"</strong> "+later_time;
+                    document.getElementById("center_feedback_6").style.background = "rgb(154, 214, 235)";
+                } else {
+                    document.getElementById("left_feedback_6").style.background = "#d3d3d3";
+                    document.getElementById("left_feedback_6").innerHTML = left_block_size;
+                    document.getElementById("right_feedback_6").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("right_feedback_6").innerHTML = right_block_size;
+                    document.getElementById("center_feedback_6").style.background = "transparent";
+                    document.getElementById("center_feedback_6").innerHTML = "";
+                }
+
+                if (future_slider_one_location > 7) {
+                    document.getElementById("left_feedback_7").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("left_feedback_7").innerHTML = left_block_size;
+                    document.getElementById("right_feedback_7").style.background = "#d3d3d3";
+                    document.getElementById("right_feedback_7").innerHTML = right_block_size;
+                    document.getElementById("center_feedback_7").style.background = "transparent";
+                    document.getElementById("center_feedback_7").innerHTML = "";
+                } else if (future_slider_one_location == 7) {
+                    document.getElementById("center_feedback_7").innerHTML = "<strong>"+future_slider_one_display_val+"</strong> "+earlier_time+" and <strong>"+future_slider_two_val+"</strong> "+later_time;
+                    document.getElementById("center_feedback_7").style.background = "rgb(154, 214, 235)";
+                } else {
+                    document.getElementById("left_feedback_7").style.background = "#d3d3d3";
+                    document.getElementById("left_feedback_7").innerHTML = left_block_size;
+                    document.getElementById("right_feedback_7").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("right_feedback_7").innerHTML = right_block_size;
+                    document.getElementById("center_feedback_7").style.background = "transparent";
+                    document.getElementById("center_feedback_7").innerHTML = "";
+                }
+
+                if (future_slider_one_location > 8) {
+                    document.getElementById("left_feedback_8").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("left_feedback_8").innerHTML = left_block_size;
+                    document.getElementById("right_feedback_8").style.background = "#d3d3d3";
+                    document.getElementById("right_feedback_8").innerHTML = right_block_size;
+                    document.getElementById("center_feedback_8").style.background = "transparent";
+                    document.getElementById("center_feedback_8").innerHTML = "";
+                } else if (future_slider_one_location == 8) {
+                    document.getElementById("center_feedback_8").innerHTML = "<strong>"+future_slider_one_display_val+"</strong> "+earlier_time+" and <strong>"+future_slider_two_val+"</strong> "+later_time;
+                    document.getElementById("center_feedback_8").style.background = "rgb(154, 214, 235)";
+                } else {
+                    document.getElementById("left_feedback_8").style.background = "#d3d3d3";
+                    document.getElementById("left_feedback_8").innerHTML = left_block_size;
+                    document.getElementById("right_feedback_8").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("right_feedback_8").innerHTML = right_block_size;
+                    document.getElementById("center_feedback_8").style.background = "transparent";
+                    document.getElementById("center_feedback_8").innerHTML = "";
+                }
+
+                if (future_slider_one_location > 9) {
+                    document.getElementById("left_feedback_9").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("left_feedback_9").innerHTML = left_block_size;
+                    document.getElementById("right_feedback_9").style.background = "#d3d3d3";
+                    document.getElementById("right_feedback_9").innerHTML = right_block_size;
+                    document.getElementById("center_feedback_9").style.background = "transparent";
+                    document.getElementById("center_feedback_9").innerHTML = "";
+                } else if (future_slider_one_location == 9) {
+                    document.getElementById("center_feedback_9").innerHTML = "<strong>"+future_slider_one_display_val+"</strong> "+earlier_time+" and <strong>"+future_slider_two_val+"</strong> "+later_time;
+                    document.getElementById("center_feedback_9").style.background = "rgb(154, 214, 235)";
+                } else {
+                    document.getElementById("left_feedback_9").style.background = "#d3d3d3";
+                    document.getElementById("left_feedback_9").innerHTML = left_block_size;
+                    document.getElementById("right_feedback_9").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("right_feedback_9").innerHTML = right_block_size;
+                    document.getElementById("center_feedback_9").style.background = "transparent";
+                    document.getElementById("center_feedback_9").innerHTML = "";
+                }
+
+                if (future_slider_one_location > 10) {
+                    document.getElementById("left_feedback_10").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("left_feedback_10").innerHTML = left_block_size;
+                    document.getElementById("right_feedback_10").style.background = "#d3d3d3";
+                    document.getElementById("right_feedback_10").innerHTML = right_block_size;
+                    document.getElementById("center_feedback_10").style.background = "transparent";
+                    document.getElementById("center_feedback_10").innerHTML = "";
+                } else if (future_slider_one_location == 10) {
+                    document.getElementById("center_feedback_10").innerHTML = "<strong>"+future_slider_one_display_val+"</strong> "+earlier_time+" and <strong>"+future_slider_two_val+"</strong> "+later_time;
+                    document.getElementById("center_feedback_10").style.background = "rgb(154, 214, 235)";
+                } else {
+                    document.getElementById("left_feedback_10").style.background = "#d3d3d3";
+                    document.getElementById("left_feedback_10").innerHTML = left_block_size;
+                    document.getElementById("right_feedback_10").style.background = "rgb(43, 173, 43)";
+                    document.getElementById("right_feedback_10").innerHTML = right_block_size;
+                    document.getElementById("center_feedback_10").style.background = "transparent";
+                    document.getElementById("center_feedback_10").innerHTML = "";
+                }
+            }
+        });   
+    </script>
+    <script>
+        function alertFunction() {
+            alert("In order for your answers to be most helpful to us, it is really important that you respond to all questions.")
+            jQuery('.waiting').hide();
+            jQuery('.next-button').show();
+            return false
+        }
+        jQuery(".rotate").on("click", function () {
+            jQuery(".next-button").show();
+            jQuery(".waiting").hide();
+        });
+    </script>
+
+    <br>
+    <br>
+    
+    <div class="waiting" onclick="return alertFunction();" style="text-align: center;">
+        {% next_button %}
+    </div>
+    
+    <div class="next-button"  style="text-align: center;">
+        {% next_button %}
+    </div>
+    
+    <script>jQuery(".next-button").hide();</script>
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'Module1/styles/fv_13.css' %}" />
+{% endblock %}

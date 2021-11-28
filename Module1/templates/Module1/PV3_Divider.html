@@ -1,0 +1,26 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div align="center">
+    <h2 text-align="center">
+        <strong style="text-transform: uppercase; color: fuchsia;">PAST: </strong><span style="text-transform: uppercase;">{{later_time}}</span> and <span style="text-transform: uppercase;">{{earlier_time}}</span>
+    </h2>
+</div>
+<br>
+<br>
+<div text-align="justify" style="font-size: larger;">
+    There is one more pair of periods left. Now, we will ask you several questions about temporary (1-year contract)
+    jobs created <strong>{{later_time}}</strong> and temporary jobs created <strong>{{earlier_time}}</strong>. 
+</div>
+<br>
+<br>
+
+<div class="next-button"  style="text-align: center;">
+    {% next_button %}
+</div>
+
+
+{% endblock %}
