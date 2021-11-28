@@ -508,8 +508,7 @@ class PG_BlockPage(Page):
                     check_condition = True
         # This page will only be displayed when there are blocks left
         return (
-            check_condition and self.player.get_current_past_block()
-            and (json.loads(self.participant.vars["consent_answer"]) == 1)
+            check_condition and self.player.get_current_past_block() and (json.loads(self.participant.vars["consent_answer"]) == 1)
         )
 
     def vars_for_template(self):
@@ -859,6 +858,7 @@ def generate_page_sequence():
         + [FG2_Divider]
         + [FG_BlockPage] * Constants.num_per_section
         + [FG3_Divider]
+        + [FG_BlockPage] * Constants.num_per_section
         + [FV1_Instructions]
         + [FV2_Instructions]
         + [FV2_Divider]
@@ -872,6 +872,7 @@ def generate_page_sequence():
         + [PG2_Divider]
         + [PG_BlockPage] * Constants.num_per_section
         + [PG3_Divider]
+        + [PG_BlockPage] * Constants.num_per_section
         + [PV1_Instructions]
         + [PV2_Instructions]
         + [PV2_Divider]

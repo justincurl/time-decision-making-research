@@ -395,7 +395,6 @@ class Player(BasePlayer):
 
         :return: Index of block to display or `-1`
         """
-        
         if self.future_current_block_step < len(pickle.loads(codecs.decode(self.future_blocks.encode(), "base64"))):
             return json.loads(self.future_block_order)[self.future_current_block_step]
         else:
