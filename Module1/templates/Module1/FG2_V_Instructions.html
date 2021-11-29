@@ -1,0 +1,42 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load staticfiles %}
+
+{% block title %}
+Instructions
+{% endblock %}
+
+{% block content %}
+<div align="center">
+    <h2 text-align="center">
+        <strong style="text-transform: uppercase; color: orange;">FUTURE: </strong><span style="text-transform: uppercase;">{{curr_block.text_delay_start}}</span> and <span style="text-transform: uppercase;">{{curr_block.text_total_end}}</span>
+    </h2>
+</div>
+
+<div text-align="justify" style="font-size: large;">
+    The next section of this survey is still about <strong>temporary job creation</strong> now, a year from now, and five years from now. In this section, you will use a different way to indicate which combination of temporary jobs created in two periods you think represents <strong><strong>the best economy</strong></strong>.
+    <br>
+    <br>
+    First, we will ask you several questions about temporary (1-year contract) jobs created <strong>{{curr_block.text_start_delay}}</strong> and temporary jobs created <strong>{{curr_block.text_total_end}}</strong>.
+    <br>
+    <br>
+    For each question, you will see 6 options of how to distribute jobs across periods. The leftmost response button indicates that all 500,000 jobs are created {{curr_block.text_start_delay}}. The rightmost response button indicates that all jobs are created {{curr_block.text_total_end}}. The buttons in between represent different combinations of some jobs created {{curr_block.text_start_delay}} and some jobs created {{curr_block.text_total_end}}. So, you decide how to distribute jobs created between the two periods to represent the best economy. 
+    <br>
+    <br>
+    In some questions, the maximum number of jobs that can be created {{curr_block.text_total_end}} is larger than the maximum number that can be created {{curr_block.text_start_delay}}; in others, it is smaller or the same. So, the total number of jobs that can be created over the two periods varies across questions.
+    <br>
+    <br>
+    Here is an example: [show screenshot of grid CTB with third radio button marked]
+    <br>
+    <br>
+    The respondent in this example marked the third response button to indicate that 300,000 jobs {{curr_block.text_start_delay}} and 200,000 jobs {{curr_block.text_total_end}} represents the best economy.
+    <br>
+    <br>
+    How about you? When you are ready to select the combination of jobs created that YOU think represents <strong>the best economy</strong>, click “Next”. Remember, there are no “right” or “wrong” answers.    
+    <br>
+    <br>
+<div style="text-align: center;">
+    {% next_button %}
+</div>
+
+{% endblock %}

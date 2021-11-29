@@ -1,6 +1,8 @@
 import random
 import json
 import datetime
+
+from Module1 import block
 from ._builtin import Page
 from .models import Constants
 
@@ -8,7 +10,7 @@ class Start(Page):
     pass
 
 
-class FG1_Instructions(Page):
+class FG1_1_Instructions(Page):
     def vars_for_template(self):
         current_block = self.player.get_current_future_block()
         return dict(
@@ -20,16 +22,6 @@ class FG1_Instructions(Page):
             if self.round_number <= Constants.num_grid_rounds:
                 check_condition = True
 
-        elif self.player.first == "PG":
-            if self.player.second == "FG":
-                if self.round_number > Constants.num_grid_rounds and self.round_number < 2 * Constants.num_grid_rounds + 1:
-                    check_condition = True
-
-        elif self.player.first == "FV":
-            if self.player.second == "FG":
-                if self.round_number > Constants.num_sliders and self.round_number < Constants.num_grid_rounds + Constants.num_sliders + 1:
-                    check_condition = True
-        
         check_round_number = False
         if self.player.round_number == 1 or self.player.round_number == Constants.num_grid_rounds + 1 or self.player.round_number == Constants.num_sliders + 1:
             check_round_number = True
@@ -38,7 +30,7 @@ class FG1_Instructions(Page):
             check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1
         )
 
-class FG2_Instructions(Page):
+class FG1_2_Instructions(Page):
     def vars_for_template(self):
         current_block = self.player.get_current_future_block()
         return dict(
@@ -50,12 +42,36 @@ class FG2_Instructions(Page):
             if self.round_number <= Constants.num_grid_rounds:
                 check_condition = True
 
-        elif self.player.first == "PG":
+        return (
+            check_condition and json.loads(self.participant.vars["consent_answer"]) == 1
+        )
+
+class FG2_G_Instructions(Page):
+    def vars_for_template(self):
+        current_block = self.player.get_current_future_block()
+        return dict(
+            curr_block=current_block
+        )
+    def is_displayed(self):
+        check_condition = False
+        if self.player.first == "PG":
             if self.player.second == "FG":
                 if self.round_number > Constants.num_grid_rounds and self.round_number < 2 * Constants.num_grid_rounds + 1:
                     check_condition = True
+        
+        return (
+            check_condition and json.loads(self.participant.vars["consent_answer"]) == 1
+        )
 
-        elif self.player.first == "FV":
+class FG2_V_Instructions(Page):
+    def vars_for_template(self):
+        current_block = self.player.get_current_future_block()
+        return dict(
+            curr_block=current_block
+        )
+    def is_displayed(self):
+        check_condition = False
+        if self.player.first == "FV":
             if self.player.second == "FG":
                 if self.round_number > Constants.num_sliders and self.round_number < Constants.num_grid_rounds + Constants.num_sliders + 1:
                     check_condition = True
@@ -98,6 +114,10 @@ class FG_BlockPage(Page):
 
         questions_to_page = (len(current_block.left_values) * (step - 1)) + 1
 
+        note = ""
+        if block_index != 0 or block_index != 5 or block_index != 10:
+            note = "Note that the total number of jobs that can be created over the two periods is different than in the last question.<br><br>"
+
         return {
             "step": step,
             "block_index": block_index,
@@ -106,6 +126,7 @@ class FG_BlockPage(Page):
             "curr_block": current_block,
             "num_choices": current_block.number_of_choices,
             "question_instructions": "Jobs created",
+            "note": note
         }
 
     def before_next_page(self):
@@ -163,7 +184,7 @@ class FG3_Divider(Page):
             check_condition and json.loads(self.participant.vars["consent_answer"]) == 1
         )
 
-class FV1_Instructions(Page):
+class FV1_1_Instructions(Page):
     def vars_for_template(self):
         return dict(
             earlier_time=self.player.future_earlier_time,
@@ -178,25 +199,25 @@ class FV1_Instructions(Page):
             if self.player.round_number == 1:
                 check_round_number = True
 
-        elif self.player.first == "PV":
-            if self.player.second == "FV":
-                if self.round_number > Constants.num_sliders and self.round_number < 2 * Constants.num_sliders + 1:
-                    check_condition = True
-                if self.player.round_number == Constants.num_sliders + 1:
-                    check_round_number = True
+        # elif self.player.first == "PV":
+        #     if self.player.second == "FV":
+        #         if self.round_number > Constants.num_sliders and self.round_number < 2 * Constants.num_sliders + 1:
+        #             check_condition = True
+        #         if self.player.round_number == Constants.num_sliders + 1:
+        #             check_round_number = True
 
-        elif self.player.first == "FG":
-            if self.player.second == "FV":
-                if self.round_number > Constants.num_grid_rounds and self.round_number < Constants.num_grid_rounds + Constants.num_sliders + 1:
-                    check_condition = True
-                if self.player.round_number == Constants.num_grid_rounds + 1:
-                    check_round_number = True
+        # elif self.player.first == "FG":
+        #     if self.player.second == "FV":
+        #         if self.round_number > Constants.num_grid_rounds and self.round_number < Constants.num_grid_rounds + Constants.num_sliders + 1:
+        #             check_condition = True
+        #         if self.player.round_number == Constants.num_grid_rounds + 1:
+        #             check_round_number = True
 
         return (
             check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1
         )
 
-class FV2_Instructions(Page):
+class FV1_2_Instructions(Page):
     def vars_for_template(self):
         return dict(
             earlier_time=self.player.future_earlier_time,
@@ -211,14 +232,34 @@ class FV2_Instructions(Page):
             if self.player.round_number == 1:
                 check_round_number = True
 
-        elif self.player.first == "PV":
-            if self.player.second == "FV":
-                if self.round_number > Constants.num_sliders and self.round_number < 2 * Constants.num_sliders + 1:
-                    check_condition = True
-                if self.player.round_number == Constants.num_sliders + 1:
-                    check_round_number = True
+        # elif self.player.first == "PV":
+        #     if self.player.second == "FV":
+        #         if self.round_number > Constants.num_sliders and self.round_number < 2 * Constants.num_sliders + 1:
+        #             check_condition = True
+        #         if self.player.round_number == Constants.num_sliders + 1:
+        #             check_round_number = True
 
-        elif self.player.first == "FG":
+        # elif self.player.first == "FG":
+        #     if self.player.second == "FV":
+        #         if self.round_number > Constants.num_grid_rounds and self.round_number < Constants.num_grid_rounds + Constants.num_sliders + 1:
+        #             check_condition = True
+        #         if self.player.round_number == Constants.num_grid_rounds + 1:
+        #             check_round_number = True
+
+        return (
+            check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1
+        )
+
+class FV2_G_Instructions(Page):
+    def vars_for_template(self):
+        return dict(
+            earlier_time=self.player.future_earlier_time,
+            later_time=self.player.future_later_time
+        )
+    def is_displayed(self):
+        check_condition = False
+        check_round_number = False
+        if self.player.first == "FG":
             if self.player.second == "FV":
                 if self.round_number > Constants.num_grid_rounds and self.round_number < Constants.num_grid_rounds + Constants.num_sliders + 1:
                     check_condition = True
@@ -228,6 +269,23 @@ class FV2_Instructions(Page):
         return (
             check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1
         )
+
+class FV2_V_Instructions(Page):
+    def vars_for_template(self):
+        return dict(
+            earlier_time=self.player.future_earlier_time,
+            later_time=self.player.future_later_time
+        )
+    def is_displayed(self):
+        check_condition = False
+        check_round_number = False
+        if self.player.first == "PV":
+            if self.player.second == "FV":
+                if self.round_number > Constants.num_sliders and self.round_number < 2 * Constants.num_sliders + 1:
+                    check_condition = True
+                if self.player.round_number == Constants.num_sliders + 1:
+                    check_round_number = True
+
         return (
             check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1
         )
@@ -303,6 +361,21 @@ class FV_12(Page):
     form_fields = ['future_slider_one', 'future_check_slider_one', 'future_slider_two', 'future_check_slider_two']
 
     def vars_for_template(self):
+        note = ""
+        if self.player.first == "FV":
+            if self.round_number != 1 or self.round_number != 6 or self.round_number != 11:
+                note = "Note that the total number of jobs that can be created over the two periods is different than in the last question.<br><br>"
+
+        elif self.player.first == "PV":
+            if self.player.second == "FV":
+                if self.round_number != Constants.num_sliders + 1 or self.round_number != Constants.num_sliders + 6 or self.round_number != Constants.num_sliders + 11:
+                    note = "Note that the total number of jobs that can be created over the two periods is different than in the last question.<br><br>"
+
+        elif self.player.first == "FG":
+            if self.player.second == "FV":
+                if self.round_number != Constants.num_grid_rounds + 1 or self.round_number != Constants.num_grid_rounds + 6 or self.round_number != Constants.num_grid_rounds + 11:
+                    note = "Note that the total number of jobs that can be created over the two periods is different than in the last question.<br><br>"
+
         return dict(
             earlier_max=self.player.future_earlier_max,
             later_max=self.player.future_later_max,
@@ -310,7 +383,8 @@ class FV_12(Page):
             later_time=self.player.future_later_time,
             t_earliest=self.player.future_t_earliest,
             t_middle=self.player.future_t_middle,
-            t_latest=self.player.future_t_latest
+            t_latest=self.player.future_t_latest,
+            note=note
         )
 
     def is_displayed(self):
@@ -347,6 +421,21 @@ class FV_13(Page):
     form_fields = ['future_slider_one', 'future_check_slider_one', 'future_slider_two', 'future_check_slider_two']
 
     def vars_for_template(self):
+        note = ""
+        if self.player.first == "FV":
+            if self.round_number != 1 or self.round_number != 6 or self.round_number != 11:
+                note = "Note that the total number of jobs that can be created over the two periods is different than in the last question.<br><br>"
+
+        elif self.player.first == "PV":
+            if self.player.second == "FV":
+                if self.round_number != Constants.num_sliders + 1 or self.round_number != Constants.num_sliders + 6 or self.round_number != Constants.num_sliders + 11:
+                    note = "Note that the total number of jobs that can be created over the two periods is different than in the last question.<br><br>"
+
+        elif self.player.first == "FG":
+            if self.player.second == "FV":
+                if self.round_number != Constants.num_grid_rounds + 1 or self.round_number != Constants.num_grid_rounds + 6 or self.round_number != Constants.num_grid_rounds + 11:
+                    note = "Note that the total number of jobs that can be created over the two periods is different than in the last question.<br><br>"
+
         return dict(
             earlier_max=self.player.future_earlier_max,
             later_max=self.player.future_later_max,
@@ -354,7 +443,8 @@ class FV_13(Page):
             later_time=self.player.future_later_time,
             t_earliest=self.player.future_t_earliest,
             t_middle=self.player.future_t_middle,
-            t_latest=self.player.future_t_latest
+            t_latest=self.player.future_t_latest,
+            note=note
         )
 
     def is_displayed(self):
@@ -391,6 +481,21 @@ class FV_23(Page):
     form_fields = ['future_slider_one', 'future_check_slider_one', 'future_slider_two', 'future_check_slider_two']
 
     def vars_for_template(self):
+        note = ""
+        if self.player.first == "FV":
+            if self.round_number != 1 or self.round_number != 6 or self.round_number != 11:
+                note = "Note that the total number of jobs that can be created over the two periods is different than in the last question.<br><br>"
+
+        elif self.player.first == "PV":
+            if self.player.second == "FV":
+                if self.round_number != Constants.num_sliders + 1 or self.round_number != Constants.num_sliders + 6 or self.round_number != Constants.num_sliders + 11:
+                    note = "Note that the total number of jobs that can be created over the two periods is different than in the last question.<br><br>"
+
+        elif self.player.first == "FG":
+            if self.player.second == "FV":
+                if self.round_number != Constants.num_grid_rounds + 1 or self.round_number != Constants.num_grid_rounds + 6 or self.round_number != Constants.num_grid_rounds + 11:
+                    note = "Note that the total number of jobs that can be created over the two periods is different than in the last question.<br><br>"
+
         return dict(
             earlier_max=self.player.future_earlier_max,
             later_max=self.player.future_later_max,
@@ -398,7 +503,8 @@ class FV_23(Page):
             later_time=self.player.future_later_time,
             t_earliest=self.player.future_t_earliest,
             t_middle=self.player.future_t_middle,
-            t_latest=self.player.future_t_latest
+            t_latest=self.player.future_t_latest,
+            note=note
         )
 
     def is_displayed(self):
@@ -859,8 +965,10 @@ def generate_page_sequence():
         + [FG_BlockPage] * Constants.num_per_section
         + [FG3_Divider]
         + [FG_BlockPage] * Constants.num_per_section
-        + [FV1_Instructions]
-        + [FV2_Instructions]
+        + [FV1_1_Instructions]
+        + [FV1_2_Instructions]
+        + [FV2_V_Instructions]
+        + [FV2_G_Instructions]
         + [FV2_Divider]
         + [FV3_Divider]
         + [FV_12]
