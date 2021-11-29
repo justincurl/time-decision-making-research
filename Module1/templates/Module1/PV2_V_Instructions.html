@@ -1,0 +1,34 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load staticfiles %}
+
+{% block title %}
+Instructions
+{% endblock %}
+
+{% block content %}
+<div align="center">
+    <h2 text-align="center">
+        <strong style="text-transform: uppercase; color: fuchsia;">PAST: </strong><span style="text-transform: uppercase;">{{curr_block.text_total_end}}</span> and <span style="text-transform: uppercase;">{{curr_block.text_delay_start}}</span>
+    </h2>
+</div>
+
+<div text-align="justify" style="font-size: large;">
+    Next, we would like you to instead consider <strong>temporary job creation</strong> looking <div style="color: fuchsia;">backward</div>.  So, the next section is about your views of job creation now, a year ago, and five years ago.
+    <br>
+    <br>
+    First, we will ask you several questions about temporary (1-year contract) jobs created <strong>{{later_time}}</strong> and temporary jobs created <strong>{{earlier_time}}</strong>.
+    <br>
+    <br>
+    For each question, you will again see 10 green blocks, but this time they represent jobs in the <div style="color: fuchsia;">past</div>. As before, you can move each green block between periods by dragging the blue bar up and down. We would again like you to arrange the blocks so they show the distribution of jobs across the two periods that you think represents the best economy.
+    <br>
+    <br>
+    When you are ready to select the combination of jobs created that you think represents <strong>the best economy</strong>, click “Next”. Remember, there are no “right” or “wrong” answers.    
+    <br>
+    <br>
+</div>
+<div style="text-align: center;">
+    {% next_button %}
+</div>
+
+{% endblock %}
