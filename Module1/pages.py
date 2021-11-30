@@ -1030,10 +1030,6 @@ class Check1(Page):
             check_condition and (json.loads(self.participant.vars["consent_answer"]) == 1)
         )
 
-    def vars_for_template(self):
-                return self.player.round_number == 1 and (
-            json.loads(self.player.consent_answer) == 1
-        )
 
 
 
@@ -1064,10 +1060,6 @@ class Check2(Page):
             check_condition and (json.loads(self.participant.vars["consent_answer"]) == 1)
         )
 
-    def vars_for_template(self):
-                return self.player.round_number == 1 and (
-            json.loads(self.player.consent_answer) == 1
-        )
 
 
 class Dice(Page):
@@ -1086,11 +1078,6 @@ class Dice(Page):
         
         return (
             check_condition and (json.loads(self.participant.vars["consent_answer"]) == 1)
-        )
-
-    def vars_for_template(self):
-                return self.player.round_number == 1 and (
-            json.loads(self.player.consent_answer) == 1
         )
 
 
@@ -1113,11 +1100,6 @@ class Disease(Page):
             check_condition and (json.loads(self.participant.vars["consent_answer"]) == 1)
         )
 
-    def vars_for_template(self):
-                return self.player.round_number == 1 and (
-            json.loads(self.player.consent_answer) == 1
-        )
-
 
 class Lottery(Page):
     form_model = "player"
@@ -1137,8 +1119,6 @@ class Lottery(Page):
             check_condition and (json.loads(self.participant.vars["consent_answer"]) == 1)
         )
 
-    def vars_for_template(self):
-        return
 
 def generate_page_sequence():
     return (
