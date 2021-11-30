@@ -351,6 +351,20 @@ class Player(BasePlayer):
     condition = models.IntegerField()
     consent_answer = models.StringField(initial="")
 
+    lottery_answer = models.FloatField(blank=True, min=0, max=10000)
+    dice_answer = models.FloatField(blank=True, min=0, max=10000)
+    disease_answer = models.FloatField(blank=True, min=0, max=10000)
+    check_1 = models.IntegerField(
+        blank=True,
+        choices=[[0, "Past jobs"], [1, "Future jobs"]],
+        widget=widgets.RadioSelect,
+    )
+    check_2 = models.IntegerField(
+        blank=True,
+        choices=[[0, "Past jobs"], [1, "Future jobs"]],
+        widget=widgets.RadioSelect,
+    )
+
 ################################################################################# FUTURE GRID PLAYER VARIABLES #################################################################################
     future_grid_start_time = models.StringField()
     future_grid_finish_time = models.StringField()

@@ -1012,6 +1012,134 @@ class PV_23(Page):
         return super().before_next_page()
 
 
+class Check1(Page):
+    form_model = "player"
+    form_fields = ["check_1"]
+
+    def is_displayed(self):
+        check_condition = False
+        if self.player.first == "PV" or self.player.first == "FV":
+            if self.round_number == Constants.num_sliders:
+                check_condition = True
+        
+        elif self.player.first == "PG" or self.player.first == "FG":
+            if self.round_number == Constants.num_grid_rounds:
+                check_condition = True
+        
+        return (
+            check_condition and (json.loads(self.participant.vars["consent_answer"]) == 1)
+        )
+
+    def vars_for_template(self):
+                return self.player.round_number == 1 and (
+            json.loads(self.player.consent_answer) == 1
+        )
+
+
+
+class Check2(Page):
+    form_model = "player"
+    form_fields = ["check_2"]
+
+    def is_displayed(self):
+        check_condition = False
+        if self.player.first == "PV" or self.player.first == "FV":
+            if self.player.second == "PG" or self.player.second == "FG":
+                if self.round_number == Constants.num_sliders + Constants.num_grid_rounds:
+                    check_condition = True
+            else:
+                if self.round_number == 2 * Constants.num_sliders:
+                    check_condition = True
+
+        
+        elif self.player.first == "PG" or self.player.first == "FG":
+            if self.player.second == "PG" or self.player.second == "FG":
+                if self.round_number == 2 * Constants.num_grid_rounds:
+                    check_condition = True
+            else:
+                if self.round_number == Constants.num_sliders + Constants.num_grid_rounds:
+                    check_condition = True
+        
+        return (
+            check_condition and (json.loads(self.participant.vars["consent_answer"]) == 1)
+        )
+
+    def vars_for_template(self):
+                return self.player.round_number == 1 and (
+            json.loads(self.player.consent_answer) == 1
+        )
+
+
+class Dice(Page):
+    form_model = "player"
+    form_fields = ["dice_answer"]
+
+    def is_displayed(self):
+        check_condition = False
+        if self.player.first == "PV" or self.player.first == "FV":
+            if self.round_number == Constants.num_sliders:
+                check_condition = True
+        
+        elif self.player.first == "PG" or self.player.first == "FG":
+            if self.round_number == Constants.num_grid_rounds:
+                check_condition = True
+        
+        return (
+            check_condition and (json.loads(self.participant.vars["consent_answer"]) == 1)
+        )
+
+    def vars_for_template(self):
+                return self.player.round_number == 1 and (
+            json.loads(self.player.consent_answer) == 1
+        )
+
+
+
+class Disease(Page):
+    form_model = "player"
+    form_fields = ["disease_answer"]
+
+    def is_displayed(self):
+        check_condition = False
+        if self.player.first == "PV" or self.player.first == "FV":
+            if self.round_number == Constants.num_sliders:
+                check_condition = True
+        
+        elif self.player.first == "PG" or self.player.first == "FG":
+            if self.round_number == Constants.num_grid_rounds:
+                check_condition = True
+        
+        return (
+            check_condition and (json.loads(self.participant.vars["consent_answer"]) == 1)
+        )
+
+    def vars_for_template(self):
+                return self.player.round_number == 1 and (
+            json.loads(self.player.consent_answer) == 1
+        )
+
+
+class Lottery(Page):
+    form_model = "player"
+    form_fields = ["lottery_answer"]
+
+    def is_displayed(self):
+        check_condition = False
+        if self.player.first == "PV" or self.player.first == "FV":
+            if self.round_number == Constants.num_sliders:
+                check_condition = True
+        
+        elif self.player.first == "PG" or self.player.first == "FG":
+            if self.round_number == Constants.num_grid_rounds:
+                check_condition = True
+        
+        return (
+            check_condition and (json.loads(self.participant.vars["consent_answer"]) == 1)
+        )
+
+    def vars_for_template(self):
+        return
+
 def generate_page_sequence():
     return (
         [FG1_1_Instructions]
@@ -1050,6 +1178,11 @@ def generate_page_sequence():
         + [PV_12]
         + [PV_13]
         + [PV_23]
+        + [Check1]
+        + [Dice]
+        + [Lottery]
+        + [Disease]
+        + [Check2]
     )
 
 page_sequence = generate_page_sequence()
