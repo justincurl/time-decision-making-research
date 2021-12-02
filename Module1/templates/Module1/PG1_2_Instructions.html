@@ -2,9 +2,6 @@
 {% load staticfiles otree %}
 {% load staticfiles %}
 
-{% block title %}
-Instructions
-{% endblock %}
 
 {% block content %}
 <div align="center">
@@ -12,7 +9,7 @@ Instructions
         <strong style="text-transform: uppercase; color: fuchsia;">PAST: </strong><span style="text-transform: uppercase;">{{curr_block.text_total_end}}</span> and <span style="text-transform: uppercase;">{{curr_block.text_delay_start}}</span>
     </h2>
 </div>
-
+<br>
 <div text-align="justify" style="font-size: large;">
     For each question, you will see 6 options of how to distribute jobs across periods. The leftmost response button indicates that all 500,000 jobs are created {{curr_block.text_total_end}}. The rightmost response button indicates that all jobs are created {{curr_block.text_delay_start}}. The buttons in between represent different combinations of some jobs created {{curr_block.text_total_end}} and some jobs created {{curr_block.text_delay_start}}. So, you decide how to distribute jobs created between the two periods to represent the best economy. 
     <br>

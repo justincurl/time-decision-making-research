@@ -2,10 +2,6 @@
 {% load staticfiles otree %}
 {% load staticfiles %}
 
-{% block title %}
-Instructions
-{% endblock %}
-
 {% block content %}
 
 <div align="center">
@@ -13,7 +9,7 @@ Instructions
         <strong style="text-transform: uppercase; color: orange;">FUTURE: </strong><span style="text-transform: uppercase;">{{earlier_time}}</span> and <span style="text-transform: uppercase;">{{later_time}}</span>
     </h2>
 </div>
-
+<br>
 <div text-align="justify" style="font-size: large;">
     For each question, you will see 10 green blocks, each representing 50,000 jobs created {{earlier_time}}. After your first click on any of the blocks, a blue horizontal bar will appear. By dragging the blue bar up and down, you can move each green block between {{earlier_time}} and {{later_time}}. The blue bar lists the number of jobs created in each period. We would like you to arrange the blocks so they show the distribution of jobs across the two periods that you think represents the best economy.
     <br>
