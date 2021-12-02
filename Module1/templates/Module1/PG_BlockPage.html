@@ -23,15 +23,15 @@
         <tr
             class="timepref__question-start timepref__question-unanswered timepref__question-index-{{questions_to_page|add:question.index}}">
             <th rowspan="3" width="10">{{questions_to_page|add:question.index}}.</th>
-            <td>{{question_instructions}} <strong>{{ curr_block.text_delay_start }}</strong></span>
+            <td>{{question_instructions}} <strong>{{ curr_block.text_total_end }}</strong></span>
             </td>
-            {% for value in question.start_values %}
+            {% for value in question.end_values %}
             <td class="text-center">{{ value }}</td>
             {% endfor %}
         </tr>
         <tr class="timepref__question-end">
-            <td>{{question_instructions}} <strong>{{ curr_block.text_total_end }}</strong></td>
-            {% for value in question.end_values %}
+            <td>{{question_instructions}} <strong>{{ curr_block.text_delay_start }}</strong></td>
+            {% for value in question.start_values %}
             <td class="text-center">{{ value }}</td>
             {% endfor %}
         </tr>
