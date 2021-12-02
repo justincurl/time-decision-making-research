@@ -168,6 +168,8 @@ class Subsession(BaseSubsession):
                     player.past_t_latest = past_t_options[2]
                     if self.round_number == 1:
                         if self.session.config["past_randomize_sliders"]:
+                            for i in range(len(past_round_configs)):
+                                random.shuffle(past_round_configs[i])
                             random.shuffle(past_round_configs)
                         player.past_round_configs = json.dumps(past_round_configs)
                     else:
@@ -186,6 +188,8 @@ class Subsession(BaseSubsession):
                         player.future_t_latest = future_t_options[2]
                         if self.round_number - Constants.num_sliders == 1:
                             if self.session.config["future_randomize_sliders"]:
+                                for i in range(len(future_round_configs)):
+                                    random.shuffle(future_round_configs[i]) 
                                 random.shuffle(future_round_configs)
                             player.future_round_configs = json.dumps(future_round_configs)
                         else:
@@ -201,6 +205,8 @@ class Subsession(BaseSubsession):
                         player.past_blocks = codecs.encode(pickle.dumps(past_Blocks), "base64").decode()
                         if self.session.config["past_randomize_blocks"]:
                             past_to_shuffle_block_order = [past_block_order[0:Constants.num_per_section], past_block_order[Constants.num_per_section:2*Constants.num_per_section], past_block_order[2*Constants.num_per_section:3*Constants.num_per_section]]
+                            for i in range(len(past_to_shuffle_block_order)):
+                                random.shuffle(past_to_shuffle_block_order[i])
                             random.shuffle(past_to_shuffle_block_order)
                             past_block_order = []
                             for i in range(len(past_to_shuffle_block_order)):
@@ -216,6 +222,8 @@ class Subsession(BaseSubsession):
                     player.future_t_latest = future_t_options[2]
                     if self.round_number == 1:
                         if self.session.config["future_randomize_sliders"]:
+                            for i in range(len(future_round_configs)):
+                                random.shuffle(future_round_configs[i]) 
                             random.shuffle(future_round_configs)
                         player.future_round_configs = json.dumps(future_round_configs)
                     else:
@@ -234,6 +242,8 @@ class Subsession(BaseSubsession):
                         player.past_t_latest = past_t_options[2]
                         if self.round_number - Constants.num_sliders == 1:
                             if self.session.config["past_randomize_sliders"]:
+                                for i in range(len(past_round_configs)):
+                                    random.shuffle(past_round_configs[i]) 
                                 random.shuffle(past_round_configs)
                             player.past_round_configs = json.dumps(past_round_configs)
                         else:
@@ -250,6 +260,8 @@ class Subsession(BaseSubsession):
                         player.future_blocks = codecs.encode(pickle.dumps(future_Blocks), "base64").decode()
                         if self.session.config["future_randomize_blocks"]:
                             future_to_shuffle_block_order = [future_block_order[0:Constants.num_per_section], future_block_order[Constants.num_per_section:2*Constants.num_per_section], future_block_order[2*Constants.num_per_section:3*Constants.num_per_section]]
+                            for i in range(len(future_to_shuffle_block_order)):
+                                random.shuffle(future_to_shuffle_block_order[i]) 
                             random.shuffle(future_to_shuffle_block_order)
                             future_block_order = []
                             for i in range(len(future_to_shuffle_block_order)):
@@ -263,6 +275,8 @@ class Subsession(BaseSubsession):
                     player.past_blocks = codecs.encode(pickle.dumps(past_Blocks), "base64").decode()
                     if self.session.config["past_randomize_blocks"]:
                         past_to_shuffle_block_order = [past_block_order[0:Constants.num_per_section], past_block_order[Constants.num_per_section:2*Constants.num_per_section], past_block_order[2*Constants.num_per_section:3*Constants.num_per_section]]
+                        for i in range(len(past_to_shuffle_block_order)):
+                            random.shuffle(past_to_shuffle_block_order[i])
                         random.shuffle(past_to_shuffle_block_order)
                         past_block_order = []
                         for i in range(len(past_to_shuffle_block_order)):
@@ -274,6 +288,8 @@ class Subsession(BaseSubsession):
                         player.future_blocks = codecs.encode(pickle.dumps(future_Blocks), "base64").decode()
                         if self.session.config["future_randomize_blocks"]:
                             future_to_shuffle_block_order = [future_block_order[0:Constants.num_per_section], future_block_order[Constants.num_per_section:2*Constants.num_per_section], future_block_order[2*Constants.num_per_section:3*Constants.num_per_section]]
+                            for i in range(len(future_to_shuffle_block_order)):
+                                random.shuffle(future_to_shuffle_block_order[i]) 
                             random.shuffle(future_to_shuffle_block_order)
                             future_block_order = []
                             for i in range(len(future_to_shuffle_block_order)):
@@ -287,6 +303,8 @@ class Subsession(BaseSubsession):
                         player.past_t_latest = past_t_options[2]
                         if self.round_number - Constants.num_grid_rounds == 1:
                             if self.session.config["past_randomize_sliders"]:
+                                for i in range(len(past_round_configs)):
+                                    random.shuffle(past_round_configs[i])
                                 random.shuffle(past_round_configs)
                             player.past_round_configs = json.dumps(past_round_configs)
                         else:
@@ -305,6 +323,8 @@ class Subsession(BaseSubsession):
                     player.future_blocks = codecs.encode(pickle.dumps(future_Blocks), "base64").decode()
                     if self.session.config["future_randomize_blocks"]:
                         future_to_shuffle_block_order = [future_block_order[0:Constants.num_per_section], future_block_order[Constants.num_per_section:2*Constants.num_per_section], future_block_order[2*Constants.num_per_section:3*Constants.num_per_section]]
+                        for i in range(len(future_to_shuffle_block_order)):
+                            random.shuffle(future_to_shuffle_block_order[i]) 
                         random.shuffle(future_to_shuffle_block_order)
                         future_block_order = []
                         for i in range(len(future_to_shuffle_block_order)):
@@ -316,6 +336,8 @@ class Subsession(BaseSubsession):
                         player.past_blocks = codecs.encode(pickle.dumps(past_Blocks), "base64").decode()
                         if self.session.config["past_randomize_blocks"]:
                             past_to_shuffle_block_order = [past_block_order[0:Constants.num_per_section], past_block_order[Constants.num_per_section:2*Constants.num_per_section], past_block_order[2*Constants.num_per_section:3*Constants.num_per_section]]
+                            for i in range(len(past_to_shuffle_block_order)):
+                                random.shuffle(past_to_shuffle_block_order[i])
                             random.shuffle(past_to_shuffle_block_order)
                             past_block_order = []
                             for i in range(len(past_to_shuffle_block_order)):
@@ -329,6 +351,8 @@ class Subsession(BaseSubsession):
                         player.future_t_latest = future_t_options[2]
                         if self.round_number - Constants.num_grid_rounds == 1:
                             if self.session.config["future_randomize_sliders"]:
+                                for i in range(len(future_round_configs)):
+                                    random.shuffle(future_round_configs[i]) 
                                 random.shuffle(future_round_configs)
                             player.future_round_configs = json.dumps(future_round_configs)
                         else:
