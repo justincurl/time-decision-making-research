@@ -1,11 +1,5 @@
 /* control gaps between times */
 
-:root {
-    --blocks-top: 3px;
-    --left-blocks-left: 20%;
-    --right-blocks-left: 21%;
-  }
-
 .pre_t1 {
     width: 0px !important;
 }
@@ -149,6 +143,15 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     border-radius: 0px;
     -webkit-appearance: none;
 }
+
+/* control blocks styling */
+:root {
+    --blocks-top: 3px;
+    --left-blocks-left: 20%;
+    --right-blocks-left: 21%;
+    --center-bars-width: 938px;
+    --center-bars-left: -665px;
+  }
 
 .left-bubble-zero {
     background: transparent;
@@ -448,8 +451,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: var(--blocks-top);        
-    width: 938px;
-    left: -665px;
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;
@@ -461,8 +464,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: var(--blocks-top);
-    width: 938px;
-    left: -665px;
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;
@@ -474,8 +477,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: var(--blocks-top);
-    width: 938px;
-    left: -665px;
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;
@@ -487,8 +490,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: var(--blocks-top);
-    width: 938px;
-    left: -665px;
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;
@@ -500,8 +503,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: var(--blocks-top);
-    width: 938px;
-    left: -665px;
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;
@@ -513,8 +516,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: var(--blocks-top);
-    width: 938px;
-    left: -665px;
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;
@@ -526,8 +529,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: var(--blocks-top);
-    width: 938px;
-    left: -665px;
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;
@@ -539,8 +542,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: var(--blocks-top);
-    width: 938px;
-    left: -665px;
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;
@@ -552,8 +555,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: var(--blocks-top);
-    width: 938px;
-    left: -665px;
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;
@@ -565,8 +568,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: var(--blocks-top);
-    width: 938px;
-    left: -665px;
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;
@@ -578,8 +581,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: var(--blocks-top);
-    width: 938px;
-    left: -665px;
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;

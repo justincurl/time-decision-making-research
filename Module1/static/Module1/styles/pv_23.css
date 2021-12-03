@@ -24,6 +24,7 @@
     width: 200px !important;
     margin-top: -5px; /* control top of left slider */
     margin-left: -61px; /* control left side of left slider */
+    margin-top: -5px;
 }
 
 .t2_text {
@@ -42,6 +43,7 @@
     margin-top: -5px; /* control top of right slider */
     margin-left: -50px; /* controls left side of right slider */
     margin-right: -110px !important; /* controls right stack of blocks */
+    margin-top: -5px;
 }
 
 .t3_text {
@@ -146,6 +148,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     --blocks-top: 3px;
     --left-blocks-left: 322%;
     --right-blocks-left: 21%;
+    --center-bars-width: 455px;
+    --center-bars-left: -183px;
   }
 
 
@@ -447,8 +451,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: var(--blocks-top);        
-    width: 455px;
-    left: -183px;
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;
@@ -460,8 +464,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: var(--blocks-top);
-    width: 455px;
-    left: -183px;
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;
@@ -473,8 +477,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: var(--blocks-top);
-    width: 455px;
-    left: -183px;
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;
@@ -486,8 +490,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: var(--blocks-top);
-    width: 455px;
-    left: -183px;
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;
@@ -499,8 +503,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: var(--blocks-top);
-    width: 455px;
-    left: -183px;
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;
@@ -512,8 +516,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: var(--blocks-top);
-    width: 455px;
-    left: -183px;
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;
@@ -525,8 +529,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: var(--blocks-top);
-    width: 455px;
-    left: -183px;
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;
@@ -538,8 +542,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: var(--blocks-top);
-    width: 455px;
-    left: -183px;
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;
@@ -551,8 +555,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: var(--blocks-top);
-    width: 455px;
-    left: -183px;
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;
@@ -564,8 +568,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: var(--blocks-top);
-    width: 455px;
-    left: -183px;
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;
@@ -577,8 +581,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: var(--blocks-top);
-    width: 455px;
-    left: -183px;
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;

@@ -1,13 +1,4 @@
-/* control gaps between times */
-
-:root {
-    --left-bubble-left: 20%;
-    --left-bubble-width: 160px;
-    --right-bubble-left: -178%;
-    --right-bubble-width: 160px;
-    --center-bubble-left: -465px;
-    --center-bubble-width: 445px;
-}
+/* control gaps between sliders and times in timeline */
 
 .pre_t1 {
     width: 0px !important;
@@ -22,7 +13,9 @@
 .t1_slider {
     width: 200px !important;
     text-align: left !important;
-    margin-left: -220px;
+    margin-left: -157px; /* controls left position of left slider */
+    margin-right: -63px; /* controls right position of right slider */
+    margin-top: -5px;
 }
 
 .t1_t2_gap {
@@ -33,7 +26,9 @@
 
 .t2_slider {
     width: 200px !important;
-    margin-left: -100px; /* control positioning of left slider */
+    margin-left: -175px; /* controls right slider */
+    margin-right: 25px;
+    margin-top: -5px;
 }
 
 .t2_text {
@@ -43,13 +38,13 @@
 }
 
 .t2_t3_gap {
-    width: 180px  !important; /* controls gap between sliders */
+    width: 180px  !important; 
     text-align: left  !important; 
 }
 
 .t3_slider {
     width: 200px !important;
-    margin-right: -160px !important; /* controls right slider */
+    margin-right: -160px !important; 
 }
 
 .t3_text {
@@ -61,10 +56,9 @@
 
 /* control what sliders look like */
 
-
 /* make sliders vertical */
 .rotate {
-    width: 340px; /* change the height of the bars (use width marker because of rotation) */
+    width: 350px; /* change the height of the bars (use width marker because of rotation) */
     transform: rotate(270deg);
     vertical-align: bottom;
 }
@@ -91,7 +85,7 @@ input[name=future_slider_one]:focus {
 /* the track itself */
 input[name=future_slider_one]::-webkit-slider-runnable-track {
     overflow:hidden;
-    height: 160px; /* control the width of the bars */
+    height: 300px; /* control the width of the bars */
     cursor: pointer;
     background: transparent;
     /* add border when trying to line up sliders and the blocks */
@@ -132,7 +126,7 @@ input[name=future_slider_two]:focus {
 /* the track itself */
 input[name=future_slider_two]::-webkit-slider-runnable-track {
     overflow:hidden;
-    height: 160px; /* control the width of the bars */
+    height: 300px; /* control the width of the bars */
     cursor: pointer;
     /* add border when trying to line up sliders and the blocks */
     /* border: 1px solid black; */
@@ -150,14 +144,24 @@ input[name=future_slider_two]::-webkit-slider-thumb {
     pointer-events: auto;
 }
 
+/* control blocks styling */
+
+:root {
+    --left-blocks-left: 20%;
+    --right-blocks-left: -178%;
+    --blocks-width: 160px;
+    --center-bars-left: -465px;
+    --center-bars-width: 445px;
+}
+
 .left-bubble-zero {
     background: transparent;
     color: black;
     position: relative;
     height: 27px;
-    left: var(--left-bubble-left);
+    left: var(--left-blocks-left);
     top: 3px;
-    width: var(--left-bubble-width);
+    width: var(--blocks-width);
     text-align: center;
     z-index: 5;
     border-radius: 4px;
@@ -170,9 +174,9 @@ input[name=future_slider_two]::-webkit-slider-thumb {
     position: relative;
     top: 3px;
     height: 27px;
-    width: var(--left-bubble-width);
+    width: var(--blocks-width);
     z-index: 5;
-    left: var(--left-bubble-left);
+    left: var(--left-blocks-left);
     text-align: center;
     border-radius: 4px;
     pointer-events: none !important;
@@ -182,11 +186,11 @@ input[name=future_slider_two]::-webkit-slider-thumb {
     background: rgb(43, 173, 43);
     color: black;
     position: relative;
-    left: var(--left-bubble-left);
+    left: var(--left-blocks-left);
     top: 3px;
     z-index: 5;
     height: 27px;
-    width: var(--left-bubble-width);
+    width: var(--blocks-width);
     text-align: center;
     border-radius: 4px;
     pointer-events: none !important;
@@ -197,9 +201,9 @@ input[name=future_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: 3px;
-    left: var(--left-bubble-left);
+    left: var(--left-blocks-left);
     z-index: 5;
-    width: var(--left-bubble-width);
+    width: var(--blocks-width);
     text-align: center;
     border-radius: 4px;
     pointer-events: none !important;
@@ -209,10 +213,10 @@ input[name=future_slider_two]::-webkit-slider-thumb {
     color: black;
     position: relative;
     height: 27px;
-    width: var(--left-bubble-width);
+    width: var(--blocks-width);
     z-index: 5;
     top: 3px;
-    left: var(--left-bubble-left);
+    left: var(--left-blocks-left);
     text-align: center;
     border-radius: 4px;
     pointer-events: none !important;
@@ -223,8 +227,8 @@ input[name=future_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: 3px;
-    width: var(--left-bubble-width);
-    left: var(--left-bubble-left);
+    width: var(--blocks-width);
+    left: var(--left-blocks-left);
     z-index: 5;
     text-align: center;
     border-radius: 4px;
@@ -236,9 +240,9 @@ input[name=future_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: 3px;
-    width: var(--left-bubble-width);
+    width: var(--blocks-width);
     z-index: 5;
-    left: var(--left-bubble-left);
+    left: var(--left-blocks-left);
     text-align: center;
     border-radius: 4px;
     pointer-events: none !important;
@@ -249,9 +253,9 @@ input[name=future_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: 3px;
-    width: var(--left-bubble-width);
+    width: var(--blocks-width);
     z-index: 5;
-    left: var(--left-bubble-left);
+    left: var(--left-blocks-left);
     text-align: center;
     border-radius: 4px;
     pointer-events: none !important;
@@ -262,9 +266,9 @@ input[name=future_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: 3px;
-    width: var(--left-bubble-width);
+    width: var(--blocks-width);
     z-index: 5;
-    left: var(--left-bubble-left);
+    left: var(--left-blocks-left);
     text-align: center;
     border-radius: 4px;
     pointer-events: none !important;
@@ -275,9 +279,9 @@ input[name=future_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: 3px;
-    width: var(--left-bubble-width);
+    width: var(--blocks-width);
     border-radius: 4px;
-    left: var(--left-bubble-left);
+    left: var(--left-blocks-left);
     text-align: center;
     z-index: 5;
     pointer-events: none !important;
@@ -287,8 +291,8 @@ input[name=future_slider_two]::-webkit-slider-thumb {
     color: black;
     position: relative;
     height: 27px;
-    width: var(--left-bubble-width);
-    left: var(--left-bubble-left);
+    width: var(--blocks-width);
+    left: var(--left-blocks-left);
     top: 3px;
     z-index: 5;
     text-align: center;
@@ -300,10 +304,10 @@ input[name=future_slider_two]::-webkit-slider-thumb {
     background: transparent;
     color: black;
     position: relative;
-    left: -178%;
+    left: var(--right-blocks-left);
     height: 27px;
     top: 3px;
-    width: var(--right-bubble-width);
+    width: var(--blocks-width);
     z-index: 5;
     text-align: center;
     border-radius: 4px;
@@ -314,11 +318,11 @@ input[name=future_slider_two]::-webkit-slider-thumb {
     background: #d3d3d3;
     color: black;
     position: relative;
-    left: -178%;
+    left: var(--right-blocks-left);
     top: 3px;
     height: 27px;
     z-index: 5;
-    width: var(--right-bubble-width);
+    width: var(--blocks-width);
     text-align: center;
     border-radius: 4px;
     pointer-events: none !important;
@@ -328,11 +332,11 @@ input[name=future_slider_two]::-webkit-slider-thumb {
     background: #d3d3d3;
     color: black;
     position: relative;
-    left: -178%;
+    left: var(--right-blocks-left);
     top: 3px;
     z-index: 5;
     height: 27px;
-    width: var(--right-bubble-width);
+    width: var(--blocks-width);
     text-align: center;
     border-radius: 4px;
     pointer-events: none !important;
@@ -344,8 +348,8 @@ input[name=future_slider_two]::-webkit-slider-thumb {
     height: 27px;
     top: 3px;
     z-index: 5;
-    left: -178%;
-    width: var(--right-bubble-width);
+    left: var(--right-blocks-left);
+    width: var(--blocks-width);
     text-align: center;
     border-radius: 4px;
     pointer-events: none !important;
@@ -355,10 +359,10 @@ input[name=future_slider_two]::-webkit-slider-thumb {
     color: black;
     position: relative;
     height: 27px;
-    width: var(--right-bubble-width);
+    width: var(--blocks-width);
     z-index: 5;
     top: 3px;
-    left: -178%;
+    left: var(--right-blocks-left);
     text-align: center;
     border-radius: 4px;
     pointer-events: none !important;
@@ -369,8 +373,8 @@ input[name=future_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: 3px;
-    width: var(--right-bubble-width);
-    left: -178%;
+    width: var(--blocks-width);
+    left: var(--right-blocks-left);
     z-index: 5;
     text-align: center;
     border-radius: 4px;
@@ -383,8 +387,8 @@ input[name=future_slider_two]::-webkit-slider-thumb {
     height: 27px;
     z-index: 5;
     top: 3px;
-    width: var(--right-bubble-width);
-    left: -178%;
+    width: var(--blocks-width);
+    left: var(--right-blocks-left);
     text-align: center;
     border-radius: 4px;
     pointer-events: none !important;
@@ -395,8 +399,8 @@ input[name=future_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: 3px;
-    width: var(--right-bubble-width);
-    left: -178%;
+    width: var(--blocks-width);
+    left: var(--right-blocks-left);
     z-index: 5;
     text-align: center;
     border-radius: 4px;
@@ -408,8 +412,8 @@ input[name=future_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: 3px;
-    width: var(--right-bubble-width);
-    left: -178%;
+    width: var(--blocks-width);
+    left: var(--right-blocks-left);
     z-index: 5;
     text-align: center;
     border-radius: 4px;
@@ -421,8 +425,8 @@ input[name=future_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: 3px;
-    width: var(--right-bubble-width);
-    left: -178%;
+    width: var(--blocks-width);
+    left: var(--right-blocks-left);
     z-index: 5;
     text-align: center;
     border-radius: 4px;
@@ -433,9 +437,9 @@ input[name=future_slider_two]::-webkit-slider-thumb {
     color: black;
     position: relative;
     height: 27px;
-    width: var(--right-bubble-width);
+    width: var(--blocks-width);
     z-index: 5;
-    left: -178%;
+    left: var(--right-blocks-left);
     top: 3px;
     text-align: center;
     border-radius: 4px;
@@ -448,8 +452,8 @@ input[name=future_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: 3px;        
-    width: var(--center-bubble-width);
-    left: var(--center-bubble-left);
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;
@@ -461,8 +465,8 @@ input[name=future_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: 3px;
-    width: var(--center-bubble-width);
-    left: var(--center-bubble-left);
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;
@@ -474,8 +478,8 @@ input[name=future_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: 3px;
-    width: var(--center-bubble-width);
-    left: var(--center-bubble-left);
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;
@@ -487,8 +491,8 @@ input[name=future_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: 3px;
-    width: var(--center-bubble-width);
-    left: var(--center-bubble-left);
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;
@@ -500,8 +504,8 @@ input[name=future_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: 3px;
-    width: var(--center-bubble-width);
-    left: var(--center-bubble-left);
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;
@@ -513,8 +517,8 @@ input[name=future_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: 3px;
-    width: var(--center-bubble-width);
-    left: var(--center-bubble-left);
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;
@@ -526,8 +530,8 @@ input[name=future_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: 3px;
-    width: var(--center-bubble-width);
-    left: var(--center-bubble-left);
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;
@@ -539,8 +543,8 @@ input[name=future_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: 3px;
-    width: var(--center-bubble-width);
-    left: var(--center-bubble-left);
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;
@@ -552,8 +556,8 @@ input[name=future_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: 3px;
-    width: var(--center-bubble-width);
-    left: var(--center-bubble-left);
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;
@@ -565,8 +569,8 @@ input[name=future_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: 3px;
-    width: var(--center-bubble-width);
-    left: var(--center-bubble-left);
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;
@@ -578,8 +582,8 @@ input[name=future_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: 3px;
-    width: var(--center-bubble-width);
-    left: var(--center-bubble-left);
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;

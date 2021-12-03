@@ -13,7 +13,10 @@
 .t1_slider {
     width: 200px !important;
     text-align: left !important;
-    margin-left: -220px;
+    margin-left: -70px; /* control left side of left slider */
+    margin-right: -150px;
+    margin-top: -100px;
+    margin-bottom: -90px;
 }
 
 .t1_t2_gap {
@@ -40,7 +43,10 @@
 
 .t3_slider {
     width: 200px !important;
-    margin-right: -160px !important; /* controls right slider */
+    margin-right: 0px !important; /* controls right side of right slider */
+    margin-left: -160px;
+    margin-top: -100px;
+    margin-bottom: -90px;
 }
 
 .t3_text {
@@ -55,7 +61,7 @@
 
 /* make sliders vertical */
 .rotate {
-    width: 340px; /* change the height of the bars (use width marker because of rotation) */
+    width: 350px; /* change the height of the bars (use width marker because of rotation) */
     transform: rotate(270deg);
     vertical-align: bottom;
 }
@@ -82,7 +88,7 @@ input[name=future_slider_one]:focus {
 /* the track itself */
 input[name=future_slider_one]::-webkit-slider-runnable-track {
     overflow:hidden;
-    height: 160px; /* control the width of the bars */
+    height: 470px; /* control the width of the bars */
     cursor: pointer;
     background: transparent;
     /* add border when trying to line up sliders and the blocks */
@@ -121,7 +127,7 @@ input[name=future_slider_two]:focus {
 /* the track itself */
 input[name=future_slider_two]::-webkit-slider-runnable-track {
     overflow:hidden;
-    height: 160px; /* control the width of the bars */
+    height: 470px; /* control the width of the bars */
     cursor: pointer;
     /* add border when trying to line up sliders and the blocks */
     /* border: 1px solid black; */

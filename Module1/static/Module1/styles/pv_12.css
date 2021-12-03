@@ -14,6 +14,7 @@
     width: 0px !important;
     text-align: left !important;
     margin-left: -135px;
+    margin-top: -5px;
 }
 
 .t1_t2_gap {
@@ -26,6 +27,7 @@
     width: 0px !important;
     text-align: left !important;
     margin-left: -185px; /* control positioning of left slider */
+    margin-top: -5px;
 }
 
 .t2_text {
@@ -140,12 +142,22 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     -webkit-appearance: none;
 } 
 
+
+/* create blocks */
+:root {
+    --left-blocks-left: 20%;
+    --right-blocks-left: -107%;
+    --center-bars-left: -665px;
+    --center-bars-width: 645px;
+}
+
+
 .left-bubble-zero {
     background: transparent;
     color: black;
     position: relative;
     height: 27px;
-    left: 20%;
+    left: var(--left-blocks-left);
     top: 3px;
     width: 160px;
     text-align: center;
@@ -162,7 +174,7 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     height: 27px;
     width: 160px;
     z-index: 5;
-    left: 20%;
+    left: var(--left-blocks-left);
     text-align: center;
     border-radius: 4px;
     pointer-events: none !important;
@@ -172,7 +184,7 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     background: #d3d3d3;
     color: black;
     position: relative;
-    left: 20%;
+    left: var(--left-blocks-left);
     top: 3px;
     z-index: 5;
     height: 27px;
@@ -187,7 +199,7 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: 3px;
-    left: 20%;
+    left: var(--left-blocks-left);
     z-index: 5;
     width: 160px;
     text-align: center;
@@ -202,7 +214,7 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     width: 160px;
     z-index: 5;
     top: 3px;
-    left: 20%;
+    left: var(--left-blocks-left);
     text-align: center;
     border-radius: 4px;
     pointer-events: none !important;
@@ -214,7 +226,7 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     height: 27px;
     top: 3px;
     width: 160px;
-    left: 20%;
+    left: var(--left-blocks-left);
     z-index: 5;
     text-align: center;
     border-radius: 4px;
@@ -228,7 +240,7 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     top: 3px;
     width: 160px;
     z-index: 5;
-    left: 20%;
+    left: var(--left-blocks-left);
     text-align: center;
     border-radius: 4px;
     pointer-events: none !important;
@@ -241,7 +253,7 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     top: 3px;
     width: 160px;
     z-index: 5;
-    left: 20%;
+    left: var(--left-blocks-left);
     text-align: center;
     border-radius: 4px;
     pointer-events: none !important;
@@ -254,7 +266,7 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     top: 3px;
     width: 160px;
     z-index: 5;
-    left: 20%;
+    left: var(--left-blocks-left);
     text-align: center;
     border-radius: 4px;
     pointer-events: none !important;
@@ -267,7 +279,7 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     top: 3px;
     width: 160px;
     border-radius: 4px;
-    left: 20%;
+    left: var(--left-blocks-left);
     text-align: center;
     z-index: 5;
     pointer-events: none !important;
@@ -278,7 +290,7 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     width: 160px;
-    left: 20%;
+    left: var(--left-blocks-left);
     top: 3px;
     z-index: 5;
     text-align: center;
@@ -290,7 +302,7 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     background: transparent;
     color: black;
     position: relative;
-    left: -107%;
+    left: var(--right-blocks-left);
     height: 27px;
     top: 3px;
     width: 160px;
@@ -304,7 +316,7 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     background: rgb(43, 173, 43);
     color: black;
     position: relative;
-    left: -107%;
+    left: var(--right-blocks-left);
     top: 3px;
     height: 27px;
     z-index: 5;
@@ -318,7 +330,7 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     background: rgb(43, 173, 43);
     color: black;
     position: relative;
-    left: -107%;
+    left: var(--right-blocks-left);
     top: 3px;
     z-index: 5;
     height: 27px;
@@ -334,7 +346,7 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     height: 27px;
     top: 3px;
     z-index: 5;
-    left: -107%;
+    left: var(--right-blocks-left);
     width: 160px;
     text-align: center;
     border-radius: 4px;
@@ -348,7 +360,7 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     width: 160px;
     z-index: 5;
     top: 3px;
-    left: -107%;
+    left: var(--right-blocks-left);
     text-align: center;
     border-radius: 4px;
     pointer-events: none !important;
@@ -360,7 +372,7 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     height: 27px;
     top: 3px;
     width: 160px;
-    left: -107%;
+    left: var(--right-blocks-left);
     z-index: 5;
     text-align: center;
     border-radius: 4px;
@@ -374,7 +386,7 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     z-index: 5;
     top: 3px;
     width: 160px;
-    left: -107%;
+    left: var(--right-blocks-left);
     text-align: center;
     border-radius: 4px;
     pointer-events: none !important;
@@ -386,7 +398,7 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     height: 27px;
     top: 3px;
     width: 160px;
-    left: -107%;
+    left: var(--right-blocks-left);
     z-index: 5;
     text-align: center;
     border-radius: 4px;
@@ -399,7 +411,7 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     height: 27px;
     top: 3px;
     width: 160px;
-    left: -107%;
+    left: var(--right-blocks-left);
     z-index: 5;
     text-align: center;
     border-radius: 4px;
@@ -412,7 +424,7 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     height: 27px;
     top: 3px;
     width: 160px;
-    left: -107%;
+    left: var(--right-blocks-left);
     z-index: 5;
     text-align: center;
     border-radius: 4px;
@@ -425,7 +437,7 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     height: 27px;
     width: 160px;
     z-index: 5;
-    left: -107%;
+    left: var(--right-blocks-left);
     top: 3px;
     text-align: center;
     border-radius: 4px;
@@ -438,8 +450,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: 3px;        
-    width: 645px;
-    left: -665px;
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;
@@ -451,8 +463,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: 3px;
-    width: 645px;
-    left: -665px;
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;
@@ -464,8 +476,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: 3px;
-    width: 645px;
-    left: -665px;
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;
@@ -477,8 +489,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: 3px;
-    width: 645px;
-    left: -665px;
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;
@@ -490,8 +502,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: 3px;
-    width: 645px;
-    left: -665px;
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;
@@ -503,8 +515,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: 3px;
-    width: 645px;
-    left: -665px;
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;
@@ -516,8 +528,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: 3px;
-    width: 645px;
-    left: -665px;
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;
@@ -529,8 +541,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: 3px;
-    width: 645px;
-    left: -665px;
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;
@@ -542,8 +554,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: 3px;
-    width: 645px;
-    left: -665px;
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;
@@ -555,8 +567,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: 3px;
-    width: 645px;
-    left: -665px;
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;
@@ -568,8 +580,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     top: 3px;
-    width: 645px;
-    left: -665px;
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
     text-align: center;
     border-radius: 4px;
     z-index: 6;
