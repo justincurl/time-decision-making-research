@@ -1,5 +1,11 @@
 /* control gaps between times */
 
+:root {
+    --blocks-top: 3px;
+    --left-blocks-left: 20%;
+    --right-blocks-left: 21%;
+  }
+
 .pre_t1 {
     width: 0px !important;
 }
@@ -11,9 +17,11 @@
 }
 
 .t1_slider {
-    width: 200px !important;
+    width: 0px !important;
     text-align: left !important;
-    margin-left: -220px;
+    margin-top: -100px;
+    margin-left: -70px;
+    margin-bottom: -60px;
 }
 
 .t1_t2_gap {
@@ -40,7 +48,10 @@
 
 .t3_slider {
     width: 200px !important;
-    margin-right: -160px !important; /* controls right slider */
+    margin-top: -100px; /* controls distance from right slider to top */
+    margin-left: -160px; 
+    margin-right: 0px !important; /* controls right slider */
+    margin-bottom: -60px; /* controls distance from right slider to timeline */
 }
 
 .t3_text {
@@ -55,7 +66,7 @@
 
 /* make sliders vertical */
 .rotate {
-    width: 340px; /* change the height of the bars (use width marker because of rotation) */
+    width: 350px; /* change the height of the bars (use width marker because of rotation) */
     transform: rotate(270deg);
     vertical-align: bottom;
 }
@@ -82,10 +93,11 @@ input[name=past_slider_one]:focus {
 /* the track itself */
 input[name=past_slider_one]::-webkit-slider-runnable-track {
     overflow:hidden;
-    height: 160px; /* control the width of the bars */
+    height: 470px; /* control the width of the bars */
     cursor: pointer;
     background: transparent;
-    /* border: 1px solid black; add border when trying to line up sliders and the blocks */
+    /* add border when trying to line up sliders and the blocks */
+    /* border: 1px solid black;  */
     pointer-events: auto;
 }
 
@@ -121,9 +133,10 @@ input[name=past_slider_two]:focus {
 /* the track itself */
 input[name=past_slider_two]::-webkit-slider-runnable-track {
     overflow:hidden;
-    height: 160px; /* control the width of the bars */
+    height: 470px; /* control the width of the bars */
     cursor: pointer;
-    /* border: 1px solid black;  add border when trying to line up sliders and the blocks */
+    /* add border when trying to line up sliders and the blocks */
+    /* border: 1px solid black;  */
     background: transparent;
     pointer-events: auto;
 }
@@ -142,8 +155,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     color: black;
     position: relative;
     height: 27px;
-    left: 20%;
-    top: 3px;
+    left: var(--left-blocks-left);
+    top: var(--blocks-top);
     width: 160px;
     text-align: center;
     z-index: 5;
@@ -155,11 +168,11 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     background: #d3d3d3;
     color: black;
     position: relative;
-    top: 3px;
+    top: var(--blocks-top);
     height: 27px;
     width: 160px;
     z-index: 5;
-    left: 20%;
+    left: var(--left-blocks-left);
     text-align: center;
     border-radius: 4px;
     pointer-events: none !important;
@@ -169,8 +182,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     background: #d3d3d3;
     color: black;
     position: relative;
-    left: 20%;
-    top: 3px;
+    left: var(--left-blocks-left);
+    top: var(--blocks-top);
     z-index: 5;
     height: 27px;
     width: 160px;
@@ -183,8 +196,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     color: black;
     position: relative;
     height: 27px;
-    top: 3px;
-    left: 20%;
+    top: var(--blocks-top);
+    left: var(--left-blocks-left);
     z-index: 5;
     width: 160px;
     text-align: center;
@@ -198,8 +211,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     height: 27px;
     width: 160px;
     z-index: 5;
-    top: 3px;
-    left: 20%;
+    top: var(--blocks-top);
+    left: var(--left-blocks-left);
     text-align: center;
     border-radius: 4px;
     pointer-events: none !important;
@@ -209,9 +222,9 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     color: black;
     position: relative;
     height: 27px;
-    top: 3px;
+    top: var(--blocks-top);
     width: 160px;
-    left: 20%;
+    left: var(--left-blocks-left);
     z-index: 5;
     text-align: center;
     border-radius: 4px;
@@ -222,10 +235,10 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     color: black;
     position: relative;
     height: 27px;
-    top: 3px;
+    top: var(--blocks-top);
     width: 160px;
     z-index: 5;
-    left: 20%;
+    left: var(--left-blocks-left);
     text-align: center;
     border-radius: 4px;
     pointer-events: none !important;
@@ -235,10 +248,10 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     color: black;
     position: relative;
     height: 27px;
-    top: 3px;
+    top: var(--blocks-top);
     width: 160px;
     z-index: 5;
-    left: 20%;
+    left: var(--left-blocks-left);
     text-align: center;
     border-radius: 4px;
     pointer-events: none !important;
@@ -248,10 +261,10 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     color: black;
     position: relative;
     height: 27px;
-    top: 3px;
+    top: var(--blocks-top);
     width: 160px;
     z-index: 5;
-    left: 20%;
+    left: var(--left-blocks-left);
     text-align: center;
     border-radius: 4px;
     pointer-events: none !important;
@@ -261,10 +274,10 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     color: black;
     position: relative;
     height: 27px;
-    top: 3px;
+    top: var(--blocks-top);
     width: 160px;
     border-radius: 4px;
-    left: 20%;
+    left: var(--left-blocks-left);
     text-align: center;
     z-index: 5;
     pointer-events: none !important;
@@ -275,8 +288,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     width: 160px;
-    left: 20%;
-    top: 3px;
+    left: var(--left-blocks-left);
+    top: var(--blocks-top);
     z-index: 5;
     text-align: center;
     border-radius: 4px;
@@ -287,9 +300,9 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     background: transparent;
     color: black;
     position: relative;
-    left: 21%;
+    left: var(--right-blocks-left);
     height: 27px;
-    top: 3px;
+    top: var(--blocks-top);
     width: 160px;
     z-index: 5;
     text-align: center;
@@ -301,8 +314,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     background: rgb(43, 173, 43);
     color: black;
     position: relative;
-    left: 21%;
-    top: 3px;
+    left: var(--right-blocks-left);
+    top: var(--blocks-top);
     height: 27px;
     z-index: 5;
     width: 160px;
@@ -315,8 +328,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     background: rgb(43, 173, 43);
     color: black;
     position: relative;
-    left: 21%;
-    top: 3px;
+    left: var(--right-blocks-left);
+    top: var(--blocks-top);
     z-index: 5;
     height: 27px;
     width: 160px;
@@ -329,9 +342,9 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     color: black;
     position: relative;
     height: 27px;
-    top: 3px;
+    top: var(--blocks-top);
     z-index: 5;
-    left: 21%;
+    left: var(--right-blocks-left);
     width: 160px;
     text-align: center;
     border-radius: 4px;
@@ -344,8 +357,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     height: 27px;
     width: 160px;
     z-index: 5;
-    top: 3px;
-    left: 21%;
+    top: var(--blocks-top);
+    left: var(--right-blocks-left);
     text-align: center;
     border-radius: 4px;
     pointer-events: none !important;
@@ -355,9 +368,9 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     color: black;
     position: relative;
     height: 27px;
-    top: 3px;
+    top: var(--blocks-top);
     width: 160px;
-    left: 21%;
+    left: var(--right-blocks-left);
     z-index: 5;
     text-align: center;
     border-radius: 4px;
@@ -369,9 +382,9 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     position: relative;
     height: 27px;
     z-index: 5;
-    top: 3px;
+    top: var(--blocks-top);
     width: 160px;
-    left: 21%;
+    left: var(--right-blocks-left);
     text-align: center;
     border-radius: 4px;
     pointer-events: none !important;
@@ -381,9 +394,9 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     color: black;
     position: relative;
     height: 27px;
-    top: 3px;
+    top: var(--blocks-top);
     width: 160px;
-    left: 21%;
+    left: var(--right-blocks-left);
     z-index: 5;
     text-align: center;
     border-radius: 4px;
@@ -394,9 +407,9 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     color: black;
     position: relative;
     height: 27px;
-    top: 3px;
+    top: var(--blocks-top);
     width: 160px;
-    left: 21%;
+    left: var(--right-blocks-left);
     z-index: 5;
     text-align: center;
     border-radius: 4px;
@@ -407,9 +420,9 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     color: black;
     position: relative;
     height: 27px;
-    top: 3px;
+    top: var(--blocks-top);
     width: 160px;
-    left: 21%;
+    left: var(--right-blocks-left);
     z-index: 5;
     text-align: center;
     border-radius: 4px;
@@ -422,8 +435,8 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     height: 27px;
     width: 160px;
     z-index: 5;
-    left: 21%;
-    top: 3px;
+    left: var(--right-blocks-left);
+    top: var(--blocks-top);
     text-align: center;
     border-radius: 4px;
     pointer-events: none !important;
@@ -434,7 +447,7 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     color: black;
     position: relative;
     height: 27px;
-    top: 3px;        
+    top: var(--blocks-top);        
     width: 938px;
     left: -665px;
     text-align: center;
@@ -447,7 +460,7 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     color: black;
     position: relative;
     height: 27px;
-    top: 3px;
+    top: var(--blocks-top);
     width: 938px;
     left: -665px;
     text-align: center;
@@ -460,7 +473,7 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     color: black;
     position: relative;
     height: 27px;
-    top: 3px;
+    top: var(--blocks-top);
     width: 938px;
     left: -665px;
     text-align: center;
@@ -473,7 +486,7 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     color: black;
     position: relative;
     height: 27px;
-    top: 3px;
+    top: var(--blocks-top);
     width: 938px;
     left: -665px;
     text-align: center;
@@ -486,7 +499,7 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     color: black;
     position: relative;
     height: 27px;
-    top: 3px;
+    top: var(--blocks-top);
     width: 938px;
     left: -665px;
     text-align: center;
@@ -499,7 +512,7 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     color: black;
     position: relative;
     height: 27px;
-    top: 3px;
+    top: var(--blocks-top);
     width: 938px;
     left: -665px;
     text-align: center;
@@ -512,7 +525,7 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     color: black;
     position: relative;
     height: 27px;
-    top: 3px;
+    top: var(--blocks-top);
     width: 938px;
     left: -665px;
     text-align: center;
@@ -525,7 +538,7 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     color: black;
     position: relative;
     height: 27px;
-    top: 3px;
+    top: var(--blocks-top);
     width: 938px;
     left: -665px;
     text-align: center;
@@ -538,7 +551,7 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     color: black;
     position: relative;
     height: 27px;
-    top: 3px;
+    top: var(--blocks-top);
     width: 938px;
     left: -665px;
     text-align: center;
@@ -551,7 +564,7 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     color: black;
     position: relative;
     height: 27px;
-    top: 3px;
+    top: var(--blocks-top);
     width: 938px;
     left: -665px;
     text-align: center;
@@ -564,7 +577,7 @@ input[name=past_slider_two]::-webkit-slider-thumb {
     color: black;
     position: relative;
     height: 27px;
-    top: 3px;
+    top: var(--blocks-top);
     width: 938px;
     left: -665px;
     text-align: center;
