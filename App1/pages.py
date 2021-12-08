@@ -135,7 +135,46 @@ class FG2_G_Instructions(Page):
         self.player.instructions_1_total_time = json.dumps(str(finish_time - start_time))
         return super().before_next_page()
 
-class FG2_V_Instructions(Page):
+class FG2_1V_Instructions(Page):
+    def vars_for_template(self):
+        image_link = ""
+        if self.player.t_earliest == self.player.earlier_time and self.player.t_middle == self.player.later_time:
+            image_link = "App1/images/FG_01.png"
+        elif self.player.t_earliest == self.player.earlier_time and self.player.t_latest == self.player.later_time:
+            image_link = "App1/images/FG_05.png"
+        elif self.player.t_middle == self.player.earlier_time and self.player.t_latest == self.player.later_time:
+            image_link = "App1/images/FG_15.png"
+        return dict(
+            image_link=image_link,
+            earlier_time=self.player.earlier_time,
+            later_time=self.player.later_time
+        )
+    def is_displayed(self):
+        check_condition = False
+        check_round_number = False
+        if self.player.first == "FV":
+            if self.player.second == "FG":
+                if self.round_number > Constants.num_sliders and self.round_number < Constants.num_grids + Constants.num_sliders + 1:
+                    check_condition = True
+                if self.player.round_number == Constants.num_grids + 1:
+                    check_round_number = True
+
+        if check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1:
+            current_time = datetime.datetime.now().strftime("%H:%M:%S")
+            self.player.instructions_1_start_time = json.dumps(current_time)
+            return True
+        else:
+            return False
+
+    def before_next_page(self):
+        current_time = datetime.datetime.now().strftime("%H:%M:%S")
+        self.player.instructions_1_finish_time = json.dumps(current_time)
+        finish_time = datetime.datetime.strptime(current_time, "%H:%M:%S")
+        start_time = datetime.datetime.strptime(json.loads(self.player.instructions_1_start_time), "%H:%M:%S")
+        self.player.instructions_1_total_time = json.dumps(str(finish_time - start_time))
+        return super().before_next_page()
+
+class FG2_2V_Instructions(Page):
     def vars_for_template(self):
         image_link = ""
         if self.player.t_earliest == self.player.earlier_time and self.player.t_middle == self.player.later_time:
@@ -232,8 +271,6 @@ class FG_Main(Page):
             later_time=self.player.later_time,
             question_instructions=question_instructions,
         )
-
-
 
 class FG2_Divider(Page):
     def vars_for_template(self):
@@ -367,7 +404,46 @@ class FV1_2_Instructions(Page):
         self.player.instructions_2_total_time = json.dumps(str(finish_time - start_time))
         return super().before_next_page()
 
-class FV2_G_Instructions(Page):
+class FV2_1G_Instructions(Page):
+    def vars_for_template(self):
+        image_link = ""
+        if self.player.t_earliest == self.player.earlier_time and self.player.t_middle == self.player.later_time:
+            image_link = "App1/images/FV_01.png"
+        elif self.player.t_earliest == self.player.earlier_time and self.player.t_latest == self.player.later_time:
+            image_link = "App1/images/FV_05.png"
+        elif self.player.t_middle == self.player.earlier_time and self.player.t_latest == self.player.later_time:
+            image_link = "App1/images/FV_15.png"
+        return dict(
+            image_link=image_link,
+            earlier_time=self.player.earlier_time,
+            later_time=self.player.later_time
+        )
+    def is_displayed(self):
+        check_condition = False
+        check_round_number = False
+        if self.player.first == "FG":
+            if self.player.second == "FV":
+                if self.round_number > Constants.num_grids and self.round_number < Constants.num_grids + Constants.num_sliders + 1:
+                    check_condition = True
+                if self.player.round_number == Constants.num_grids + 1:
+                    check_round_number = True
+
+        if check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1:
+            current_time = datetime.datetime.now().strftime("%H:%M:%S")
+            self.player.instructions_1_start_time = json.dumps(current_time)
+            return True
+        else:
+            return False
+
+    def before_next_page(self):
+        current_time = datetime.datetime.now().strftime("%H:%M:%S")
+        self.player.instructions_1_finish_time = json.dumps(current_time)
+        finish_time = datetime.datetime.strptime(current_time, "%H:%M:%S")
+        start_time = datetime.datetime.strptime(json.loads(self.player.instructions_1_start_time), "%H:%M:%S")
+        self.player.instructions_1_total_time = json.dumps(str(finish_time - start_time))
+        return super().before_next_page()
+
+class FV2_2G_Instructions(Page):
     def vars_for_template(self):
         image_link = ""
         if self.player.t_earliest == self.player.earlier_time and self.player.t_middle == self.player.later_time:
@@ -570,7 +646,6 @@ class FV_12(Page):
         self.player.future_slider_one = self.player.earlier_max - self.player.future_slider_one
         return super().before_next_page()
 
-
 class FV_13(Page):
     form_model = 'player'
     form_fields = ['future_slider_one', 'future_slider_two']
@@ -638,7 +713,6 @@ class FV_13(Page):
         self.player.future_slider_one = self.player.earlier_max - self.player.future_slider_one
         return super().before_next_page()
 
-
 class FV_23(Page):
     form_model = 'player'
     form_fields = ['future_slider_one', 'future_slider_two']
@@ -703,7 +777,6 @@ class FV_23(Page):
         finish_time = datetime.datetime.strptime(current_time, "%H:%M:%S")
         start_time = datetime.datetime.strptime(json.loads(self.player.start_time), "%H:%M:%S")
         self.player.total_time = json.dumps(str(finish_time - start_time))
-
 
 ################################################################################################### PAST PAGES BELOW ##############################################################################################################
 class PG1_1_Instructions(Page):
@@ -820,7 +893,46 @@ class PG2_G_Instructions(Page):
         self.player.instructions_1_total_time = json.dumps(str(finish_time - start_time))
         return super().before_next_page()
 
-class PG2_V_Instructions(Page):
+class PG2_1V_Instructions(Page):
+    def vars_for_template(self):
+        image_link = ""
+        if self.player.t_earliest == self.player.earlier_time and self.player.t_middle == self.player.later_time:
+            image_link = "App1/images/PG_15.png"
+        elif self.player.t_earliest == self.player.earlier_time and self.player.t_latest == self.player.later_time:
+            image_link = "App1/images/PG_05.png"
+        elif self.player.t_middle == self.player.earlier_time and self.player.t_latest == self.player.later_time:
+            image_link = "App1/images/PG_01.png"
+        return dict(
+            image_link=image_link,
+            earlier_time=self.player.earlier_time,
+            later_time=self.player.later_time
+        )
+    def is_displayed(self):
+        check_condition = False
+        check_round_number = False
+        if self.player.first == "PV":
+            if self.player.second == "PG":
+                if self.round_number > Constants.num_sliders and self.round_number < Constants.num_grids + Constants.num_sliders + 1:
+                    check_condition = True
+                if self.player.round_number == Constants.num_sliders + 1:
+                    check_round_number = True
+
+        if check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1:
+            current_time = datetime.datetime.now().strftime("%H:%M:%S")
+            self.player.instructions_1_start_time = json.dumps(current_time)
+            return True
+        else:
+            return False
+
+    def before_next_page(self):
+        current_time = datetime.datetime.now().strftime("%H:%M:%S")
+        self.player.instructions_1_finish_time = json.dumps(current_time)
+        finish_time = datetime.datetime.strptime(current_time, "%H:%M:%S")
+        start_time = datetime.datetime.strptime(json.loads(self.player.instructions_1_start_time), "%H:%M:%S")
+        self.player.instructions_1_total_time = json.dumps(str(finish_time - start_time))
+        return super().before_next_page()
+
+class PG2_2V_Instructions(Page):
     def vars_for_template(self):
         image_link = ""
         if self.player.t_earliest == self.player.earlier_time and self.player.t_middle == self.player.later_time:
@@ -918,7 +1030,6 @@ class PG_Main(Page):
             later_time=self.player.later_time,
             question_instructions=question_instructions,
         )
-
 
 class PG2_Divider(Page):
     def vars_for_template(self):
@@ -1087,7 +1198,48 @@ class PV2_V_Instructions(Page):
         self.player.instructions_1_total_time = json.dumps(str(finish_time - start_time))
         return super().before_next_page()
 
-class PV2_G_Instructions(Page):
+class PV2_1G_Instructions(Page):
+    def vars_for_template(self):
+        image_link = ""
+        if self.player.t_earliest == self.player.earlier_time and self.player.t_middle == self.player.later_time:
+            image_link = "App1/images/PV_15.png"
+        elif self.player.t_earliest == self.player.earlier_time and self.player.t_latest == self.player.later_time:
+            image_link = "App1/images/PV_05.png"
+        elif self.player.t_middle == self.player.earlier_time and self.player.t_latest == self.player.later_time:
+            image_link = "App1/images/PV_01.png"
+        return dict(
+            image_link=image_link,
+            earlier_time=self.player.earlier_time,
+            later_time=self.player.later_time
+        )
+    
+    def is_displayed(self):
+        check_condition = False
+        check_round_number = False
+
+        if self.player.first == "PG":
+            if self.player.second == "PV":
+                if self.round_number > Constants.num_grids and self.round_number < Constants.num_grids + Constants.num_sliders + 1:
+                    check_condition = True
+                if self.player.round_number == Constants.num_grids + 1:
+                    check_round_number = True
+
+        if check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1:
+            current_time = datetime.datetime.now().strftime("%H:%M:%S")
+            self.player.instructions_1_start_time = json.dumps(current_time)
+            return True
+        else:
+            return False
+
+    def before_next_page(self):
+        current_time = datetime.datetime.now().strftime("%H:%M:%S")
+        self.player.instructions_1_finish_time = json.dumps(current_time)
+        finish_time = datetime.datetime.strptime(current_time, "%H:%M:%S")
+        start_time = datetime.datetime.strptime(json.loads(self.player.instructions_1_start_time), "%H:%M:%S")
+        self.player.instructions_1_total_time = json.dumps(str(finish_time - start_time))
+        return super().before_next_page()
+
+class PV2_2G_Instructions(Page):
     def vars_for_template(self):
         image_link = ""
         if self.player.t_earliest == self.player.earlier_time and self.player.t_middle == self.player.later_time:
@@ -1260,7 +1412,6 @@ class PV_12(Page):
         self.player.past_slider_one = self.player.earlier_max - self.player.past_slider_one
         return super().before_next_page()
 
-
 class PV_13(Page):
     form_model = 'player'
     form_fields = ['past_slider_one', 'past_slider_two']
@@ -1327,7 +1478,6 @@ class PV_13(Page):
         self.player.total_time = json.dumps(str(finish_time - start_time))
         self.player.past_slider_one = self.player.earlier_max - self.player.past_slider_one
         return super().before_next_page()
-
 
 class PV_23(Page):
     form_model = 'player'
@@ -1415,9 +1565,6 @@ class Check1(Page):
             check_condition and (json.loads(self.participant.vars["consent_answer"]) == 1)
         )
 
-
-
-
 class Check2(Page):
     form_model = "player"
     form_fields = ["check_2"]
@@ -1445,8 +1592,6 @@ class Check2(Page):
             check_condition and (json.loads(self.participant.vars["consent_answer"]) == 1)
         )
 
-
-
 class Dice(Page):
     form_model = "player"
     form_fields = ["dice_answer"]
@@ -1464,8 +1609,6 @@ class Dice(Page):
         return (
             check_condition and (json.loads(self.participant.vars["consent_answer"]) == 1)
         )
-
-
 
 class Disease(Page):
     form_model = "player"
@@ -1485,7 +1628,6 @@ class Disease(Page):
             check_condition and (json.loads(self.participant.vars["consent_answer"]) == 1)
         )
 
-
 class Lottery(Page):
     form_model = "player"
     form_fields = ["lottery_answer"]
@@ -1504,12 +1646,12 @@ class Lottery(Page):
             check_condition and (json.loads(self.participant.vars["consent_answer"]) == 1)
         )
 
-
 def generate_page_sequence():
     return (
         [FG1_1_Instructions]
         + [FG1_2_Instructions]
-        + [FG2_V_Instructions]
+        + [FG2_1V_Instructions]
+        + [FG2_2V_Instructions]
         + [FG2_G_Instructions]
         + [FG2_Divider]
         + [FG3_Divider]
@@ -1517,7 +1659,8 @@ def generate_page_sequence():
         + [FV1_1_Instructions]
         + [FV1_2_Instructions]
         + [FV2_V_Instructions]
-        + [FV2_G_Instructions]
+        + [FV2_1G_Instructions]
+        + [FV2_2G_Instructions]
         + [FV2_Divider]
         + [FV3_Divider]
         + [FV_12]
@@ -1525,7 +1668,8 @@ def generate_page_sequence():
         + [FV_23]
         + [PG1_1_Instructions]
         + [PG1_2_Instructions]
-        + [PG2_V_Instructions]
+        + [PG2_1V_Instructions]
+        + [PG2_2V_Instructions]
         + [PG2_G_Instructions]
         + [PG2_Divider]
         + [PG3_Divider]
@@ -1533,7 +1677,8 @@ def generate_page_sequence():
         + [PV1_1_Instructions]
         + [PV1_2_Instructions]
         + [PV2_V_Instructions]
-        + [PV2_G_Instructions]
+        + [PV2_1G_Instructions]
+        + [PV2_2G_Instructions]
         + [PV2_Divider]
         + [PV3_Divider]
         + [PV_12]

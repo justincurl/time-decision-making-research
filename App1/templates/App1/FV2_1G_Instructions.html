@@ -1,0 +1,25 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div align="center">
+    <h2 text-align="center">
+        <strong style="text-transform: uppercase; color: orange;">FUTURE: </strong><span style="text-transform: uppercase;">{{earlier_time}}</span> and <span style="text-transform: uppercase;">{{later_time}}</span>
+    </h2>
+</div>
+
+<div text-align="justify" style="font-size: large;">
+    The next section of this survey is still about <strong>temporary job creation</strong> now, a year from now, and five years from now. In this section, you will use a different way to indicate which combination of temporary jobs created in two periods you think represents <strong>the best economy</strong>.
+    <br>
+    <br>
+    First, we will ask you several questions about temporary (1-year contract) jobs created <strong>{{earlier_time}}</strong> and temporary jobs created {{later_time}}.
+    <br>
+    <br>
+</div>
+<div style="text-align: center;">
+    {% next_button %}
+</div>
+
+{% endblock %}
