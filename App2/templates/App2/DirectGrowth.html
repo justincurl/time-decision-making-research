@@ -4,15 +4,11 @@
     
     
     {% block content %}
-
-
     <div class="results" align="justify">
         <p style="font-size: larger">If you had to choose, would you prefer personal income growth of 4% this year and none next year, or 4% next year and none this year? </p>
         <div id="direct_growth_question" style="font-size: larger" class="formfield-direct-growth">{% formfield player.direct_growth label="" %}</div>
     </div>
     <br>
-
-    <input type="hidden" name="check_slider_direct_growth" value="" id="id_check_slider_direct_growth"/>
 
     {{ form.slider_direct_growth.errors }}
 
@@ -21,10 +17,13 @@
             If you could choose some personal income growth in both years, which allocation would you choose?
         </div> 
         <br>
+        <u><i>Click anywhere on the grey bar to indicate your answer.</i></u>
         <br>
         <output id="output_this_year" class="this-year" for="slider_direct_growth"></output>
         <input type="range" name="slider_direct_growth" value="None" step="0.1" align="center" min="0" max="4" id="id_slider_direct_growth"/>
         <output id="output_next_year" class="next-year" for="slider_direct_growth"></output>
+        <br>
+        <u><i>You can move the slider left or right by dragging it, by clicking anywhere on the bar, or by using the left/right arrow keys.</i></u>
         <br>
         <br>
     </div>
@@ -38,7 +37,6 @@
                 document.getElementById("id_slider_direct_growth").style.background = "orange";
             });
             $('input[name=slider_direct_growth]').on('input change', function() {
-                $('#id_check_slider_direct_growth').val(1);
                 document.getElementById("id_slider_direct_growth").style.background = "orange";
                 setBubbles(document.getElementById("id_slider_direct_growth").value, document.getElementById("output_this_year"), document.getElementById("output_next_year"));
             });

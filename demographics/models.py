@@ -19,7 +19,7 @@ short demographics questionnaire that can be appended to end of other apps
 
 
 class Constants(BaseConstants):
-    name_in_url = 'demographics'
+    name_in_url = 'Demographics'
     players_per_group = None
     num_rounds = 1
 

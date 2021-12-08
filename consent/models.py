@@ -18,7 +18,7 @@ Initial consent app that can be prepended onto other apps
 
 
 class Constants(BaseConstants):
-    name_in_url = 'consent'
+    name_in_url = 'Consent'
     players_per_group = None
     num_rounds = 1
 
