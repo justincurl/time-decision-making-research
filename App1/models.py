@@ -4,7 +4,7 @@ from otree.api import models, BaseConstants, BaseSubsession, BaseGroup, BasePlay
 author = "Justin Curl <jcurl@princeton.edu>"
 
 class Constants(BaseConstants):
-    name_in_url = "Module1"
+    name_in_url = "App1"
     players_per_group = None
     num_rounds = 30
     num_per_section = 5

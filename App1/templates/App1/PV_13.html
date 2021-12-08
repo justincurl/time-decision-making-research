@@ -10,7 +10,7 @@
     <input type="hidden" value="{{later_time}}" id="later_time"/>
     <input type="hidden" value={{earlier_max}} id="earlier_max"/>
     <input type="hidden" value={{later_max}} id="later_max"/>
-   
+
     <div align="center">
         <h2 text-align="center">
             <strong style="text-transform: uppercase; color: fuchsia;">PAST: </strong><span style="text-transform: uppercase;">{{later_time}}</span> and <span style="text-transform: uppercase;">{{earlier_time}}</span>
@@ -45,7 +45,7 @@
             </td>
             <td><div class="t1_slider"><input type="range" name="past_slider_one" step=10 min=0 max={{earlier_max}} value={{earlier_max}} id="id_past_slider_one" class="rotate" class="form-control"/></div></td>
             <td><div class="t1_t2_gap"></div></td>
-            <td><div class="t2_slider"><input type="range" name="past_slider_two" step=10 min=0 max={{later_max}} value={{later_max}} id="id_past_slider_two" class="rotate" class="form-control"/></div></td>
+            <td><div class="t2_slider"></div></td>
             <td>
                 <div class="t2_t3_gap">
                     <table id="center-table">
@@ -63,7 +63,11 @@
                     </table>
                 </div>
             </td>
-            <td><div class="t3_slider"></div></td>
+            <td>
+                <div class="t3_slider">
+                    <input type="range" name="past_slider_two" step=10 min=0 max={{later_max}} value={{later_max}} id="id_past_slider_two" class="rotate" class="form-control"/>
+                </div>
+            </td>
             <td>
                 <table id="right-table">
                     <tr><div class="right-bubble-zero" id="right_feedback_0"></div><div style="height:4.5px;"></div></tr>
@@ -85,10 +89,10 @@
             <td><div class="pre_t1"></div></td>
             <td><div class="t1_text"><h5 style="text-transform: uppercase;">{{t_earliest}}</h5></div></td>
             <td><div class="t1_t2_gap"></div></td>
-            <td><div class="t2_text"><h5 style="text-transform: uppercase;">{{t_middle}}</h5></div></td>
+            <td><div class="t2_text"><h5 style="text-transform: uppercase; color: #d3d3d3">{{t_middle}}</h5></div></td>
             <td><div class="t2_t3_gap"></div></td>
             <td><div class="pre_t3"></div></td>
-            <td><div class="t3_text"><h5 style="text-transform: uppercase; color: #d3d3d3">{{t_latest}}</h5></div></td>
+            <td><div class="t3_text"><h5 style="text-transform: uppercase;">{{t_latest}}</h5></div></td>
         </tr>
     </table>
     <div text-align="justify">
@@ -139,20 +143,10 @@
             $('input[name=past_slider_one]').on('input', function () {
                 $('input[name=past_slider_one]').addClass('past_slider_one_thumb');
                 $('input[name=past_slider_two]').addClass('past_slider_two_thumb');
-                // addLabels();
                 var past_slider_one_actual_val = $(this).val()
                 var past_slider_one_display_val = earlier_max - $(this).val();
                 var past_slider_two_val = $(this).val()*later_max/earlier_max;
                 document.getElementById("id_past_slider_two").value = past_slider_one_actual_val*later_max/earlier_max;
-                updateLabels(past_slider_one_display_val/earlier_max*10, past_slider_one_display_val, past_slider_two_val, document.getElementById("id_past_slider_one").step, document.getElementById("id_past_slider_two").step, earlier_time, later_time);
-            });
-        
-            // handle changes in slider value
-            $('input[name=past_slider_one]').on('input change', function() {
-                var past_slider_one_actual_val = $(this).val()
-                var past_slider_one_display_val = earlier_max - $(this).val();
-                var past_slider_two_val = $(this).val()*later_max/earlier_max;
-                document.getElementById("id_past_slider_two").value = past_slider_two_val; // links the two slider values together
                 updateLabels(past_slider_one_display_val/earlier_max*10, past_slider_one_display_val, past_slider_two_val, document.getElementById("id_past_slider_one").step, document.getElementById("id_past_slider_two").step, earlier_time, later_time);
             });
         
@@ -162,7 +156,6 @@
             $('input[name=past_slider_two]').on('input', function () {
                 $('input[name=past_slider_one]').addClass('past_slider_one_thumb');
                 $('input[name=past_slider_two]').addClass('past_slider_two_thumb');
-                // addLabels();
                 var past_slider_two_val = $(this).val();
                 var past_slider_one_actual_val = past_slider_two_val*earlier_max/later_max;
                 var past_slider_one_display_val = earlier_max - past_slider_one_actual_val;
@@ -170,14 +163,6 @@
                 updateLabels(past_slider_one_display_val/earlier_max*10, past_slider_one_display_val, past_slider_two_val, document.getElementById("id_past_slider_one").step, document.getElementById("id_past_slider_two").step, earlier_time, later_time);
             });
         
-            // handle changes in slider value
-            $('input[name=past_slider_two]').on('input change', function() {
-                var past_slider_two_val = $(this).val();
-                var past_slider_one_actual_val = past_slider_two_val*earlier_max/later_max;
-                var past_slider_one_display_val = earlier_max - past_slider_one_actual_val;
-                document.getElementById("id_past_slider_one").value = past_slider_one_actual_val;
-                updateLabels(past_slider_one_display_val/earlier_max*10, past_slider_one_display_val, past_slider_two_val, document.getElementById("id_past_slider_one").step, document.getElementById("id_past_slider_two").step, earlier_time, later_time);
-            });
 
             function numberWithCommas(x) {
                 return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -405,7 +390,6 @@
             jQuery('.next-button').show();
             return false
         }
-        // move this logic to once an answer is selected (smartphone does not register)
         jQuery(".rotate").on("click", function () {
             jQuery(".next-button").show();
             jQuery(".waiting").hide();
@@ -424,5 +408,5 @@
 {% endblock %}
 
 {% block styles %}
-<link rel="stylesheet" href="{% static 'Module1/styles/pv_12.css' %}" />
+<link rel="stylesheet" href="{% static 'App1/styles/pv_13.css' %}" />
 {% endblock %}
