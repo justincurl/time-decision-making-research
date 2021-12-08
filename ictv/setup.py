@@ -32,4 +32,4 @@ class Constants(BaseConstants):
     # ---------------------------------------------------------------------------------------------------------------- #
     name_in_url = 'ictv'
     players_per_group = None
-    num_rounds = num_choices + 1
+    num_rounds = num_choices

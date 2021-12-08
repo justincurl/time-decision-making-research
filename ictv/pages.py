@@ -10,20 +10,7 @@ class Start(Page):
 
 class Instructions(Page):
     def is_displayed(self):
-        return self.round_number == 1
-
-class DirectGrowth(Page):
-    form_model = 'player'
-    form_fields = ['slider_direct_growth', 'direct_growth']
-
-    def is_displayed(self):
-        check_condition = False
-        if self.player.direct_condition == 1 and self.round_number == 1:
-            check_condition = True
-        elif self.player.direct_condition == 2 and self.round_number == Constants.num_rounds:
-            check_condition = True
-
-        if check_condition and json.loads(self.participant.vars["consent_answer"]) == 1:
+        if self.round_number == 1:
             current_time = datetime.datetime.now().strftime("%H:%M:%S")
             self.player.instructions_1_start_time = json.dumps(current_time)
             return True
@@ -38,6 +25,54 @@ class DirectGrowth(Page):
         self.player.instructions_1_total_time = json.dumps(str(finish_time - start_time))
         return super().before_next_page()
 
+class DirectGrowthBefore(Page):
+    form_model = 'player'
+    form_fields = ['slider_direct_growth', 'direct_growth']
+
+    def is_displayed(self):
+        check_condition = False
+        if self.player.direct_condition == 1 and self.round_number == 1:
+            check_condition = True
+
+        if check_condition:
+            current_time = datetime.datetime.now().strftime("%H:%M:%S")
+            self.player.direct_start_time = json.dumps(current_time)
+            return True
+        else:
+            return False
+    
+    def before_next_page(self):
+        current_time = datetime.datetime.now().strftime("%H:%M:%S")
+        self.player.direct_finish_time = json.dumps(current_time)
+        finish_time = datetime.datetime.strptime(current_time, "%H:%M:%S")
+        start_time = datetime.datetime.strptime(json.loads(self.player.direct_start_time), "%H:%M:%S")
+        self.player.direct_total_time = json.dumps(str(finish_time - start_time))
+        return super().before_next_page()
+
+
+class DirectGrowthAfter(Page):
+    form_model = 'player'
+    form_fields = ['slider_direct_growth', 'direct_growth']
+
+    def is_displayed(self):
+        check_condition = False
+        if self.player.direct_condition == 2 and self.round_number == Constants.num_rounds:
+            check_condition = True
+
+        if check_condition:
+            current_time = datetime.datetime.now().strftime("%H:%M:%S")
+            self.player.direct_start_time = json.dumps(current_time)
+            return True
+        else:
+            return False
+    
+    def before_next_page(self):
+        current_time = datetime.datetime.now().strftime("%H:%M:%S")
+        self.player.direct_finish_time = json.dumps(current_time)
+        finish_time = datetime.datetime.strptime(current_time, "%H:%M:%S")
+        start_time = datetime.datetime.strptime(json.loads(self.player.direct_start_time), "%H:%M:%S")
+        self.player.direct_total_time = json.dumps(str(finish_time - start_time))
+        return super().before_next_page()
 # ******************************************************************************************************************** #
 # *** PAGE DECISION *** #
 # ******************************************************************************************************************** #
@@ -51,7 +86,8 @@ class Decision(Page):
     # variables for template
     # ----------------------------------------------------------------------------------------------------------------
     def vars_for_template(self):
-
+        current_time = datetime.datetime.now().strftime("%H:%M:%S")
+        self.player.direct_start_time = json.dumps(current_time)
 
         # specify info for progress bar
         page = self.subsession.round_number
@@ -66,6 +102,12 @@ class Decision(Page):
     def before_next_page(self):
         self.player.set_delayed_payoffs()
         self.player.update_switching_row()
+        current_time = datetime.datetime.now().strftime("%H:%M:%S")
+        self.player.direct_finish_time = json.dumps(current_time)
+        finish_time = datetime.datetime.strptime(current_time, "%H:%M:%S")
+        start_time = datetime.datetime.strptime(json.loads(self.player.direct_start_time), "%H:%M:%S")
+        self.player.direct_total_time = json.dumps(str(finish_time - start_time))
+        return super().before_next_page()
 
 
 # ******************************************************************************************************************** #
@@ -74,8 +116,9 @@ class Decision(Page):
 def generate_page_sequence():
     return (
         [Instructions] +
-        [DirectGrowth] +
-        [Decision]
+        [DirectGrowthBefore] +
+        [Decision] +
+        [DirectGrowthAfter]
     )
 
 page_sequence = generate_page_sequence()
