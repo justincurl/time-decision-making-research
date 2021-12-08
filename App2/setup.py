@@ -30,6 +30,6 @@ class Constants(BaseConstants):
     # ---------------------------------------------------------------------------------------------------------------- #
     # --- oTree Settings (Don't Modify) --- #
     # ---------------------------------------------------------------------------------------------------------------- #
-    name_in_url = 'ictv'
+    name_in_url = 'App2'
     players_per_group = None
-    num_rounds = num_choices
+    num_rounds = 2*num_choices
