@@ -1,0 +1,85 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div align="center">
+    <h2 text-align="center">
+        <strong style="text-transform: uppercase; color: orange;">FUTURE: </strong><span style="text-transform: uppercase;">{{earlier_time}}</span> and <span style="text-transform: uppercase;">{{later_time}}</span>
+    </h2>
+</div>
+<br>
+<div text-align="justify" style="font-size: larger;">
+    Which combination of temporary jobs created <strong>{{earlier_time}}</strong> and <strong>{{later_time}}</strong> represents <strong>the best economy?</strong>
+    <br>
+    <br>
+</div>
+<div style="text-align: justify">
+    {{note}}
+</div>
+<br>
+<br>
+<table class="table table-bordered">
+    <tbody>
+        <tr
+            class="timepref__question-start timepref__question-unanswered">
+            <td>{{question_instructions}} <strong>{{ earlier_time }}</strong></span>
+            </td>
+            {% for value in start_values %}
+            <td class="text-center">{{ value }}</td>
+            {% endfor %}
+        </tr>
+        <tr class="timepref__question-end">
+            <td>{{question_instructions}} <strong>{{ later_time }}</strong></td>
+            {% for value in end_values %}
+            <td class="text-center" style="width: 110px !important;">{{ value }}</td>
+            {% endfor %}
+        </tr>
+        <tr class="timepref__question-choices">
+            <td></td>
+            {% for index in idxs %}
+            <td class="text-center timepref__question-choice">
+                <input type="radio" name="question_{{questions_to_page|add:index}}" value="{{ index }}" />
+            </td>
+            {% endfor %}
+
+            <h1></h1>
+    </tbody>
+</table>
+<br>
+<br>
+<div text-align="justify">
+    Mark the response button that you think shows the best economy. 
+</div>
+<br>
+<br>
+
+<input id="timepref__answer" type="hidden" name="future_grid_answer" value="{{player.future_grid_answer}}">
+
+<script>
+    function alertFunctionBlock() {
+        alert("In order for your answers to be most helpful to us, it is really important that you respond to all questions.")
+        jQuery('.timepref__waiting').hide();
+        jQuery('.timepref__next-button').show();
+        return false
+    }
+</script>
+
+<div class="timepref__waiting" onclick="return alertFunctionBlock();" style="text-align: center;">
+    {% next_button %}
+</div>
+
+<div class="timepref__next-button" style="text-align: center;">
+    {% next_button %}
+</div>
+
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'Module1/styles/block.css' %}" />
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'Module1/scripts/block.js' %}"></script>
+{% endblock %}

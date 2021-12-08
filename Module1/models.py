@@ -11,7 +11,7 @@ class Constants(BaseConstants):
     num_rounds = 30
     num_per_section = 5
     num_sliders = 15
-    num_grid_rounds = 1
+    num_grids = 15
 
 
 class Subsession(BaseSubsession):
@@ -33,65 +33,37 @@ class Subsession(BaseSubsession):
         start_at_random = itertools.islice(ordering, rand_choice[0], None)
 
     ###################################################################################################### FUTURE GRID SET UP ######################################################################################################
-        future_CTB_right_values = self.session.config["future_CTB_right_values"].split(", ")
-        future_CTB_right_values = [float(i) for i in future_CTB_right_values]
-        future_CTB_left_values = self.session.config["future_CTB_left_values"].split(", ")
-        future_CTB_left_values = [float(i) for i in future_CTB_left_values]
-        future_CTB_t_earliers = self.session.config['future_CTB_t_earliers'].split(', ')
-        future_CTB_t_laters = self.session.config['future_CTB_t_laters'].split(', ')
-        future_block_order = [i for i in range(self.session.config["future_num_blocks"])]
-
-        future_block_size = self.session.config["future_block_size"]
-
-        future_CTB_blocks_left = []
-        future_CTB_blocks_right = []
-        for i in range(self.session.config["future_num_blocks"]):
-            future_CTB_blocks_left.append(future_CTB_left_values[i*future_block_size:(i+1)*future_block_size])
-            future_CTB_blocks_right.append(future_CTB_right_values[i*future_block_size:(i+1)*future_block_size])
-
-        future_Blocks = []
-        for i in range(len(future_block_order)):
-            future_Blocks.append(
-                Block(
-                    left_values=future_CTB_blocks_left[i],
-                    right_values=future_CTB_blocks_right[i],
-                    earlier_time=future_CTB_t_earliers[i],
-                    later_time=future_CTB_t_laters[i],
-                    number_of_choices=6,
-                    block_index=i
-                )
-            )
+        future_grid_right_values = self.session.config["future_grid_right_values"].split(", ")
+        future_grid_right_values = [float(i) for i in future_grid_right_values]
+        future_grid_left_values = self.session.config["future_grid_left_values"].split(", ")
+        future_grid_left_values = [float(i) for i in future_grid_left_values]
+        future_grid_t_earliers = self.session.config['future_grid_t_earliers'].split(', ')
+        future_grid_t_laters = self.session.config['future_grid_t_laters'].split(', ')
+        
+        future_grid_round_configs = []
+        future_round_section = []
+        for i in range(len(future_grid_left_values)//Constants.num_per_section):
+            for j in range(Constants.num_per_section):
+                future_round_section.append((future_grid_t_earliers[i*Constants.num_per_section + j], future_grid_left_values[i*Constants.num_per_section + j], future_grid_t_laters[i*Constants.num_per_section + j], future_grid_right_values[i*Constants.num_per_section + j]))
+            future_grid_round_configs.append(future_round_section)
+            future_round_section = []
 
     ###################################################################################################### PAST GRID SET UP ######################################################################################################
-        past_CTB_right_values = self.session.config["past_CTB_right_values"].split(", ")
-        past_CTB_right_values = [float(i) for i in past_CTB_right_values]
-        past_CTB_left_values = self.session.config["past_CTB_left_values"].split(", ")
-        past_CTB_left_values = [float(i) for i in past_CTB_left_values]
-        past_CTB_t_earliers = self.session.config['past_CTB_t_earliers'].split(', ')
-        past_CTB_t_laters = self.session.config['past_CTB_t_laters'].split(', ')
-        past_block_order = [i for i in range(self.session.config["past_num_blocks"])]
-
-        past_block_size = self.session.config["past_block_size"]
-
-        past_CTB_blocks_left = []
-        past_CTB_blocks_right = []
-        for i in range(self.session.config["past_num_blocks"]):
-            past_CTB_blocks_left.append(past_CTB_left_values[i*past_block_size:(i+1)*past_block_size])
-            past_CTB_blocks_right.append(past_CTB_right_values[i*past_block_size:(i+1)*past_block_size])
-
-        past_Blocks = []
-        for i in range(len(past_block_order)):
-            past_Blocks.append(
-                Block(
-                    left_values=past_CTB_blocks_left[i],
-                    right_values=past_CTB_blocks_right[i],
-                    earlier_time=past_CTB_t_earliers[i],
-                    later_time=past_CTB_t_laters[i],
-                    number_of_choices=6,
-                    block_index=i
-                )
-            )
-
+        past_grid_right_values = self.session.config["past_grid_right_values"].split(", ")
+        past_grid_right_values = [float(i) for i in past_grid_right_values]
+        past_grid_left_values = self.session.config["past_grid_left_values"].split(", ")
+        past_grid_left_values = [float(i) for i in past_grid_left_values]
+        past_grid_t_earliers = self.session.config['past_grid_t_earliers'].split(', ')
+        past_grid_t_laters = self.session.config['past_grid_t_laters'].split(', ')
+        
+        past_grid_round_configs = []
+        past_round_section = []
+        for i in range(len(past_grid_left_values)//Constants.num_per_section):
+            for j in range(Constants.num_per_section):
+                past_round_section.append((past_grid_t_earliers[i*Constants.num_per_section + j], past_grid_left_values[i*Constants.num_per_section + j], past_grid_t_laters[i*Constants.num_per_section + j], past_grid_right_values[i*Constants.num_per_section + j]))
+            past_grid_round_configs.append(past_round_section)
+            past_round_section = []
+    
     ###################################################################################################### FUTURE VISUAL SET UP ###################################################################################################### 
         future_t_options = self.session.config['future_t_options'].split(', ')
         
@@ -111,12 +83,12 @@ class Subsession(BaseSubsession):
         for i in range(len(future_payment_laters)):
             future_payment_laters[i] = future_payment_laters[i].split(", ")
         
-        future_round_configs = []
+        future_visual_round_configs = []
         future_round_section = []
         for i in range(len(future_t_earliers)):
             for j in range(Constants.num_per_section):
                 future_round_section.append((future_t_earliers[i][j], future_payment_earliers[i][j], future_t_laters[i][j], future_payment_laters[i][j]))
-            future_round_configs.append(future_round_section)
+            future_visual_round_configs.append(future_round_section)
             future_round_section = []
 
     ###################################################################################################### PAST VISUAL SET UP ###################################################################################################### 
@@ -138,17 +110,16 @@ class Subsession(BaseSubsession):
         for i in range(len(past_payment_laters)):
             past_payment_laters[i] = past_payment_laters[i].split(", ")
         
-        past_round_configs = []
+        past_visual_round_configs = []
         past_round_section = []
         for i in range(len(past_t_earliers)):
             for j in range(Constants.num_per_section):
                 past_round_section.append((past_t_earliers[i][j], past_payment_earliers[i][j], past_t_laters[i][j], past_payment_laters[i][j]))
-            past_round_configs.append(past_round_section)
+            past_visual_round_configs.append(past_round_section)
             past_round_section = []
 
     ###################################################################################################### PLAYERS SET UP ###################################################################################################### 
         for player in self.get_players():
-            
             if self.round_number == 1:
                 player_order = next(start_at_random)
                 player.condition = player_order[0]
@@ -168,18 +139,18 @@ class Subsession(BaseSubsession):
                     player.past_t_latest = past_t_options[2]
                     if self.round_number == 1:
                         if self.session.config["past_randomize_sliders"]:
-                            for i in range(len(past_round_configs)):
-                                random.shuffle(past_round_configs[i])
-                            random.shuffle(past_round_configs)
-                        player.past_round_configs = json.dumps(past_round_configs)
+                            for i in range(len(past_visual_round_configs)):
+                                random.shuffle(past_visual_round_configs[i])
+                            random.shuffle(past_visual_round_configs)
+                        player.past_visual_round_configs = json.dumps(past_visual_round_configs)
                     else:
-                        player.past_round_configs = player.in_round(self.round_number - 1).past_round_configs
+                        player.past_visual_round_configs = player.in_round(self.round_number - 1).past_visual_round_configs
                     if self.round_number <= Constants.num_sliders:    
-                        past_player_config = json.loads(player.past_round_configs)[(self.round_number - 1)//Constants.num_per_section][(self.round_number - 1) % Constants.num_per_section]
-                        player.past_earlier_time = past_player_config[0]  # example: today
-                        player.past_earlier_max = int(past_player_config[1])
-                        player.past_later_time = past_player_config[2]
-                        player.past_later_max = int(past_player_config[3])
+                        past_player_config = json.loads(player.past_visual_round_configs)[(self.round_number - 1)//Constants.num_per_section][(self.round_number - 1) % Constants.num_per_section]
+                        player.earlier_time = past_player_config[0]  # example: today
+                        player.earlier_max = int(past_player_config[1])
+                        player.later_time = past_player_config[2]
+                        player.later_max = int(past_player_config[3])
 
                 if self.round_number > Constants.num_sliders and self.round_number < 2 * Constants.num_sliders + 1:
                     if player.second == "FV":
@@ -188,30 +159,34 @@ class Subsession(BaseSubsession):
                         player.future_t_latest = future_t_options[2]
                         if self.round_number - Constants.num_sliders == 1:
                             if self.session.config["future_randomize_sliders"]:
-                                for i in range(len(future_round_configs)):
-                                    random.shuffle(future_round_configs[i]) 
-                                random.shuffle(future_round_configs)
-                            player.future_round_configs = json.dumps(future_round_configs)
+                                for i in range(len(future_visual_round_configs)):
+                                    random.shuffle(future_visual_round_configs[i]) 
+                                random.shuffle(future_visual_round_configs)
+                            player.future_visual_round_configs = json.dumps(future_visual_round_configs)
                         else:
-                            player.future_round_configs = player.in_round(self.round_number - 1).future_round_configs    
-                            future_player_config = json.loads(player.future_round_configs)[(self.round_number - Constants.num_sliders - 1)//Constants.num_per_section][(self.round_number - Constants.num_sliders - 1) % Constants.num_per_section]
-                            player.future_earlier_time = future_player_config[0]  # example: today
-                            player.future_earlier_max = int(future_player_config[1])
-                            player.future_later_time = future_player_config[2]
-                            player.future_later_max = int(future_player_config[3])
+                            player.future_visual_round_configs = player.in_round(self.round_number - 1).future_visual_round_configs    
+                            future_player_config = json.loads(player.future_visual_round_configs)[(self.round_number - Constants.num_sliders - 1)//Constants.num_per_section][(self.round_number - Constants.num_sliders - 1) % Constants.num_per_section]
+                            player.earlier_time = future_player_config[0]  # example: today
+                            player.earlier_max = int(future_player_config[1])
+                            player.later_time = future_player_config[2]
+                            player.later_max = int(future_player_config[3])
 
-                if self.round_number > Constants.num_sliders and self.round_number < Constants.num_sliders + Constants.num_grid_rounds + 1:    
+                if self.round_number > Constants.num_sliders and self.round_number < Constants.num_sliders + Constants.num_grids + 1:    
                     if player.second == "PG":
-                        player.past_blocks = codecs.encode(pickle.dumps(past_Blocks), "base64").decode()
-                        if self.session.config["past_randomize_blocks"]:
-                            past_to_shuffle_block_order = [past_block_order[0:Constants.num_per_section], past_block_order[Constants.num_per_section:2*Constants.num_per_section], past_block_order[2*Constants.num_per_section:3*Constants.num_per_section]]
-                            for i in range(len(past_to_shuffle_block_order)):
-                                random.shuffle(past_to_shuffle_block_order[i])
-                            random.shuffle(past_to_shuffle_block_order)
-                            past_block_order = []
-                            for i in range(len(past_to_shuffle_block_order)):
-                                past_block_order += past_to_shuffle_block_order[i]
-                        player.past_block_order = json.dumps(past_block_order)
+                        if self.round_number - Constants.num_grids == 1:
+                            if self.session.config["past_randomize_blocks"]:
+                                for i in range(len(past_grid_round_configs)):
+                                    random.shuffle(past_grid_round_configs[i])
+                                random.shuffle(past_grid_round_configs)
+                            player.past_grid_round_configs = json.dumps(past_grid_round_configs)
+                        else:
+                            player.past_grid_round_configs = player.in_round(self.round_number - 1).past_grid_round_configs
+
+                        player_config = json.loads(player.past_grid_round_configs)[(self.round_number - Constants.num_sliders - 1)//Constants.num_per_section][(self.round_number - Constants.num_sliders - 1) % Constants.num_per_section]
+                        player.earlier_time = player_config[0]  # example: today
+                        player.earlier_max = int(player_config[1])
+                        player.later_time = player_config[2]
+                        player.later_max = int(player_config[3])
 
         ################################################################################################### IF CONDITION 3 or 4 ###################################################################################################
             elif player.first == "FV":
@@ -222,18 +197,18 @@ class Subsession(BaseSubsession):
                     player.future_t_latest = future_t_options[2]
                     if self.round_number == 1:
                         if self.session.config["future_randomize_sliders"]:
-                            for i in range(len(future_round_configs)):
-                                random.shuffle(future_round_configs[i]) 
-                            random.shuffle(future_round_configs)
-                        player.future_round_configs = json.dumps(future_round_configs)
+                            for i in range(len(future_visual_round_configs)):
+                                random.shuffle(future_visual_round_configs[i]) 
+                            random.shuffle(future_visual_round_configs)
+                        player.future_visual_round_configs = json.dumps(future_visual_round_configs)
                     else:
-                        player.future_round_configs = player.in_round(self.round_number - 1).future_round_configs
+                        player.future_visual_round_configs = player.in_round(self.round_number - 1).future_visual_round_configs
                         
-                    future_player_config = json.loads(player.future_round_configs)[(self.round_number - 1)//Constants.num_per_section][(self.round_number - 1) % Constants.num_per_section]
-                    player.future_earlier_time = future_player_config[0]  # example: today
-                    player.future_earlier_max = int(future_player_config[1])
-                    player.future_later_time = future_player_config[2]
-                    player.future_later_max = int(future_player_config[3])
+                    future_player_config = json.loads(player.future_visual_round_configs)[(self.round_number - 1)//Constants.num_per_section][(self.round_number - 1) % Constants.num_per_section]
+                    player.earlier_time = future_player_config[0]  # example: today
+                    player.earlier_max = int(future_player_config[1])
+                    player.later_time = future_player_config[2]
+                    player.later_max = int(future_player_config[3])
                 
                 if self.round_number > Constants.num_sliders and self.round_number < 2 * Constants.num_sliders + 1:
                     if player.second == "PV":
@@ -242,128 +217,148 @@ class Subsession(BaseSubsession):
                         player.past_t_latest = past_t_options[2]
                         if self.round_number - Constants.num_sliders == 1:
                             if self.session.config["past_randomize_sliders"]:
-                                for i in range(len(past_round_configs)):
-                                    random.shuffle(past_round_configs[i]) 
-                                random.shuffle(past_round_configs)
-                            player.past_round_configs = json.dumps(past_round_configs)
+                                for i in range(len(past_visual_round_configs)):
+                                    random.shuffle(past_visual_round_configs[i]) 
+                                random.shuffle(past_visual_round_configs)
+                            player.past_visual_round_configs = json.dumps(past_visual_round_configs)
                         else:
-                            player.past_round_configs = player.in_round(self.round_number - 1).past_round_configs
+                            player.past_visual_round_configs = player.in_round(self.round_number - 1).past_visual_round_configs
                             
-                        past_player_config = json.loads(player.past_round_configs)[(self.round_number - Constants.num_sliders - 1)//Constants.num_per_section][(self.round_number - Constants.num_sliders - 1) % Constants.num_per_section]
-                        player.past_earlier_time = past_player_config[0]  # example: today
-                        player.past_earlier_max = int(past_player_config[1])
-                        player.past_later_time = past_player_config[2]
-                        player.past_later_max = int(past_player_config[3])
+                        past_player_config = json.loads(player.past_visual_round_configs)[(self.round_number - Constants.num_sliders - 1)//Constants.num_per_section][(self.round_number - Constants.num_sliders - 1) % Constants.num_per_section]
+                        player.earlier_time = past_player_config[0]  # example: today
+                        player.earlier_max = int(past_player_config[1])
+                        player.later_time = past_player_config[2]
+                        player.later_max = int(past_player_config[3])
                 
-                if self.round_number > Constants.num_sliders and self.round_number < Constants.num_sliders + Constants.num_grid_rounds + 1: 
+                if self.round_number > Constants.num_sliders and self.round_number < Constants.num_sliders + Constants.num_grids + 1: 
                     if player.second == "FG":
-                        player.future_blocks = codecs.encode(pickle.dumps(future_Blocks), "base64").decode()
-                        if self.session.config["future_randomize_blocks"]:
-                            future_to_shuffle_block_order = [future_block_order[0:Constants.num_per_section], future_block_order[Constants.num_per_section:2*Constants.num_per_section], future_block_order[2*Constants.num_per_section:3*Constants.num_per_section]]
-                            for i in range(len(future_to_shuffle_block_order)):
-                                random.shuffle(future_to_shuffle_block_order[i]) 
-                            random.shuffle(future_to_shuffle_block_order)
-                            future_block_order = []
-                            for i in range(len(future_to_shuffle_block_order)):
-                                future_block_order += future_to_shuffle_block_order[i]
-                        player.future_block_order = json.dumps(future_block_order)
+                        if self.round_number - Constants.num_sliders == 1:
+                            if self.session.config["future_randomize_blocks"]:
+                                for i in range(len(future_grid_round_configs)):
+                                    random.shuffle(future_grid_round_configs[i])
+                                random.shuffle(future_grid_round_configs)
+                            player.future_grid_round_configs = json.dumps(future_grid_round_configs)
+                        else:
+                            player.future_grid_round_configs = player.in_round(self.round_number - 1).future_grid_round_configs
+            
+                        player_config = json.loads(player.future_grid_round_configs)[(self.round_number - Constants.num_sliders - 1)//Constants.num_per_section][(self.round_number - Constants.num_sliders - 1) % Constants.num_per_section]
+                        player.earlier_time = player_config[0]  # example: today
+                        player.earlier_max = int(player_config[1])
+                        player.later_time = player_config[2]
+                        player.later_max = int(player_config[3])
 
         ################################################################################################### IF CONDITION 5 or 6 ###################################################################################################
             elif player.first == "PG":
                 ################################################################################################### PAST GRID WITHIN-PLAYER RANDOMIZATION ###################################################################################################
-                if self.round_number <= Constants.num_grid_rounds:
-                    player.past_blocks = codecs.encode(pickle.dumps(past_Blocks), "base64").decode()
-                    if self.session.config["past_randomize_blocks"]:
-                        past_to_shuffle_block_order = [past_block_order[0:Constants.num_per_section], past_block_order[Constants.num_per_section:2*Constants.num_per_section], past_block_order[2*Constants.num_per_section:3*Constants.num_per_section]]
-                        for i in range(len(past_to_shuffle_block_order)):
-                            random.shuffle(past_to_shuffle_block_order[i])
-                        random.shuffle(past_to_shuffle_block_order)
-                        past_block_order = []
-                        for i in range(len(past_to_shuffle_block_order)):
-                            past_block_order += past_to_shuffle_block_order[i]
-                    player.past_block_order = json.dumps(past_block_order)
+                if self.round_number <= Constants.num_grids:
+                    if self.round_number == 1:
+                        if self.session.config["past_randomize_blocks"]:
+                            for i in range(len(past_grid_round_configs)):
+                                random.shuffle(past_grid_round_configs[i])
+                            random.shuffle(past_grid_round_configs)
+                        player.past_grid_round_configs = json.dumps(past_grid_round_configs)
+                    else:
+                        player.past_grid_round_configs = player.in_round(self.round_number - 1).past_grid_round_configs
 
-                if self.round_number > Constants.num_grid_rounds and self.round_number < 2*Constants.num_grid_rounds + 1:
+                    player_config = json.loads(player.past_grid_round_configs)[(self.round_number - 1)//Constants.num_per_section][(self.round_number - 1) % Constants.num_per_section]
+                    player.earlier_time = player_config[0]  # example: today
+                    player.earlier_max = int(player_config[1])
+                    player.later_time = player_config[2]
+                    player.later_max = int(player_config[3])
+
+                if self.round_number > Constants.num_grids and self.round_number < 2 * Constants.num_grids + 1:
                     if player.second == "FG":
-                        player.future_blocks = codecs.encode(pickle.dumps(future_Blocks), "base64").decode()
-                        if self.session.config["future_randomize_blocks"]:
-                            future_to_shuffle_block_order = [future_block_order[0:Constants.num_per_section], future_block_order[Constants.num_per_section:2*Constants.num_per_section], future_block_order[2*Constants.num_per_section:3*Constants.num_per_section]]
-                            for i in range(len(future_to_shuffle_block_order)):
-                                random.shuffle(future_to_shuffle_block_order[i]) 
-                            random.shuffle(future_to_shuffle_block_order)
-                            future_block_order = []
-                            for i in range(len(future_to_shuffle_block_order)):
-                                future_block_order += future_to_shuffle_block_order[i]
-                        player.future_block_order = json.dumps(future_block_order)
+                        if self.round_number - Constants.num_grids == 1:
+                            if self.session.config["future_randomize_blocks"]:
+                                for i in range(len(future_grid_round_configs)):
+                                    random.shuffle(future_grid_round_configs[i])
+                                random.shuffle(future_grid_round_configs)
+                            player.future_grid_round_configs = json.dumps(future_grid_round_configs)
+                        else:
+                            player.future_grid_round_configs = player.in_round(self.round_number - 1).future_grid_round_configs
+            
+                        player_config = json.loads(player.future_grid_round_configs)[(self.round_number - Constants.num_grids - 1)//Constants.num_per_section][(self.round_number - Constants.num_grids - 1) % Constants.num_per_section]
+                        player.earlier_time = player_config[0]  # example: today
+                        player.earlier_max = int(player_config[1])
+                        player.later_time = player_config[2]
+                        player.later_max = int(player_config[3])
                 
-                if self.round_number > Constants.num_grid_rounds and self.round_number < Constants.num_grid_rounds + Constants.num_sliders + 1:
+                if self.round_number > Constants.num_grids and self.round_number < Constants.num_grids + Constants.num_sliders + 1:
                     if player.second == "PV":
                         player.past_t_earliest = past_t_options[0]
                         player.past_t_middle = past_t_options[1]
                         player.past_t_latest = past_t_options[2]
-                        if self.round_number - Constants.num_grid_rounds == 1:
+                        if self.round_number - Constants.num_grids == 1:
                             if self.session.config["past_randomize_sliders"]:
-                                for i in range(len(past_round_configs)):
-                                    random.shuffle(past_round_configs[i])
-                                random.shuffle(past_round_configs)
-                            player.past_round_configs = json.dumps(past_round_configs)
+                                for i in range(len(past_visual_round_configs)):
+                                    random.shuffle(past_visual_round_configs[i])
+                                random.shuffle(past_visual_round_configs)
+                            player.past_visual_round_configs = json.dumps(past_visual_round_configs)
                         else:
-                            player.past_round_configs = player.in_round(self.round_number - 1).past_round_configs
+                            player.past_visual_round_configs = player.in_round(self.round_number - 1).past_visual_round_configs
                         
-                        past_player_config = json.loads(player.past_round_configs)[(self.round_number - Constants.num_grid_rounds - 1)//Constants.num_per_section][(self.round_number - Constants.num_grid_rounds - 1) % Constants.num_per_section]
-                        player.past_earlier_time = past_player_config[0]  # example: today
-                        player.past_earlier_max = int(past_player_config[1])
-                        player.past_later_time = past_player_config[2]
-                        player.past_later_max = int(past_player_config[3])
+                        past_player_config = json.loads(player.past_visual_round_configs)[(self.round_number - Constants.num_grids - 1)//Constants.num_per_section][(self.round_number - Constants.num_grids - 1) % Constants.num_per_section]
+                        player.earlier_time = past_player_config[0]  # example: today
+                        player.earlier_max = int(past_player_config[1])
+                        player.later_time = past_player_config[2]
+                        player.later_max = int(past_player_config[3])
 
         ################################################################################################### IF CONDITION 7 or 8 ###################################################################################################
             elif player.first == "FG":
                 ################################################################################################### FUTURE GRID WITHIN-PLAYER RANDOMIZATION ###################################################################################################
-                if self.round_number <= Constants.num_grid_rounds:
-                    player.future_blocks = codecs.encode(pickle.dumps(future_Blocks), "base64").decode()
-                    if self.session.config["future_randomize_blocks"]:
-                        future_to_shuffle_block_order = [future_block_order[0:Constants.num_per_section], future_block_order[Constants.num_per_section:2*Constants.num_per_section], future_block_order[2*Constants.num_per_section:3*Constants.num_per_section]]
-                        for i in range(len(future_to_shuffle_block_order)):
-                            random.shuffle(future_to_shuffle_block_order[i]) 
-                        random.shuffle(future_to_shuffle_block_order)
-                        future_block_order = []
-                        for i in range(len(future_to_shuffle_block_order)):
-                            future_block_order += future_to_shuffle_block_order[i]
-                    player.future_block_order = json.dumps(future_block_order)
+                if self.round_number <= Constants.num_grids:
+                    if self.round_number == 1:
+                        if self.session.config["future_randomize_blocks"]:
+                            for i in range(len(future_grid_round_configs)):
+                                random.shuffle(future_grid_round_configs[i])
+                            random.shuffle(future_grid_round_configs)
+                        player.future_grid_round_configs = json.dumps(future_grid_round_configs)
+                    else:
+                        player.future_grid_round_configs = player.in_round(self.round_number - 1).future_grid_round_configs
+        
+                    player_config = json.loads(player.future_grid_round_configs)[(self.round_number - 1)//Constants.num_per_section][(self.round_number - 1) % Constants.num_per_section]
+                    player.earlier_time = player_config[0]  # example: today
+                    player.earlier_max = int(player_config[1])
+                    player.later_time = player_config[2]
+                    player.later_max = int(player_config[3])
 
-                if self.round_number > Constants.num_grid_rounds and self.round_number < 2*Constants.num_grid_rounds + 1:
+                if self.round_number > Constants.num_grids and self.round_number < 2*Constants.num_grids + 1:
                     if player.second == "PG":
-                        player.past_blocks = codecs.encode(pickle.dumps(past_Blocks), "base64").decode()
-                        if self.session.config["past_randomize_blocks"]:
-                            past_to_shuffle_block_order = [past_block_order[0:Constants.num_per_section], past_block_order[Constants.num_per_section:2*Constants.num_per_section], past_block_order[2*Constants.num_per_section:3*Constants.num_per_section]]
-                            for i in range(len(past_to_shuffle_block_order)):
-                                random.shuffle(past_to_shuffle_block_order[i])
-                            random.shuffle(past_to_shuffle_block_order)
-                            past_block_order = []
-                            for i in range(len(past_to_shuffle_block_order)):
-                                past_block_order += past_to_shuffle_block_order[i]
-                        player.past_block_order = json.dumps(past_block_order)
+                        if self.round_number - Constants.num_grids == 1:
+                            if self.session.config["past_randomize_blocks"]:
+                                for i in range(len(past_grid_round_configs)):
+                                    random.shuffle(past_grid_round_configs[i])
+                                random.shuffle(past_grid_round_configs)
+                            player.past_grid_round_configs = json.dumps(past_grid_round_configs)
+                        else:
+                            player.past_grid_round_configs = player.in_round(self.round_number - 1).past_grid_round_configs
 
-                if self.round_number > Constants.num_grid_rounds and self.round_number < Constants.num_sliders + Constants.num_grid_rounds + 1:
+                        player_config = json.loads(player.past_grid_round_configs)[(self.round_number - Constants.num_grids - 1)//Constants.num_per_section][(self.round_number - Constants.num_grids - 1) % Constants.num_per_section]
+                        player.earlier_time = player_config[0]  # example: today
+                        player.earlier_max = int(player_config[1])
+                        player.later_time = player_config[2]
+                        player.later_max = int(player_config[3])
+
+                if self.round_number > Constants.num_grids and self.round_number < Constants.num_sliders + Constants.num_grids + 1:
                     if player.second == "FV":
                         player.future_t_earliest = future_t_options[0]
                         player.future_t_middle = future_t_options[1]
                         player.future_t_latest = future_t_options[2]
-                        if self.round_number - Constants.num_grid_rounds == 1:
+                        if self.round_number - Constants.num_grids == 1:
                             if self.session.config["future_randomize_sliders"]:
-                                for i in range(len(future_round_configs)):
-                                    random.shuffle(future_round_configs[i]) 
-                                random.shuffle(future_round_configs)
-                            player.future_round_configs = json.dumps(future_round_configs)
+                                for i in range(len(future_visual_round_configs)):
+                                    random.shuffle(future_visual_round_configs[i]) 
+                                random.shuffle(future_visual_round_configs)
+                            player.future_visual_round_configs = json.dumps(future_visual_round_configs)
                         else:
-                            player.future_round_configs = player.in_round(self.round_number - 1).future_round_configs
+                            player.future_visual_round_configs = player.in_round(self.round_number - 1).future_visual_round_configs
                             
                         # only go for the configurable number of sliders
-                        future_player_config = json.loads(player.future_round_configs)[(self.round_number - Constants.num_grid_rounds - 1)//Constants.num_per_section][(self.round_number - Constants.num_grid_rounds - 1) % Constants.num_per_section]
-                        player.future_earlier_time = future_player_config[0]  # example: today
-                        player.future_earlier_max = int(future_player_config[1])
-                        player.future_later_time = future_player_config[2]
-                        player.future_later_max = int(future_player_config[3])
+                        future_player_config = json.loads(player.future_visual_round_configs)[(self.round_number - Constants.num_grids - 1)//Constants.num_per_section][(self.round_number - Constants.num_grids - 1) % Constants.num_per_section]
+                        player.earlier_time = future_player_config[0]  # example: today
+                        player.earlier_max = int(future_player_config[1])
+                        player.later_time = future_player_config[2]
+                        player.later_max = int(future_player_config[3])
 
 class Group(BaseGroup):
     pass
@@ -389,172 +384,39 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
     )
 
+    earlier_max = models.IntegerField()
+    later_max = models.IntegerField()
+    earlier_time = models.StringField()
+    later_time = models.StringField()
+
+    start_time = models.StringField()
+    finish_time = models.StringField()
+    total_time = models.StringField()
+
 ################################################################################# FUTURE GRID PLAYER VARIABLES #################################################################################
-    future_grid_start_time = models.StringField()
-    future_grid_finish_time = models.StringField()
-    future_grid_total_time = models.StringField()
-
-    future_blocks = models.LongStringField(initial="")
-    future_current_block_step = models.IntegerField(initial=0)
-    """Current step the user is in
-    """
-    
-    future_question_answers = models.StringField(initial="")
-    """Serialized JSON array representing the players answers
-    
-    The JSON array is two dimensional - the elements of the array represent
-    the selected choices per block where the element index matches the index
-    of the block in config.BLOCKS (0-based). The elements itself are also arrays where
-    each number inside the element represents the index of the choice the
-    player made in the respective question - starting from 1.
-    """
-    future_block_order = models.StringField(initial="")
-
-    def goto_next_future_block_step(self) -> None:
-        """Advances the player to the next step
-        """
-        self.future_current_block_step += 1
-
-    def get_current_future_block_step(self) -> int:
-        """The player's current step
-
-        :return: Current step
-        """
-        return self.future_current_block_step
-
-    def get_current_future_block_index(self) -> int:
-        """Get the index of the block to be currently displayed
-
-        This function returns the 0-based index of the block in `config.BLOCKS`
-        to be displayed to the player taking into account the potentially
-        randomized order.
-        This method will return `-1` if `self.current_step` exceed the number
-        of configured blocks.
-
-        :return: Index of block to display or `-1`
-        """
-        if self.future_current_block_step < len(pickle.loads(codecs.decode(self.future_blocks.encode(), "base64"))):
-            return json.loads(self.future_block_order)[self.future_current_block_step]
-        else:
-            return -1
-
-    def get_current_future_block(self) -> Optional[Block]:
-        """Get the current Block to display
-
-        This function returns `None` if there is nothing left to display.
-
-        :return: Block to display or `None`
-        """
-        future_block_index = self.get_current_future_block_index()
-        if 0 <= future_block_index < len(pickle.loads(codecs.decode(self.future_blocks.encode(), "base64"))):
-            return pickle.loads(codecs.decode(self.future_blocks.encode(), "base64"))[future_block_index]
-        else:
-            return False
+    future_grid_round_configs = models.StringField()
+    future_grid_answer = models.StringField()
 
 ################################################################################# PAST GRID PLAYER VARIABLES #################################################################################
-
-    past_grid_start_time = models.StringField()
-    past_grid_finish_time = models.StringField()
-    past_grid_total_time = models.StringField()
-
-    past_blocks = models.LongStringField(initial="")
-    past_current_block_step = models.IntegerField(initial=0)
-    """Current step the user is in
-    """
-    
-    past_question_answers = models.StringField(initial="")
-    """Serialized JSON array representing the players answers
-    
-    The JSON array is two dimensional - the elements of the array represent
-    the selected choices per block where the element index matches the index
-    of the block in config.BLOCKS (0-based). The elements itself are also arrays where
-    each number inside the element represents the index of the choice the
-    player made in the respective question - starting from 1.
-    """
-    past_block_order = models.StringField(initial="")
-
-    def goto_next_past_block_step(self) -> None:
-        """Advances the player to the next step
-        """
-        self.past_current_block_step += 1
-
-    def get_current_past_block_step(self) -> int:
-        """The player's current step
-
-        :return: Current step
-        """
-        return self.past_current_block_step
-
-    def get_current_past_block_index(self) -> int:
-        """Get the index of the block to be currently displayed
-
-        This function returns the 0-based index of the block in `config.BLOCKS`
-        to be displayed to the player taking into account the potentially
-        randomized order.
-        This method will return `-1` if `self.current_step` exceed the number
-        of configured blocks.
-
-        :return: Index of block to display or `-1`
-        """
-        
-        if self.past_current_block_step < len(pickle.loads(codecs.decode(self.past_blocks.encode(), "base64"))):
-            return json.loads(self.past_block_order)[self.past_current_block_step]
-        else:
-            return -1
-
-    def get_current_past_block(self) -> Optional[Block]:
-        """Get the current Block to display
-
-        This function returns `None` if there is nothing left to display.
-
-        :return: Block to display or `None`
-        """
-        past_block_index = self.get_current_past_block_index()
-        if 0 <= past_block_index < len(pickle.loads(codecs.decode(self.past_blocks.encode(), "base64"))):
-            return pickle.loads(codecs.decode(self.past_blocks.encode(), "base64"))[past_block_index]
-        else:
-            return False
+    past_grid_round_configs = models.StringField()
+    past_grid_answer = models.StringField()
 
 ################################################################################# FUTURE VISUAL PLAYER VARIABLES #################################################################################
-
-    future_round_configs = models.StringField()
+    future_visual_round_configs = models.StringField()
+    
     future_t_earliest = models.StringField()
     future_t_middle = models.StringField()
     future_t_latest = models.StringField()
-    
-    future_visual_start_time = models.StringField()
-    future_visual_finish_time = models.StringField()
-    future_visual_total_time = models.StringField()
 
-    future_earlier_max = models.IntegerField()
-    future_later_max = models.IntegerField()
-    future_earlier_time = models.StringField()
-    future_later_time = models.StringField()
-
-    future_slider_value = models.IntegerField()
     future_slider_one = models.IntegerField()
-    future_check_slider_one = models.IntegerField(blank=True)
     future_slider_two = models.IntegerField()
-    future_check_slider_two = models.IntegerField(blank=True)
 
 ################################################################################# PAST VISUAL PLAYER VARIABLES #################################################################################
-
-    past_round_configs = models.StringField()
+    past_visual_round_configs = models.StringField()
+    
     past_t_earliest = models.StringField()
     past_t_middle = models.StringField()
     past_t_latest = models.StringField()
     
-    past_visual_start_time = models.StringField()
-    past_visual_finish_time = models.StringField()
-    past_visual_total_time = models.StringField()
-
-    past_earlier_max = models.IntegerField()
-    past_later_max = models.IntegerField()
-    past_earlier_time = models.StringField()
-    past_later_time = models.StringField()
-
-    past_slider_value = models.IntegerField()
     past_slider_one = models.IntegerField()
-    past_check_slider_one = models.IntegerField(blank=True)
     past_slider_two = models.IntegerField()
-    past_check_slider_two = models.IntegerField(blank=True)

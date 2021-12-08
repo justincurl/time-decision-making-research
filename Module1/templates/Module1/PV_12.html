@@ -6,12 +6,6 @@
 
 {% block content %}
 
-    {{ form.past_check_slider_one.errors }}
-    {{ form.past_check_slider_two.errors }}
-
-    <input type="hidden" name="past_check_slider_one" value="" id="id_past_check_slider_one"/>
-    <input type="hidden" name="past_check_slider_two" value="" id="id_past_check_slider_two"/>
-
     <input type="hidden" value="{{earlier_time}}" id="earlier_time"/>
     <input type="hidden" value="{{later_time}}" id="later_time"/>
     <input type="hidden" value={{earlier_max}} id="earlier_max"/>
@@ -161,8 +155,6 @@
                 var past_slider_two_val = $(this).val()*later_max/earlier_max;
                 document.getElementById("id_past_slider_two").value = past_slider_two_val; // links the two slider values together
                 updateLabels(past_slider_one_display_val/earlier_max*10, past_slider_one_display_val, past_slider_two_val, document.getElementById("id_past_slider_one").step, document.getElementById("id_past_slider_two").step, earlier_time, later_time);
-                $('#past_check_slider_one').val(1);
-                $('#past_check_slider_two').val(1);
             });
         
             // functions for slider 2
@@ -186,8 +178,6 @@
                 var past_slider_one_display_val = earlier_max - past_slider_one_actual_val;
                 document.getElementById("id_past_slider_one").value = past_slider_one_actual_val;
                 updateLabels(past_slider_one_display_val/earlier_max*10, past_slider_one_display_val, past_slider_two_val, document.getElementById("id_past_slider_one").step, document.getElementById("id_past_slider_two").step, earlier_time, later_time);
-                $('#past_check_slider_one').val(1);
-                $('#past_check_slider_two').val(1);
             });
 
             function numberWithCommas(x) {

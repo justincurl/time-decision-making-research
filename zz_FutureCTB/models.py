@@ -35,8 +35,6 @@ class Subsession(BaseSubsession):
         CTB_t_laters = self.session.config['future_CTB_t_laters'].split(', ')
         block_order = [i for i in range(self.session.config["future_num_blocks"])]
 
-        block_size = self.session.config["future_block_size"]
-
         CTB_blocks_left = []
         CTB_blocks_right = []
         for i in range(self.session.config["future_num_blocks"]):

@@ -5,7 +5,7 @@
 {% block content %}
 <div align="center">
     <h2 text-align="center">
-        <strong style="text-transform: uppercase; color: fuchsia;">PAST: </strong><span style="text-transform: uppercase;">{{curr_block.text_total_end}}</span> and <span style="text-transform: uppercase;">{{curr_block.text_delay_start}}</span>
+        <strong style="text-transform: uppercase; color: fuchsia;">PAST: </strong><span style="text-transform: uppercase;">{{later_time}}</span> and <span style="text-transform: uppercase;">{{earlier_time}}</span>
     </h2>
 </div>
 <br>
@@ -13,10 +13,10 @@
     The next section of this survey is about your views of <strong>temporary job creation</strong> now, a year ago, and five years ago. Studies have shown that temporary job creation is beneficial to both job candidates and employers.
     <br>
     <br>
-    First, we will ask you several questions about temporary (1-year contract) jobs created <strong>{{curr_block.text_total_end}}</strong> and temporary jobs created <strong>{{curr_block.text_delay_start}}</strong>.
+    First, we will ask you several questions about temporary (1-year contract) jobs created <strong>{{later_time}}</strong> and temporary jobs created <strong>{{earlier_time}}</strong>.
     <br>
     <br>
-    In each question, you will be able to indicate which combination of temporary jobs created <strong>{{curr_block.text_total_end}}</strong> and <strong>{{curr_block.text_delay_start}}</strong> you think represents the best economy. Some people might think the best economy would have created all temporary jobs {{curr_block.text_total_end}} even though that would have meant higher unemployment {{curr_block.text_delay_start}}. Other people may think the best economy would have created all temporary jobs {{curr_block.text_delay_start}} even though that would have meant higher unemployment {{curr_block.text_total_end}}. Still others may think the best economy would have divided the number of jobs created between the two periods in some way.
+    In each question, you will be able to indicate which combination of temporary jobs created <strong>{{later_time}}</strong> and <strong>{{earlier_time}}</strong> you think represents the best economy. Some people might think the best economy would have created all temporary jobs {{later_time}} even though that would have meant higher unemployment {{earlier_time}}. Other people may think the best economy would have created all temporary jobs {{earlier_time}} even though that would have meant higher unemployment {{later_time}}. Still others may think the best economy would have divided the number of jobs created between the two periods in some way.
     <br>
     <br>
 </div>
