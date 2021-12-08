@@ -27,8 +27,6 @@
         {{note}}
     </div>
     <br>
-    <br>
-    
     <table style="margin-left: auto; margin-right: auto;">
         <tr>
             <td>
@@ -101,7 +99,7 @@
     <br>
     <div text-align="justify" style="font-size: small">
         Click anywhere in the blocks to make the blue horizontal bar appear. Move blocks of jobs to 
-        <strong>{{later_time}}</strong> (and back) by dragging the bar up and down. When you are confident that the 
+        <strong>{{later_time}}</strong> (and back) by dragging the bar up and down or by using the up/down arrow keys. When you are confident that the 
         combination of blocks shows <strong>the best economy</strong>, click the “Next” button. 
     </div>
 
@@ -146,21 +144,22 @@
             $('input[name=future_slider_one]').on('input', function () {
                 $('input[name=future_slider_one]').addClass('future_slider_one_thumb');
                 $('input[name=future_slider_two]').addClass('future_slider_two_thumb');
-                // addLabels();
-                var future_slider_one_actual_val = $(this).val()
-                var future_slider_one_display_val = earlier_max - $(this).val();
-                var future_slider_two_val = $(this).val()*later_max/earlier_max;
-                document.getElementById("id_future_slider_two").value = future_slider_one_actual_val*later_max/earlier_max;
-                updateLabels(future_slider_one_display_val/earlier_max*10, future_slider_one_display_val, future_slider_two_val, document.getElementById("id_future_slider_one").step, document.getElementById("id_future_slider_two").step, earlier_time, later_time);
+                var future_slider_one_slider_val = $(this).val()
+                var future_slider_one_display_val = earlier_max - future_slider_one_slider_val;
+                var future_slider_two_display_val = future_slider_one_slider_val*later_max/earlier_max;
+                var future_slider_two_slider_val = later_max - future_slider_two_display_val;
+                document.getElementById("id_future_slider_two").value = future_slider_two_slider_val;
+                updateLabels(future_slider_one_display_val/earlier_max*10, future_slider_one_slider_val, future_slider_two_slider_val, document.getElementById("id_future_slider_one").step, document.getElementById("id_future_slider_two").step, earlier_time, later_time);
             });
         
             // handle changes in slider value
             $('input[name=future_slider_one]').on('input change', function() {
-                var future_slider_one_actual_val = $(this).val()
-                var future_slider_one_display_val = earlier_max - $(this).val();
-                var future_slider_two_val = $(this).val()*later_max/earlier_max;
-                document.getElementById("id_future_slider_two").value = future_slider_two_val; // links the two slider values together
-                updateLabels(future_slider_one_display_val/earlier_max*10, future_slider_one_display_val, future_slider_two_val, document.getElementById("id_future_slider_one").step, document.getElementById("id_future_slider_two").step, earlier_time, later_time);
+                var future_slider_one_slider_val = $(this).val()
+                var future_slider_one_display_val = earlier_max - future_slider_one_slider_val;
+                var future_slider_two_display_val = future_slider_one_slider_val*later_max/earlier_max;
+                var future_slider_two_slider_val = later_max - future_slider_two_display_val;
+                document.getElementById("id_future_slider_two").value = future_slider_two_slider_val;
+                updateLabels(future_slider_one_display_val/earlier_max*10, future_slider_one_slider_val, future_slider_two_slider_val, document.getElementById("id_future_slider_one").step, document.getElementById("id_future_slider_two").step, earlier_time, later_time);
             });
         
             // functions for slider 2
@@ -169,21 +168,22 @@
             $('input[name=future_slider_two]').on('input', function () {
                 $('input[name=future_slider_one]').addClass('future_slider_one_thumb');
                 $('input[name=future_slider_two]').addClass('future_slider_two_thumb');
-                // addLabels();
-                var future_slider_two_val = $(this).val();
-                var future_slider_one_actual_val = future_slider_two_val*earlier_max/later_max;
-                var future_slider_one_display_val = earlier_max - future_slider_one_actual_val;
-                document.getElementById("id_future_slider_one").value = future_slider_one_actual_val;
-                updateLabels(future_slider_one_display_val/earlier_max*10, future_slider_one_display_val, future_slider_two_val, document.getElementById("id_future_slider_one").step, document.getElementById("id_future_slider_two").step, earlier_time, later_time);
+                var future_slider_two_slider_val = $(this).val()
+                var future_slider_two_display_val = later_max - future_slider_two_slider_val;
+                var future_slider_one_slider_val = future_slider_two_slider_val*earlier_max/later_max;
+                var future_slider_one_display_val = earlier_max - future_slider_one_slider_val;
+                document.getElementById("id_future_slider_one").value = future_slider_one_slider_val;
+                updateLabels(future_slider_one_display_val/earlier_max*10, future_slider_one_slider_val, future_slider_two_display_val, document.getElementById("id_future_slider_one").step, document.getElementById("id_future_slider_two").step, earlier_time, later_time);
             });
         
             // handle changes in slider value
             $('input[name=future_slider_two]').on('input change', function() {
-                var future_slider_two_val = $(this).val();
-                var future_slider_one_actual_val = future_slider_two_val*earlier_max/later_max;
-                var future_slider_one_display_val = earlier_max - future_slider_one_actual_val;
-                document.getElementById("id_future_slider_one").value = future_slider_one_actual_val;
-                updateLabels(future_slider_one_display_val/earlier_max*10, future_slider_one_display_val, future_slider_two_val, document.getElementById("id_future_slider_one").step, document.getElementById("id_future_slider_two").step, earlier_time, later_time);
+                var future_slider_two_slider_val = $(this).val()
+                var future_slider_two_display_val = later_max - future_slider_two_slider_val;
+                var future_slider_one_slider_val = future_slider_two_slider_val*earlier_max/later_max;
+                var future_slider_one_display_val = earlier_max - future_slider_one_slider_val;
+                document.getElementById("id_future_slider_one").value = future_slider_one_slider_val;
+                updateLabels(future_slider_one_display_val/earlier_max*10, future_slider_one_slider_val, future_slider_two_display_val, document.getElementById("id_future_slider_one").step, document.getElementById("id_future_slider_two").step, earlier_time, later_time);
             });
 
             function numberWithCommas(x) {
@@ -195,7 +195,7 @@
                 future_slider_two_val = numberWithCommas(future_slider_two_val);
                 left_block_size = numberWithCommas(left_block_size);
                 right_block_size = numberWithCommas(right_block_size);
-                if (future_slider_one_location > 0) {
+                if (future_slider_one_location < 0) {
                     document.getElementById("left_feedback_0").style.background = "rgb(43, 173, 43)";
                     document.getElementById("left_feedback_0").innerHTML = left_block_size;
                     document.getElementById("right_feedback_0").style.background = "#d3d3d3";
@@ -213,7 +213,7 @@
                     document.getElementById("center_feedback_0").style.background = "transparent";
                     document.getElementById("center_feedback_0").innerHTML = "";
                 }
-                if (future_slider_one_location > 1) {
+                if (future_slider_one_location < 1) {
                     document.getElementById("left_feedback_1").style.background = "rgb(43, 173, 43)";
                     document.getElementById("left_feedback_1").innerHTML = left_block_size;
                     document.getElementById("right_feedback_1").style.background = "#d3d3d3";
@@ -232,7 +232,7 @@
                     document.getElementById("center_feedback_1").innerHTML = "";
                 }
 
-                if (future_slider_one_location > 2) {
+                if (future_slider_one_location < 2) {
                     document.getElementById("left_feedback_2").style.background = "rgb(43, 173, 43)";
                     document.getElementById("left_feedback_2").innerHTML = left_block_size;
                     document.getElementById("right_feedback_2").style.background = "#d3d3d3";
@@ -251,7 +251,7 @@
                     document.getElementById("center_feedback_2").innerHTML = "";
                 }
 
-                if (future_slider_one_location > 3) {
+                if (future_slider_one_location < 3) {
                     document.getElementById("left_feedback_3").style.background = "rgb(43, 173, 43)";
                     document.getElementById("left_feedback_3").innerHTML = left_block_size;
                     document.getElementById("right_feedback_3").style.background = "#d3d3d3";
@@ -270,7 +270,7 @@
                     document.getElementById("center_feedback_3").innerHTML = "";
                 }
 
-                if (future_slider_one_location > 4) {
+                if (future_slider_one_location < 4) {
                     document.getElementById("left_feedback_4").style.background = "rgb(43, 173, 43)";
                     document.getElementById("left_feedback_4").innerHTML = left_block_size;
                     document.getElementById("right_feedback_4").style.background = "#d3d3d3";
@@ -289,7 +289,7 @@
                     document.getElementById("center_feedback_4").innerHTML = "";
                 }
 
-                if (future_slider_one_location > 5) {
+                if (future_slider_one_location < 5) {
                     document.getElementById("left_feedback_5").style.background = "rgb(43, 173, 43)";
                     document.getElementById("left_feedback_5").innerHTML = left_block_size;
                     document.getElementById("right_feedback_5").style.background = "#d3d3d3";
@@ -308,7 +308,7 @@
                     document.getElementById("center_feedback_5").innerHTML = "";
                 }
 
-                if (future_slider_one_location > 6) {
+                if (future_slider_one_location < 6) {
                     document.getElementById("left_feedback_6").style.background = "rgb(43, 173, 43)";
                     document.getElementById("left_feedback_6").innerHTML = left_block_size;
                     document.getElementById("right_feedback_6").style.background = "#d3d3d3";
@@ -327,7 +327,7 @@
                     document.getElementById("center_feedback_6").innerHTML = "";
                 }
 
-                if (future_slider_one_location > 7) {
+                if (future_slider_one_location < 7) {
                     document.getElementById("left_feedback_7").style.background = "rgb(43, 173, 43)";
                     document.getElementById("left_feedback_7").innerHTML = left_block_size;
                     document.getElementById("right_feedback_7").style.background = "#d3d3d3";
@@ -346,7 +346,7 @@
                     document.getElementById("center_feedback_7").innerHTML = "";
                 }
 
-                if (future_slider_one_location > 8) {
+                if (future_slider_one_location < 8) {
                     document.getElementById("left_feedback_8").style.background = "rgb(43, 173, 43)";
                     document.getElementById("left_feedback_8").innerHTML = left_block_size;
                     document.getElementById("right_feedback_8").style.background = "#d3d3d3";
@@ -365,7 +365,7 @@
                     document.getElementById("center_feedback_8").innerHTML = "";
                 }
 
-                if (future_slider_one_location > 9) {
+                if (future_slider_one_location < 9) {
                     document.getElementById("left_feedback_9").style.background = "rgb(43, 173, 43)";
                     document.getElementById("left_feedback_9").innerHTML = left_block_size;
                     document.getElementById("right_feedback_9").style.background = "#d3d3d3";
@@ -384,7 +384,7 @@
                     document.getElementById("center_feedback_9").innerHTML = "";
                 }
 
-                if (future_slider_one_location > 10) {
+                if (future_slider_one_location < 10) {
                     document.getElementById("left_feedback_10").style.background = "rgb(43, 173, 43)";
                     document.getElementById("left_feedback_10").innerHTML = left_block_size;
                     document.getElementById("right_feedback_10").style.background = "#d3d3d3";
@@ -402,6 +402,7 @@
                     document.getElementById("center_feedback_10").style.background = "transparent";
                     document.getElementById("center_feedback_10").innerHTML = "";
                 }
+
             }
         });   
     </script>
