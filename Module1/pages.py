@@ -1,4 +1,3 @@
-import random
 import json
 import datetime
 
@@ -151,6 +150,7 @@ class FG_Main(Page):
         end_values = [self.player.later_max + x*(0-self.player.later_max)/(6-1) for x in range(6)]
         for i in range(len(end_values)):
             end_values[i] = "{:,.0f}".format(float(end_values[i]))
+        end_values.reverse()
 
         return dict(
             note=note,
@@ -681,6 +681,7 @@ class PG_Main(Page):
         end_values = [self.player.later_max + x*(0-self.player.later_max)/(6-1) for x in range(6)]
         for i in range(len(end_values)):
             end_values[i] = "{:,.0f}".format(float(end_values[i]))
+        end_values.reverse()
 
         return dict(
             note=note,

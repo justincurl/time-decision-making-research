@@ -1,7 +1,5 @@
-from typing import Optional
-import random, pickle, codecs, json, itertools
+import random, json, itertools
 from otree.api import models, BaseConstants, BaseSubsession, BaseGroup, BasePlayer, widgets
-from .block import Block
 
 author = "Justin Curl <jcurl@princeton.edu>"
 
