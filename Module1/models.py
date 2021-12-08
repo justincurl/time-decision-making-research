@@ -31,6 +31,8 @@ class Subsession(BaseSubsession):
         start_at_random = itertools.islice(ordering, rand_choice[0], None)
 
     ###################################################################################################### FUTURE GRID SET UP ######################################################################################################
+        future_t_options = self.session.config['future_t_options'].split(', ')
+
         future_grid_right_values = self.session.config["future_grid_right_values"].split(", ")
         future_grid_right_values = [float(i) for i in future_grid_right_values]
         future_grid_left_values = self.session.config["future_grid_left_values"].split(", ")
@@ -47,6 +49,8 @@ class Subsession(BaseSubsession):
             future_round_section = []
 
     ###################################################################################################### PAST GRID SET UP ######################################################################################################
+        past_t_options = self.session.config['past_t_options'].split(', ')
+        
         past_grid_right_values = self.session.config["past_grid_right_values"].split(", ")
         past_grid_right_values = [float(i) for i in past_grid_right_values]
         past_grid_left_values = self.session.config["past_grid_left_values"].split(", ")
@@ -132,9 +136,9 @@ class Subsession(BaseSubsession):
             if player.first == "PV":
                 ################################################################################################### PAST VISUAL WITHIN-PLAYER RANDOMIZATION ###################################################################################################
                 if self.round_number <= Constants.num_sliders:
-                    player.past_t_earliest = past_t_options[0]
-                    player.past_t_middle = past_t_options[1]
-                    player.past_t_latest = past_t_options[2]
+                    player.t_earliest = past_t_options[0]
+                    player.t_middle = past_t_options[1]
+                    player.t_latest = past_t_options[2]
                     if self.round_number == 1:
                         if self.session.config["past_randomize_sliders"]:
                             for i in range(len(past_visual_round_configs)):
@@ -152,9 +156,9 @@ class Subsession(BaseSubsession):
 
                 if self.round_number > Constants.num_sliders and self.round_number < 2 * Constants.num_sliders + 1:
                     if player.second == "FV":
-                        player.future_t_earliest = future_t_options[0]
-                        player.future_t_middle = future_t_options[1]
-                        player.future_t_latest = future_t_options[2]
+                        player.t_earliest = future_t_options[0]
+                        player.t_middle = future_t_options[1]
+                        player.t_latest = future_t_options[2]
                         if self.round_number - Constants.num_sliders == 1:
                             if self.session.config["future_randomize_sliders"]:
                                 for i in range(len(future_visual_round_configs)):
@@ -171,6 +175,9 @@ class Subsession(BaseSubsession):
 
                 if self.round_number > Constants.num_sliders and self.round_number < Constants.num_sliders + Constants.num_grids + 1:    
                     if player.second == "PG":
+                        player.t_earliest = past_t_options[0]
+                        player.t_middle = past_t_options[1]
+                        player.t_latest = past_t_options[2]
                         if self.round_number - Constants.num_grids == 1:
                             if self.session.config["past_randomize_blocks"]:
                                 for i in range(len(past_grid_round_configs)):
@@ -190,9 +197,9 @@ class Subsession(BaseSubsession):
             elif player.first == "FV":
                 ################################################################################################### FUTURE VISUAL WITHIN-PLAYER RANDOMIZATION ###################################################################################################
                 if self.round_number <= Constants.num_sliders:
-                    player.future_t_earliest = future_t_options[0]
-                    player.future_t_middle = future_t_options[1]
-                    player.future_t_latest = future_t_options[2]
+                    player.t_earliest = future_t_options[0]
+                    player.t_middle = future_t_options[1]
+                    player.t_latest = future_t_options[2]
                     if self.round_number == 1:
                         if self.session.config["future_randomize_sliders"]:
                             for i in range(len(future_visual_round_configs)):
@@ -210,9 +217,9 @@ class Subsession(BaseSubsession):
                 
                 if self.round_number > Constants.num_sliders and self.round_number < 2 * Constants.num_sliders + 1:
                     if player.second == "PV":
-                        player.past_t_earliest = past_t_options[0]
-                        player.past_t_middle = past_t_options[1]
-                        player.past_t_latest = past_t_options[2]
+                        player.t_earliest = past_t_options[0]
+                        player.t_middle = past_t_options[1]
+                        player.t_latest = past_t_options[2]
                         if self.round_number - Constants.num_sliders == 1:
                             if self.session.config["past_randomize_sliders"]:
                                 for i in range(len(past_visual_round_configs)):
@@ -230,6 +237,9 @@ class Subsession(BaseSubsession):
                 
                 if self.round_number > Constants.num_sliders and self.round_number < Constants.num_sliders + Constants.num_grids + 1: 
                     if player.second == "FG":
+                        player.t_earliest = future_t_options[0]
+                        player.t_middle = future_t_options[1]
+                        player.t_latest = future_t_options[2]
                         if self.round_number - Constants.num_sliders == 1:
                             if self.session.config["future_randomize_blocks"]:
                                 for i in range(len(future_grid_round_configs)):
@@ -249,6 +259,9 @@ class Subsession(BaseSubsession):
             elif player.first == "PG":
                 ################################################################################################### PAST GRID WITHIN-PLAYER RANDOMIZATION ###################################################################################################
                 if self.round_number <= Constants.num_grids:
+                    player.t_earliest = past_t_options[0]
+                    player.t_middle = past_t_options[1]
+                    player.t_latest = past_t_options[2]
                     if self.round_number == 1:
                         if self.session.config["past_randomize_blocks"]:
                             for i in range(len(past_grid_round_configs)):
@@ -266,6 +279,9 @@ class Subsession(BaseSubsession):
 
                 if self.round_number > Constants.num_grids and self.round_number < 2 * Constants.num_grids + 1:
                     if player.second == "FG":
+                        player.t_earliest = future_t_options[0]
+                        player.t_middle = future_t_options[1]
+                        player.t_latest = future_t_options[2]
                         if self.round_number - Constants.num_grids == 1:
                             if self.session.config["future_randomize_blocks"]:
                                 for i in range(len(future_grid_round_configs)):
@@ -283,9 +299,9 @@ class Subsession(BaseSubsession):
                 
                 if self.round_number > Constants.num_grids and self.round_number < Constants.num_grids + Constants.num_sliders + 1:
                     if player.second == "PV":
-                        player.past_t_earliest = past_t_options[0]
-                        player.past_t_middle = past_t_options[1]
-                        player.past_t_latest = past_t_options[2]
+                        player.t_earliest = past_t_options[0]
+                        player.t_middle = past_t_options[1]
+                        player.t_latest = past_t_options[2]
                         if self.round_number - Constants.num_grids == 1:
                             if self.session.config["past_randomize_sliders"]:
                                 for i in range(len(past_visual_round_configs)):
@@ -305,6 +321,9 @@ class Subsession(BaseSubsession):
             elif player.first == "FG":
                 ################################################################################################### FUTURE GRID WITHIN-PLAYER RANDOMIZATION ###################################################################################################
                 if self.round_number <= Constants.num_grids:
+                    player.t_earliest = future_t_options[0]
+                    player.t_middle = future_t_options[1]
+                    player.t_latest = future_t_options[2]
                     if self.round_number == 1:
                         if self.session.config["future_randomize_blocks"]:
                             for i in range(len(future_grid_round_configs)):
@@ -322,6 +341,9 @@ class Subsession(BaseSubsession):
 
                 if self.round_number > Constants.num_grids and self.round_number < 2*Constants.num_grids + 1:
                     if player.second == "PG":
+                        player.t_earliest = past_t_options[0]
+                        player.t_middle = past_t_options[1]
+                        player.t_latest = past_t_options[2]
                         if self.round_number - Constants.num_grids == 1:
                             if self.session.config["past_randomize_blocks"]:
                                 for i in range(len(past_grid_round_configs)):
@@ -339,9 +361,9 @@ class Subsession(BaseSubsession):
 
                 if self.round_number > Constants.num_grids and self.round_number < Constants.num_sliders + Constants.num_grids + 1:
                     if player.second == "FV":
-                        player.future_t_earliest = future_t_options[0]
-                        player.future_t_middle = future_t_options[1]
-                        player.future_t_latest = future_t_options[2]
+                        player.t_earliest = future_t_options[0]
+                        player.t_middle = future_t_options[1]
+                        player.t_latest = future_t_options[2]
                         if self.round_number - Constants.num_grids == 1:
                             if self.session.config["future_randomize_sliders"]:
                                 for i in range(len(future_visual_round_configs)):
@@ -391,30 +413,24 @@ class Player(BasePlayer):
     finish_time = models.StringField()
     total_time = models.StringField()
 
+    t_earliest = models.StringField()
+    t_middle = models.StringField()
+    t_latest = models.StringField()
+
+    grid_answer = models.StringField()
+
 ################################################################################# FUTURE GRID PLAYER VARIABLES #################################################################################
     future_grid_round_configs = models.StringField()
-    future_grid_answer = models.StringField()
 
 ################################################################################# PAST GRID PLAYER VARIABLES #################################################################################
     past_grid_round_configs = models.StringField()
-    past_grid_answer = models.StringField()
 
 ################################################################################# FUTURE VISUAL PLAYER VARIABLES #################################################################################
     future_visual_round_configs = models.StringField()
-    
-    future_t_earliest = models.StringField()
-    future_t_middle = models.StringField()
-    future_t_latest = models.StringField()
-
     future_slider_one = models.IntegerField()
     future_slider_two = models.IntegerField()
 
 ################################################################################# PAST VISUAL PLAYER VARIABLES #################################################################################
     past_visual_round_configs = models.StringField()
-    
-    past_t_earliest = models.StringField()
-    past_t_middle = models.StringField()
-    past_t_latest = models.StringField()
-    
     past_slider_one = models.IntegerField()
     past_slider_two = models.IntegerField()

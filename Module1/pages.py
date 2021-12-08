@@ -43,7 +43,15 @@ class FG1_1_Instructions(Page):
 
 class FG1_2_Instructions(Page):
     def vars_for_template(self):
+        image_link = ""
+        if self.player.t_earliest == self.player.earlier_time and self.player.t_middle == self.player.later_time:
+            image_link = "Module1/images/FG_01.png"
+        elif self.player.t_earliest == self.player.earlier_time and self.player.t_latest == self.player.later_time:
+            image_link = "Module1/images/FG_05.png"
+        elif self.player.t_middle == self.player.earlier_time and self.player.t_latest == self.player.later_time:
+            image_link = "Module1/images/FG_15.png"
         return dict(
+            image_link=image_link,
             earlier_time=self.player.earlier_time,
             later_time=self.player.later_time
         )
@@ -96,7 +104,15 @@ class FG2_G_Instructions(Page):
 
 class FG2_V_Instructions(Page):
     def vars_for_template(self):
+        image_link = ""
+        if self.player.t_earliest == self.player.earlier_time and self.player.t_middle == self.player.later_time:
+            image_link = "Module1/images/FG_01.png"
+        elif self.player.t_earliest == self.player.earlier_time and self.player.t_latest == self.player.later_time:
+            image_link = "Module1/images/FG_05.png"
+        elif self.player.t_middle == self.player.earlier_time and self.player.t_latest == self.player.later_time:
+            image_link = "Module1/images/FG_15.png"
         return dict(
+            image_link=image_link,
             earlier_time=self.player.earlier_time,
             later_time=self.player.later_time
         )
@@ -116,7 +132,7 @@ class FG2_V_Instructions(Page):
 
 class FG_Main(Page):
     form_model = "player"
-    form_fields = ["future_grid_answer"]
+    form_fields = ["grid_answer"]
 
     def is_displayed(self):
         check_condition = False
@@ -249,7 +265,15 @@ class FV1_1_Instructions(Page):
 
 class FV1_2_Instructions(Page):
     def vars_for_template(self):
+        image_link = ""
+        if self.player.t_earliest == self.player.earlier_time and self.player.t_middle == self.player.later_time:
+            image_link = "Module1/images/FV_01.png"
+        elif self.player.t_earliest == self.player.earlier_time and self.player.t_latest == self.player.later_time:
+            image_link = "Module1/images/FV_05.png"
+        elif self.player.t_middle == self.player.earlier_time and self.player.t_latest == self.player.later_time:
+            image_link = "Module1/images/FV_15.png"
         return dict(
+            image_link=image_link,
             earlier_time=self.player.earlier_time,
             later_time=self.player.later_time,
         )
@@ -267,7 +291,15 @@ class FV1_2_Instructions(Page):
 
 class FV2_G_Instructions(Page):
     def vars_for_template(self):
+        image_link = ""
+        if self.player.t_earliest == self.player.earlier_time and self.player.t_middle == self.player.later_time:
+            image_link = "Module1/images/FV_01.png"
+        elif self.player.t_earliest == self.player.earlier_time and self.player.t_latest == self.player.later_time:
+            image_link = "Module1/images/FV_05.png"
+        elif self.player.t_middle == self.player.earlier_time and self.player.t_latest == self.player.later_time:
+            image_link = "Module1/images/FV_15.png"
         return dict(
+            image_link=image_link,
             earlier_time=self.player.earlier_time,
             later_time=self.player.later_time
         )
@@ -396,9 +428,9 @@ class FV_12(Page):
             later_max=self.player.later_max,
             earlier_time=self.player.earlier_time,
             later_time=self.player.later_time,
-            t_earliest=self.player.future_t_earliest,
-            t_middle=self.player.future_t_middle,
-            t_latest=self.player.future_t_latest,
+            t_earliest=self.player.t_earliest,
+            t_middle=self.player.t_middle,
+            t_latest=self.player.t_latest,
             note=note
         )
 
@@ -419,7 +451,7 @@ class FV_12(Page):
                     check_condition = True
 
         check_future_slider_locations = False
-        if self.player.future_t_earliest == self.player.earlier_time and self.player.future_t_middle == self.player.later_time:
+        if self.player.t_earliest == self.player.earlier_time and self.player.t_middle == self.player.later_time:
             check_future_slider_locations = True
         
         return (
@@ -456,9 +488,9 @@ class FV_13(Page):
             later_max=self.player.later_max,
             earlier_time=self.player.earlier_time,
             later_time=self.player.later_time,
-            t_earliest=self.player.future_t_earliest,
-            t_middle=self.player.future_t_middle,
-            t_latest=self.player.future_t_latest,
+            t_earliest=self.player.t_earliest,
+            t_middle=self.player.t_middle,
+            t_latest=self.player.t_latest,
             note=note
         )
 
@@ -479,7 +511,7 @@ class FV_13(Page):
                     check_condition = True
 
         check_future_slider_locations = False
-        if self.player.future_t_earliest == self.player.earlier_time and self.player.future_t_latest == self.player.later_time:
+        if self.player.t_earliest == self.player.earlier_time and self.player.t_latest == self.player.later_time:
             check_future_slider_locations = True
         
         return (
@@ -516,9 +548,9 @@ class FV_23(Page):
             later_max=self.player.later_max,
             earlier_time=self.player.earlier_time,
             later_time=self.player.later_time,
-            t_earliest=self.player.future_t_earliest,
-            t_middle=self.player.future_t_middle,
-            t_latest=self.player.future_t_latest,
+            t_earliest=self.player.t_earliest,
+            t_middle=self.player.t_middle,
+            t_latest=self.player.t_latest,
             note=note
         )
 
@@ -539,7 +571,7 @@ class FV_23(Page):
                     check_condition = True
 
         check_future_slider_locations = False
-        if self.player.future_t_middle == self.player.earlier_time and self.player.future_t_latest == self.player.later_time:
+        if self.player.t_middle == self.player.earlier_time and self.player.t_latest == self.player.later_time:
             check_future_slider_locations = True
         
         return (
@@ -588,7 +620,15 @@ class PG1_1_Instructions(Page):
 
 class PG1_2_Instructions(Page):
     def vars_for_template(self):
+        image_link = ""
+        if self.player.t_earliest == self.player.earlier_time and self.player.t_middle == self.player.later_time:
+            image_link = "Module1/images/PG_15.png"
+        elif self.player.t_earliest == self.player.earlier_time and self.player.t_latest == self.player.later_time:
+            image_link = "Module1/images/PG_05.png"
+        elif self.player.t_middle == self.player.earlier_time and self.player.t_latest == self.player.later_time:
+            image_link = "Module1/images/PG_01.png"
         return dict(
+            image_link=image_link,
             earlier_time=self.player.earlier_time,
             later_time=self.player.later_time
         )
@@ -627,7 +667,15 @@ class PG2_G_Instructions(Page):
 
 class PG2_V_Instructions(Page):
     def vars_for_template(self):
-         return dict(
+        image_link = ""
+        if self.player.t_earliest == self.player.earlier_time and self.player.t_middle == self.player.later_time:
+            image_link = "Module1/images/PG_15.png"
+        elif self.player.t_earliest == self.player.earlier_time and self.player.t_latest == self.player.later_time:
+            image_link = "Module1/images/PG_05.png"
+        elif self.player.t_middle == self.player.earlier_time and self.player.t_latest == self.player.later_time:
+            image_link = "Module1/images/PG_01.png"
+        return dict(
+            image_link=image_link,
             earlier_time=self.player.earlier_time,
             later_time=self.player.later_time
         )
@@ -647,7 +695,7 @@ class PG2_V_Instructions(Page):
 
 class PG_Main(Page):
     form_model = "player"
-    form_fields = ["past_grid_answer"]
+    form_fields = ["grid_answer"]
 
     def is_displayed(self):
         check_condition = False
@@ -782,7 +830,15 @@ class PV1_1_Instructions(Page):
 
 class PV1_2_Instructions(Page):
     def vars_for_template(self):
+        image_link = ""
+        if self.player.t_earliest == self.player.earlier_time and self.player.t_middle == self.player.later_time:
+            image_link = "Module1/images/PV_15.png"
+        elif self.player.t_earliest == self.player.earlier_time and self.player.t_latest == self.player.later_time:
+            image_link = "Module1/images/PV_05.png"
+        elif self.player.t_middle == self.player.earlier_time and self.player.t_latest == self.player.later_time:
+            image_link = "Module1/images/PV_01.png"
         return dict(
+            image_link=image_link,
             earlier_time=self.player.earlier_time,
             later_time=self.player.later_time,
         )
@@ -822,7 +878,15 @@ class PV2_V_Instructions(Page):
 
 class PV2_G_Instructions(Page):
     def vars_for_template(self):
+        image_link = ""
+        if self.player.t_earliest == self.player.earlier_time and self.player.t_middle == self.player.later_time:
+            image_link = "Module1/images/PV_15.png"
+        elif self.player.t_earliest == self.player.earlier_time and self.player.t_latest == self.player.later_time:
+            image_link = "Module1/images/PV_05.png"
+        elif self.player.t_middle == self.player.earlier_time and self.player.t_latest == self.player.later_time:
+            image_link = "Module1/images/PV_01.png"
         return dict(
+            image_link=image_link,
             earlier_time=self.player.earlier_time,
             later_time=self.player.later_time
         )
@@ -932,9 +996,9 @@ class PV_12(Page):
             later_max=self.player.later_max,
             earlier_time=self.player.earlier_time,
             later_time=self.player.later_time,
-            t_earliest=self.player.past_t_earliest,
-            t_middle=self.player.past_t_middle,
-            t_latest=self.player.past_t_latest,
+            t_earliest=self.player.t_earliest,
+            t_middle=self.player.t_middle,
+            t_latest=self.player.t_latest,
             note=note
         )
 
@@ -955,7 +1019,7 @@ class PV_12(Page):
                     check_condition = True
 
         check_past_slider_locations = False
-        if self.player.past_t_earliest == self.player.earlier_time and self.player.past_t_middle == self.player.later_time:
+        if self.player.t_earliest == self.player.earlier_time and self.player.t_middle == self.player.later_time:
             check_past_slider_locations = True
         
         return (
@@ -992,9 +1056,9 @@ class PV_13(Page):
             later_max=self.player.later_max,
             earlier_time=self.player.earlier_time,
             later_time=self.player.later_time,
-            t_earliest=self.player.past_t_earliest,
-            t_middle=self.player.past_t_middle,
-            t_latest=self.player.past_t_latest,
+            t_earliest=self.player.t_earliest,
+            t_middle=self.player.t_middle,
+            t_latest=self.player.t_latest,
             note=note
         )
 
@@ -1015,7 +1079,7 @@ class PV_13(Page):
                     check_condition = True
 
         check_past_slider_locations = False
-        if self.player.past_t_earliest == self.player.earlier_time and self.player.past_t_latest == self.player.later_time:
+        if self.player.t_earliest == self.player.earlier_time and self.player.t_latest == self.player.later_time:
             check_past_slider_locations = True
         
         return (
@@ -1052,9 +1116,9 @@ class PV_23(Page):
             later_max=self.player.later_max,
             earlier_time=self.player.earlier_time,
             later_time=self.player.later_time,
-            t_earliest=self.player.past_t_earliest,
-            t_middle=self.player.past_t_middle,
-            t_latest=self.player.past_t_latest,
+            t_earliest=self.player.t_earliest,
+            t_middle=self.player.t_middle,
+            t_latest=self.player.t_latest,
             note=note
         )
 
@@ -1076,7 +1140,7 @@ class PV_23(Page):
 
 
         check_past_slider_locations = False
-        if self.player.past_t_middle == self.player.earlier_time and self.player.past_t_latest == self.player.later_time:
+        if self.player.t_middle == self.player.earlier_time and self.player.t_latest == self.player.later_time:
             check_past_slider_locations = True
         
         return (
