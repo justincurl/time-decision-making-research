@@ -26,10 +26,10 @@ OTREE_AUTH_LEVEL = "DEMO"
 
 SESSION_CONFIGS = [
     dict(
-        name="Module1_Demo",
-        display_name="Randomization Demo",
+        name="Full_Survey",
+        display_name="Full Survey",
         num_demo_participants=20,
-        app_sequence=["consent", "Module1", "Module2", "demographics"],
+        app_sequence=["consent", "App1", "App2", "demographics"],
         past_t_earliers="1 year ago, 1 year ago, 1 year ago, 1 year ago, 1 year ago | 5 years ago, 5 years ago, 5 years ago, 5 years ago, 5 years ago | 5 years ago, 5 years ago, 5 years ago, 5 years ago, 5 years ago",
         past_t_laters="now, now, now, now, now | now, now, now, now, now | 1 year ago, 1 year ago, 1 year ago, 1 year ago, 1 year ago",
         past_payment_laters="500000, 500000, 500000, 500000, 500000 | 500000, 500000, 500000, 500000, 500000 | 500000, 500000, 500000, 500000, 500000",
@@ -60,10 +60,10 @@ SESSION_CONFIGS = [
         future_randomize_blocks=True,
     ),
     dict(
-        name="Module2",
-        display_name="Module 2",
+        name="App2",
+        display_name="App 2",
         num_demo_participants=20,
-        app_sequence=["Module2", "demographics"]
+        app_sequence=["App2", "demographics"]
     ),
     dict(
         name="FutureGrid",
