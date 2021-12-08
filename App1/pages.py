@@ -36,10 +36,20 @@ class FG1_1_Instructions(Page):
                     check_condition = True
                 if self.player.round_number == Constants.num_grids + 1:
                     check_round_number = True
+        if check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1:
+            current_time = datetime.datetime.now().strftime("%H:%M:%S")
+            self.player.instructions_1_start_time = json.dumps(current_time)
+            return True
+        else:
+            return False
 
-        return (
-            check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1
-        )
+    def before_next_page(self):
+        current_time = datetime.datetime.now().strftime("%H:%M:%S")
+        self.player.instructions_1_finish_time = json.dumps(current_time)
+        finish_time = datetime.datetime.strptime(current_time, "%H:%M:%S")
+        start_time = datetime.datetime.strptime(json.loads(self.player.instructions_1_start_time), "%H:%M:%S")
+        self.player.instructions_1_total_time = json.dumps(str(finish_time - start_time))
+        return super().before_next_page()
 
 class FG1_2_Instructions(Page):
     def vars_for_template(self):
@@ -55,6 +65,7 @@ class FG1_2_Instructions(Page):
             earlier_time=self.player.earlier_time,
             later_time=self.player.later_time
         )
+
     def is_displayed(self):
         check_condition = False
         check_round_number = False
@@ -78,9 +89,20 @@ class FG1_2_Instructions(Page):
                 if self.player.round_number == Constants.num_grids + 1:
                     check_round_number = True
 
-        return (
-            check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1
-        )
+        if check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1:
+            current_time = datetime.datetime.now().strftime("%H:%M:%S")
+            self.player.instructions_2_start_time = json.dumps(current_time)
+            return True
+        else:
+            return False
+
+    def before_next_page(self):
+        current_time = datetime.datetime.now().strftime("%H:%M:%S")
+        self.player.instructions_2_finish_time = json.dumps(current_time)
+        finish_time = datetime.datetime.strptime(current_time, "%H:%M:%S")
+        start_time = datetime.datetime.strptime(json.loads(self.player.instructions_2_start_time), "%H:%M:%S")
+        self.player.instructions_2_total_time = json.dumps(str(finish_time - start_time))
+        return super().before_next_page()
 
 class FG2_G_Instructions(Page):
     def vars_for_template(self):
@@ -98,9 +120,20 @@ class FG2_G_Instructions(Page):
                 if self.player.round_number == Constants.num_sliders + 1:
                     check_round_number = True
 
-        return (
-            check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1
-        )
+        if check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1:
+            current_time = datetime.datetime.now().strftime("%H:%M:%S")
+            self.player.instructions_1_start_time = json.dumps(current_time)
+            return True
+        else:
+            return False
+
+    def before_next_page(self):
+        current_time = datetime.datetime.now().strftime("%H:%M:%S")
+        self.player.instructions_1_finish_time = json.dumps(current_time)
+        finish_time = datetime.datetime.strptime(current_time, "%H:%M:%S")
+        start_time = datetime.datetime.strptime(json.loads(self.player.instructions_1_start_time), "%H:%M:%S")
+        self.player.instructions_1_total_time = json.dumps(str(finish_time - start_time))
+        return super().before_next_page()
 
 class FG2_V_Instructions(Page):
     def vars_for_template(self):
@@ -126,9 +159,20 @@ class FG2_V_Instructions(Page):
                 if self.player.round_number == Constants.num_grids + 1:
                     check_round_number = True
 
-        return (
-            check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1
-        )
+        if check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1:
+            current_time = datetime.datetime.now().strftime("%H:%M:%S")
+            self.player.instructions_1_start_time = json.dumps(current_time)
+            return True
+        else:
+            return False
+
+    def before_next_page(self):
+        current_time = datetime.datetime.now().strftime("%H:%M:%S")
+        self.player.instructions_1_finish_time = json.dumps(current_time)
+        finish_time = datetime.datetime.strptime(current_time, "%H:%M:%S")
+        start_time = datetime.datetime.strptime(json.loads(self.player.instructions_1_start_time), "%H:%M:%S")
+        self.player.instructions_1_total_time = json.dumps(str(finish_time - start_time))
+        return super().before_next_page()
 
 class FG_Main(Page):
     form_model = "player"
@@ -149,9 +193,20 @@ class FG_Main(Page):
             if self.player.second == "FG":
                 if self.round_number > Constants.num_sliders and self.round_number < Constants.num_grids + Constants.num_sliders + 1:
                     check_condition = True
-        return (
-            check_condition and (json.loads(self.participant.vars["consent_answer"]) == 1)
-        )
+        if check_condition and json.loads(self.participant.vars["consent_answer"]) == 1:
+            current_time = datetime.datetime.now().strftime("%H:%M:%S")
+            self.player.start_time = json.dumps(current_time)
+            return True
+        else:
+            return False
+
+    def before_next_page(self):
+        current_time = datetime.datetime.now().strftime("%H:%M:%S")
+        self.player.finish_time = json.dumps(current_time)
+        finish_time = datetime.datetime.strptime(current_time, "%H:%M:%S")
+        start_time = datetime.datetime.strptime(json.loads(self.player.start_time), "%H:%M:%S")
+        self.player.total_time = json.dumps(str(finish_time - start_time))
+        return super().before_next_page()
 
     def vars_for_template(self):
         question_instructions = "Jobs created"
@@ -259,9 +314,20 @@ class FV1_1_Instructions(Page):
             if self.round_number <= Constants.num_sliders:
                 check_condition = True
 
-        return (
-            check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1
-        )
+        if check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1:
+            current_time = datetime.datetime.now().strftime("%H:%M:%S")
+            self.player.instructions_1_start_time = json.dumps(current_time)
+            return True
+        else:
+            return False
+
+    def before_next_page(self):
+        current_time = datetime.datetime.now().strftime("%H:%M:%S")
+        self.player.instructions_1_finish_time = json.dumps(current_time)
+        finish_time = datetime.datetime.strptime(current_time, "%H:%M:%S")
+        start_time = datetime.datetime.strptime(json.loads(self.player.instructions_1_start_time), "%H:%M:%S")
+        self.player.instructions_1_total_time = json.dumps(str(finish_time - start_time))
+        return super().before_next_page()
 
 class FV1_2_Instructions(Page):
     def vars_for_template(self):
@@ -285,9 +351,21 @@ class FV1_2_Instructions(Page):
                 check_condition = True
             if self.player.round_number == 1:
                 check_round_number = True
-        return (
-            check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1
-        )
+        
+        if check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1:
+            current_time = datetime.datetime.now().strftime("%H:%M:%S")
+            self.player.instructions_2_start_time = json.dumps(current_time)
+            return True
+        else:
+            return False
+
+    def before_next_page(self):
+        current_time = datetime.datetime.now().strftime("%H:%M:%S")
+        self.player.instructions_2_finish_time = json.dumps(current_time)
+        finish_time = datetime.datetime.strptime(current_time, "%H:%M:%S")
+        start_time = datetime.datetime.strptime(json.loads(self.player.instructions_2_start_time), "%H:%M:%S")
+        self.player.instructions_2_total_time = json.dumps(str(finish_time - start_time))
+        return super().before_next_page()
 
 class FV2_G_Instructions(Page):
     def vars_for_template(self):
@@ -313,9 +391,20 @@ class FV2_G_Instructions(Page):
                 if self.player.round_number == Constants.num_grids + 1:
                     check_round_number = True
 
-        return (
-            check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1
-        )
+        if check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1:
+            current_time = datetime.datetime.now().strftime("%H:%M:%S")
+            self.player.instructions_1_start_time = json.dumps(current_time)
+            return True
+        else:
+            return False
+
+    def before_next_page(self):
+        current_time = datetime.datetime.now().strftime("%H:%M:%S")
+        self.player.instructions_1_finish_time = json.dumps(current_time)
+        finish_time = datetime.datetime.strptime(current_time, "%H:%M:%S")
+        start_time = datetime.datetime.strptime(json.loads(self.player.instructions_1_start_time), "%H:%M:%S")
+        self.player.instructions_1_total_time = json.dumps(str(finish_time - start_time))
+        return super().before_next_page()
 
 class FV2_V_Instructions(Page):
     def vars_for_template(self):
@@ -333,9 +422,20 @@ class FV2_V_Instructions(Page):
                 if self.player.round_number == Constants.num_sliders + 1:
                     check_round_number = True
 
-        return (
-            check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1
-        )
+        if check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1:
+            current_time = datetime.datetime.now().strftime("%H:%M:%S")
+            self.player.instructions_1_start_time = json.dumps(current_time)
+            return True
+        else:
+            return False
+
+    def before_next_page(self):
+        current_time = datetime.datetime.now().strftime("%H:%M:%S")
+        self.player.instructions_1_finish_time = json.dumps(current_time)
+        finish_time = datetime.datetime.strptime(current_time, "%H:%M:%S")
+        start_time = datetime.datetime.strptime(json.loads(self.player.instructions_1_start_time), "%H:%M:%S")
+        self.player.instructions_1_total_time = json.dumps(str(finish_time - start_time))
+        return super().before_next_page()
 
 class FV2_Divider(Page):
     def vars_for_template(self):
@@ -454,11 +554,19 @@ class FV_12(Page):
         if self.player.t_earliest == self.player.earlier_time and self.player.t_middle == self.player.later_time:
             check_future_slider_locations = True
         
-        return (
-            check_condition and check_future_slider_locations and (json.loads(self.participant.vars["consent_answer"]) == 1)
-        )
-    
+        if check_condition and check_future_slider_locations and json.loads(self.participant.vars["consent_answer"]) == 1:
+            current_time = datetime.datetime.now().strftime("%H:%M:%S")
+            self.player.start_time = json.dumps(current_time)
+            return True
+        else:
+            return False
+
     def before_next_page(self):
+        current_time = datetime.datetime.now().strftime("%H:%M:%S")
+        self.player.finish_time = json.dumps(current_time)
+        finish_time = datetime.datetime.strptime(current_time, "%H:%M:%S")
+        start_time = datetime.datetime.strptime(json.loads(self.player.start_time), "%H:%M:%S")
+        self.player.total_time = json.dumps(str(finish_time - start_time))
         self.player.future_slider_one = self.player.earlier_max - self.player.future_slider_one
         return super().before_next_page()
 
@@ -514,11 +622,19 @@ class FV_13(Page):
         if self.player.t_earliest == self.player.earlier_time and self.player.t_latest == self.player.later_time:
             check_future_slider_locations = True
         
-        return (
-            check_condition and check_future_slider_locations and (json.loads(self.participant.vars["consent_answer"]) == 1)
-        )
-    
+        if check_condition and check_future_slider_locations and json.loads(self.participant.vars["consent_answer"]) == 1:
+            current_time = datetime.datetime.now().strftime("%H:%M:%S")
+            self.player.start_time = json.dumps(current_time)
+            return True
+        else:
+            return False
+
     def before_next_page(self):
+        current_time = datetime.datetime.now().strftime("%H:%M:%S")
+        self.player.finish_time = json.dumps(current_time)
+        finish_time = datetime.datetime.strptime(current_time, "%H:%M:%S")
+        start_time = datetime.datetime.strptime(json.loads(self.player.start_time), "%H:%M:%S")
+        self.player.total_time = json.dumps(str(finish_time - start_time))
         self.player.future_slider_one = self.player.earlier_max - self.player.future_slider_one
         return super().before_next_page()
 
@@ -574,13 +690,19 @@ class FV_23(Page):
         if self.player.t_middle == self.player.earlier_time and self.player.t_latest == self.player.later_time:
             check_future_slider_locations = True
         
-        return (
-            check_condition and check_future_slider_locations and (json.loads(self.participant.vars["consent_answer"]) == 1)
-        )
-    
+        if check_condition and check_future_slider_locations and json.loads(self.participant.vars["consent_answer"]) == 1:
+            current_time = datetime.datetime.now().strftime("%H:%M:%S")
+            self.player.start_time = json.dumps(current_time)
+            return True
+        else:
+            return False
+
     def before_next_page(self):
-        self.player.future_slider_one = self.player.earlier_max - self.player.future_slider_one
-        return super().before_next_page()
+        current_time = datetime.datetime.now().strftime("%H:%M:%S")
+        self.player.finish_time = json.dumps(current_time)
+        finish_time = datetime.datetime.strptime(current_time, "%H:%M:%S")
+        start_time = datetime.datetime.strptime(json.loads(self.player.start_time), "%H:%M:%S")
+        self.player.total_time = json.dumps(str(finish_time - start_time))
 
 
 ################################################################################################### PAST PAGES BELOW ##############################################################################################################
@@ -614,9 +736,20 @@ class PG1_1_Instructions(Page):
                 if self.player.round_number == Constants.num_grids + 1:
                     check_round_number = True
 
-        return (
-            check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1
-        )
+        if check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1:
+            current_time = datetime.datetime.now().strftime("%H:%M:%S")
+            self.player.instructions_1_start_time = json.dumps(current_time)
+            return True
+        else:
+            return False
+
+    def before_next_page(self):
+        current_time = datetime.datetime.now().strftime("%H:%M:%S")
+        self.player.instructions_1_finish_time = json.dumps(current_time)
+        finish_time = datetime.datetime.strptime(current_time, "%H:%M:%S")
+        start_time = datetime.datetime.strptime(json.loads(self.player.instructions_1_start_time), "%H:%M:%S")
+        self.player.instructions_1_total_time = json.dumps(str(finish_time - start_time))
+        return super().before_next_page()
 
 class PG1_2_Instructions(Page):
     def vars_for_template(self):
@@ -641,9 +774,20 @@ class PG1_2_Instructions(Page):
             if self.player.round_number == 1:
                 check_round_number = True
 
-        return (
-            check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1
-        )
+        if check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1:
+            current_time = datetime.datetime.now().strftime("%H:%M:%S")
+            self.player.instructions_2_start_time = json.dumps(current_time)
+            return True
+        else:
+            return False
+
+    def before_next_page(self):
+        current_time = datetime.datetime.now().strftime("%H:%M:%S")
+        self.player.instructions_2_finish_time = json.dumps(current_time)
+        finish_time = datetime.datetime.strptime(current_time, "%H:%M:%S")
+        start_time = datetime.datetime.strptime(json.loads(self.player.instructions_2_start_time), "%H:%M:%S")
+        self.player.instructions_2_total_time = json.dumps(str(finish_time - start_time))
+        return super().before_next_page()
 
 class PG2_G_Instructions(Page):
     def vars_for_template(self):
@@ -661,9 +805,20 @@ class PG2_G_Instructions(Page):
                 if self.player.round_number == Constants.num_sliders + 1:
                     check_round_number = True
 
-        return (
-            check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1
-        )
+        if check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1:
+            current_time = datetime.datetime.now().strftime("%H:%M:%S")
+            self.player.instructions_1_start_time = json.dumps(current_time)
+            return True
+        else:
+            return False
+
+    def before_next_page(self):
+        current_time = datetime.datetime.now().strftime("%H:%M:%S")
+        self.player.instructions_1_finish_time = json.dumps(current_time)
+        finish_time = datetime.datetime.strptime(current_time, "%H:%M:%S")
+        start_time = datetime.datetime.strptime(json.loads(self.player.instructions_1_start_time), "%H:%M:%S")
+        self.player.instructions_1_total_time = json.dumps(str(finish_time - start_time))
+        return super().before_next_page()
 
 class PG2_V_Instructions(Page):
     def vars_for_template(self):
@@ -689,9 +844,20 @@ class PG2_V_Instructions(Page):
                 if self.player.round_number == Constants.num_sliders + 1:
                     check_round_number = True
 
-        return (
-            check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1
-        )
+        if check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1:
+            current_time = datetime.datetime.now().strftime("%H:%M:%S")
+            self.player.instructions_1_start_time = json.dumps(current_time)
+            return True
+        else:
+            return False
+
+    def before_next_page(self):
+        current_time = datetime.datetime.now().strftime("%H:%M:%S")
+        self.player.instructions_1_finish_time = json.dumps(current_time)
+        finish_time = datetime.datetime.strptime(current_time, "%H:%M:%S")
+        start_time = datetime.datetime.strptime(json.loads(self.player.instructions_1_start_time), "%H:%M:%S")
+        self.player.instructions_1_total_time = json.dumps(str(finish_time - start_time))
+        return super().before_next_page()
 
 class PG_Main(Page):
     form_model = "player"
@@ -712,9 +878,21 @@ class PG_Main(Page):
             if self.player.second == "PG":
                 if self.round_number > Constants.num_sliders and self.round_number < Constants.num_grids + Constants.num_sliders + 1:
                     check_condition = True
-        return (
-            check_condition and (json.loads(self.participant.vars["consent_answer"]) == 1)
-        )
+        if check_condition and json.loads(self.participant.vars["consent_answer"]) == 1:
+            current_time = datetime.datetime.now().strftime("%H:%M:%S")
+            self.player.start_time = json.dumps(current_time)
+            return True
+        else:
+            return False
+
+    def before_next_page(self):
+        current_time = datetime.datetime.now().strftime("%H:%M:%S")
+        self.player.finish_time = json.dumps(current_time)
+        finish_time = datetime.datetime.strptime(current_time, "%H:%M:%S")
+        start_time = datetime.datetime.strptime(json.loads(self.player.start_time), "%H:%M:%S")
+        self.player.total_time = json.dumps(str(finish_time - start_time))
+        self.player.past_slider_one = self.player.earlier_max - self.player.past_slider_one
+        return super().before_next_page()
 
     def vars_for_template(self):
         question_instructions = "Jobs created"
@@ -824,9 +1002,20 @@ class PV1_1_Instructions(Page):
             if self.player.round_number == 1:
                 check_round_number = True
 
-        return (
-            check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1
-        )
+        if check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1:
+            current_time = datetime.datetime.now().strftime("%H:%M:%S")
+            self.player.instructions_1_start_time = json.dumps(current_time)
+            return True
+        else:
+            return False
+
+    def before_next_page(self):
+        current_time = datetime.datetime.now().strftime("%H:%M:%S")
+        self.player.instructions_1_finish_time = json.dumps(current_time)
+        finish_time = datetime.datetime.strptime(current_time, "%H:%M:%S")
+        start_time = datetime.datetime.strptime(json.loads(self.player.instructions_1_start_time), "%H:%M:%S")
+        self.player.instructions_1_total_time = json.dumps(str(finish_time - start_time))
+        return super().before_next_page()
 
 class PV1_2_Instructions(Page):
     def vars_for_template(self):
@@ -851,9 +1040,20 @@ class PV1_2_Instructions(Page):
             if self.player.round_number == 1:
                 check_round_number = True
 
-        return (
-            check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1
-        )
+        if check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1:
+            current_time = datetime.datetime.now().strftime("%H:%M:%S")
+            self.player.instructions_2_start_time = json.dumps(current_time)
+            return True
+        else:
+            return False
+
+    def before_next_page(self):
+        current_time = datetime.datetime.now().strftime("%H:%M:%S")
+        self.player.instructions_2_finish_time = json.dumps(current_time)
+        finish_time = datetime.datetime.strptime(current_time, "%H:%M:%S")
+        start_time = datetime.datetime.strptime(json.loads(self.player.instructions_2_start_time), "%H:%M:%S")
+        self.player.instructions_2_total_time = json.dumps(str(finish_time - start_time))
+        return super().before_next_page()
 
 class PV2_V_Instructions(Page):
     def vars_for_template(self):
@@ -872,9 +1072,20 @@ class PV2_V_Instructions(Page):
                 if self.player.round_number == Constants.num_sliders + 1:
                     check_round_number = True
 
-        return (
-            check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1
-        )
+        if check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1:
+            current_time = datetime.datetime.now().strftime("%H:%M:%S")
+            self.player.instructions_1_start_time = json.dumps(current_time)
+            return True
+        else:
+            return False
+
+    def before_next_page(self):
+        current_time = datetime.datetime.now().strftime("%H:%M:%S")
+        self.player.instructions_1_finish_time = json.dumps(current_time)
+        finish_time = datetime.datetime.strptime(current_time, "%H:%M:%S")
+        start_time = datetime.datetime.strptime(json.loads(self.player.instructions_1_start_time), "%H:%M:%S")
+        self.player.instructions_1_total_time = json.dumps(str(finish_time - start_time))
+        return super().before_next_page()
 
 class PV2_G_Instructions(Page):
     def vars_for_template(self):
@@ -902,9 +1113,20 @@ class PV2_G_Instructions(Page):
                 if self.player.round_number == Constants.num_grids + 1:
                     check_round_number = True
 
-        return (
-            check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1
-        )
+        if check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1:
+            current_time = datetime.datetime.now().strftime("%H:%M:%S")
+            self.player.instructions_1_start_time = json.dumps(current_time)
+            return True
+        else:
+            return False
+
+    def before_next_page(self):
+        current_time = datetime.datetime.now().strftime("%H:%M:%S")
+        self.player.instructions_1_finish_time = json.dumps(current_time)
+        finish_time = datetime.datetime.strptime(current_time, "%H:%M:%S")
+        start_time = datetime.datetime.strptime(json.loads(self.player.instructions_1_start_time), "%H:%M:%S")
+        self.player.instructions_1_total_time = json.dumps(str(finish_time - start_time))
+        return super().before_next_page()
 
 class PV2_Divider(Page):
     def vars_for_template(self):
@@ -1022,11 +1244,19 @@ class PV_12(Page):
         if self.player.t_earliest == self.player.earlier_time and self.player.t_middle == self.player.later_time:
             check_past_slider_locations = True
         
-        return (
-            check_condition and check_past_slider_locations and (json.loads(self.participant.vars["consent_answer"]) == 1)
-        )
-    
+        if check_condition and check_past_slider_locations and json.loads(self.participant.vars["consent_answer"]) == 1:
+            current_time = datetime.datetime.now().strftime("%H:%M:%S")
+            self.player.start_time = json.dumps(current_time)
+            return True
+        else:
+            return False
+
     def before_next_page(self):
+        current_time = datetime.datetime.now().strftime("%H:%M:%S")
+        self.player.finish_time = json.dumps(current_time)
+        finish_time = datetime.datetime.strptime(current_time, "%H:%M:%S")
+        start_time = datetime.datetime.strptime(json.loads(self.player.start_time), "%H:%M:%S")
+        self.player.total_time = json.dumps(str(finish_time - start_time))
         self.player.past_slider_one = self.player.earlier_max - self.player.past_slider_one
         return super().before_next_page()
 
@@ -1082,11 +1312,19 @@ class PV_13(Page):
         if self.player.t_earliest == self.player.earlier_time and self.player.t_latest == self.player.later_time:
             check_past_slider_locations = True
         
-        return (
-            check_condition and check_past_slider_locations and (json.loads(self.participant.vars["consent_answer"]) == 1)
-        )
-    
+        if check_condition and check_past_slider_locations and json.loads(self.participant.vars["consent_answer"]) == 1:
+            current_time = datetime.datetime.now().strftime("%H:%M:%S")
+            self.player.start_time = json.dumps(current_time)
+            return True
+        else:
+            return False
+
     def before_next_page(self):
+        current_time = datetime.datetime.now().strftime("%H:%M:%S")
+        self.player.finish_time = json.dumps(current_time)
+        finish_time = datetime.datetime.strptime(current_time, "%H:%M:%S")
+        start_time = datetime.datetime.strptime(json.loads(self.player.start_time), "%H:%M:%S")
+        self.player.total_time = json.dumps(str(finish_time - start_time))
         self.player.past_slider_one = self.player.earlier_max - self.player.past_slider_one
         return super().before_next_page()
 
@@ -1143,14 +1381,21 @@ class PV_23(Page):
         if self.player.t_middle == self.player.earlier_time and self.player.t_latest == self.player.later_time:
             check_past_slider_locations = True
         
-        return (
-            check_condition and check_past_slider_locations and (json.loads(self.participant.vars["consent_answer"]) == 1)
-        )
-    
+        if check_condition and check_past_slider_locations and json.loads(self.participant.vars["consent_answer"]) == 1:
+            current_time = datetime.datetime.now().strftime("%H:%M:%S")
+            self.player.start_time = json.dumps(current_time)
+            return True
+        else:
+            return False
+
     def before_next_page(self):
+        current_time = datetime.datetime.now().strftime("%H:%M:%S")
+        self.player.finish_time = json.dumps(current_time)
+        finish_time = datetime.datetime.strptime(current_time, "%H:%M:%S")
+        start_time = datetime.datetime.strptime(json.loads(self.player.start_time), "%H:%M:%S")
+        self.player.total_time = json.dumps(str(finish_time - start_time))
         self.player.past_slider_one = self.player.earlier_max - self.player.past_slider_one
         return super().before_next_page()
-
 
 class Check1(Page):
     form_model = "player"

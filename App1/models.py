@@ -413,6 +413,14 @@ class Player(BasePlayer):
     finish_time = models.StringField()
     total_time = models.StringField()
 
+    instructions_1_start_time = models.StringField()
+    instructions_1_finish_time = models.StringField()
+    instructions_1_total_time = models.StringField()
+
+    instructions_2_start_time = models.StringField()
+    instructions_2_finish_time = models.StringField()
+    instructions_2_total_time = models.StringField()
+
     t_earliest = models.StringField()
     t_middle = models.StringField()
     t_latest = models.StringField()
