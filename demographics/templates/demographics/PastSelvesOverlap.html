@@ -1,0 +1,160 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+{% block content %}
+
+
+<script>
+	$(document).ready(function () {
+        $('input[name=slider_overlap_one_year]').on('input', function () {
+            $('input[name=slider_overlap_one_year]').addClass('overlap-thumb');
+        });
+    });
+    $(document).ready(function () {
+        $('input[name=slider_overlap_five_year]').on('input', function () {
+            $('input[name=slider_overlap_five_year]').addClass('overlap-thumb');
+        });
+    });
+</script>
+<div align="center">
+    <h2 text-align="center">
+        <span style="text-transform: uppercase; color: fuchsia;">THE PAST</span>
+    </h2>
+</div>
+<br>
+
+<div class="results" align="justify" style="font-size:large;">
+    We have two more questions.
+    <br>
+    <br>
+    Think about the important characteristics that make you the person you are now—your personality, 
+    temperament, major likes and dislikes, beliefs, values, ambitions, life goals, and ideals. 
+    Please indicate the degree of connectedness or overlap held between the person you are <strong>now </strong>
+    and the person you were <strong>one year ago.</strong>
+
+</div>
+
+<br>
+<table style="margin-left: -60px">
+    <tr>
+        <td>
+            <img src= "{% static 'demographics/overlap_images/past/1.png' %}" width="149" height="84"/>
+        </td>
+        <td>
+            <img src= "{% static 'demographics/overlap_images/past/2.png' %}" width="149" height="84"/>
+        </td>
+        <td>
+            <img src= "{% static 'demographics/overlap_images/past/3.png' %}" width="149" height="84"/>
+        </td>
+        <td>
+            <img src= "{% static 'demographics/overlap_images/past/4.png' %}" width="149" height="84"/>
+        </td>
+        <td>
+            <img src= "{% static 'demographics/overlap_images/past/5.png' %}" width="149" height="84"/>
+        </td>
+        <td>
+            <img src= "{% static 'demographics/overlap_images/past/6.png' %}" width="149" height="84"/>
+        </td>
+        <td>
+            <img src= "{% static 'demographics/overlap_images/past/7.png' %}" width="149" height="84"/>
+        </td>
+    </tr>
+</table>
+<table>
+    <tr>
+        <input type="range" name="slider_overlap_one_year" value="1" step="1" align="center" min="1" max="7" id="id_slider_overlap_one_year">
+    </tr>
+    <tr>
+        <td>
+            <div style='text-align: left;'>less overlap</div>
+        </td>
+        <td style="width: 80.3%">
+        </td>
+        <td>
+            <div style='text-align: right;'>more overlap</div>
+        </td>
+    </tr>
+</table>
+<br>
+<br>
+<br>
+<div class="results" align="justify" style="font-size:large;">
+Please indicate the degree of connectedness or overlap held between the person you are <strong>now</strong> and the person you were <strong>five years ago.</strong>
+</div>
+
+<br>
+<table style="margin-left: -60px">
+    <tr>
+        <td>
+            <img src= "{% static 'demographics/overlap_images/past/1.png' %}" width="149" height="84"/>
+        </td>
+        <td>
+            <img src= "{% static 'demographics/overlap_images/past/2.png' %}" width="149" height="84"/>
+        </td>
+        <td>
+            <img src= "{% static 'demographics/overlap_images/past/3.png' %}" width="149" height="84"/>
+        </td>
+        <td>
+            <img src= "{% static 'demographics/overlap_images/past/4.png' %}" width="149" height="84"/>
+        </td>
+        <td>
+            <img src= "{% static 'demographics/overlap_images/past/5.png' %}" width="149" height="84"/>
+        </td>
+        <td>
+            <img src= "{% static 'demographics/overlap_images/past/6.png' %}" width="149" height="84"/>
+        </td>
+        <td>
+            <img src= "{% static 'demographics/overlap_images/past/7.png' %}" width="149" height="84"/>
+        </td>
+    </tr>
+</table>
+
+
+<table>
+    <tr>
+        <input type="range" name="slider_overlap_five_year" value="1" step="1" align="center" min="1" max="7" id="id_slider_overlap_five_year">
+    </tr>
+    <tr>
+        <td>
+            <div style='text-align: left;'>less overlap</div>
+        </td>
+        <td style="width: 80.3%">
+        </td>
+        <td>
+            <div style='text-align: right;'>more overlap</div>
+        </td>
+    </tr>
+</table>
+
+<br>
+<br>
+
+<script>
+    function alertFunction() {
+        alert("In order for your answers to be most helpful to us, it is really important that you respond to all questions.")
+        jQuery('.waiting').hide();
+        jQuery('.next-button').show();
+        return false
+    }
+    jQuery("#id_slider_overlap_one_year").on("click", function () {
+        jQuery(".next-button").show();
+        jQuery(".waiting").hide();
+    });
+</script>
+
+<div class="waiting" onclick="return alertFunction();" style="text-align: center;">
+    {% next_button %}
+</div>
+
+<div class="next-button" style="text-align: center;">
+    {% next_button %}
+</div>
+
+<script>jQuery(".next-button").hide();</script>
+
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'demographics/styles/SliderOverlap.css' %}" />
+{% endblock %}

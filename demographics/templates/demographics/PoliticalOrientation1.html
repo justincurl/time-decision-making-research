@@ -1,0 +1,65 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block content %}
+
+<style>
+  input[type=radio] {
+    margin-top: 8px;
+    margin-left: -24px;
+  }
+</style>
+
+<br>
+<div class="results" align="justify">
+    <p style="font-size: larger">Generally speaking, do you usually think of yourself as a Republican, a Democrat, an Independent, or other? </p>
+    <br>
+    <div style="font-size: larger; list-style-type: none;">
+        <ul id="id_political_orientation">
+            <li>
+        <label for="id_political_orientation_0"><input type="radio" name="political_orientation" value="1" id="id_political_orientation_0" class="form-check-input">
+         Republican</label>
+        
+        </li>
+            <li>
+        <label for="id_political_orientation_1"><input type="radio" name="political_orientation" value="2" id="id_political_orientation_1" class="form-check-input">
+         Democrat</label>
+        
+        </li>
+            <li>
+        <label for="id_political_orientation_2"><input type="radio" name="political_orientation" value="3" id="id_political_orientation_2" class="form-check-input">
+         Independent</label>
+        
+        </li>
+            <li>
+        <label for="id_political_orientation_3"><input type="radio" name="political_orientation" value="4" id="id_political_orientation_3" class="form-check-input">
+         Other</label>
+        
+        </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function alertFunction() {
+        alert("In order for your answers to be most helpful to us, it is really important that you respond to all questions.")
+        jQuery('.waiting').hide();
+        jQuery('.next-button').show();
+        return false
+    }
+    jQuery(".form-check-input").on("click", function () {
+        jQuery(".next-button").show();
+        jQuery(".waiting").hide();
+    });
+</script>
+
+<div class="waiting" onclick="return alertFunction();" style="text-align: center;">
+    {% next_button %}
+</div>
+
+<div class="next-button" style="text-align: center;">
+    {% next_button %}
+</div>
+
+<script>jQuery(".next-button").hide();</script>
+{% endblock %}

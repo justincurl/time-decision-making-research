@@ -29,7 +29,7 @@ SESSION_CONFIGS = [
         name="Full_Survey",
         display_name="Full Survey",
         num_demo_participants=20,
-        app_sequence=["consent", "App1", "App2", "demographics"],
+        app_sequence=["consent", "App1", "App2", "ict", "demographics"],
         past_t_earliers="1 year ago, 1 year ago, 1 year ago, 1 year ago, 1 year ago | 5 years ago, 5 years ago, 5 years ago, 5 years ago, 5 years ago | 5 years ago, 5 years ago, 5 years ago, 5 years ago, 5 years ago",
         past_t_laters="now, now, now, now, now | now, now, now, now, now | 1 year ago, 1 year ago, 1 year ago, 1 year ago, 1 year ago",
         past_payment_laters="500000, 500000, 500000, 500000, 500000 | 500000, 500000, 500000, 500000, 500000 | 500000, 500000, 500000, 500000, 500000",
@@ -66,10 +66,10 @@ SESSION_CONFIGS = [
         app_sequence=["App2", "demographics"]
     ),
     dict(
-        name="FutureGrid",
-        display_name="Future Grid Demo",
+        name="Demographics",
+        display_name="demographics",
         num_demo_participants=20,
-        app_sequence=["FutureGrid", "demographics"],
+        app_sequence=["demographics"],
         future_grid_left_values = "500000, 500000, 500000, 500000, 500000, 500000, 500000, 500000, 500000, 500000, 500000, 500000, 500000, 500000, 500000", 
         future_grid_right_values = "122500, 378000, 500000, 617500, 875000, 127000, 371000, 500000, 629000, 880500, 120000, 378000, 500000, 628000, 880500",
         future_grid_t_earliers="now, now, now, now, now, now, now, now, now, now, 1 year from now, 1 year from now, 1 year from now, 1 year from now, 1 year from now",

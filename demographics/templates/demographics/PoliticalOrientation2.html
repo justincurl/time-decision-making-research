@@ -1,0 +1,57 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block content %}
+
+<style>
+  input[type=radio] {
+    margin-top: 8px;
+    margin-left: -24px;
+  }
+</style>
+
+{% if player.political_orientation == 1 %}
+
+<div id="republican">
+    <p style="font-size: larger">Would you call yourself a strong Republican or a not very strong Republican?</p>
+    <div style="font-size: larger" class="formfield-follow">{% formfield player.republican_option label="" %}</div>
+</div>
+{% endif %}
+
+{% if player.political_orientation  == 2 %}
+<div id="democrat">
+    <p style="font-size: larger">Would you call yourself a strong Democrat or a not very strong Democrat?</p>
+    <div style="font-size: larger" class="formfield-follow">{% formfield player.democrat_option label="" %}</div>
+</div>
+{% endif %}
+
+{% if player.political_orientation >= 3 %}
+<div id="independent">
+    <p style="font-size: larger">Do you think of yourself as CLOSER to the Republican Party or to the Democratic Party?</p>
+    <div style="font-size: larger" class="formfield-follow">{% formfield player.independent_option label="" %}</div>
+</div>
+{% endif %}
+<script>
+    function alertFunction() {
+        alert("In order for your answers to be most helpful to us, it is really important that you respond to all questions.")
+        jQuery('.waiting').hide();
+        jQuery('.next-button').show();
+        return false
+    }
+    jQuery(".form-check-input").on("click", function () {
+        jQuery(".next-button").show();
+        jQuery(".waiting").hide();
+    });
+</script>
+
+<div class="waiting" onclick="return alertFunction();" style="text-align: center;">
+    {% next_button %}
+</div>
+
+<div class="next-button" style="text-align: center;">
+    {% next_button %}
+</div>
+
+<script>jQuery(".next-button").hide();</script>
+
+{% endblock %}

@@ -1,91 +1,65 @@
 {% extends "global/Page.html" %}
-{% load otree static %}
+{% load staticfiles otree %}
+{% load staticfiles %}
 
 {% block content %}
 
-<style>
-    table {
-        table-layout: fixed;
-        width: 100%;
-    }
+<table class="table table-bordered">
+    <tbody>
+        <tr
+            class="timepref__question-start timepref__question-unanswered">
+            {% for value in start_values %}
+            <td class="text-center">{{ value }}</td>
+            {% endfor %}
+        </tr>
+        <tr class="timepref__question-end">
+            {% for value in end_values %}
+            <td class="text-center" style="width: 110px !important;">{{ value }}</td>
+            {% endfor %}
+        </tr>
+        <tr class="timepref__question-choices">
+            {% for index in idxs %}
+            <td class="text-center timepref__question-choice">
+                <input type="radio" name="question_{{questions_to_page|add:index}}" value="{{ index }}" />
+            </td>
+            {% endfor %}
 
-    td {
-        width: 25%;
-    }
-</style>
-
-<br><br>
-<div class="results" align="justify">
-    <p>
-        How willing are you to give up something that is beneficial for you today in order to benefit more from that in
-        the future?
-        <br><br>
-        Please answer on a scale from 0 to 10, where 0 means completely unwilling to do so, and 10 means very willing to
-        do so.
-    </p>
-    <table style="width: 100%" class="table text-center">
-        <tbody>
-            <form>
-                <tr>
-                    <td>
-                        completely unwilling to do so
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        very willing to do so
-                    </td>
-                </tr>
-                <tr>
-                    {% for choice in form.benefit_today %}
-                    <td>
-                        <label class="benefit_today-labels"
-                            for="benefit_today_{{forloop.counter}}">{{choice.choice_label}}</label>
-                    </td>
-                    {% endfor %}
-                </tr>
-                <br>
-                <tr>
-                    {% for choice in form.benefit_today %}
-                    <td>
-                        <input class="benefit_today-choices" id="benefit_today_{{forloop.counter}}" name="benefit_today"
-                            type="radio" value={{choice.choice_label}} />
-                    </td>
-                    {% endfor %}
-                </tr>
-            </form>
-        </tbody>
-    </table>
+            <h1></h1>
+    </tbody>
+</table>
+<br>
+<br>
+<div text-align="justify">
+    Mark the response button that you think shows the best economy. 
 </div>
+<br>
+<br>
+
+<input id="timepref__answer" type="hidden" name="benefit_answer" value="{{player.benefit_answer}}">
 
 <script>
-    function alertFunction() {
+    function alertFunctionBlock() {
         alert("In order for your answers to be most helpful to us, it is really important that you respond to all questions.")
-        jQuery('.waiting').hide();
-        jQuery('.next-button').show();
+        jQuery('.timepref__waiting').hide();
+        jQuery('.timepref__next-button').show();
         return false
     }
-    jQuery(".benefit_today-choices").on("click", function () {
-        jQuery(".next-button").show();
-        jQuery(".waiting").hide();
-    });
 </script>
 
-<div class="waiting" onclick="return alertFunction();">
+<div class="timepref__waiting" onclick="return alertFunctionBlock();" style="text-align: center;">
     {% next_button %}
 </div>
 
-<div class="next-button">
+<div class="timepref__next-button" style="text-align: center;">
     {% next_button %}
 </div>
 
-<script>jQuery(".next-button").hide();</script>
+{% endblock %}
 
+{% block styles %}
+<link rel="stylesheet" href="{% static 'demographics/styles/benefit_today.css' %}" />
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'demographics/scripts/benefit_today.js' %}"></script>
 {% endblock %}

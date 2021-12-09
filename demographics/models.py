@@ -26,7 +26,23 @@ class Constants(BaseConstants):
 
 class Subsession(BaseSubsession):
     def creating_session(self) -> None:
+        r_line_length_options = [
+            (1, "Past"),
+            (2, "Future"),
+        ]
+
+        r_selves_overlap_options = [
+            (1, "Past"),
+            (2, "Future"),
+        ]
+
         for player in self.get_players():
+            if self.round_number == 1:
+                player.line_length_condition = random.choice(r_line_length_options)[0]
+                player.overlap_condition = random.choice(r_selves_overlap_options)[0]
+            else:
+                player.line_length_condition = player.in_round(self.round_number - 1).line_length_condition
+                player.overlap_condition = player.in_round(self.round_number - 1).overlap_condition
             player.code = str(random.randrange(10 ** 11, 10 ** 12))
 
 
@@ -36,6 +52,10 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     race = models.StringField()
+
+    line_length_condition = models.IntegerField()
+
+    overlap_condition = models.IntegerField()
 
     code = models.StringField()
 
@@ -93,30 +113,28 @@ class Player(BasePlayer):
             [14, "$200,000 - $249,999"],
             [15, "$250,000 - $349,999"],
             [16, "$350,000 - $499,999"],
-            [17, "$500,000 or moree"],
+            [17, "$500,000 or more"],
             [-1, "Prefer not to say"],
         ],
         blank=True,
-        widget=widgets.RadioSelect,
     )
 
-    benefit_today = models.IntegerField(
+    work_situation = models.IntegerField(
         choices=[
-            [0, "0"],
-            [1, "1"],
-            [2, "2"],
-            [3, "3"],
-            [4, "4"],
-            [5, "5"],
-            [6, "6"],
-            [7, "7"],
-            [8, "8"],
-            [9, "9"],
-            [10, "10"],
+            [1,"Working full-time"],
+            [2,"Working part-time"],
+            [3,"Temporarily unemployed (including furloughed)"],
+            [4,"Unemployed"],
+            [5,"Retired"],
+            [6,"Homemaker or stay-at-home parent"],
+            [7,"Student"],
+            [8,"Disabled and unable to work"],
+
         ],
-        widget=widgets.RadioSelect,
         blank=True,
     )
+
+    benefit_answer = models.IntegerField()
 
     education = models.IntegerField(
     choices=[
@@ -130,7 +148,17 @@ class Player(BasePlayer):
     ],
     blank=True,
     widget=widgets.RadioSelect,
-)
+    )
+
+    interface_choice = models.IntegerField(
+        choices=[
+            [1, "Choosing one of the response buttons"],
+            [2, "Moving the green blocks across periods"],
+            [3, "Both methods were equally as intuitive"]
+        ],
+        blank=True,
+        widget=widgets.RadioSelect,
+    )
 
     gender = models.IntegerField(
         blank=True,
@@ -149,7 +177,20 @@ class Player(BasePlayer):
 
     feedback = models.LongStringField(blank=True)
 
-    check_slider_overlap = models.IntegerField()
-    slider_overlap = models.StringField()
+    slider_one_year = models.StringField()
+    slider_five_year = models.StringField()
+
+    slider_overlap_one_year = models.StringField()
+
+    slider_overlap_five_year = models.StringField()
 
     zipcode = models.IntegerField(blank=True, min=0, max=99999)
+
+    vs_respondents = models.IntegerField(
+        blank=True,
+        choices=[
+            [1, "Yes"],
+            [2, "No"],
+        ],
+        widget=widgets.RadioSelect,
+    )

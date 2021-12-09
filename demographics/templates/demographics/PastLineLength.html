@@ -4,37 +4,35 @@
 
 {% block content %}
 
-{{ form.check_slider_five_year.errors }}
-{{ form.check_slider_one_year.errors }}
-
 <script>
 	$(document).ready(function () {
         $('input[name=slider_one_year]').on('input', function () {
             $('input[name=slider_one_year]').addClass('one-year-thumb');
         });
-    	$('input[name=slider_one_year]').on('input change', function() {
-        	$('#id_check_slider_one_year').val(1);
-    	});
     });
     	$(document).ready(function () {
         $('input[name=slider_five_year]').on('input', function () {
             $('input[name=slider_five_year]').addClass('five-year-thumb');
         });
-    	$('input[name=slider_five_year]').on('input change', function() {
-        	$('#id_check_slider_five_year').val(1);
-    	});
     });
 </script>
+<div align="center">
+    <h2 text-align="center">
+        <span style="text-transform: uppercase; color: fuchsia;">THE PAST</span>
+    </h2>
+</div>
+<br>
 
 <div class="results" align="justify" style="font-size:large;">
     The next two questions ask you to indicate your subjective feeling of duration between different times in the past. 
-    Move the slider to indicate how long you consider the duration between the two time points. 
+    Once you click in the grey rectangles below, a blue arrow will appear. Please adjust the length of the blue arrow to indicate 
+    how long you consider the duration to be between now and the time period provided. You can make it longer by moving the arrowhead
+    to the right and shorter by moving it to the left.
     <br>
     <br>
-    How long do you consider the duration between now and a year ago? 
+    How long do you consider the duration between <strong>now</strong> and <strong>a year ago</strong>? 
 </div>
 
-<input type="hidden" name="check_slider_one_year" value="" id="id_check_slider_one_year"/>
 <br>
 <table>
     <tr>
@@ -42,44 +40,42 @@
     </tr>
     <tr>
         <td>
-            <div style='text-align: left; font-size: larger;'>very short</div>
+            <div style='text-align: left;'>very short</div>
         </td>
-        <td style="width: 82.1%">
+        <td style="width: 84.5%">
         </td>
         <td>
-            <div style='text-align: right; font-size: larger;'>very long</div>
+            <div style='text-align: right;'>very long</div>
         </td>
     </tr>
 </table>
-
+<br>
+<i><u>After clicking anywhere inside the rectangle, you can adjust the length of the arrow (by moving the arrowhead) to indicate your answer.</u></i>
+<br>
 <br>
 <br>
 <div class="results" align="justify" style="font-size:large;">
-    How long do you consider the duration between now and five years ago? 
+    How long do you consider the duration between <strong>now</strong> and <strong>five years ago</strong>?
 </div>
-
-
-<input type="hidden" name="check_slider_five_year" value="" id="id_check_slider_five_year"/>
 <br>
+
 <table>
     <tr>
         <input type="range" name="slider_five_year" value="0" step="1" align="center" min="0" max="260" id="id_slider_five_year">
     </tr>
     <tr>
         <td>
-            <div style='text-align: left; font-size: larger;'>very short</div>
+            <div style='text-align: left;;'>very short</div>
         </td>
-        <td style="width: 82.1%">
+        <td style="width: 84.5%">
         </td>
         <td>
-            <div style='text-align: right; font-size: larger;'>very long</div>
+            <div style='text-align: right;'>very long</div>
         </td>
     </tr>
 </table>
-
 <br>
-<br>
-
+<i><u>After clicking anywhere inside the rectangle, you can adjust the length of the arrow (by moving the arrowhead) to indicate your answer.</u></i>
 
 <script>
     function alertFunction() {
@@ -107,5 +103,5 @@
 {% endblock %}
 
 {% block styles %}
-<link rel="stylesheet" href="{% static 'App2/styles/LineLengths.css' %}" />
+<link rel="stylesheet" href="{% static 'demographics/styles/LineLengths.css' %}" />
 {% endblock %}

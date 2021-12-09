@@ -127,14 +127,16 @@ class Subsession(BaseSubsession):
                 player.condition = player_order[0]
                 player.first = player_order[1]
                 player.second = player_order[2]
+                player.participant.vars["condition"] = player.condition
             else:
                 player.condition = player.in_round(self.round_number - 1).condition
                 player.first = player.in_round(self.round_number - 1).first
                 player.second = player.in_round(self.round_number - 1).second
+            
         
         ################################################################################################### IF CONDITION 1 or 2 ###################################################################################################
             if player.first == "PV":
-                ################################################################################################### PAST VISUAL WITHIN-PLAYER RANDOMIZATION ###################################################################################################
+                    ################################################################################################### PAST VISUAL WITHIN-PLAYER RANDOMIZATION ###################################################################################################
                 if self.round_number <= Constants.num_sliders:
                     player.t_earliest = past_t_options[0]
                     player.t_middle = past_t_options[1]

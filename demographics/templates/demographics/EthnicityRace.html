@@ -5,23 +5,23 @@
 {% block content %}
 
 <br>
-<div class="results" align="justify" style="font-size: larger">
-    <p style="font-size: larger">Are you of Hispanic, Latino or Spanish Origin?</p>
-    <div style="font-size: large" class="formfield">{% formfield player.ethnicity label="" %}
+<div class="results" align="justify" style="font-size: large">
+    <p style="font-size: large">Are you of Hispanic, Latino or Spanish Origin?</p>
+    <div style="font-size: large; padding-left: 5px;" class="formfield">{% formfield player.ethnicity label="" %}
     </div>
 </div>
 </div>
 
-<div class="question" align="justify" style="font-size: larger">
-    <p>What is your race?</p>
+<div class="question" align="justify" style="font-size: large">
+    What is your race? <i>(Choose all that apply)</i>
 </div>
-<div>
-    <div class="race-choices" style="font-size: larger">
+<div style="padding-left: 20px;">
+    <div class="race-choices" style="font-size: large">
         {% for value in values %}
         <div class="race-choice-line">
             <input id="race-choice-{{ forloop.counter }}" type="checkbox" name="race-choice-{{ forloop.counter }}"
-                value="{{ forloop.counter }}" />
-            <label for="race-choice-{{ forloop.counter }}">{{value}}</label>
+                value="{{ forloop.counter }}"/>
+            <label style="padding-left: 10px !important;" for="race-choice-{{ forloop.counter }}">{{value}}</label>
         </div>
         {% endfor %}
     </div>
