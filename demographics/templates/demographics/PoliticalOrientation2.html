@@ -13,22 +13,22 @@
 {% if player.political_orientation == 1 %}
 
 <div id="republican">
-    <p style="font-size: larger">Would you call yourself a strong Republican or a not very strong Republican?</p>
-    <div style="font-size: larger" class="formfield-follow">{% formfield player.republican_option label="" %}</div>
+    <p style="font-size: large">Would you call yourself a strong Republican or a not very strong Republican?</p>
+    <div style="font-size: large" class="formfield-follow">{% formfield player.republican_option label="" %}</div>
 </div>
 {% endif %}
 
 {% if player.political_orientation  == 2 %}
 <div id="democrat">
-    <p style="font-size: larger">Would you call yourself a strong Democrat or a not very strong Democrat?</p>
-    <div style="font-size: larger" class="formfield-follow">{% formfield player.democrat_option label="" %}</div>
+    <p style="font-size: large">Would you call yourself a strong Democrat or a not very strong Democrat?</p>
+    <div style="font-size: large" class="formfield-follow">{% formfield player.democrat_option label="" %}</div>
 </div>
 {% endif %}
 
 {% if player.political_orientation >= 3 %}
 <div id="independent">
-    <p style="font-size: larger">Do you think of yourself as CLOSER to the Republican Party or to the Democratic Party?</p>
-    <div style="font-size: larger" class="formfield-follow">{% formfield player.independent_option label="" %}</div>
+    <p style="font-size: large">Do you think of yourself as CLOSER to the Republican Party or to the Democratic Party?</p>
+    <div style="font-size: large" class="formfield-follow">{% formfield player.independent_option label="" %}</div>
 </div>
 {% endif %}
 <script>
