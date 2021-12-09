@@ -15,7 +15,7 @@
     text-align: left !important;
     margin-top: -100px;
     margin-left: -70px;
-    margin-bottom: -60px;
+    margin-bottom: -100px;
 }
 
 .t1_t2_gap {
@@ -45,7 +45,7 @@
     margin-top: -100px; /* controls distance from right slider to top */
     margin-left: -160px; 
     margin-right: 0px !important; /* controls right slider */
-    margin-bottom: -60px; /* controls distance from right slider to timeline */
+    margin-bottom: -100px; /* controls distance from right slider to timeline */
 }
 
 .t3_text {

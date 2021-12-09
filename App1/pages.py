@@ -768,20 +768,6 @@ class PG1_1_Instructions(Page):
             if self.player.round_number == 1:
                 check_round_number = True
 
-        elif self.player.first == "FG":
-            if self.player.second == "PG":
-                if self.round_number > Constants.num_grids and self.round_number < 2 * Constants.num_grids + 1:
-                    check_condition = True
-                if self.player.round_number == Constants.num_sliders + 1:
-                    check_round_number = True
-
-        elif self.player.first == "PV":
-            if self.player.second == "FV":
-                if self.round_number > Constants.num_sliders and self.round_number < Constants.num_grids + Constants.num_sliders + 1:
-                    check_condition = True
-                if self.player.round_number == Constants.num_grids + 1:
-                    check_round_number = True
-
         if check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1:
             current_time = datetime.datetime.now().strftime("%H:%M:%S")
             self.player.instructions_1_start_time = json.dumps(current_time)

@@ -15,6 +15,7 @@
     text-align: left !important;
     margin-left: -135px;
     margin-top: -5px;
+    margin-bottom: -2px;
 }
 
 .t1_t2_gap {
@@ -28,6 +29,7 @@
     text-align: left !important;
     margin-left: -185px; /* control positioning of left slider */
     margin-top: -5px;
+    margin-bottom: -2px;
 }
 
 .t2_text {
