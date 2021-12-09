@@ -23,19 +23,6 @@ class FG1_1_Instructions(Page):
             if self.player.round_number == 1:
                 check_round_number = True
 
-        elif self.player.first == "PG":
-            if self.player.second == "FG":
-                if self.round_number > Constants.num_grids and self.round_number < 2 * Constants.num_grids + 1:
-                    check_condition = True
-                if self.player.round_number == Constants.num_sliders + 1:
-                    check_round_number = True
-
-        elif self.player.first == "FV":
-            if self.player.second == "FG":
-                if self.round_number > Constants.num_sliders and self.round_number < Constants.num_grids + Constants.num_sliders + 1:
-                    check_condition = True
-                if self.player.round_number == Constants.num_grids + 1:
-                    check_round_number = True
         if check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1:
             current_time = datetime.datetime.now().strftime("%H:%M:%S")
             self.player.instructions_1_start_time = json.dumps(current_time)
@@ -74,20 +61,6 @@ class FG1_2_Instructions(Page):
                 check_condition = True
             if self.player.round_number == 1:
                 check_round_number = True
-
-        elif self.player.first == "PG":
-            if self.player.second == "FG":
-                if self.round_number > Constants.num_grids and self.round_number < 2 * Constants.num_grids + 1:
-                    check_condition = True
-                if self.player.round_number == Constants.num_sliders + 1:
-                    check_round_number = True
-
-        elif self.player.first == "FV":
-            if self.player.second == "FG":
-                if self.round_number > Constants.num_sliders and self.round_number < Constants.num_grids + Constants.num_sliders + 1:
-                    check_condition = True
-                if self.player.round_number == Constants.num_grids + 1:
-                    check_round_number = True
 
         if check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1:
             current_time = datetime.datetime.now().strftime("%H:%M:%S")
@@ -1003,7 +976,6 @@ class PG_Main(Page):
         finish_time = datetime.datetime.strptime(current_time, "%H:%M:%S")
         start_time = datetime.datetime.strptime(json.loads(self.player.start_time), "%H:%M:%S")
         self.player.total_time = json.dumps(str(finish_time - start_time))
-        self.player.past_slider_one = self.player.earlier_max - self.player.past_slider_one
         return super().before_next_page()
 
     def vars_for_template(self):

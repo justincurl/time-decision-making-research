@@ -16,7 +16,7 @@ class FutureDecision(Page):
     form_model = models.Player
     form_fields = ['choice']
     def is_displayed(self):
-        return self.staircase_condition == 2
+        return self.player.staircase_condition == 2
 
     # variables for template
     # ----------------------------------------------------------------------------------------------------------------
@@ -45,7 +45,7 @@ class PastDecision(Page):
     form_fields = ['choice']
     
     def is_displayed(self):
-        return self.staircase_condition == 1
+        return self.player.staircase_condition == 1
 
     # variables for template
     # ----------------------------------------------------------------------------------------------------------------

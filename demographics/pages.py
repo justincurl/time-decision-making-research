@@ -130,6 +130,7 @@ def generate_page_sequence():
         + [PoliticalOrientation1]
         + [PoliticalOrientation2]
         + [PastSelvesOverlap]
+        + [FutureSelvesOverlap]
         + [InterfaceChoice]
         + [Feedback]
         + [Results]
