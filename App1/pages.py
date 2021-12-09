@@ -323,6 +323,8 @@ class FV1_1_Instructions(Page):
         if self.player.first == "FV":
             if self.round_number <= Constants.num_sliders:
                 check_condition = True
+            if self.player.round_number == 1:
+                check_round_number = True
 
         if check_condition and check_round_number and json.loads(self.participant.vars["consent_answer"]) == 1:
             current_time = datetime.datetime.now().strftime("%H:%M:%S")
