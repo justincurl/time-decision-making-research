@@ -19,7 +19,7 @@
         </h2>
 </div>
 <br>
-
+{% if page == 1 %}
 <div class="wrapper instructions" text-align="justify" style="font-size: large;">
 Next, we would like you to look backward and consider <strong style="color: fuchsia;">past</strong> <strong>personal income growth</strong>. The following 4 pages will show you two growth trends in the same plot.
 <br>
@@ -27,6 +27,8 @@ Next, we would like you to look backward and consider <strong style="color: fuch
 After looking at each figure, you’ll be asked to select which of the two trends you believe to be the better economy.
 </div>
 <br>
+<br>
+{% endif %}
 
     <div class="wrapper">
         <!-- ------------------------------------------------------------------------------------------------------- -->
@@ -37,6 +39,8 @@ After looking at each figure, you’ll be asked to select which of the two trend
                 <tr style="border:none">
                 Which of these two personal income growth projections do you think is better?
                 </tr>
+                <br>
+                <br>
                 <tr style="border:none">
                 <td style="border:none">
                 {% if payoff_delayed == 4.0 %}

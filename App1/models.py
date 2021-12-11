@@ -161,19 +161,21 @@ class Subsession(BaseSubsession):
                         player.t_earliest = future_t_options[0]
                         player.t_middle = future_t_options[1]
                         player.t_latest = future_t_options[2]
-                        if self.round_number - Constants.num_sliders == 1:
+                        if self.round_number - Constants.num_grids == 1:
                             if self.session.config["future_randomize_sliders"]:
                                 for i in range(len(future_visual_round_configs)):
                                     random.shuffle(future_visual_round_configs[i]) 
                                 random.shuffle(future_visual_round_configs)
                             player.future_visual_round_configs = json.dumps(future_visual_round_configs)
                         else:
-                            player.future_visual_round_configs = player.in_round(self.round_number - 1).future_visual_round_configs    
-                            future_player_config = json.loads(player.future_visual_round_configs)[(self.round_number - Constants.num_sliders - 1)//Constants.num_per_section][(self.round_number - Constants.num_sliders - 1) % Constants.num_per_section]
-                            player.earlier_time = future_player_config[0]  # example: today
-                            player.earlier_max = int(future_player_config[1])
-                            player.later_time = future_player_config[2]
-                            player.later_max = int(future_player_config[3])
+                            player.future_visual_round_configs = player.in_round(self.round_number - 1).future_visual_round_configs
+                            
+                        # only go for the configurable number of sliders
+                        future_player_config = json.loads(player.future_visual_round_configs)[(self.round_number - Constants.num_grids - 1)//Constants.num_per_section][(self.round_number - Constants.num_grids - 1) % Constants.num_per_section]
+                        player.earlier_time = future_player_config[0]  # example: today
+                        player.earlier_max = int(future_player_config[1])
+                        player.later_time = future_player_config[2]
+                        player.later_max = int(future_player_config[3])
 
                 if self.round_number > Constants.num_sliders and self.round_number < Constants.num_sliders + Constants.num_grids + 1:    
                     if player.second == "PG":

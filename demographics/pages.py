@@ -57,8 +57,7 @@ class VSRespondents(Page):
     form_fields = ["vs_respondents"]
 
     def is_displayed(self):
-        #  set to true during VS survey
-        return False
+        return self.session.config["vs_on"]
 
 class WorkSituation(Page):
     form_model = "player"
@@ -91,12 +90,28 @@ class PastSelvesOverlap(Page):
     def is_displayed(self):
         return self.player.overlap_condition == 1
 
+    def vars_for_template(self):
+        start_values = ["less overlap"] + ["" for i in range(5)] + ["more overlap"]
+        return dict(
+            start_values=start_values,
+            end_values=[i for i in range(7)],
+            idxs=[i for i in range(7)]
+        )
+
 class FutureSelvesOverlap(Page):
     form_model = 'player'
     form_fields = ['slider_overlap_one_year', 'slider_overlap_five_year']
 
     def is_displayed(self):
         return self.player.overlap_condition == 2
+    
+    def vars_for_template(self):
+        start_values = ["less overlap"] + ["" for i in range(5)] + ["more overlap"]
+        return dict(
+            start_values=start_values,
+            end_values=["<img src = {% static 'Demographics/overlap_images/future_1.png' %} width='149' height='84'/>", "", "", "<img src = {% static 'Demographics/overlap_images/future_2.png' %} width='149' height='84'/>", "", "", "<img src = {% static 'Demographics/overlap_images/future_3.png' %} width='149' height='84'/>"],
+            idxs=[i for i in range(7)]
+        )
 
 class InterfaceChoice(Page):
     form_model = 'player'

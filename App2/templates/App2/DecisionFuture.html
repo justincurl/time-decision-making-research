@@ -21,13 +21,16 @@
 </div>
 <br>
 
+{% if page == 1 %}
 <div class="wrapper instructions" text-align="justify" style="font-size: large;">
 Next, we would like you to evaluate different projections of <strong style="color: orange;">future</strong> <strong>personal income growth</strong>. The following 4 pages will show you two growth projections in the same plot. 
 <br>
 <br>
 After looking at each figure, you’ll be asked to select which of the two projections you believe to be the better economy.      
 </div>
-
+<br>
+<br>
+{% endif %}
 
     <div class="wrapper">
         <!-- ------------------------------------------------------------------------------------------------------- -->
@@ -38,6 +41,8 @@ After looking at each figure, you’ll be asked to select which of the two proje
                 <tr style="border:none">
                 Which of these two personal income growth projections do you think is better?
                 </tr>
+                <br>
+                <br>
                 <tr style="border:none">
                 <td style="border:none">
                 {% if payoff_delayed == 4.0 %}

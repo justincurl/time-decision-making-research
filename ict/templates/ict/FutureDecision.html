@@ -24,13 +24,22 @@
             <strong style="text-transform: uppercase; color: orange;">FUTURE: </strong><span style="text-transform: uppercase;">This year</span> and <span style="text-transform: uppercase;">next year</span>
         </h2>
     </div>
+    <br>
+    {% if page == 1 %}
+        <div class="wrapper instructions">
+            <p>
+                We will now ask you to compare a series of different personal income growth rates. For each one, please mark the option you think represents the better economy.
+            </p>
+        </div>
+    {% endif %}
 
+    {% if page > 1 %}
     <div class="wrapper instructions">
         <p>
-            We will now ask you to compare a series of different personal income growth rates. For each one, please mark the option you think represents the better economy.
+            Note that the total personal income growth over the two periods is different than in the last question.
         </p>
     </div>
-
+    {%endif %}
     <div class="wrapper">
 
 
@@ -43,7 +52,7 @@
                 </tr>
                 <tr style="border:none">
                     <td style="border:none">
-                        <b><span style="background-color: #FFFF00">{{ Constants.payoff_now }}%</span></b> personal income growth this year and <b><span style="background-color: #FFFF00"></span>4.0%</span></b> personal income growth next year (2022)
+                        <b><span style="background-color: #FFFF00">{{ Constants.payoff_now }}%</span></b> personal income growth this year and <b><span style="background-color: #FFFF00">4.0%</span></b> personal income growth next year (2022)
                     </td>
                     <td style="border:none">
                         <button class="btn btn-primary choice" name="choice" value="A" required>
@@ -54,7 +63,7 @@
                 <div>
                 <tr style="border:none">
                     <td style="border:none">
-                        <b><span style="background-color: #FFFF00">{{ payoff_delayed }}%</span></b> personal income growth this year and <b><span style="background-color: #FFFF00"></span>8.0%</span></b> personal income growth next year (2022)
+                        <b><span style="background-color: #FFFF00">{{ payoff_delayed }}%</span></b> personal income growth this year and <b><span style="background-color: #FFFF00">8.0%</span></b> personal income growth next year (2022)
                     </td>
                 </div>
                 <div>    

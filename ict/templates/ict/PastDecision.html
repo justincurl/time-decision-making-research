@@ -24,15 +24,25 @@
             <strong style="text-transform: uppercase; color: fuchsia;">PAST: </strong><span style="text-transform: uppercase;">This year</span> and <span style="text-transform: uppercase;">last year</span>
         </h2>
     </div>
+    {% if page == 1 %}
+        <div class="wrapper instructions">
+            <p>
+                We will now ask you to compare a series of different personal income growth rates. For each one, please mark the option you think represents the better economy.
+            </p>
+        </div>
+        <br>
+        <br>
+    {% endif %}
 
+    {% if page > 1 %}
     <div class="wrapper instructions">
         <p>
-            We will now ask you to compare a series of different personal income growth rates. For each one, please mark the option you think represents the better economy.
+            Note that the total personal income growth over the two periods is different than in the last question.
         </p>
     </div>
-
-    <div class="wrapper">
-
+    <br>
+    <br>
+    {%endif %}
 
         <!-- ------------------------------------------------------------------------------------------------------- -->
         <!-- Table - Lottery Decisions (Option A/B) -->

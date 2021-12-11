@@ -223,8 +223,16 @@ class FG_Main(Page):
     def vars_for_template(self):
         question_instructions = "Jobs created"
         note = "Note that the total number of jobs that can be created over the two periods is different than in the last question."
-        if self.round_number == 1 or self.round_number == 6 or self.round_number == 11:
-            note = ""
+        if self.player.first == "FG":
+            if self.round_number == 1 or self.round_number == 6 or self.round_number == 11:
+                note = ""
+        elif self.player.second == "FG":
+            if self.player.first == "FV":
+                if self.player.round_number - Constants.num_sliders == 1 or self.player.round_number - Constants.num_sliders == 6 or self.player.round_number - Constants.num_sliders == 11:
+                    note = ""
+            elif self.player.first == "PG":
+                if self.player.round_number - Constants.num_grids == 1 or self.player.round_number - Constants.num_grids == 6 or self.player.round_number - Constants.num_grids == 11:
+                    note = ""
 
         start_values = [self.player.earlier_max + x*(0-self.player.earlier_max)/(6-1) for x in range(6)]
         for i in range(len(start_values)):
@@ -969,8 +977,17 @@ class PG_Main(Page):
     def vars_for_template(self):
         question_instructions = "Jobs created"
         note = "Note that the total number of jobs that can be created over the two periods is different than in the last question."
-        if self.round_number == 1 or self.round_number == 6 or self.round_number == 11:
-            note = ""
+        if self.player.first == "PG":
+            if self.round_number == 1 or self.round_number == 6 or self.round_number == 11:
+                note = ""
+        elif self.player.second == "PG":
+            if self.player.first == "PV":
+                if self.player.round_number - Constants.num_sliders == 1 or self.player.round_number - Constants.num_sliders == 6 or self.player.round_number - Constants.num_sliders == 11:
+                    note = ""
+            elif self.player.first == "FG":
+                if self.player.round_number - Constants.num_grids == 1 or self.player.round_number - Constants.num_grids == 6 or self.player.round_number - Constants.num_grids == 11:
+                    note = ""
+
 
         start_values = [self.player.earlier_max + x*(0-self.player.earlier_max)/(6-1) for x in range(6)]
         for i in range(len(start_values)):
@@ -1014,7 +1031,7 @@ class PG2_Divider(Page):
                     check_round_number = True
 
         elif self.player.first == "PV":
-            if self.player.second == "FV":
+            if self.player.second == "PG":
                 if self.round_number > Constants.num_sliders and self.round_number < Constants.num_grids + Constants.num_sliders + 1:
                     check_condition = True
                 if self.player.round_number == Constants.num_grids + 6:
@@ -1047,7 +1064,7 @@ class PG3_Divider(Page):
                     check_round_number = True
 
         elif self.player.first == "PV":
-            if self.player.second == "FV":
+            if self.player.second == "PG":
                 if self.round_number > Constants.num_sliders and self.round_number < Constants.num_grids + Constants.num_sliders + 1:
                     check_condition = True
                 if self.player.round_number == Constants.num_grids + 11:

@@ -132,6 +132,7 @@ class Player(BasePlayer):
 
         ],
         blank=True,
+        widget=widgets.RadioSelect,
     )
 
     benefit_answer = models.IntegerField()

@@ -30,6 +30,7 @@ SESSION_CONFIGS = [
         display_name="Full Survey",
         num_demo_participants=20,
         app_sequence=["consent", "App1", "App2", "ict", "demographics"],
+        vs_on=1,
         past_t_earliers="1 year ago, 1 year ago, 1 year ago, 1 year ago, 1 year ago | 5 years ago, 5 years ago, 5 years ago, 5 years ago, 5 years ago | 5 years ago, 5 years ago, 5 years ago, 5 years ago, 5 years ago",
         past_t_laters="now, now, now, now, now | now, now, now, now, now | 1 year ago, 1 year ago, 1 year ago, 1 year ago, 1 year ago",
         past_payment_laters="500000, 500000, 500000, 500000, 500000 | 500000, 500000, 500000, 500000, 500000 | 500000, 500000, 500000, 500000, 500000",
