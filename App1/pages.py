@@ -626,12 +626,13 @@ class FV_12(Page):
         finish_time = datetime.datetime.strptime(current_time, "%H:%M:%S")
         start_time = datetime.datetime.strptime(json.loads(self.player.start_time), "%H:%M:%S")
         self.player.total_time = json.dumps(str(finish_time - start_time))
-        self.player.future_slider_one = self.player.earlier_max - self.player.future_slider_one
+        if self.player.slider_two_last_clicked:
+            self.player.future_slider_two = self.player.later_max - self.player.future_slider_two
         return super().before_next_page()
 
 class FV_13(Page):
     form_model = 'player'
-    form_fields = ['future_slider_one', 'future_slider_two']
+    form_fields = ['future_slider_one', 'future_slider_two', 'slider_two_last_clicked']
 
     def vars_for_template(self):
         note = "Note that the total number of jobs that can be created over the two periods is different than in the last question."
@@ -693,7 +694,8 @@ class FV_13(Page):
         finish_time = datetime.datetime.strptime(current_time, "%H:%M:%S")
         start_time = datetime.datetime.strptime(json.loads(self.player.start_time), "%H:%M:%S")
         self.player.total_time = json.dumps(str(finish_time - start_time))
-        self.player.future_slider_one = self.player.earlier_max - self.player.future_slider_one
+        if self.player.slider_two_last_clicked:
+            self.player.future_slider_two = self.player.later_max - self.player.future_slider_two
         return super().before_next_page()
 
 class FV_23(Page):
@@ -760,6 +762,9 @@ class FV_23(Page):
         finish_time = datetime.datetime.strptime(current_time, "%H:%M:%S")
         start_time = datetime.datetime.strptime(json.loads(self.player.start_time), "%H:%M:%S")
         self.player.total_time = json.dumps(str(finish_time - start_time))
+        if self.player.slider_two_last_clicked:
+            self.player.future_slider_two = self.player.later_max - self.player.future_slider_two
+        return super().before_next_page()
 
 ################################################################################################### PAST PAGES BELOW ##############################################################################################################
 class PG1_1_Instructions(Page):

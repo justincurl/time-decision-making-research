@@ -441,6 +441,7 @@ class Player(BasePlayer):
     future_visual_round_configs = models.StringField()
     future_slider_one = models.IntegerField()
     future_slider_two = models.IntegerField()
+    slider_two_last_clicked = models.IntegerField()
 
 ################################################################################# PAST VISUAL PLAYER VARIABLES #################################################################################
     past_visual_round_configs = models.StringField()
