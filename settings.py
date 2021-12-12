@@ -78,6 +78,7 @@ SESSION_CONFIGS = [
         future_num_blocks=15,
         future_block_size=1,
         future_randomize_blocks=True,
+        vs_on=1
     )
 ]
 
