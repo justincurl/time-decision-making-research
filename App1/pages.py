@@ -42,11 +42,11 @@ class FG1_2_Instructions(Page):
     def vars_for_template(self):
         image_link = ""
         if self.player.t_earliest == self.player.earlier_time and self.player.t_middle == self.player.later_time:
-            image_link = "App1/images/FG_01.png"
+            image_link = "App1/images-updated/FG_01.png"
         elif self.player.t_earliest == self.player.earlier_time and self.player.t_latest == self.player.later_time:
-            image_link = "App1/images/FG_05.png"
+            image_link = "App1/images-updated/FG_05.png"
         elif self.player.t_middle == self.player.earlier_time and self.player.t_latest == self.player.later_time:
-            image_link = "App1/images/FG_15.png"
+            image_link = "App1/images-updated/FG_15.png"
         return dict(
             image_link=image_link,
             earlier_time=self.player.earlier_time,
@@ -112,11 +112,11 @@ class FG2_1V_Instructions(Page):
     def vars_for_template(self):
         image_link = ""
         if self.player.t_earliest == self.player.earlier_time and self.player.t_middle == self.player.later_time:
-            image_link = "App1/images/FG_01.png"
+            image_link = "App1/images-updated/FG_01.png"
         elif self.player.t_earliest == self.player.earlier_time and self.player.t_latest == self.player.later_time:
-            image_link = "App1/images/FG_05.png"
+            image_link = "App1/images-updated/FG_05.png"
         elif self.player.t_middle == self.player.earlier_time and self.player.t_latest == self.player.later_time:
-            image_link = "App1/images/FG_15.png"
+            image_link = "App1/images-updated/FG_15.png"
         return dict(
             image_link=image_link,
             earlier_time=self.player.earlier_time,
@@ -151,11 +151,11 @@ class FG2_2V_Instructions(Page):
     def vars_for_template(self):
         image_link = ""
         if self.player.t_earliest == self.player.earlier_time and self.player.t_middle == self.player.later_time:
-            image_link = "App1/images/FG_01.png"
+            image_link = "App1/images-updated/FG_01.png"
         elif self.player.t_earliest == self.player.earlier_time and self.player.t_latest == self.player.later_time:
-            image_link = "App1/images/FG_05.png"
+            image_link = "App1/images-updated/FG_05.png"
         elif self.player.t_middle == self.player.earlier_time and self.player.t_latest == self.player.later_time:
-            image_link = "App1/images/FG_15.png"
+            image_link = "App1/images-updated/FG_15.png"
         return dict(
             image_link=image_link,
             earlier_time=self.player.earlier_time,
@@ -353,11 +353,11 @@ class FV1_2_Instructions(Page):
     def vars_for_template(self):
         image_link = ""
         if self.player.t_earliest == self.player.earlier_time and self.player.t_middle == self.player.later_time:
-            image_link = "App1/images/FV_01.png"
+            image_link = "App1/images-updated/FV_01.png"
         elif self.player.t_earliest == self.player.earlier_time and self.player.t_latest == self.player.later_time:
-            image_link = "App1/images/FV_05.png"
+            image_link = "App1/images-updated/FV_05.png"
         elif self.player.t_middle == self.player.earlier_time and self.player.t_latest == self.player.later_time:
-            image_link = "App1/images/FV_15.png"
+            image_link = "App1/images-updated/FV_15.png"
         return dict(
             image_link=image_link,
             earlier_time=self.player.earlier_time,
@@ -391,11 +391,11 @@ class FV2_1G_Instructions(Page):
     def vars_for_template(self):
         image_link = ""
         if self.player.t_earliest == self.player.earlier_time and self.player.t_middle == self.player.later_time:
-            image_link = "App1/images/FV_01.png"
+            image_link = "App1/images-updated/FV_01.png"
         elif self.player.t_earliest == self.player.earlier_time and self.player.t_latest == self.player.later_time:
-            image_link = "App1/images/FV_05.png"
+            image_link = "App1/images-updated/FV_05.png"
         elif self.player.t_middle == self.player.earlier_time and self.player.t_latest == self.player.later_time:
-            image_link = "App1/images/FV_15.png"
+            image_link = "App1/images-updated/FV_15.png"
         return dict(
             image_link=image_link,
             earlier_time=self.player.earlier_time,
@@ -430,11 +430,11 @@ class FV2_2G_Instructions(Page):
     def vars_for_template(self):
         image_link = ""
         if self.player.t_earliest == self.player.earlier_time and self.player.t_middle == self.player.later_time:
-            image_link = "App1/images/FV_01.png"
+            image_link = "App1/images-updated/FV_01.png"
         elif self.player.t_earliest == self.player.earlier_time and self.player.t_latest == self.player.later_time:
-            image_link = "App1/images/FV_05.png"
+            image_link = "App1/images-updated/FV_05.png"
         elif self.player.t_middle == self.player.earlier_time and self.player.t_latest == self.player.later_time:
-            image_link = "App1/images/FV_15.png"
+            image_link = "App1/images-updated/FV_15.png"
         return dict(
             image_link=image_link,
             earlier_time=self.player.earlier_time,
@@ -802,11 +802,11 @@ class PG1_2_Instructions(Page):
     def vars_for_template(self):
         image_link = ""
         if self.player.t_earliest == self.player.earlier_time and self.player.t_middle == self.player.later_time:
-            image_link = "App1/images/PG_15.png"
+            image_link = "App1/images-updated/PG_15.png"
         elif self.player.t_earliest == self.player.earlier_time and self.player.t_latest == self.player.later_time:
-            image_link = "App1/images/PG_05.png"
+            image_link = "App1/images-updated/PG_05.png"
         elif self.player.t_middle == self.player.earlier_time and self.player.t_latest == self.player.later_time:
-            image_link = "App1/images/PG_01.png"
+            image_link = "App1/images-updated/PG_01.png"
         return dict(
             image_link=image_link,
             earlier_time=self.player.earlier_time,
@@ -871,11 +871,11 @@ class PG2_1V_Instructions(Page):
     def vars_for_template(self):
         image_link = ""
         if self.player.t_earliest == self.player.earlier_time and self.player.t_middle == self.player.later_time:
-            image_link = "App1/images/PG_15.png"
+            image_link = "App1/images-updated/PG_15.png"
         elif self.player.t_earliest == self.player.earlier_time and self.player.t_latest == self.player.later_time:
-            image_link = "App1/images/PG_05.png"
+            image_link = "App1/images-updated/PG_05.png"
         elif self.player.t_middle == self.player.earlier_time and self.player.t_latest == self.player.later_time:
-            image_link = "App1/images/PG_01.png"
+            image_link = "App1/images-updated/PG_01.png"
         return dict(
             image_link=image_link,
             earlier_time=self.player.earlier_time,
@@ -910,11 +910,11 @@ class PG2_2V_Instructions(Page):
     def vars_for_template(self):
         image_link = ""
         if self.player.t_earliest == self.player.earlier_time and self.player.t_middle == self.player.later_time:
-            image_link = "App1/images/PG_15.png"
+            image_link = "App1/images-updated/PG_15.png"
         elif self.player.t_earliest == self.player.earlier_time and self.player.t_latest == self.player.later_time:
-            image_link = "App1/images/PG_05.png"
+            image_link = "App1/images-updated/PG_05.png"
         elif self.player.t_middle == self.player.earlier_time and self.player.t_latest == self.player.later_time:
-            image_link = "App1/images/PG_01.png"
+            image_link = "App1/images-updated/PG_01.png"
         return dict(
             image_link=image_link,
             earlier_time=self.player.earlier_time,
@@ -1114,11 +1114,11 @@ class PV1_2_Instructions(Page):
     def vars_for_template(self):
         image_link = ""
         if self.player.t_earliest == self.player.earlier_time and self.player.t_middle == self.player.later_time:
-            image_link = "App1/images/PV_15.png"
+            image_link = "App1/images-updated/PV_15.png"
         elif self.player.t_earliest == self.player.earlier_time and self.player.t_latest == self.player.later_time:
-            image_link = "App1/images/PV_05.png"
+            image_link = "App1/images-updated/PV_05.png"
         elif self.player.t_middle == self.player.earlier_time and self.player.t_latest == self.player.later_time:
-            image_link = "App1/images/PV_01.png"
+            image_link = "App1/images-updated/PV_01.png"
         return dict(
             image_link=image_link,
             earlier_time=self.player.earlier_time,
@@ -1184,11 +1184,11 @@ class PV2_1G_Instructions(Page):
     def vars_for_template(self):
         image_link = ""
         if self.player.t_earliest == self.player.earlier_time and self.player.t_middle == self.player.later_time:
-            image_link = "App1/images/PV_15.png"
+            image_link = "App1/images-updated/PV_15.png"
         elif self.player.t_earliest == self.player.earlier_time and self.player.t_latest == self.player.later_time:
-            image_link = "App1/images/PV_05.png"
+            image_link = "App1/images-updated/PV_05.png"
         elif self.player.t_middle == self.player.earlier_time and self.player.t_latest == self.player.later_time:
-            image_link = "App1/images/PV_01.png"
+            image_link = "App1/images-updated/PV_01.png"
         return dict(
             image_link=image_link,
             earlier_time=self.player.earlier_time,
@@ -1225,11 +1225,11 @@ class PV2_2G_Instructions(Page):
     def vars_for_template(self):
         image_link = ""
         if self.player.t_earliest == self.player.earlier_time and self.player.t_middle == self.player.later_time:
-            image_link = "App1/images/PV_15.png"
+            image_link = "App1/images-updated/PV_15.png"
         elif self.player.t_earliest == self.player.earlier_time and self.player.t_latest == self.player.later_time:
-            image_link = "App1/images/PV_05.png"
+            image_link = "App1/images-updated/PV_05.png"
         elif self.player.t_middle == self.player.earlier_time and self.player.t_latest == self.player.later_time:
-            image_link = "App1/images/PV_01.png"
+            image_link = "App1/images-updated/PV_01.png"
         return dict(
             image_link=image_link,
             earlier_time=self.player.earlier_time,

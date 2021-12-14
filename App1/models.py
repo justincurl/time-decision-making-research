@@ -117,14 +117,9 @@ class Subsession(BaseSubsession):
         for i in range(len(past_t_earliers)):
             for j in range(Constants.num_per_section):
                 past_round_section.append((past_t_earliers[i][j], past_payment_earliers[i][j], past_t_laters[i][j], past_payment_laters[i][j]))
-            print(past_round_section)
             past_visual_round_configs.append(past_round_section)
             past_round_section = []
         
-        # for i in range(len(past_visual_round_configs)):
-        #     for j in range(len(past_visual_round_configs[0])):
-        #         print('t_earlier', past_visual_round_configs[i][j][0])
-        #         print('earlier', past_visual_round_configs[i][j][1])
 
     ###################################################################################################### PLAYERS SET UP ###################################################################################################### 
         for player in self.get_players():
