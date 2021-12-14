@@ -5,12 +5,12 @@
 {% block content %}
 <div align="center">
     <h2 text-align="center">
-        <strong style="text-transform: uppercase; color: orange;">FUTURE: </strong><span style="text-transform: uppercase;">{{earlier_time}}</span> and <span style="text-transform: uppercase;">{{later_time}}</span>
+        <strong style="text-transform: uppercase; color: rgb(244,161,13);">FUTURE: </strong><span style="text-transform: uppercase;"> {%  if earlier_time == "now" %} <span style="color: rgb(244,161,13)">{%  endif  %} <span style="color: black">{{earlier_time}}</span> {%  if earlier_time == "now" %} </span> {%  endif  %} </span> and <span style="text-transform: uppercase;"> <span style="color: rgb(244,161,13)">{{later_time}}</span></span>
     </h2>
 </div>
 <br>
 <div text-align="justify" style="font-size: large;">
-The next section of this survey is about your views of <strong>temporary job creation</strong> now, a year from now, and five years from now. Studies have shown that temporary job creation is beneficial to both job candidates and employers.
+    The next section of this survey is about your views of <strong>temporary job creation</strong> now, a year from now, and five years from now. Studies have shown that temporary job creation is beneficial to both job candidates and employers.
 <br>
 <br>
 First, we will ask you several questions about temporary (1-year contract) jobs created <strong>{{earlier_time}}</strong> and temporary jobs created <strong>{{later_time}}</strong>.

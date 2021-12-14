@@ -6,12 +6,12 @@
 
 <div align="center">
     <h2 text-align="center">
-        <strong style="text-transform: uppercase; color: fuchsia;">PAST: </strong><span style="text-transform: uppercase;">{{later_time}}</span> and <span style="text-transform: uppercase;">{{earlier_time}}</span>
+        <strong style="text-transform: uppercase; color: rgb(197,28,138);">PAST: </strong><span style="text-transform: uppercase;"><span style="color: rgb(197,28,138)"> {%  if later_time == "now" %} <span style="color: black">{%  endif  %} {{later_time}} {%  if later_time == "now" %} </span> {%  endif  %} </span></span> and <span style="text-transform: uppercase;"><span style="color: rgb(197,28,138)">{{earlier_time}}</span></span>
     </h2>
 </div>
 <br>
 <div style="font-size: larger; text-align: justify">
-    Which combination of temporary jobs created <strong>{{later_time}}</strong> and <strong>{{earlier_time}}</strong> represents the best economy? 
+    Which combination of temporary jobs created <strong><span style="color: rgb(197,28,138)"> {%  if later_time == "now" %} <span style="color: black">{%  endif  %} {{later_time}} {%  if later_time == "now" %} </span> {%  endif  %} </span></strong> and <strong><span style="color: rgb(197,28,138)">{{earlier_time}}</span></strong> represents the best economy?
     <br>
     <br>
 </div>
@@ -23,14 +23,14 @@
     <tbody>
         <tr
             class="timepref__question-start timepref__question-unanswered">
-            <td>{{question_instructions}} <strong>{{ later_time }}</strong></span>
+            <td>{{question_instructions}} <strong><span style="color: rgb(197,28,138)"> {%  if later_time == "now" %} <span style="color: black">{%  endif  %} {{later_time}} {%  if later_time == "now" %} </span> {%  endif  %} </span></strong>
             </td>
             {% for value in start_values %}
             <td class="text-center">{{ value }}</td>
             {% endfor %}
         </tr>
         <tr class="timepref__question-end">
-            <td>{{question_instructions}} <strong>{{ earlier_time }}</strong></td>
+            <td>{{question_instructions}} <strong><span style="color: rgb(197,28,138)">{{ earlier_time }}</span></strong></td>
             {% for value in end_values %}
             <td class="text-center" style="width: 110px !important;">{{ value }}</td>
             {% endfor %}

@@ -5,18 +5,18 @@
 {% block content %}
 <div align="center">
     <h2 text-align="center">
-        <strong style="text-transform: uppercase; color: fuchsia;">PAST: </strong><span style="text-transform: uppercase;">{{later_time}}</span> and <span style="text-transform: uppercase;">{{earlier_time}}</span>
+        <strong style="text-transform: uppercase; color: rgb(197,28,138);">PAST: </strong><span style="text-transform: uppercase;"><span style="color: rgb(197,28,138)"> {%  if later_time == "now" %} <span style="color: black">{%  endif  %} {{later_time}} {%  if later_time == "now" %} </span> {%  endif  %} </span></span> and <span style="text-transform: uppercase;"><span style="color: rgb(197,28,138)">{{earlier_time}}</span></span>
     </h2>
 </div>
 <br>
 <div text-align="justify" style="font-size: large;">
-    Next, we would like you to instead consider <strong>temporary job creation</strong> looking <span style="color: fuchsia;">backward</span>.  So, the next section is about your views of job creation now, a year ago, and five years ago.
+    Next, we would like you to instead consider <strong>temporary job creation</strong> looking <span style="color: rgb(197,28,138);">backward</span>.  So, the next section is about your views of job creation now, a year ago, and five years ago.
     <br>
     <br>
-    First, we will ask you several questions about temporary (1-year contract) jobs created <strong>{{later_time}}</strong> and temporary jobs created <strong>{{earlier_time}}</strong>.
+    First, we will ask you several questions about temporary (1-year contract) jobs created <strong><span style="color: rgb(197,28,138)"> {%  if later_time == "now" %} <span style="color: black">{%  endif  %} {{later_time}} {%  if later_time == "now" %} </span> {%  endif  %} </span></strong> and temporary jobs created <strong><span style="color: rgb(197,28,138);">{{earlier_time}}</span></strong>.
     <br>
     <br>
-    For each question, you will again see 10 green blocks, but this time they represent jobs in the <span style="color: fuchsia;">past</span>. As before, you can move each green block between periods by dragging the blue bar up and down. We would again like you to arrange the blocks so they show the distribution of jobs across the two periods that you think represents the best economy.
+    For each question, you will again see 10 green blocks, but this time they represent jobs in the <span style="color: rgb(197,28,138);">past</span>. As before, you can move each green block between periods by dragging the blue bar up and down. We would again like you to arrange the blocks so they show the distribution of jobs across the two periods that you think represents the best economy.
     <br>
     <br>
     When you are ready to select the combination of jobs created that you think represents <strong>the best economy</strong>, click “Next”. Remember, there are no “right” or “wrong” answers.    

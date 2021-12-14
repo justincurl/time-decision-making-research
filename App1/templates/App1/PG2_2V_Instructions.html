@@ -5,7 +5,7 @@
 {% block content %}
 <div align="center">
     <h2 text-align="center">
-        <strong style="text-transform: uppercase; color: fuchsia;">PAST: </strong><span style="text-transform: uppercase;">{{later_time}}</span> and <span style="text-transform: uppercase;">{{earlier_time}}</span>
+        <strong style="text-transform: uppercase; color: rgb(197,28,138);">PAST: </strong><span style="text-transform: uppercase;"><span style="color: rgb(197,28,138)"> {%  if later_time == "now" %} <span style="color: black">{%  endif  %} {{later_time}} {%  if later_time == "now" %} </span> {%  endif  %} </span></span> and <span style="text-transform: uppercase;"><span style="color: rgb(197,28,138)">{{earlier_time}}</span></span>
     </h2>
 </div>
 <br>

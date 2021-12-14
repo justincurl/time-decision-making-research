@@ -12,12 +12,12 @@
     <input type="hidden" value={{later_max}} id="later_max"/>
     <div align="center">
         <h2 text-align="center">
-            <strong style="text-transform: uppercase; color: fuchsia;">PAST: </strong><span style="text-transform: uppercase;">{{later_time}}</span> and <span style="text-transform: uppercase;">{{earlier_time}}</span>
+        <strong style="text-transform: uppercase; color: rgb(197,28,138);">PAST: </strong><span style="text-transform: uppercase;"><span style="color: rgb(197,28,138)"> {%  if later_time == "now" %} <span style="color: black">{%  endif  %} {{later_time}} {%  if later_time == "now" %} </span> {%  endif  %} </span></span> and <span style="text-transform: uppercase;"><span style="color: rgb(197,28,138)">{{earlier_time}}</span></span>
         </h2>
     </div>
     <br>
     <div style="font-size: larger; text-align: justify">
-        Which combination of temporary jobs created <strong>{{later_time}}</strong> and <strong>{{earlier_time}}</strong> represents <strong>the best economy?</strong>
+        Which combination of temporary jobs created <strong><span style="color: rgb(197,28,138)"> {%  if later_time == "now" %} <span style="color: black">{%  endif  %} {{later_time}} {%  if later_time == "now" %} </span> {%  endif  %} </span></strong> and <strong><span style="color: rgb(197,28,138)">{{earlier_time}}</span></strong> represents <strong>the best economy?</strong>
         <br>
         <br>
     </div>
@@ -90,7 +90,7 @@
             <td><div class="pre_t1"></div></td>
             <td><div class="t1_text"><h5 style="text-transform: uppercase; color: #d3d3d3">{{t_earliest}}</h5></div></td>
             <td><div class="t1_t2_gap"></div></td>
-            <td><div class="t2_text"><h5 style="text-transform: uppercase;">{{t_middle}}</h5></div></td>
+            <td><div class="t2_text"><h5 style="text-transform: uppercase;"><span style="color: rgb(197,28,138)">{{t_middle}}</span></h5></div></td>
             <td><div class="t2_t3_gap"></div></td>
             <td><div class="pre_t3"></div></td>
             <td><div class="t3_text"><h5 style="text-transform: uppercase;">{{t_latest}}</h5></div></td>

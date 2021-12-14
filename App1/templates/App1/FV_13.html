@@ -12,17 +12,16 @@
     <input type="hidden" value={{earlier_max}} id="earlier_max"/>
     <input type="hidden" value={{later_max}} id="later_max"/>
     <input type="hidden" name="slider_two_last_clicked" id="id_slider_two_last_clicked"/>
-    
-    {{ form.slider_two_last_clicked.errors }}
+
 
     <div align="center">
         <h2 text-align="center">
-            <strong style="text-transform: uppercase; color: orange;">FUTURE: </strong><span style="text-transform: uppercase;">{{earlier_time}}</span> and <span style="text-transform: uppercase;">{{later_time}}</span>
+        <strong style="text-transform: uppercase; color: rgb(244,161,13);">FUTURE: </strong><span style="text-transform: uppercase;"> <span style="color: rgb(244,161,13)"> {%  if earlier_time == "now" %} <span style="color: black">{%  endif  %} {{earlier_time}} {%  if earlier_time == "now" %} </span> {%  endif  %} </span> </span> and <span style="text-transform: uppercase;"> <span style="color: rgb(244,161,13)">{{later_time}}</span></span>
         </h2>
     </div>
     <br>
     <div style="font-size: larger; text-align: justify">
-        Which combination of temporary jobs created <strong>{{earlier_time}}</strong> and <strong>{{later_time}}</strong> represents <strong>the best economy?</strong>
+        Which combination of temporary jobs created <strong> <span style="color: rgb(244,161,13)"> {%  if earlier_time == "now" %} <span style="color: black">{%  endif  %} {{earlier_time}} {%  if earlier_time == "now" %} </span> {%  endif  %} </span></strong> and <strong><span style="color: rgb(244,161,13)">{{later_time}}</span></strong> represents <strong>the best economy?</strong>
         <br>
         <br>
     </div>
@@ -96,7 +95,7 @@
             <td><div class="t2_text"><h5 style="text-transform: uppercase; color: #d3d3d3">{{t_middle}}</h5></div></td>
             <td><div class="t2_t3_gap"></div></td>
             <td><div class="pre_t3"></div></td>
-            <td><div class="t3_text"><h5 style="text-transform: uppercase;">{{t_latest}}</h5></div></td>
+        <td><div class="t3_text"><h5 style="text-transform: uppercase;"><span style="color: rgb(244,161,13)">{{t_latest}}</span></h5></div></td>
         </tr>
     </table>
     <br>
