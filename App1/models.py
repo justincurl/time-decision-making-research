@@ -33,36 +33,36 @@ class Subsession(BaseSubsession):
     ###################################################################################################### FUTURE GRID SET UP ######################################################################################################
         future_t_options = self.session.config['future_t_options'].split(', ')
 
-        future_grid_right_values = self.session.config["future_grid_right_values"].split(", ")
-        future_grid_right_values = [float(i) for i in future_grid_right_values]
-        future_grid_left_values = self.session.config["future_grid_left_values"].split(", ")
-        future_grid_left_values = [float(i) for i in future_grid_left_values]
+        future_grid_laters = self.session.config["future_grid_laters"].split(", ")
+        future_grid_laters = [float(i) for i in future_grid_laters]
+        future_grid_earliers = self.session.config["future_grid_earliers"].split(", ")
+        future_grid_earliers = [float(i) for i in future_grid_earliers]
         future_grid_t_earliers = self.session.config['future_grid_t_earliers'].split(', ')
         future_grid_t_laters = self.session.config['future_grid_t_laters'].split(', ')
         
         future_grid_round_configs = []
         future_round_section = []
-        for i in range(len(future_grid_left_values)//Constants.num_per_section):
+        for i in range(len(future_grid_earliers)//Constants.num_per_section):
             for j in range(Constants.num_per_section):
-                future_round_section.append((future_grid_t_earliers[i*Constants.num_per_section + j], future_grid_left_values[i*Constants.num_per_section + j], future_grid_t_laters[i*Constants.num_per_section + j], future_grid_right_values[i*Constants.num_per_section + j]))
+                future_round_section.append((future_grid_t_earliers[i*Constants.num_per_section + j], future_grid_earliers[i*Constants.num_per_section + j], future_grid_t_laters[i*Constants.num_per_section + j], future_grid_laters[i*Constants.num_per_section + j]))
             future_grid_round_configs.append(future_round_section)
             future_round_section = []
 
     ###################################################################################################### PAST GRID SET UP ######################################################################################################
         past_t_options = self.session.config['past_t_options'].split(', ')
         
-        past_grid_right_values = self.session.config["past_grid_right_values"].split(", ")
-        past_grid_right_values = [float(i) for i in past_grid_right_values]
-        past_grid_left_values = self.session.config["past_grid_left_values"].split(", ")
-        past_grid_left_values = [float(i) for i in past_grid_left_values]
+        past_grid_laters = self.session.config["past_grid_laters"].split(", ")
+        past_grid_laters = [float(i) for i in past_grid_laters]
+        past_grid_earliers = self.session.config["past_grid_earliers"].split(", ")
+        past_grid_earliers = [float(i) for i in past_grid_earliers]
         past_grid_t_earliers = self.session.config['past_grid_t_earliers'].split(', ')
         past_grid_t_laters = self.session.config['past_grid_t_laters'].split(', ')
         
         past_grid_round_configs = []
         past_round_section = []
-        for i in range(len(past_grid_left_values)//Constants.num_per_section):
+        for i in range(len(past_grid_earliers)//Constants.num_per_section):
             for j in range(Constants.num_per_section):
-                past_round_section.append((past_grid_t_earliers[i*Constants.num_per_section + j], past_grid_left_values[i*Constants.num_per_section + j], past_grid_t_laters[i*Constants.num_per_section + j], past_grid_right_values[i*Constants.num_per_section + j]))
+                past_round_section.append((past_grid_t_earliers[i*Constants.num_per_section + j], past_grid_earliers[i*Constants.num_per_section + j], past_grid_t_laters[i*Constants.num_per_section + j], past_grid_laters[i*Constants.num_per_section + j]))
             past_grid_round_configs.append(past_round_section)
             past_round_section = []
     
@@ -117,8 +117,14 @@ class Subsession(BaseSubsession):
         for i in range(len(past_t_earliers)):
             for j in range(Constants.num_per_section):
                 past_round_section.append((past_t_earliers[i][j], past_payment_earliers[i][j], past_t_laters[i][j], past_payment_laters[i][j]))
+            print(past_round_section)
             past_visual_round_configs.append(past_round_section)
             past_round_section = []
+        
+        # for i in range(len(past_visual_round_configs)):
+        #     for j in range(len(past_visual_round_configs[0])):
+        #         print('t_earlier', past_visual_round_configs[i][j][0])
+        #         print('earlier', past_visual_round_configs[i][j][1])
 
     ###################################################################################################### PLAYERS SET UP ###################################################################################################### 
         for player in self.get_players():
