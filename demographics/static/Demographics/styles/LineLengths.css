@@ -1,11 +1,9 @@
  .one-year-thumb::-webkit-slider-thumb {
-     border: 1px solid #000000;
      width: 25px !important;
      height: 30px !important;
      border-top: 15px solid transparent !important;
      border-left: 30px solid #007afe !important;
      border-bottom: 15px solid transparent !important;
-     background: #d3d3d3 !important;
      cursor: pointer !important;
      box-shadow: -810px 0 0 800px #007afe !important;
      -webkit-appearance: none !important;
