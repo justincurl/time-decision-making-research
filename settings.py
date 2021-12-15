@@ -100,6 +100,7 @@ SESSION_CONFIGS = [
         name="App2",
         display_name="App 2",
         num_demo_participants=20,
+        vs_on=1,
         app_sequence=["App2", "demographics"]
     ),
     dict(
