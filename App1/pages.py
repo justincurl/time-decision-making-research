@@ -234,19 +234,19 @@ class FG_Main(Page):
                 if self.player.round_number - Constants.num_grids == 1 or self.player.round_number - Constants.num_grids == 6 or self.player.round_number - Constants.num_grids == 11:
                     note = ""
 
-        start_values = [self.player.earlier_max + x*(0-self.player.earlier_max)/(6-1) for x in range(6)]
-        for i in range(len(start_values)):
-            start_values[i] = "{:,.0f}".format(float(start_values[i]))
+        earlier_values = [self.player.earlier_max + x*(0-self.player.earlier_max)/(6-1) for x in range(6)]
+        for i in range(len(earlier_values)):
+            earlier_values[i] = "{:,.0f}".format(float(earlier_values[i]))
 
-        end_values = [self.player.later_max + x*(0-self.player.later_max)/(6-1) for x in range(6)]
-        for i in range(len(end_values)):
-            end_values[i] = "{:,.0f}".format(float(end_values[i]))
-        end_values.reverse()
+        later_values = [self.player.later_max + x*(0-self.player.later_max)/(6-1) for x in range(6)]
+        for i in range(len(later_values)):
+            later_values[i] = "{:,.0f}".format(float(later_values[i]))
+        later_values.reverse()
 
         return dict(
             note=note,
-            start_values=start_values,
-            end_values=end_values,
+            earlier_values=earlier_values,
+            later_values=later_values,
             idxs=[i for i in range(6)],
             earlier_time=self.player.earlier_time,
             later_time=self.player.later_time,
@@ -994,19 +994,19 @@ class PG_Main(Page):
                     note = ""
 
 
-        start_values = [self.player.earlier_max + x*(0-self.player.earlier_max)/(6-1) for x in range(6)]
-        for i in range(len(start_values)):
-            start_values[i] = "{:,.0f}".format(float(start_values[i]))
+        earlier_values = [self.player.earlier_max + x*(0-self.player.earlier_max)/(6-1) for x in range(6)]
+        for i in range(len(earlier_values)):
+            earlier_values[i] = "{:,.0f}".format(float(earlier_values[i]))
+        earlier_values.reverse()
 
-        end_values = [self.player.later_max + x*(0-self.player.later_max)/(6-1) for x in range(6)]
-        for i in range(len(end_values)):
-            end_values[i] = "{:,.0f}".format(float(end_values[i]))
-        end_values.reverse()
+        later_values = [self.player.later_max + x*(0-self.player.later_max)/(6-1) for x in range(6)]
+        for i in range(len(later_values)):
+            later_values[i] = "{:,.0f}".format(float(later_values[i]))
 
         return dict(
             note=note,
-            start_values=start_values,
-            end_values=end_values,
+            earlier_values=earlier_values,
+            later_values=later_values,
             idxs=[i for i in range(6)],
             earlier_time=self.player.earlier_time,
             later_time=self.player.later_time,
