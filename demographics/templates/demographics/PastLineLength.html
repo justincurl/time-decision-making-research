@@ -6,7 +6,7 @@
 
 <script>
 	$(document).ready(function () {
-        $('input[name=slider_one_year]').on('input', function () {
+        $('input[name=slider_one_year]').on('mousedown touchstart', function () {
             $('input[name=slider_one_year]').addClass('one-year-thumb');
         });
     });
@@ -76,7 +76,7 @@
         jQuery('.next-button').show();
         return false
     }
-    jQuery("#id_slider_five_year").on("click", function () {
+    jQuery("#id_slider_five_year").on("mousedown touchstart", function () {
         jQuery(".next-button").show();
         jQuery(".waiting").hide();
     });
