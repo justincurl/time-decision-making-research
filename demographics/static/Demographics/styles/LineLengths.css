@@ -9,7 +9,6 @@
      cursor: pointer !important;
      box-shadow: -810px 0 0 800px #007afe !important;
      -webkit-appearance: none !important;
-     pointer-events: none;
  }
 
  input[name=slider_one_year] {
@@ -53,7 +52,6 @@
     cursor: pointer !important;
     box-shadow: -810px 0 0 800px #007afe !important;
     -webkit-appearance: none !important;
-    pointer-events: none;
  }
 
  input[name=slider_five_year] {
