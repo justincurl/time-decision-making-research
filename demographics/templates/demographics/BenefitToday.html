@@ -11,24 +11,23 @@
 </div>
 <div align="justify"><i>Please answer on a scale from 0 to 10, where 0 means completely unwilling to do so, and 10 means very willing to do so.</i></div>
 <br>
-<br>
 
 <table class="table table-bordered">
     <tbody>
         <tr
-            class="timepref__question-start timepref__question-unanswered">
+            class="timepref__question-start timepref__question-unanswered" style="border:none">
             {% for value in start_values %}
-            <td class="text-center">{{ value }}</td>
+            <td class="text-center" style="border:none">{{ value }}</td>
             {% endfor %}
         </tr>
-        <tr class="timepref__question-end">
+        <tr class="timepref__question-end" style="border:none">
             {% for value in end_values %}
-            <td class="text-center" style="width: 110px !important;">{{ value }}</td>
+            <td class="text-center" style="width: 110px !important; border:none">{{ value }}</td>
             {% endfor %}
         </tr>
-        <tr class="timepref__question-choices">
+        <tr class="timepref__question-choices" style="border:none">
             {% for index in idxs %}
-            <td class="text-center timepref__question-choice">
+            <td class="text-center timepref__question-choice" style="border:none">
                 <input type="radio" name="question" value="{{ index }}"/>
             </td>
             {% endfor %}
