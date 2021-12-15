@@ -1,6 +1,5 @@
 {% extends "global/Page.html" %}
 {% load otree static %}
-
 {{ form.slider_direct_growth.errors }}
 
 {% block content %}
@@ -75,7 +74,7 @@
         return false
     }
     
-    jQuery("#id_slider_direct_growth").on("click", function () {
+    jQuery("#id_slider_direct_growth").on("mousedown touchstart", function () {
         jQuery(".next-button").show();
         jQuery(".waiting").hide();
     });
@@ -91,6 +90,7 @@
     jQuery(".waiting").hide();
     jQuery("#container").hide();
 </script>
+
 <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 <script src="http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"></script>
 <script src="jquery.ui.touch-punch.min.js"></script>
