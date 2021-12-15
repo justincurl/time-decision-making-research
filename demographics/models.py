@@ -22,6 +22,23 @@ class Constants(BaseConstants):
     name_in_url = 'demographics'
     players_per_group = None
     num_rounds = 1
+    races = [
+        dict(name='white', label="White"),
+        dict(name='black', label="Black or African America"),
+        dict(name='asian', label="Asian"),
+        dict(name='native', label="American Indian or Alaska Native"),
+        dict(name='islander', label="Native Hawaiian or Pacific Islander"),
+        dict(name='other', label="Some other race"),
+    ]
+    races_ethn = [
+        dict(name='white', label="White"),
+        dict(name='black', label="Black or African America"),
+        dict(name='asian', label="Asian"),
+        dict(name='native', label="American Indian or Alaska Native"),
+        dict(name='islander', label="Native Hawaiian or Pacific Islander"),
+        dict(name='other', label="Some other race"),
+        dict(name='ethnicity'),
+    ]
 
 
 class Subsession(BaseSubsession):
@@ -51,7 +68,12 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    race = models.StringField(blank=True)
+    white = models.BooleanField(blank=True)
+    black = models.BooleanField(blank=True)
+    asian = models.BooleanField(blank=True)
+    native = models.BooleanField(blank=True)
+    islander = models.BooleanField(blank=True)
+    other = models.BooleanField(blank=True)
 
     line_length_condition = models.IntegerField()
 

@@ -16,59 +16,16 @@
     What is your race? <i>(Choose all that apply)</i>
 </div>
     <br>
-<div style="padding-left: 20px;">
-    <div class="race-choices" style="font-size: large">
-        {% for value in values %}
-        <div class="race-choice-line">
-            <input id="race-choice-{{ forloop.counter }}" type="checkbox" name="race-choice-{{ forloop.counter }}"
-                value="{{ forloop.counter }}"/>
-            <label style="padding-left: 10px !important;" for="race-choice-{{ forloop.counter }}">{{value}}</label>
-        </div>
-        {% endfor %}
-    </div>
-</div>
+{{ for field in Constants.races }}
+<label>
+    <input type="checkbox" name="{{ field.name }}" value="1">
+    {{ field.label }}
+</label><br>
+{{ endfor }}
 <br>
 
-<input id="race" type="hidden" name="race">
-
-<script>
-    function race() {
-        var answersInput = jQuery('#race');
-        if (!answersInput.length) {
-            print("cannot find answers input #race")
-            throw new Error('cannot find answers input #race');
-        }
-        var values = []
-        for (i = 1; i <= 6; i++) {
-            str = "#race-choice-" + String(i)
-            if (jQuery(str).is(":checked"))
-                values.push(i)
-        }
-        answersInput.val(JSON.stringify(values));
-    }
-    function alertFunction() {
-        alert("In order for your answers to be most helpful to us, it is really important that you respond to all questions.")
-        jQuery('.waiting').hide();
-        jQuery('.next-button').show();
-        return false
-    }
-    jQuery(".race-choices").on("click touch", function () {
-        jQuery(".next-button").show();
-        jQuery(".waiting").hide();
-    });
-</script>
-
-<div class="waiting" onclick="return alertFunction();" style="text-align: center;">
+<div style="text-align: center;">
     {% next_button %}
 </div>
-
-<div class="next-button" onclick="return race();" style="text-align: center;">
-    {% next_button %}
-</div>
-
-<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-<script src="http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"></script>
-
-<script>jQuery(".next-button").hide();</script>
 
 {% endblock %}

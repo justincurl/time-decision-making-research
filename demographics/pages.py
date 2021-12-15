@@ -33,20 +33,10 @@ class IncomeLevel(Page):
 
 class EthnicityRace(Page):
     form_model = "player"
-    form_fields = ["ethnicity", "race"]
 
-    def vars_for_template(self):
-        values = [
-            "White",
-            "Black or African American",
-            "Asian",
-            "American Indian or Alaska Native",
-            "Native Hawaiian or Pacific Islander",
-            "Some other race",
-        ]
-        return {
-            "values": values,
-        }
+    def get_form_fields(player):
+        return [race['name'] for race in Constants.races_ethn]
+
 
 class ZipCode(Page):
     form_model = "player"
