@@ -51,7 +51,7 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    race = models.StringField()
+    race = models.StringField(blank=True)
 
     line_length_condition = models.IntegerField()
 
