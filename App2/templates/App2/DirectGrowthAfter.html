@@ -1,16 +1,14 @@
-
     {% extends "global/Page.html" %}
     {% load otree static %}
     
-    
+    {{ form.slider_direct_growth.errors }}
+
     {% block content %}
     <div class="results" align="justify">
         <p style="font-size: larger">If you had to choose, would you prefer personal income growth of 4% this year and none <span style="color: rgb(244,161,13)">next year</span>, or 4% <span style="color: rgb(244,161,13)">next year</span> and none this year? </p>
         <div id="direct_growth_question" style="font-size: larger" class="formfield-direct-growth">{% formfield player.direct_growth label="" %}</div>
     </div>
     <br>
-
-    {{ form.slider_direct_growth.errors }}
 
     <div id="container">
         <div class="results" align="justify" style="font-size:larger;">
@@ -28,6 +26,17 @@
         <br>
     </div>
     
+    <div class="reveal-slider" onclick="return revealFunction();" style="text-align: center;">
+        {% next_button %}
+    </div>
+
+    <div class="waiting" onclick="return alertFunction();" style="text-align: center;">
+        {% next_button %}
+    </div>
+    
+    <div class="next-button" style="text-align: center;">
+        {% next_button %}
+    </div>
 
 
     <script>
@@ -59,9 +68,6 @@
             }
         });
     
-    </script>
-    
-    <script>
         function alertFunction() {
             alert("In order for your answers to be most helpful to us, it is really important that you respond to all questions.")
             jQuery('.waiting').hide();
@@ -69,7 +75,7 @@
             return false
         }
         
-        jQuery("#id_slider_direct_growth").on("mousedown touchstart", function () {
+        jQuery("#id_slider_direct_growth").on("click", function () {
             jQuery(".next-button").show();
             jQuery(".waiting").hide();
         });
@@ -80,30 +86,12 @@
             $("#container").show();
             return false
         }
-    </script>
-    
-    <div class="reveal-slider" onclick="return revealFunction();" style="text-align: center;">
-        {% next_button %}
-    </div>
 
-    <div class="waiting" onclick="return alertFunction();" style="text-align: center;">
-        {% next_button %}
-    </div>
-    
-    <div class="next-button" style="text-align: center;">
-        {% next_button %}
-    </div>
-    
-    <script>
         jQuery(".next-button").hide();
         jQuery(".waiting").hide();
         jQuery("#container").hide();
     </script>
     
-    <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-    <script src="http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"></script>
-    <script src="jquery.ui.touch-punch.min.js"></script>
-
     {% endblock %}
     
     {% block styles %}

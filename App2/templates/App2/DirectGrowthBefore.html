@@ -1,7 +1,7 @@
-
     {% extends "global/Page.html" %}
     {% load otree static %}
     
+    {{ form.slider_direct_growth.errors }}
     
     {% block content %}
     <div class="results" align="justify">
@@ -9,8 +9,6 @@
         <div id="direct_growth_question" style="font-size: larger" class="formfield-direct-growth">{% formfield player.direct_growth label="" %}</div>
     </div>
     <br>
-
-    {{ form.slider_direct_growth.errors }}
 
     <div id="container">
         <div class="results" align="justify" style="font-size:larger;">
@@ -77,7 +75,7 @@
          function revealFunction() {
             jQuery('.reveal-slider').hide();
             jQuery('.waiting').show();
-            $("#container").show();
+            jQuery("#container").show();
             return false
         }
     </script>
@@ -100,10 +98,6 @@
         jQuery("#container").hide();
     </script>
 
-    <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-    <script src="http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"></script>
-    <script src="jquery.ui.touch-punch.min.js"></script>
-    
     {% endblock %}
     
     {% block styles %}
