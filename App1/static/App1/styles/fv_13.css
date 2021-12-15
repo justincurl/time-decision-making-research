@@ -68,7 +68,7 @@
 
 /* new thumb that appears when clicked */
 .future_slider_one_thumb::-webkit-slider-thumb {
-    height: 330px !important; /* control the width of the slider thumb */
+    height: 470px !important; /* control the width of the slider thumb */
     background: transparent;
     width: 8% !important;
     border-radius: 0px !important;
@@ -108,7 +108,7 @@ input[name=future_slider_one]::-webkit-slider-thumb {
 /* for slider two */
 /* new thumb that appears when clicked */
 .future_slider_two_thumb::-webkit-slider-thumb {
-    height: 330px !important; /* control the width of the slider thumb */
+    height: 470px !important; /* control the width of the slider thumb */
     background: transparent;
     width: 8% !important;
     border-radius: 0px !important;
