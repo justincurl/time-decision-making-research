@@ -14,7 +14,7 @@ class PlayerBot(Bot):
         yield pages.GenderAge, dict(gender=1, age=27)
         yield pages.Education, dict(education=1)
         yield pages.IncomeLevel, dict(income_level=1)
-        yield pages.EthnicityRace, dict(ethnicity=True, race=1)
+        yield pages.EthnicityRace, dict(ethnicity=True, white=1, black=1, asian=1, native=1, islander=1,other=1)
         yield pages.ZipCode, dict(zipcode=12345)
         if self.session.config["vs_on"]:
             yield pages.VSRespondents, dict(vs_respondents=1)
