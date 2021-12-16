@@ -1,0 +1,115 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+{% block content %}
+
+<script>
+	$(document).ready(function () {
+        $('input[name=slider_one_year]').on('input', function () {
+            $('input[name=slider_one_year]').addClass('one-year-thumb');
+        });
+    });
+    	$(document).ready(function () {
+        $('input[name=slider_five_year]').on('input', function () {
+            $('input[name=slider_five_year]').addClass('five-year-thumb');
+        });
+    });
+</script>
+<div align="center">
+    <h2 text-align="center">
+        <span style="text-transform: uppercase; color: rgb(197,28,138);">THE PAST</span>
+    </h2>
+</div>
+<br>
+
+<div class="results" align="justify" style="font-size:large;">
+    The next two questions ask you to indicate your subjective feeling of duration between different times in the past. 
+    After your first click inside the grey bar below, a blue arrow will appear. Please adjust the length of the blue arrow to indicate
+    how long you consider the duration to be between now and the time period provided. You can make it longer by moving the arrowhead
+    to the right and shorter by moving it to the left.
+    <br>
+    <br>
+    How long do you consider the duration between <strong>now</strong> and <strong><span style="color: rgb(197,28,138)">a year ago</span></strong>?
+</div>
+<table>
+    <tr>
+        <input type="range" name="slider_one_year" value= "0" step="1" align="center" min="0" max="260" id="id_slider_one_year">
+    </tr>
+    <tr>
+        <td>
+            <div style='text-align: left; font-size: small;'>very short</div>
+        </td>
+        <td style="width: 87.13%">
+        </td>
+        <td>
+            <div style='text-align: right; font-size: small;'>very long</div>
+        </td>
+    </tr>
+</table>
+<br>
+    <br>
+        <br>
+            <br>
+<div class="results" align="justify" style="font-size:large;">
+    How long do you consider the duration between <strong>now</strong> and <strong><span style="color: rgb(197,28,138)">five years ago</span></strong>?
+</div>
+
+<table>
+    <tr>
+        <input type="range" name="slider_five_year" value= "0" step="1" align="center" min="0" max="260" id="id_slider_five_year">
+    </tr>
+    <tr>
+        <td>
+            <div style='text-align: left; font-size: small;'>very short</div>
+        </td>
+        <td style="width: 87.13%"></td>
+        <td>
+            <div style='text-align: right; font-size: small;'>very long</div>
+        </td>
+    </tr>
+</table>
+<br>
+<i>After clicking anywhere inside the grey bar, you can adjust the length of the arrow (by moving the arrowhead) to indicate your answer.</i>
+
+<script>
+    function alertFunction() {
+        alert("In order for your answers to be most helpful to us, it is really important that you respond to all questions.")
+        jQuery('.waiting').hide();
+        jQuery('.next-button').show();
+        return false
+    }
+
+    jQuery("#id_slider_one_year").on("click", function () {
+        jQuery("#id_slider_five_year").on("click", function () {
+            jQuery(".next-button").show();
+            jQuery(".waiting").hide();
+        });
+    });
+
+    jQuery("#id_slider_five_year").on("click", function () {
+        jQuery("#id_slider_one_year").on("click", function () {
+            jQuery(".next-button").show();
+            jQuery(".waiting").hide();
+        });
+    });
+</script>
+
+<div class="waiting" onclick="return alertFunction();" style="text-align: center;">
+    {% next_button %}
+</div>
+
+<div class="next-button" style="text-align: center;">
+    {% next_button %}
+</div>
+
+<script>jQuery(".next-button").hide();</script>
+
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script src="http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"></script>
+<script src="jquery.ui.touch-punch.min.js"></script>
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'Demographics/styles/LineLengths.css' %}" />
+{% endblock %}

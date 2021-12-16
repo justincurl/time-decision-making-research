@@ -1,0 +1,20 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Survey Feedback!
+{% endblock %}
+
+{% block content %}
+<div class="results" align="justify">
+    <span style="font-size: larger" align="justify">
+        We would greatly appreciate your feedback about your survey experience!
+    </span>
+    {% formfields %}
+</div>
+
+<div class="next-button" style="text-align: center;">
+    {% next_button %}
+</div>
+
+{% endblock %}

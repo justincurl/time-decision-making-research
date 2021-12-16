@@ -1,0 +1,48 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block content %}
+
+<div class="results" text-align="justify" style="font-size: larger;">
+<<<<<<< HEAD
+    <p>On the previous pages, were you answering questions about personal income growth in the past or the future?</p>
+=======
+    On the previous pages, were you answering questions about personal income growth in the past or the future?
+>>>>>>> project-a/master
+    <div class="formfield">{% formfield player.check_1 label="" %}</div>
+</div>
+
+<script>
+    function alertFunction() {
+        alert("In order for your answers to be most helpful to us, it is really important that you respond to all questions.")
+        jQuery('.waiting').hide();
+        jQuery('.next-button').show();
+        return false
+    }
+    jQuery(".formfield").on("click", function () {
+        jQuery(".next-button").show();
+        jQuery(".waiting").hide();
+    });
+</script>
+<<<<<<< HEAD
+
+=======
+<br>
+>>>>>>> project-a/master
+<div class="waiting" onclick="return alertFunction();">
+    {% next_button %}
+</div>
+
+<div class="next-button">
+    {% next_button %}
+</div>
+
+<script>jQuery(".next-button").hide();</script>
+<<<<<<< HEAD
+
+=======
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script src="http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"></script>
+<script src="jquery.ui.touch-punch.min.js"></script>
+>>>>>>> project-a/master
+{% endblock %}
