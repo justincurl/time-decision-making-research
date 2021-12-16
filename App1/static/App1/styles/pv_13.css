@@ -1,0 +1,601 @@
+/* control gaps between times */
+
+.pre_t1 {
+    width: 0px !important;
+}
+
+.t1_text {
+    width: 200px !important;
+    text-align: center !important;
+    margin-left: -150px;
+}
+
+.t1_slider {
+    width: 0px !important;
+    text-align: left !important;
+    margin-top: -100px;
+    margin-left: -70px;
+    margin-bottom: -100px;
+}
+
+.t1_t2_gap {
+    width: 310px !important; /* gap between t1 and t2 */
+    text-align: left !important;
+}
+
+
+.t2_slider {
+    width: 200px !important;
+    margin-left: -100px; /* control positioning of left slider */
+}
+
+.t2_text {
+    width: 200px !important;
+    text-align: center !important; 
+    margin-left: -31px;   
+}
+
+.t2_t3_gap {
+    width: 20px  !important; /* controls gap between sliders */
+    text-align: left  !important; 
+}
+
+.t3_slider {
+    width: 200px !important;
+    margin-top: -100px; /* controls distance from right slider to top */
+    margin-left: -160px; 
+    margin-right: 0px !important; /* controls right slider */
+    margin-bottom: -100px; /* controls distance from right slider to timeline */
+}
+
+.t3_text {
+    width: 200px !important;
+    text-align: center !important;
+    margin-left: 28px; /* control right-most text */
+}
+
+
+/* control what sliders look like */
+
+
+/* make sliders vertical */
+.rotate {
+    width: 350px; /* change the height of the bars (use width marker because of rotation) */
+    transform: rotate(270deg);
+    vertical-align: bottom;
+}
+
+/* new thumb that appears when clicked */
+.past_slider_one_thumb::-webkit-slider-thumb {
+    height: 470px !important; /* control the width of the slider thumb */
+    background: transparent;
+    width: 8% !important;
+    border-radius: 0px !important;
+    cursor: pointer !important;
+    -webkit-appearance: none !important;
+}
+
+
+input[name=past_slider_one] {
+    -webkit-appearance: none;
+}
+
+input[name=past_slider_one]:focus {
+    outline: none;
+}
+
+/* the track itself */
+input[name=past_slider_one]::-webkit-slider-runnable-track {
+    overflow:hidden;
+    height: 470px; /* control the width of the bars */
+    cursor: pointer;
+    background: transparent;
+    /* add border when trying to line up sliders and the blocks */
+    /* border: 1px solid black;  */
+    pointer-events: auto;
+}
+
+/* hide original thumb */
+input[name=past_slider_one]::-webkit-slider-thumb {
+    border: 0px;
+    height: 0px;
+    width: 0px;
+    border-radius: 0px;
+    -webkit-appearance: none;
+}
+
+/* for slider two */
+/* new thumb that appears when clicked */
+.past_slider_two_thumb::-webkit-slider-thumb {
+    height: 470px !important; /* control the width of the slider thumb */
+    background: transparent;
+    width: 8% !important;
+    border-radius: 0px !important;
+    cursor: pointer !important;
+    -webkit-appearance: none !important;
+    pointer-events: auto; 
+}
+
+input[name=past_slider_two] {
+    -webkit-appearance: none;
+}
+
+input[name=past_slider_two]:focus {
+    outline: none;
+}
+
+/* the track itself */
+input[name=past_slider_two]::-webkit-slider-runnable-track {
+    overflow:hidden;
+    height: 470px; /* control the width of the bars */
+    cursor: pointer;
+    /* add border when trying to line up sliders and the blocks */
+    /* border: 1px solid black;  */
+    background: transparent;
+    pointer-events: auto;
+}
+
+/* hide original slider thumb */
+input[name=past_slider_two]::-webkit-slider-thumb {
+    border: 0px;
+    height: 0px;
+    width: 0px;
+    border-radius: 0px;
+    -webkit-appearance: none;
+}
+
+/* control blocks styling */
+:root {
+    --blocks-top: 3px;
+    --left-blocks-left: 20%;
+    --right-blocks-left: 21%;
+    --center-bars-width: 938px;
+    --center-bars-left: -665px;
+  }
+
+.left-bubble-zero {
+    background: transparent;
+    color: black;
+    position: relative;
+    height: 27px;
+    left: var(--left-blocks-left);
+    top: var(--blocks-top);
+    width: 160px;
+    text-align: center;
+    z-index: 5;
+    border-radius: 4px;
+    pointer-events: none !important;
+}
+
+.left-bubble-one {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    top: var(--blocks-top);
+    height: 27px;
+    width: 160px;
+    z-index: 5;
+    left: var(--left-blocks-left);
+    text-align: center;
+    border-radius: 4px;
+    pointer-events: none !important;
+}
+
+.left-bubble-two {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    left: var(--left-blocks-left);
+    top: var(--blocks-top);
+    z-index: 5;
+    height: 27px;
+    width: 160px;
+    text-align: center;
+    border-radius: 4px;
+    pointer-events: none !important;
+}
+.left-bubble-three {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    height: 27px;
+    top: var(--blocks-top);
+    left: var(--left-blocks-left);
+    z-index: 5;
+    width: 160px;
+    text-align: center;
+    border-radius: 4px;
+    pointer-events: none !important;
+}
+.left-bubble-four {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    height: 27px;
+    width: 160px;
+    z-index: 5;
+    top: var(--blocks-top);
+    left: var(--left-blocks-left);
+    text-align: center;
+    border-radius: 4px;
+    pointer-events: none !important;
+}
+.left-bubble-five {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    height: 27px;
+    top: var(--blocks-top);
+    width: 160px;
+    left: var(--left-blocks-left);
+    z-index: 5;
+    text-align: center;
+    border-radius: 4px;
+    pointer-events: none !important;
+}
+.left-bubble-six {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    height: 27px;
+    top: var(--blocks-top);
+    width: 160px;
+    z-index: 5;
+    left: var(--left-blocks-left);
+    text-align: center;
+    border-radius: 4px;
+    pointer-events: none !important;
+}
+.left-bubble-seven {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    height: 27px;
+    top: var(--blocks-top);
+    width: 160px;
+    z-index: 5;
+    left: var(--left-blocks-left);
+    text-align: center;
+    border-radius: 4px;
+    pointer-events: none !important;
+}
+.left-bubble-eight {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    height: 27px;
+    top: var(--blocks-top);
+    width: 160px;
+    z-index: 5;
+    left: var(--left-blocks-left);
+    text-align: center;
+    border-radius: 4px;
+    pointer-events: none !important;
+}
+.left-bubble-nine {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    height: 27px;
+    top: var(--blocks-top);
+    width: 160px;
+    border-radius: 4px;
+    left: var(--left-blocks-left);
+    text-align: center;
+    z-index: 5;
+    pointer-events: none !important;
+}
+.left-bubble-ten {
+    background: #d3d3d3;
+    color: black;
+    position: relative;
+    height: 27px;
+    width: 160px;
+    left: var(--left-blocks-left);
+    top: var(--blocks-top);
+    z-index: 5;
+    text-align: center;
+    border-radius: 4px;
+    pointer-events: none !important;
+}
+
+.right-bubble-zero {
+    background: transparent;
+    color: black;
+    position: relative;
+    left: var(--right-blocks-left);
+    height: 27px;
+    top: var(--blocks-top);
+    width: 160px;
+    z-index: 5;
+    text-align: center;
+    border-radius: 4px;
+    pointer-events: none !important;
+}
+
+.right-bubble-one {
+    background: rgb(43, 173, 43);
+    color: black;
+    position: relative;
+    left: var(--right-blocks-left);
+    top: var(--blocks-top);
+    height: 27px;
+    z-index: 5;
+    width: 160px;
+    text-align: center;
+    border-radius: 4px;
+    pointer-events: none !important;
+}
+
+.right-bubble-two {
+    background: rgb(43, 173, 43);
+    color: black;
+    position: relative;
+    left: var(--right-blocks-left);
+    top: var(--blocks-top);
+    z-index: 5;
+    height: 27px;
+    width: 160px;
+    text-align: center;
+    border-radius: 4px;
+    pointer-events: none !important;
+}
+.right-bubble-three {
+    background: rgb(43, 173, 43);
+    color: black;
+    position: relative;
+    height: 27px;
+    top: var(--blocks-top);
+    z-index: 5;
+    left: var(--right-blocks-left);
+    width: 160px;
+    text-align: center;
+    border-radius: 4px;
+    pointer-events: none !important;
+}
+.right-bubble-four {
+    background: rgb(43, 173, 43);
+    color: black;
+    position: relative;
+    height: 27px;
+    width: 160px;
+    z-index: 5;
+    top: var(--blocks-top);
+    left: var(--right-blocks-left);
+    text-align: center;
+    border-radius: 4px;
+    pointer-events: none !important;
+}
+.right-bubble-five {
+    background: rgb(43, 173, 43);
+    color: black;
+    position: relative;
+    height: 27px;
+    top: var(--blocks-top);
+    width: 160px;
+    left: var(--right-blocks-left);
+    z-index: 5;
+    text-align: center;
+    border-radius: 4px;
+    pointer-events: none !important;
+}
+.right-bubble-six {
+    background: rgb(43, 173, 43);
+    color: black;
+    position: relative;
+    height: 27px;
+    z-index: 5;
+    top: var(--blocks-top);
+    width: 160px;
+    left: var(--right-blocks-left);
+    text-align: center;
+    border-radius: 4px;
+    pointer-events: none !important;
+}
+.right-bubble-seven {
+    background: rgb(43, 173, 43);
+    color: black;
+    position: relative;
+    height: 27px;
+    top: var(--blocks-top);
+    width: 160px;
+    left: var(--right-blocks-left);
+    z-index: 5;
+    text-align: center;
+    border-radius: 4px;
+    pointer-events: none !important;
+}
+.right-bubble-eight {
+    background: rgb(43, 173, 43);
+    color: black;
+    position: relative;
+    height: 27px;
+    top: var(--blocks-top);
+    width: 160px;
+    left: var(--right-blocks-left);
+    z-index: 5;
+    text-align: center;
+    border-radius: 4px;
+    pointer-events: none !important;
+}
+.right-bubble-nine {
+    background: rgb(43, 173, 43);
+    color: black;
+    position: relative;
+    height: 27px;
+    top: var(--blocks-top);
+    width: 160px;
+    left: var(--right-blocks-left);
+    z-index: 5;
+    text-align: center;
+    border-radius: 4px;
+    pointer-events: none !important;
+}
+.right-bubble-ten {
+    background: rgb(43, 173, 43);
+    color: black;
+    position: relative;
+    height: 27px;
+    width: 160px;
+    z-index: 5;
+    left: var(--right-blocks-left);
+    top: var(--blocks-top);
+    text-align: center;
+    border-radius: 4px;
+    pointer-events: none !important;
+}
+
+.center-bubble-zero {
+    background: transparent;
+    color: black;
+    position: relative;
+    height: 27px;
+    top: var(--blocks-top);        
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
+    text-align: center;
+    border-radius: 4px;
+    z-index: 6;
+    pointer-events: none !important;
+}
+.center-bubble-one {
+    background: transparent;
+    color: black;
+    position: relative;
+    height: 27px;
+    top: var(--blocks-top);
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
+    text-align: center;
+    border-radius: 4px;
+    z-index: 6;
+    pointer-events: none !important;
+}
+.center-bubble-two {
+    background: transparent;
+    color: black;
+    position: relative;
+    height: 27px;
+    top: var(--blocks-top);
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
+    text-align: center;
+    border-radius: 4px;
+    z-index: 6;
+    pointer-events: none !important;
+}
+.center-bubble-three {
+    background: transparent;
+    color: black;
+    position: relative;
+    height: 27px;
+    top: var(--blocks-top);
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
+    text-align: center;
+    border-radius: 4px;
+    z-index: 6;
+    pointer-events: none !important;
+}
+.center-bubble-four {
+    background: transparent;
+    color: black;
+    position: relative;
+    height: 27px;
+    top: var(--blocks-top);
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
+    text-align: center;
+    border-radius: 4px;
+    z-index: 6;
+    pointer-events: none !important;
+}
+.center-bubble-five {
+    background: transparent;
+    color: black;
+    position: relative;
+    height: 27px;
+    top: var(--blocks-top);
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
+    text-align: center;
+    border-radius: 4px;
+    z-index: 6;
+    pointer-events: none !important;
+}
+.center-bubble-six {
+    background: transparent;
+    color: black;
+    position: relative;
+    height: 27px;
+    top: var(--blocks-top);
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
+    text-align: center;
+    border-radius: 4px;
+    z-index: 6;
+    pointer-events: none !important;
+}
+.center-bubble-seven {
+    background: transparent;
+    color: black;
+    position: relative;
+    height: 27px;
+    top: var(--blocks-top);
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
+    text-align: center;
+    border-radius: 4px;
+    z-index: 6;
+    pointer-events: none !important;
+}
+.center-bubble-eight {
+    background: transparent;
+    color: black;
+    position: relative;
+    height: 27px;
+    top: var(--blocks-top);
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
+    text-align: center;
+    border-radius: 4px;
+    z-index: 6;
+    pointer-events: none !important;
+}
+.center-bubble-nine {
+    background: transparent;
+    color: black;
+    position: relative;
+    height: 27px;
+    top: var(--blocks-top);
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
+    text-align: center;
+    border-radius: 4px;
+    z-index: 6;
+    pointer-events: none !important;
+} 
+.center-bubble-ten {
+    background: transparent;
+    color: black;
+    position: relative;
+    height: 27px;
+    top: var(--blocks-top);
+    width: var(--center-bars-width);
+    left: var(--center-bars-left);
+    text-align: center;
+    border-radius: 4px;
+    z-index: 6;
+    pointer-events: none !important;
+}
+
+.center-placeholder {
+    background: transparent;
+    color: black;
+    position: relative;
+    height: 0px;
+    width: 160px; /* control gap between sliders */
+    text-align: center;
+    z-index: 6;
+    pointer-events: none !important;
+}

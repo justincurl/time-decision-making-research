@@ -1,0 +1,182 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+{% block content %}
+
+
+<script>
+	$(document).ready(function () {
+        $('input[name=slider_overlap_one_year]').on('input', function () {
+            $('input[name=slider_overlap_one_year]').addClass('overlap-thumb');
+        });
+    });
+    $(document).ready(function () {
+        $('input[name=slider_overlap_five_year]').on('input', function () {
+            $('input[name=slider_overlap_five_year]').addClass('overlap-thumb');
+        });
+    });
+</script>
+<div align="center">
+    <h2 text-align="center">
+        <span style="text-transform: uppercase; color: rgb(244,161,13);">THE FUTURE</span>
+    </h2>
+</div>
+<br>
+
+
+<div class="results" align="justify" style="font-size:large;">
+    We have two more questions.
+    <br>
+    <br>
+    <p>Think about the important characteristics that make you the person you are now—your personality,
+        temperament, major likes and dislikes, beliefs, values, ambitions, life goals, and ideals.</p>
+
+    Please indicate the degree of connectedness or overlap held between <strong>the person you are now</strong> and <strong>the person you will be <span style="color: rgb(244,161,13)">a year from now.</span></strong>
+</div>
+        <br>
+
+<table>
+    <tr>    
+        <input type="range" name="slider_overlap_one_year" value= "0" step="1" style="text-align: center;" min="0" max="260" id="id_slider_overlap_one_year">
+    </tr>
+    <tr>
+        <td>
+            <div style="text-align: left; margin-left: -12px;">
+            <img src= "{% static 'Demographics/overlap_images/future_1.png' %}" width="250" height="70"/>
+            </div>
+        </td>
+        <td style="width: 140px !important;"></td>
+        <td>
+            <div style="text-align: center;">
+                <img src= "{% static 'Demographics/overlap_images/future_2.png' %}" width="250" height="70"/>
+            </div>
+        </td>
+        <td style="width: 140px !important;"></td>
+        <td>
+            <div style="text-align: right; margin-right: -28px;">
+                <img src= "{% static 'Demographics/overlap_images/future_3.png' %}" width="250" height="70"/>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div style="text-align: left;">
+                <i>"completely disconnected"</i>
+            </div>
+        </td>
+        <td style="width: 140px !important;"></td>
+        <td>
+            <div style="text-align: center;">
+                <i>"somewhat connected"</i>
+            </div>
+        </td>
+        <td style="width: 140px !important;"></td>
+        <td>
+            <div style="text-align: right;">
+                <i>"completely connected"</i>
+            </div>
+        </td>
+    </tr>
+</table>
+    <br>
+        <br>
+            <br>
+                <br>
+                    <br>
+<div class="results" align="justify" style="font-size:large;">
+    Please indicate the degree of connectedness or overlap held between <strong>the person you are now</strong> and <strong>the person you will be <span style="color: rgb(244,161,13)">five years from now.</span></strong>
+</div>
+
+<br>
+
+<table>
+    <tr>    
+        <input type="range" name="slider_overlap_five_year" value= "0" step="1" style="text-align: center;" min="0" max="260" id="id_slider_overlap_five_year">
+    </tr>
+    <tr>
+        <td>
+            <div style="text-align: left; margin-left: -12px;">
+            <img src= "{% static 'Demographics/overlap_images/future_1.png' %}" width="250" height="70"/>
+            </div>
+        </td>
+        <td style="width: 140px !important;"></td>
+        <td>
+            <div style="text-align: center;">
+                <img src= "{% static 'Demographics/overlap_images/future_2.png' %}" width="250" height="70"/>
+            </div>
+        </td>
+        <td style="width: 140px !important;"></td>
+        <td>
+            <div style="text-align: right; margin-right: -28px;">
+                <img src= "{% static 'Demographics/overlap_images/future_3.png' %}" width="250" height="70"/>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div style="text-align: left;">
+                <i>"completely disconnected"</i>
+            </div>
+        </td>
+        <td style="width: 140px !important;"></td>
+        <td>
+            <div style="text-align: center;">
+                <i>"somewhat connected"</i>
+            </div>
+        </td>
+        <td style="width: 140px !important;"></td>
+        <td>
+            <div style="text-align: right;">
+                <i>"completely connected"</i>
+            </div>
+        </td>
+    </tr>
+</table>
+<br>
+    <br>
+        <br>
+<i>After clicking anywhere below the black line, you can adjust the position of the marker (by moving leftward or rightward) to indicate your answer.</i>
+
+<script>
+    function alertFunction() {
+    function alertFunction() {
+        alert("In order for your answers to be most helpful to us, it is really important that you respond to all questions.")
+        jQuery('.waiting').hide();
+        jQuery('.next-button').show();
+        return false
+    }
+    jQuery("#id_slider_overlap_one_year").on("click", function () {
+        jQuery("#id_slider_overlap_five_year").on("click", function () {
+            jQuery(".next-button").show();
+            jQuery(".waiting").hide();
+        });
+    });
+
+    jQuery("#id_slider_overlap_five_year").on("click", function () {
+        jQuery("#id_slider_overlap_one_year").on("click", function () {
+            jQuery(".next-button").show();
+            jQuery(".waiting").hide();
+        });
+    });
+</script>
+
+<div class="waiting" onclick="return alertFunction();" style="text-align: center;">
+    {% next_button %}
+</div>
+
+<div class="next-button" style="text-align: center;">
+    {% next_button %}
+</div>
+
+<script>jQuery(".next-button").hide();</script>
+
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script src="http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"></script>
+<script src="jquery.ui.touch-punch.min.js"></script>
+
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'Demographics/styles/SliderOverlap.css' %}" />
+{% endblock %}

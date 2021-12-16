@@ -1,0 +1,52 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+<style>
+    img {
+        width: 5%;
+    }
+</style>
+
+{% block content %}
+<div class="instructions" align="justify">
+    <h4>
+        <p style="text-align:center;">{{title}}</p>
+    </h4>
+    <p>
+        On the following 6 pages, we would again like you to imagine you are looking backward at past economic growth
+        over a four-year period.
+        <br><br>
+        You will see figures with measurements of how much better off people were in <strong>two different years of this
+            four-year period.</strong> The measurements shown are again <strong>personal income growth:</strong> the
+        percentage by which the average person’s income increased in a given year.
+        <br><br>
+        You will be asked to choose which combination of economic growth in a two-year period you think was best. As you
+        will see, there is a trade-off: As growth went down for one year, it went up for the other. Each screen asks
+        about a different pair of years – <strong>please pay close attention to which two of the four past years you are
+            asked
+            to consider.</strong>
+        <br><br>
+        Here’s an <strong>example:</strong>
+
+    <div align="center"><img src={{instructions_image_link}} width=70%></div>
+    The example shows combinations of growth in the <strong>second year</strong> and the <strong>fourth year</strong> of
+    the four-year period. There are six different options to choose from. For example, the leftmost response button
+    combines 2 percent growth in the second year and 0 percent growth in the fourth (more recent) year. The rightmost
+    button combines 0 percent growth in the second year and 2.5 percent growth in the fourth year.
+    <br><br>
+    In this example, the person making the decision thought that 1.2 percent growth in the second year and 1 percent in
+    the more recent fourth year was the best economy overall, and therefore marked the third button from the left.
+    <br><br>
+    Remember, you are choosing between pairs of <strong>past economic growth,</strong> so the fourth year was more
+    recent than the second
+    year of the period.
+    <br><br>
+    To start the task, click “next”.
+
+    </p>
+
+</div>
+<hr>
+<br>
+{% next_button %}
+{% endblock %}

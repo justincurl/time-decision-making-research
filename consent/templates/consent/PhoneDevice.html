@@ -1,0 +1,21 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block content %}
+<div class="results" align="justify">
+    Some questions in this survey are easier to complete on a large screen.
+    <br>
+    <br>
+    If you prefer to use a different device, you may use the same link to take this survey on a different device.
+    <br>
+    <br>
+    If you continue on a smartphone, we recommend turning the screen horizontally.
+    <br>
+    <br>
+</div>
+
+<div class="next-button" style="text-align: center;">
+    {% next_button %}
+</div>
+
+{% endblock %}

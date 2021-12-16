@@ -1,0 +1,29 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load staticfiles %}
+
+{% block content %}
+<div align="center">
+    <h2 text-align="center">
+        <strong style="text-transform: uppercase; color: rgb(244,161,13);">FUTURE: </strong><span style="text-transform: uppercase;"> <span style="color: rgb(244,161,13)"> {%  if earlier_time == "now" %} <span style="color: black">{%  endif  %} {{earlier_time}} {%  if earlier_time == "now" %} </span> {%  endif  %} </span> </span> and <span style="text-transform: uppercase;"> <span style="color: rgb(244,161,13)">{{later_time}}</span></span>
+    </h2>
+</div>
+<br>
+<div text-align="justify" style="font-size: large;">
+    Next, we would like you to instead consider <strong>temporary job creation</strong> looking <span style="color: rgb(244,161,13);">forward</span>.  So, the next section is about your views of job creation now, a year from now, and five years from now.
+    <br>
+    <br>
+    First, we will ask you several questions about temporary (1-year contract) jobs created {{earlier_time}} and temporary jobs created {{later_time}}.
+    <br>
+    <br>
+    For each question, you will again see 6 options of how to distribute jobs across periods, but this time they represent jobs in the <span style="color: rgb(244,161,13);">future</span>. As before, the response buttons represent different combinations of jobs created. Again, you decide how to distribute jobs created between the two periods to represent <strong>the best economy</strong>.
+    <br>
+    <br>
+    When you are ready to select the combination of jobs created that you think represents <strong>the best economy</strong>, click “Next”. Remember, there are no “right” or “wrong” answers.    
+    <br>
+    <br>
+<div style="text-align: center;">
+    {% next_button %}
+</div>
+
+{% endblock %}
