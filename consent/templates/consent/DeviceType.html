@@ -4,19 +4,30 @@
 
 {% block content %}
 
+<<<<<<< HEAD
 <div align="justify">
     You are being asked to volunteer in a research study. The purpose of the study is to better understand how people
     think about the economy.
 </div>
+=======
+>>>>>>> project-a/master
 <br>
 <div align="justify">
     You will be asked to consent to participating in this study momentarily.
 </div>
 <br>
 <div align="justify">
+<<<<<<< HEAD
     We have detected you are using the following device: <b><span id="reporting_device"></span></b>
 </div>
 
+=======
+    We have detected you are using the following device: <b><span id="reporting_device"></span></b>. Using a second method, we detected that you are {%  if phone == 0 %} also using a <strong>computer</strong> {%  elif phone == 1 %} using an <strong> iOS phone/ipad </strong> {%  endif %}
+</div>
+
+<input type="hidden" name="is_mobile_original_method" id="is_mobile_original_method">
+
+>>>>>>> project-a/master
 <br>
 
 <div class="device-type-questions">
@@ -24,6 +35,10 @@
 </div>
 <br>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> project-a/master
 <script>
     function alertFunction() {
         alert("In order for your answers to be most helpful to us, it is really important that you respond to all questions.")
@@ -50,6 +65,10 @@
         return "computer";
     };
     document.getElementById("reporting_device").innerHTML = getDeviceType();
+<<<<<<< HEAD
+=======
+    document.getElementById("is_mobile_original_method").value = getDeviceType();
+>>>>>>> project-a/master
 </script>
 
 <div class="waiting" onclick="return alertFunction();" style="text-align: center;">

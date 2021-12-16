@@ -29,6 +29,7 @@
     We have two more questions.
     <br>
     <br>
+<<<<<<< HEAD
     Think about the important characteristics that make you the person you are now—your personality, 
     temperament, major likes and dislikes, beliefs, values, ambitions, life goals, and ideals. 
     Please indicate the degree of connectedness or overlap held between <strong>the person you are now</strong> and <strong>the person you will be <span style="color: rgb(244,161,13)">a year from now.</span></strong>
@@ -38,6 +39,18 @@
 <table>
     <tr>    
         <input type="range" name="slider_overlap_one_year" value="1" step="1" style="text-align: center;" min="1" max="7" id="id_slider_overlap_one_year">
+=======
+    <p>Think about the important characteristics that make you the person you are now—your personality,
+        temperament, major likes and dislikes, beliefs, values, ambitions, life goals, and ideals.</p>
+
+    Please indicate the degree of connectedness or overlap held between <strong>the person you are now</strong> and <strong>the person you will be <span style="color: rgb(244,161,13)">a year from now.</span></strong>
+</div>
+        <br>
+
+<table>
+    <tr>    
+        <input type="range" name="slider_overlap_one_year" value= "0" step="1" style="text-align: center;" min="0" max="260" id="id_slider_overlap_one_year">
+>>>>>>> project-a/master
     </tr>
     <tr>
         <td>
@@ -78,10 +91,18 @@
         </td>
     </tr>
 </table>
+<<<<<<< HEAD
 <br>
 <br>
 <br>
 <br>
+=======
+    <br>
+        <br>
+            <br>
+                <br>
+                    <br>
+>>>>>>> project-a/master
 <div class="results" align="justify" style="font-size:large;">
     Please indicate the degree of connectedness or overlap held between <strong>the person you are now</strong> and <strong>the person you will be <span style="color: rgb(244,161,13)">five years from now.</span></strong>
 </div>
@@ -90,7 +111,11 @@
 
 <table>
     <tr>    
+<<<<<<< HEAD
         <input type="range" name="slider_overlap_five_year" value="1" step="1" style="text-align: center;" min="1" max="7" id="id_slider_overlap_five_year">
+=======
+        <input type="range" name="slider_overlap_five_year" value= "0" step="1" style="text-align: center;" min="0" max="260" id="id_slider_overlap_five_year">
+>>>>>>> project-a/master
     </tr>
     <tr>
         <td>
@@ -131,20 +156,45 @@
         </td>
     </tr>
 </table>
+<<<<<<< HEAD
 
 <br>
 <br>
 
 <script>
     function alertFunction() {
+=======
+<br>
+    <br>
+        <br>
+<i>After clicking anywhere below the black line, you can adjust the position of the marker (by moving leftward or rightward) to indicate your answer.</i>
+
+<script>
+    function alertFunction() {
+    function alertFunction() {
+>>>>>>> project-a/master
         alert("In order for your answers to be most helpful to us, it is really important that you respond to all questions.")
         jQuery('.waiting').hide();
         jQuery('.next-button').show();
         return false
     }
     jQuery("#id_slider_overlap_one_year").on("click", function () {
+<<<<<<< HEAD
         jQuery(".next-button").show();
         jQuery(".waiting").hide();
+=======
+        jQuery("#id_slider_overlap_five_year").on("click", function () {
+            jQuery(".next-button").show();
+            jQuery(".waiting").hide();
+        });
+    });
+
+    jQuery("#id_slider_overlap_five_year").on("click", function () {
+        jQuery("#id_slider_overlap_one_year").on("click", function () {
+            jQuery(".next-button").show();
+            jQuery(".waiting").hide();
+        });
+>>>>>>> project-a/master
     });
 </script>
 
@@ -155,12 +205,21 @@
 <div class="next-button" style="text-align: center;">
     {% next_button %}
 </div>
+<<<<<<< HEAD
+=======
+
+<script>jQuery(".next-button").hide();</script>
+
+>>>>>>> project-a/master
 <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 <script src="http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"></script>
 <script src="jquery.ui.touch-punch.min.js"></script>
 
+<<<<<<< HEAD
 <script>jQuery(".next-button").hide();</script>
 
+=======
+>>>>>>> project-a/master
 {% endblock %}
 
 {% block styles %}

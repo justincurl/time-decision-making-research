@@ -145,7 +145,11 @@
             
         
             // hide slider thumb until initial click
+<<<<<<< HEAD
             $('input[name=past_slider_one]').on('mousedown touchstart', function () {
+=======
+            $('input[name=past_slider_one]').on('input', function () {
+>>>>>>> project-a/master
                 $('input[name=past_slider_one]').addClass('past_slider_one_thumb');
                 $('input[name=past_slider_two]').addClass('past_slider_two_thumb');
                 // addLabels();
@@ -157,7 +161,11 @@
             });
         
             // handle changes in slider value
+<<<<<<< HEAD
             $('input[name=past_slider_one]').on('mousedown touchstart', function() {
+=======
+            $('input[name=past_slider_one]').on('input change', function() {
+>>>>>>> project-a/master
                 var past_slider_one_actual_val = $(this).val()
                 var past_slider_one_display_val = earlier_max - $(this).val();
                 var past_slider_two_val = $(this).val()*later_max/earlier_max;
@@ -168,7 +176,11 @@
             // functions for slider 2
         
             // hide slider thumb until initial click
+<<<<<<< HEAD
             $('input[name=past_slider_two]').on('mousedown touchstart', function () {
+=======
+            $('input[name=past_slider_two]').on('input', function () {
+>>>>>>> project-a/master
                 $('input[name=past_slider_one]').addClass('past_slider_one_thumb');
                 $('input[name=past_slider_two]').addClass('past_slider_two_thumb');
                 // addLabels();
@@ -180,7 +192,11 @@
             });
         
             // handle changes in slider value
+<<<<<<< HEAD
             $('input[name=past_slider_two]').on('mousedown touchstart', function() {
+=======
+            $('input[name=past_slider_two]').on('input change', function() {
+>>>>>>> project-a/master
                 var past_slider_two_val = $(this).val();
                 var past_slider_one_actual_val = past_slider_two_val*earlier_max/later_max;
                 var past_slider_one_display_val = earlier_max - past_slider_one_actual_val;
@@ -415,7 +431,11 @@
             return false
         }
         // move this logic to once an answer is selected (smartphone does not register)
+<<<<<<< HEAD
         jQuery(".rotate").on("mousedown touchstart", function () {
+=======
+        jQuery(".rotate").on("click", function () {
+>>>>>>> project-a/master
             jQuery(".next-button").show();
             jQuery(".waiting").hide();
         });
@@ -430,6 +450,13 @@
     </div>
     
     <script>jQuery(".next-button").hide();</script>
+<<<<<<< HEAD
+=======
+
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script src="http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"></script>
+<script src="jquery.ui.touch-punch.min.js"></script>
+>>>>>>> project-a/master
 {% endblock %}
 
 {% block styles %}

@@ -26,6 +26,7 @@
     We have two more questions.
     <br>
     <br>
+<<<<<<< HEAD
     Think about the important characteristics that make you the person you are now—your personality, 
     temperament, major likes and dislikes, beliefs, values, ambitions, life goals, and ideals. 
     Please indicate the degree of connectedness or overlap held between <strong>the person you are now </strong>
@@ -39,6 +40,24 @@
 <table>
     <tr>    
         <input type="range" name="slider_overlap_one_year" value="1" step="1" style="text-align: center;" min="1" max="7" id="id_slider_overlap_one_year">
+=======
+    <p>Think about the important characteristics that make you the person you are now—your personality,
+        temperament, major likes and dislikes, beliefs, values, ambitions, life goals, and ideals.</p>
+    Please indicate the degree of connectedness or overlap held between <strong>the person you are now </strong>
+    and <strong>the person you were one year ago.</strong>
+</div>
+
+<br>
+
+<div class="results" align="justify" style="font-size:large;">
+    Click below the black line to indicate the degree of connectedness or overlap held between <strong>the person you are now</strong> and <strong>the person you were <span style="color: rgb(197,28,138)">one year ago.</span></strong>
+    </div>
+    <br>
+
+<table>
+    <tr>    
+        <input type="range" name="slider_overlap_one_year" value= "0" step="1" style="text-align: center;" min="0" max="260" id="id_slider_overlap_one_year">
+>>>>>>> project-a/master
     </tr>
     <tr>
         <td>
@@ -79,17 +98,31 @@
         </td>
     </tr>
 </table>
+<<<<<<< HEAD
 <br>
 <br>
 <br>
 <br>
 <div class="results" align="justify" style="font-size:large;">
     Click below the black line to indicate the degree of connectedness or overlap held between <strong>the person you are now</strong> and <strong>the person you were <span style="color: rgb(197,28,138)">five years ago.</span></strong>
+=======
+    <br>
+        <br>
+            <br>
+                <br>
+                    <br>
+<div class="results" align="justify" style="font-size:large;">
+    Please indicate the degree of connectedness or overlap held between <strong>the person you are now</strong> and <strong>the person you will were <span style="color: rgb(197,28,138)">five years ago.</span></strong>
+>>>>>>> project-a/master
 </div>
 
 <table>
     <tr>    
+<<<<<<< HEAD
         <input type="range" name="slider_overlap_five_year" value="1" step="1" style="text-align: center;" min="1" max="7" id="id_slider_overlap_five_year">
+=======
+        <input type="range" name="slider_overlap_five_year" value= "0" step="1" style="text-align: center;" min="0" max="260" id="id_slider_overlap_five_year">
+>>>>>>> project-a/master
     </tr>
     <tr>
         <td>
@@ -132,7 +165,14 @@
 </table>
 
 <br>
+<<<<<<< HEAD
 <br>
+=======
+    <br>
+        <br>
+    <i>After clicking anywhere below the black line, you can adjust the position of the marker (by moving leftward or rightward) to indicate your answer.</i>
+
+>>>>>>> project-a/master
 
 <script>
     function alertFunction() {
@@ -142,8 +182,22 @@
         return false
     }
     jQuery("#id_slider_overlap_one_year").on("click", function () {
+<<<<<<< HEAD
         jQuery(".next-button").show();
         jQuery(".waiting").hide();
+=======
+        jQuery("#id_slider_overlap_five_year").on("click", function () {
+            jQuery(".next-button").show();
+            jQuery(".waiting").hide();
+        });
+    });
+
+    jQuery("#id_slider_overlap_five_year").on("click", function () {
+        jQuery("#id_slider_overlap_one_year").on("click", function () {
+            jQuery(".next-button").show();
+            jQuery(".waiting").hide();
+        });
+>>>>>>> project-a/master
     });
 </script>
 

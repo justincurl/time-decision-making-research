@@ -34,7 +34,11 @@
 </div>
 <table>
     <tr>
+<<<<<<< HEAD
         <input type="range" name="slider_one_year" value="0" step="1" align="center" min="0" max="260" id="id_slider_one_year">
+=======
+        <input type="range" name="slider_one_year" value= "0" step="1" align="center" min="0" max="260" id="id_slider_one_year">
+>>>>>>> project-a/master
     </tr>
     <tr>
         <td>
@@ -57,7 +61,11 @@
 
 <table>
     <tr>
+<<<<<<< HEAD
         <input type="range" name="slider_five_year" value="0" step="1" align="center" min="0" max="260" id="id_slider_five_year">
+=======
+        <input type="range" name="slider_five_year" value= "0" step="1" align="center" min="0" max="260" id="id_slider_five_year">
+>>>>>>> project-a/master
     </tr>
     <tr>
         <td>
@@ -79,9 +87,25 @@
         jQuery('.next-button').show();
         return false
     }
+<<<<<<< HEAD
     jQuery("#id_slider_five_year").on("click", function () {
         jQuery(".next-button").show();
         jQuery(".waiting").hide();
+=======
+
+    jQuery("#id_slider_one_year").on("click", function () {
+        jQuery("#id_slider_five_year").on("click", function () {
+            jQuery(".next-button").show();
+            jQuery(".waiting").hide();
+        });
+    });
+
+    jQuery("#id_slider_five_year").on("click", function () {
+        jQuery("#id_slider_one_year").on("click", function () {
+            jQuery(".next-button").show();
+            jQuery(".waiting").hide();
+        });
+>>>>>>> project-a/master
     });
 </script>
 

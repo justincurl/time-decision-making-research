@@ -7,7 +7,11 @@
 <br>
 <div class="results" align="justify" style="font-size: large">
     <span style="font-size: large">Are you of Hispanic, Latino or Spanish Origin?</span>
+<<<<<<< HEAD
     <div style="font-size: large; padding-left: 5px;" class="formfield">{% formfield player.ethnicity label="" %}
+=======
+    <div style="font-size: large; padding-left: 5px;" class="formfield" id="id_ethnicity">{% formfield player.ethnicity label="" %}
+>>>>>>> project-a/master
     </div>
 </div>
 </div>
@@ -16,16 +20,63 @@
     What is your race? <i>(Choose all that apply)</i>
 </div>
     <br>
+<<<<<<< HEAD
 {{ for field in Constants.races }}
+=======
+
+<div style="font-size: large; padding-left: 5px"; type="checkbox" id="id_gender">
+    {{ for field in Constants.races }}
+>>>>>>> project-a/master
 <label>
     <input type="checkbox" name="{{ field.name }}" value="1">
     {{ field.label }}
 </label><br>
 {{ endfor }}
+<<<<<<< HEAD
 <br>
 
 <div style="text-align: center;">
     {% next_button %}
 </div>
 
+=======
+</div>
+<br>
+
+<script>
+    function alertFunction() {
+        alert("In order for your answers to be most helpful to us, it is really important that you respond to all questions.")
+        jQuery('.waiting').hide();
+        jQuery('.next-button').show();
+        return false
+    }
+    jQuery("#id_gender").on("click", function () {
+        jQuery("#id_ethnicity").on("click", function () {
+            jQuery(".next-button").show();
+            jQuery(".waiting").hide();
+        });
+    });
+    jQuery("#id_ethnicity").on("click", function () {
+        jQuery("#id_gender").on("click", function () {
+            jQuery(".next-button").show();
+            jQuery(".waiting").hide();
+        });
+    });
+</script>
+
+<div class="waiting" onclick="return alertFunction();">
+    {% next_button %}
+</div>
+
+<div class="next-button">
+    {% next_button %}
+</div>
+
+<script>jQuery(".next-button").hide();</script>
+
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script src="http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"></script>
+<script src="jquery.ui.touch-punch.min.js"></script>
+
+>>>>>>> project-a/master
 {% endblock %}

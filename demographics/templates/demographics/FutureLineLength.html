@@ -35,7 +35,11 @@
 </div>
 <table>
     <tr>
+<<<<<<< HEAD
         <input type="range" name="slider_one_year" value="0" step="1" align="center" min="0" max="260" id="id_slider_one_year">
+=======
+        <input type="range" name="slider_one_year" step="1" align="center" value= "0" min="0" max="260" id="id_slider_one_year">
+>>>>>>> project-a/master
     </tr>
     <tr>
         <td>
@@ -57,7 +61,11 @@
 </div>
 <table>
     <tr>
+<<<<<<< HEAD
         <input type="range" name="slider_five_year" value="0" step="1" align="center" min="0" max="260" id="id_slider_five_year">
+=======
+        <input type="range" name="slider_five_year" step="1" align="center" value= "0" min="0" max="260" id="id_slider_five_year">
+>>>>>>> project-a/master
     </tr>
     <tr>
         <td>
@@ -71,6 +79,10 @@
     </tr>
 </table>
 <br>
+<<<<<<< HEAD
+=======
+<i>After clicking anywhere inside the grey bar, you can adjust the length of the arrow (by moving the arrowhead) to indicate your answer.</i>
+>>>>>>> project-a/master
 
 <script>
     function alertFunction() {
@@ -79,9 +91,24 @@
         jQuery('.next-button').show();
         return false
     }
+<<<<<<< HEAD
     jQuery("#id_slider_five_year").on("click", function () {
         jQuery(".next-button").show();
         jQuery(".waiting").hide();
+=======
+    jQuery("#id_slider_one_year").on("click", function () {
+        jQuery("#id_slider_five_year").on("click", function () {
+            jQuery(".next-button").show();
+            jQuery(".waiting").hide();
+        });
+    });
+
+    jQuery("#id_slider_five_year").on("click", function () {
+        jQuery("#id_slider_one_year").on("click", function () {
+            jQuery(".next-button").show();
+            jQuery(".waiting").hide();
+        });
+>>>>>>> project-a/master
     });
 </script>
 

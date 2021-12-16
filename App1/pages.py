@@ -626,7 +626,8 @@ class FV_12(Page):
         finish_time = datetime.datetime.strptime(current_time, "%H:%M:%S")
         start_time = datetime.datetime.strptime(json.loads(self.player.start_time), "%H:%M:%S")
         self.player.total_time = json.dumps(str(finish_time - start_time))
-        if self.player.slider_two_last_clicked:
+        last_click = self.player.field_maybe_none('slider_two_last_clicked')
+        if last_click:
             self.player.future_slider_two = self.player.later_max - self.player.future_slider_two
         return super().before_next_page()
 
@@ -694,7 +695,8 @@ class FV_13(Page):
         finish_time = datetime.datetime.strptime(current_time, "%H:%M:%S")
         start_time = datetime.datetime.strptime(json.loads(self.player.start_time), "%H:%M:%S")
         self.player.total_time = json.dumps(str(finish_time - start_time))
-        if self.player.slider_two_last_clicked:
+        last_click = self.player.field_maybe_none('slider_two_last_clicked')
+        if last_click:
             self.player.future_slider_two = self.player.later_max - self.player.future_slider_two
         return super().before_next_page()
 
@@ -762,7 +764,8 @@ class FV_23(Page):
         finish_time = datetime.datetime.strptime(current_time, "%H:%M:%S")
         start_time = datetime.datetime.strptime(json.loads(self.player.start_time), "%H:%M:%S")
         self.player.total_time = json.dumps(str(finish_time - start_time))
-        if self.player.slider_two_last_clicked:
+        last_click = self.player.field_maybe_none('slider_two_last_clicked')
+        if last_click:
             self.player.future_slider_two = self.player.later_max - self.player.future_slider_two
         return super().before_next_page()
 

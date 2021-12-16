@@ -1,1 +1,6 @@
+<<<<<<< HEAD
 otree[mturk]>=5.6.0
+=======
+# You should put your requirements in requirements.txt instead.
+# You can delete this file.
+>>>>>>> project-a/master

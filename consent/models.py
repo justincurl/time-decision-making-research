@@ -33,6 +33,11 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     consent_answer = models.StringField(initial="")
+<<<<<<< HEAD
+=======
+    is_mobile = models.BooleanField()
+    is_mobile_original_method = models.StringField(initial="")
+>>>>>>> project-a/master
     device_type = models.IntegerField(
         choices=[
             [1, "Desktop Computer"],

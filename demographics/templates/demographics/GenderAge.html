@@ -7,13 +7,21 @@
     <p style="font-size: larger">Now we only have a few more questions about your demographic background.</p>
     <br>
     <span style="font-size: larger">What is your gender?</span>
+<<<<<<< HEAD
     <div style="font-size: larger" class="formfield">{% formfield player.gender label="" %} </div>
+=======
+    <div style="font-size: larger" class="formfield" id="id_gender">{% formfield player.gender label="" %} </div>
+>>>>>>> project-a/master
 </div>
 </div>
 <br>
 <div class="results" align="justify">
     <span style="font-size: larger">What is your age?</span>
+<<<<<<< HEAD
     <div style="font-size: larger" class="formfield-age">{% formfield player.age label="" %}</div>
+=======
+    <div style="font-size: larger" class="formfield-age" id="id_age">{% formfield player.age label="" %}</div>
+>>>>>>> project-a/master
 </div>
 
 <script>
@@ -23,9 +31,24 @@
         jQuery('.next-button').show();
         return false
     }
+<<<<<<< HEAD
     jQuery(".formfield-age").on("click", function () {
         jQuery(".next-button").show();
         jQuery(".waiting").hide();
+=======
+
+    jQuery("#id_age").on("input", function () {
+        jQuery("#id_gender").on("click", function () {
+            jQuery(".next-button").show();
+            jQuery(".waiting").hide();
+        });
+    });
+    jQuery("#id_gender").on("click", function () {
+        jQuery("#id_age").on("input", function () {
+            jQuery(".next-button").show();
+            jQuery(".waiting").hide();
+        });
+>>>>>>> project-a/master
     });
 </script>
 
@@ -39,4 +62,10 @@
 
 <script>jQuery(".next-button").hide();</script>
 
+<<<<<<< HEAD
+=======
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script src="http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"></script>
+<script src="jquery.ui.touch-punch.min.js"></script>
+>>>>>>> project-a/master
 {% endblock %}
