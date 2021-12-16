@@ -1,0 +1,34 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block content %}
+<br>
+<div class="results" align="justify">
+    <span style="font-size: larger">Thinking back over the last year, what was your family's annual income?</span>
+    <div style="font-size: larger" class="formfield">{% formfield player.income_level label="" %}</div>
+</div>
+<br>
+<script>
+    function alertFunction() {
+        alert("In order for your answers to be most helpful to us, it is really important that you respond to all questions.")
+        jQuery('.waiting').hide();
+        jQuery('.next-button').show();
+        return false
+    }
+    jQuery(".formfield").on("click", function () {
+        jQuery(".next-button").show();
+        jQuery(".waiting").hide();
+    });
+</script>
+
+<div class="waiting" onclick="return alertFunction();" style="text-align: center;">
+    {% next_button %}
+</div>
+
+<div class="next-button" style="text-align: center;">
+    {% next_button %}
+</div>
+
+<script>jQuery(".next-button").hide();</script>
+
+{% endblock %}

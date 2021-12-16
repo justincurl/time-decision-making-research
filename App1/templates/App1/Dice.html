@@ -4,20 +4,10 @@
 {% block content %}
 
 <div class="results" text-align="justify" style="font-size: larger;">
-<<<<<<< HEAD
-    <p>
-        Imagine that we rolled a fair, six-sided die 1,000 times. What is your best guess about how many times the die
-        would come up even (2, 4, or 6) in 1,000 rolls?
-    </p>
-    <div class="formfield">{% formfield player.dice_answer label="Even Rolls out of 1,000" %}</div>
-</div>
-</div>
-=======
         Imagine that we rolled a fair, six-sided die 1,000 times. What is your best guess about how many times the die
         would come up even (2, 4, or 6) in 1,000 rolls?
     <div class="formfield">{% formfield player.dice_answer label="Even Rolls out of 1,000" %}</div>
 </div>
->>>>>>> project-a/master
 
 <script>
     function alertFunction() {
@@ -25,11 +15,7 @@
         jQuery('.waiting').hide();
         jQuery('.next-button').show();
     }
-<<<<<<< HEAD
-    jQuery(".formfield").on("click", function () {
-=======
     jQuery(".formfield").on("input", function () {
->>>>>>> project-a/master
         jQuery(".next-button").show();
         jQuery(".waiting").hide();
     });
@@ -44,11 +30,7 @@
 </div>
 
 <script>jQuery(".next-button").hide();</script>
-<<<<<<< HEAD
-
-=======
 <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 <script src="http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"></script>
 <script src="jquery.ui.touch-punch.min.js"></script>
->>>>>>> project-a/master
 {% endblock %}

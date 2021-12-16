@@ -1,0 +1,46 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+<style>
+    img {
+        width: 30%;
+    }
+</style>
+
+{% block content %}
+<div class="instructions" align="justify">
+    <h4>
+        <p style="text-align:center;">{{title}}</p>
+    </h4>
+    <p>
+        On the following 8 pages, we would like you to imagine you are looking backward at <strong>past economic growth
+            over a four-year period.</strong>
+        <br><br>
+        You will see figures with the measurements of how much better off people were in each year of this four-year
+        period. The measurements
+        shown are <strong>personal income growth:</strong> the percentage by which the average person’s income increased
+        in each year. This provides a good measure of how strong the national economy was.
+        <br><br>
+        After looking at a figure, you’ll be asked to evaluate economy growth during this period. Would you say the
+        national economy was very good, fairly good, fairly bad, or very bad?
+        <br><br>
+        Here’s an <strong>example:</strong>
+
+    <div align="center"><img src={{instructions_image_link}} width=70%></div>
+    The example figure shows that incomes will grow by 1.9 percent in the first year, then by 2.1 percent in the second
+    year, then by 2.5 percent in the third year, and by 2.0 percent in the fourth (most recent) year.
+    <br><br>
+    In this example, the person making the evaluation thought the past economy was “fairly good” during this period, and
+    therefore marked the third button from the left.
+    <br><br>
+    Remember, you are looking at a <strong>past economic growth,</strong> so the fourth year of the four-year period
+    is the most recent, while the first year of the period was several years earlier.
+    <br><br>
+    To start the task, click “next”.
+    </p>
+</div>
+
+<hr>
+<br>
+{% next_button %}
+{% endblock %}

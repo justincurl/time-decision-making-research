@@ -158,9 +158,6 @@
                 document.getElementById("id_past_slider_two").value = past_slider_one_actual_val*later_max/earlier_max;
                 updateLabels(past_slider_one_display_val/earlier_max*10, past_slider_one_display_val, past_slider_two_val, document.getElementById("id_past_slider_one").step, document.getElementById("id_past_slider_two").step, earlier_time, later_time);
             });
-<<<<<<< HEAD
-        
-=======
 
             // handle changes in slider value
             $('input[name=past_slider_one]').on('input change', function() {
@@ -171,7 +168,6 @@
                 updateLabels(past_slider_one_display_val/earlier_max*10, past_slider_one_display_val, past_slider_two_val, document.getElementById("id_past_slider_one").step, document.getElementById("id_past_slider_two").step, earlier_time, later_time);
             });
 
->>>>>>> project-a/master
             // functions for slider 2
         
             // hide slider thumb until initial click
@@ -184,9 +180,6 @@
                 document.getElementById("id_past_slider_one").value = past_slider_one_actual_val;
                 updateLabels(past_slider_one_display_val/earlier_max*10, past_slider_one_display_val, past_slider_two_val, document.getElementById("id_past_slider_one").step, document.getElementById("id_past_slider_two").step, earlier_time, later_time);
             });
-<<<<<<< HEAD
-        
-=======
 
             // handle changes in slider value
             $('input[name=past_slider_two]').on('input change', function() {
@@ -196,7 +189,6 @@
                 document.getElementById("id_past_slider_one").value = past_slider_one_actual_val;
                 updateLabels(past_slider_one_display_val/earlier_max*10, past_slider_one_display_val, past_slider_two_val, document.getElementById("id_past_slider_one").step, document.getElementById("id_past_slider_two").step, earlier_time, later_time);
             });
->>>>>>> project-a/master
 
             function numberWithCommas(x) {
                 return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -424,11 +416,7 @@
             jQuery('.next-button').show();
             return false
         }
-<<<<<<< HEAD
-        jQuery(".rotate").on("input", function () {
-=======
         jQuery(".rotate").on("click", function () {
->>>>>>> project-a/master
             jQuery(".next-button").show();
             jQuery(".waiting").hide();
         });
@@ -443,13 +431,10 @@
     </div>
     
     <script>jQuery(".next-button").hide();</script>
-<<<<<<< HEAD
-=======
 
 <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 <script src="http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"></script>
 <script src="jquery.ui.touch-punch.min.js"></script>
->>>>>>> project-a/master
 {% endblock %}
 
 {% block styles %}

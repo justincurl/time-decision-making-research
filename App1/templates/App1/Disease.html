@@ -4,17 +4,9 @@
 {% block content %}
 
 <div class="results" text-align="justify" style="font-size: larger;">
-<<<<<<< HEAD
-    <p>
         If the chance of getting a disease is 1 out of 1000, this would be the same as having a __% chance of getting
         the
         disease.
-    </p>
-=======
-        If the chance of getting a disease is 1 out of 1000, this would be the same as having a __% chance of getting
-        the
-        disease.
->>>>>>> project-a/master
 
     <div class="formfield">{% formfield player.disease_answer label="% Chance" %}</div>
 </div>
@@ -26,11 +18,7 @@
         jQuery('.next-button').show();
     }
     
-<<<<<<< HEAD
-    jQuery(".formfield").on("click", function () {
-=======
     jQuery(".formfield").on("input", function () {
->>>>>>> project-a/master
         jQuery(".next-button").show();
         jQuery(".waiting").hide();
     });
@@ -46,11 +34,8 @@
 
 <script>jQuery(".next-button").hide();</script>
 
-<<<<<<< HEAD
-=======
 <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 <script src="http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"></script>
 <script src="jquery.ui.touch-punch.min.js"></script>
 
->>>>>>> project-a/master
 {% endblock %}

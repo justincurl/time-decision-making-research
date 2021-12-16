@@ -1,0 +1,18 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    {{title}} Instructions
+{% endblock %}
+
+{% block content %}
+     <div class="instructions" align="justify">
+        <p align="justify">
+           {{ instructions }}
+            
+        </p>
+     </div>
+    {% next_button %}
+{% endblock %}
+
+

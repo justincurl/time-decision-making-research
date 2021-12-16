@@ -157,11 +157,7 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
     )
 
-<<<<<<< HEAD
-    benefit_answer = models.IntegerField()
-=======
     benefit_answer = models.IntegerField(blank=True)
->>>>>>> project-a/master
 
     education = models.IntegerField(
     choices=[
@@ -204,20 +200,11 @@ class Player(BasePlayer):
 
     feedback = models.LongStringField(blank=True)
 
-<<<<<<< HEAD
-    slider_one_year = models.StringField()
-    slider_five_year = models.StringField()
-
-    slider_overlap_one_year = models.StringField()
-
-    slider_overlap_five_year = models.StringField()
-=======
     slider_one_year = models.StringField(blank=True)
     slider_five_year = models.StringField(blank=True)
 
     slider_overlap_one_year = models.StringField(blank=True)
     slider_overlap_five_year = models.StringField(blank=True)
->>>>>>> project-a/master
 
     zipcode = models.IntegerField(blank=True, min=0, max=99999)
 

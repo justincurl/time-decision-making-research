@@ -1,0 +1,36 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div align="center">
+    <h2 text-align="center">
+        <strong style="text-transform: uppercase; color: rgb(244,161,13);">FUTURE: </strong><span style="text-transform: uppercase;"> <span style="color: rgb(244,161,13)"> {%  if earlier_time == "now" %} <span style="color: black">{%  endif  %} {{earlier_time}} {%  if earlier_time == "now" %} </span> {%  endif  %} </span> </span> and <span style="text-transform: uppercase;"> <span style="color: rgb(244,161,13)">{{later_time}}</span></span>
+    </h2>
+</div>
+
+<div text-align="justify" style="font-size: large;">
+    For each question, you will see 10 green blocks, each representing 50,000 jobs created {{earlier_time}}. After your first click on any of the blocks, a blue horizontal bar will appear. By dragging the blue bar up and down, you can move each green block between {{earlier_time}} and {{later_time}}. The blue bar lists the number of jobs created in each period. We would like you to arrange the blocks so they show the distribution of jobs across the two periods that you think represents the best economy.
+    <br>
+    <br>
+    In some questions, moving a block of 50,000 jobs from {{earlier_time}} to {{later_time}} leads to more than 50,000 jobs created later. In other questions, it leads to fewer than 50,000 jobs created later or leaves the number unchanged. So, the total number of jobs that can be created over the two periods varies across questions.
+    <br>
+    <br>
+    Here is an example:    
+    <br>
+    <img src="{% static image_link %}" width="965" height="405"/>
+    <br>
+    <br>
+    The respondent in this example thought four blocks of 50,000 jobs {{earlier_time}} and six blocks of 50,000 jobs {{later_time}} represents the best economy.
+    <br>
+    <br>
+    How about you? When you are ready to select the combination of jobs created that YOU think represents <strong>the best economy</strong>, click “Next”. Remember, there are no “right” or “wrong” answers.
+    <br>
+    <br>
+</div>
+<div style="text-align: center;">
+    {% next_button %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block content %}
+
+<div class="progress">
+    <div class="progress-bar" style="width: {{ progress }}%"></div>
+</div>
+<br>
+
+<div class="results" align="justify">
+    <p>{{instructions}}</p>
+    <div class="formfield">{% formfield player.check_2 label="" %}</div>
+</div>
+
+<script>
+    function alertFunction() {
+        alert("In order for your answers to be most helpful to us, it is really important that you respond to all questions.")
+        jQuery('.waiting').hide();
+        jQuery('.next-button').show();
+        return false
+    }
+    jQuery(".formfield").on("click", function () {
+        jQuery(".next-button").show();
+        jQuery(".waiting").hide();
+    });
+</script>
+
+<div class="waiting" onclick="return alertFunction();">
+    {% next_button %}
+</div>
+
+<div class="next-button">
+    {% next_button %}
+</div>
+
+<script>jQuery(".next-button").hide();</script>
+
+{% endblock %}

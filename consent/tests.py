@@ -16,13 +16,8 @@ class PlayerBot(Bot):
         # ------------------------------------------------------------------------------------------------------------ #
         # make decisions
         # ------------------------------------------------------------------------------------------------------------ #
-<<<<<<< HEAD
-        yield (pages.DeviceType, {'device_type': random.choice(['1','2','3','4','5'])})
-        if self.player.device_type == 3:
-=======
         yield (pages.DeviceType2)
         yield (pages.DeviceType, {'device_type': random.choice(['1','2','3','4','5'])})
         if self.player.device_type == 3 or self.player.device_type == 4 or self.player.device_type == 5:
->>>>>>> project-a/master
                 yield pages.PhoneDevice
         yield (pages.Consent, {'consent_answer': random.choice(['1'])})

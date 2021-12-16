@@ -1,0 +1,68 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load staticfiles %}
+
+{% block content %}
+<br>
+<div class="results" align="justify" style="font-size:large;">
+    How willing are you to give up something that is beneficial to you today in order to benefit more from it in the future?
+    <br>
+    <br>
+</div>
+<div align="justify"><i>Please answer on a scale from 0 to 10, where 0 means completely unwilling to do so, and 10 means very willing to do so.</i></div>
+<br>
+
+<table class="table table-bordered">
+    <tbody>
+        <tr
+            class="timepref__question-start timepref__question-unanswered" style="border:none">
+            {% for value in start_values %}
+            <td class="text-center" style="border:none">{{ value }}</td>
+            {% endfor %}
+        </tr>
+        <tr class="timepref__question-end" style="border:none">
+            {% for value in end_values %}
+            <td class="text-center" style="width: 110px !important; border:none">{{ value }}</td>
+            {% endfor %}
+        </tr>
+        <tr class="timepref__question-choices" style="border:none">
+            {% for index in idxs %}
+            <td class="text-center timepref__question-choice" style="border:none">
+                <input type="radio" name="question" value="{{ index }}"/>
+            </td>
+            {% endfor %}
+
+            <h1></h1>
+    </tbody>
+</table>
+<br>
+<br>
+
+<input id="timepref__answer" type="hidden" name="benefit_answer">
+
+<script>
+    function alertFunctionBlock() {
+        alert("In order for your answers to be most helpful to us, it is really important that you respond to all questions.")
+        jQuery('.timepref__waiting').hide();
+        jQuery('.timepref__next-button').show();
+        return false
+    }
+</script>
+
+<div class="timepref__waiting" onclick="return alertFunctionBlock();" style="text-align: center;">
+    {% next_button %}
+</div>
+
+<div class="timepref__next-button" style="text-align: center;">
+    {% next_button %}
+</div>
+
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'Demographics/styles/benefit_today.css' %}" />
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'Demographics/scripts/benefit_today.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div align="center">
+    <h2 text-align="center">
+        <strong style="text-transform: uppercase; color: rgb(197,28,138);">PAST: </strong><span style="text-transform: uppercase;"><span style="color: rgb(197,28,138)"> {%  if later_time == "now" %} <span style="color: black">{%  endif  %} {{later_time}} {%  if later_time == "now" %} </span> {%  endif  %} </span></span> and <span style="text-transform: uppercase;"><span style="color: rgb(197,28,138)">{{earlier_time}}</span></span>
+    </h2>
+</div>
+<br>
+<div text-align="justify" style="font-size: larger">
+    Next, we will ask you several questions about a different pair of periods: Temporary (1-year contract) jobs created
+    <strong><span style="color: rgb(197,28,138)"> {%  if later_time == "now" %} <span style="color: black">{%  endif  %} {{later_time}} {%  if later_time == "now" %} </span> {%  endif  %} </span></strong> and temporary jobs created <strong><span style="color: rgb(197,28,138)">{{earlier_time}}</span></strong>.
+</div>
+<br>
+<br>
+<div class="next-button"  style="text-align: center;">
+    {% next_button %}
+</div>
+
+
+{% endblock %}

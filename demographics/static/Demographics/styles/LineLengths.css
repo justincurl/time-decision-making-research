@@ -69,11 +69,7 @@
      width: 100%;
      height: 30px;
      cursor: pointer;
-<<<<<<< HEAD
-     box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-=======
      box-shadow: 10px 10px 10px #000000, 0px 0px 10px #0d0d0d;
->>>>>>> project-a/master
      background: #d3d3d3;
      border-radius: 0px;
      border: 0.0px solid #ffffff;
@@ -85,9 +81,5 @@
      width: 0px;
      border-radius: 0px;
      -webkit-appearance: none;
-<<<<<<< HEAD
- }
-=======
  }
 
->>>>>>> project-a/master
