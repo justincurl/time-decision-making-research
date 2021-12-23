@@ -3,6 +3,10 @@
 {% load staticfiles %}
 
 {% block content %}
+
+<input type="hidden" name="is_mobile_original_method" id="is_mobile_original_method">
+<input type="hidden" name="is_mobile" id="is_mobile">
+
 <br>
 <div text-align="justify" style="font-size: large;">
 The next section is about the strength of the national economy. A series of questions will ask you about <strong>personal income growth</strong>, a measure of how much better off people are than they used to be.
@@ -12,6 +16,48 @@ Personal income growth is calculated as the percentage by which the average pers
 <br>
 <br>
 </div>
+
+<script>
+        const getDeviceType = () => {
+        const ua = navigator.userAgent;
+        if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
+          return "tablet";
+        }
+        if (
+          /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
+            ua
+          )
+        ) {
+          return "mobile";
+        }
+        return "computer";
+    };
+    document.getElementById("is_mobile_original_method").value = getDeviceType();
+</script>
+
+<script>
+
+function isMobile() {
+   return [
+     'iPad Simulator',
+     'iPhone Simulator',
+     'iPod Simulator',
+     'iPad',
+     'iPhone',
+     'iPod'
+   ].includes(navigator.platform)
+   // iPad on iOS 13 detection
+   || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+ }
+
+    // here is an alternative technique that checks screen resolution
+    // function isMobile() {
+    //     return ((window.innerWidth <= 800) && (window.innerHeight <= 600));
+    // }
+
+    document.getElementById('is_mobile').value = isMobile() ? 1 : 0;
+
+</script>
 
 <div style="text-align: center;">
     {% next_button %}

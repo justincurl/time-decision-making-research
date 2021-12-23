@@ -444,6 +444,10 @@ class Player(BasePlayer):
     future_slider_two = models.IntegerField(blank=True)
     slider_two_last_clicked = models.IntegerField(blank=True)
 
+    slider_one_ever_clicked = models.IntegerField(blank=True)
+    slider_two_ever_clicked = models.IntegerField(blank=True)
+
+
 ################################################################################# PAST VISUAL PLAYER VARIABLES #################################################################################
     past_visual_round_configs = models.StringField()
     past_slider_one = models.IntegerField(blank=True)

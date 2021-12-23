@@ -15,6 +15,8 @@
     <input type="hidden" value={{earlier_max}} id="earlier_max"/>
     <input type="hidden" value={{later_max}} id="later_max"/>
     <input type="hidden" name="slider_two_last_clicked" id="id_slider_two_last_clicked"/>
+    <input type="hidden" value=0 name="slider_one_ever_clicked" id="id_slider_one_ever_clicked"/>
+    <input type="hidden" value=0 name="slider_two_ever_clicked" id="id_slider_two_ever_clicked"/>
 
     <div align="center">
         <h2 text-align="center">
@@ -160,6 +162,7 @@
                 var future_slider_two_slider_val = later_max - future_slider_two_display_val;
                 document.getElementById("id_future_slider_two").value = future_slider_two_slider_val;
                 document.getElementById("id_slider_two_last_clicked").value = 0;
+                document.getElementById("id_slider_one_ever_clicked").value = 1;
                 updateLabels(future_slider_one_display_val/earlier_max*10, future_slider_one_slider_val, future_slider_two_slider_val, document.getElementById("id_future_slider_one").step, document.getElementById("id_future_slider_two").step, earlier_time, later_time);
             });
         
@@ -186,6 +189,7 @@
                 var future_slider_one_display_val = earlier_max - future_slider_one_slider_val;
                 document.getElementById("id_future_slider_one").value = future_slider_one_slider_val;
                 document.getElementById("id_slider_two_last_clicked").value = 1;
+                document.getElementById("id_slider_two_ever_clicked").value = 1;
                 updateLabels(future_slider_one_display_val/earlier_max*10, future_slider_one_slider_val, future_slider_two_display_val, document.getElementById("id_future_slider_one").step, document.getElementById("id_future_slider_two").step, earlier_time, later_time);
             });
         
@@ -424,9 +428,9 @@
             alert("In order for your answers to be most helpful to us, it is really important that you respond to all questions.")
             jQuery('.waiting').hide();
             jQuery('.next-button').show();
-            return 0
+            return false
         }
-        jQuery(".rotate").on("click", function () {
+        jQuery(".rotate").on("input", function () {
             jQuery(".next-button").show();
             jQuery(".waiting").hide();
         });
@@ -448,5 +452,5 @@
 {% endblock %}
 
 {% block styles %}
-<link rel="stylesheet" href="{% static 'App1/styles/fv_12.css' %}" />
+<link rel="stylesheet" href="{% static 'App1/style/fv_12.css' %}" />
 {% endblock %}

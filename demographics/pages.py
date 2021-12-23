@@ -6,7 +6,7 @@ import datetime
 
 class FutureLineLength(Page):
     form_model = 'player'
-    form_fields = ['slider_one_year','slider_five_year']
+    form_fields = ['slider_one_year','slider_five_year', 'slider_one_year_ever_clicked', 'slider_five_year_ever_clicked', "is_mobile_original_method", "is_mobile"]
 
     def is_displayed(self):
         return self.player.line_length_condition == 2
@@ -14,7 +14,7 @@ class FutureLineLength(Page):
 
 class PastLineLength(Page):
     form_model = 'player'
-    form_fields = ['slider_one_year','slider_five_year']
+    form_fields = ['slider_one_year','slider_five_year', 'slider_one_year_ever_clicked', 'slider_five_year_ever_clicked', "is_mobile_original_method", "is_mobile"]
 
     def is_displayed(self):
         return self.player.line_length_condition == 1
@@ -49,6 +49,11 @@ class VSRespondents(Page):
     def is_displayed(self):
         return self.session.config["vs_on"]
 
+class ResultsVS(Page):
+
+    def is_displayed(self):
+        return self.session.config["vs_on"]
+
 class WorkSituation(Page):
     form_model = "player"
     form_fields = ["work_situation"]
@@ -75,7 +80,7 @@ class PoliticalOrientation2(Page):
 
 class PastSelvesOverlap(Page):
     form_model = 'player'
-    form_fields = ['slider_overlap_one_year', 'slider_overlap_five_year']
+    form_fields = ['slider_overlap_one_year', 'slider_overlap_five_year', 'slider_overlap_one_year_ever_clicked', 'slider_overlap_five_year_ever_clicked']
 
     def is_displayed(self):
         return self.player.overlap_condition == 1
@@ -90,7 +95,7 @@ class PastSelvesOverlap(Page):
 
 class FutureSelvesOverlap(Page):
     form_model = 'player'
-    form_fields = ['slider_overlap_one_year', 'slider_overlap_five_year']
+    form_fields = ['slider_overlap_one_year', 'slider_overlap_five_year', 'slider_overlap_one_year_ever_clicked', 'slider_overlap_five_year_ever_clicked']
 
     def is_displayed(self):
         return self.player.overlap_condition == 2
@@ -115,7 +120,9 @@ class Feedback(Page):
     form_fields = ["feedback"]
     
 class Results(Page):
-    pass
+
+    def is_displayed(self):
+        return self.session.config["vs_on"]==0
 
 
 
@@ -139,6 +146,7 @@ def generate_page_sequence():
         + [InterfaceChoice]
         + [Feedback]
         + [Results]
+        + [ResultsVS]
     )
 
 page_sequence = generate_page_sequence()

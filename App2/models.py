@@ -66,8 +66,9 @@ class Player(BasePlayer):
     direct_condition = models.IntegerField()
 
     slider_direct_growth = models.StringField()
-    direct_growth = models.IntegerField(choices=[[1, "4% this year and no growth next year"], [2, "4% next year and no growth this year"]], widget=widgets.RadioSelect)
+    direct_growth = models.IntegerField(choices=[[1, "4% this year and no growth next year"], [2, "4% next year and no growth this year"]], widget=widgets.RadioSelect, blank=True)
 
+    slider_direct_ever_clicked = models.IntegerField(blank=True)
     instructions_1_start_time = models.StringField()
     instructions_1_total_time = models.StringField()
 
@@ -81,6 +82,9 @@ class Player(BasePlayer):
     future_delayed_payoff = models.FloatField()
     future_choice = models.StringField()
     future_switching_row = models.IntegerField()
+
+    is_mobile = models.BooleanField()
+    is_mobile_original_method = models.StringField()
 
     check_1 = models.IntegerField(
         blank=True,

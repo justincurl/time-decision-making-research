@@ -34,7 +34,7 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     consent_answer = models.StringField(initial="")
     is_mobile = models.BooleanField()
-    is_mobile_original_method = models.StringField(initial="")
+    is_mobile_original_method = models.StringField()
     device_type = models.IntegerField(
         choices=[
             [1, "Desktop Computer"],
@@ -42,6 +42,4 @@ class Player(BasePlayer):
             [3, "Smartphone"],
             [4, "Tablet"],
             [5, "Something Else"],
-        ],
-        blank=True,
-    )    
+        ])

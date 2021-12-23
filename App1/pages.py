@@ -564,7 +564,7 @@ class FV3_Divider(Page):
 
 class FV_12(Page):
     form_model = 'player'
-    form_fields = ['future_slider_one', 'future_slider_two', 'slider_two_last_clicked']
+    form_fields = ['future_slider_one', 'future_slider_two', 'slider_two_last_clicked', 'slider_one_ever_clicked', 'slider_two_ever_clicked']
 
     def vars_for_template(self):
         note = "Note that the total number of jobs that can be created over the two periods is different than in the last question."
@@ -633,7 +633,7 @@ class FV_12(Page):
 
 class FV_13(Page):
     form_model = 'player'
-    form_fields = ['future_slider_one', 'future_slider_two', 'slider_two_last_clicked']
+    form_fields = ['future_slider_one', 'future_slider_two', 'slider_two_last_clicked','slider_one_ever_clicked', 'slider_two_ever_clicked']
 
     def vars_for_template(self):
         note = "Note that the total number of jobs that can be created over the two periods is different than in the last question."
@@ -702,7 +702,7 @@ class FV_13(Page):
 
 class FV_23(Page):
     form_model = 'player'
-    form_fields = ['future_slider_one', 'future_slider_two', 'slider_two_last_clicked']
+    form_fields = ['future_slider_one', 'future_slider_two', 'slider_two_last_clicked', 'slider_one_ever_clicked', 'slider_two_ever_clicked']
 
     def vars_for_template(self):
         note = "Note that the total number of jobs that can be created over the two periods is different than in the last question."
@@ -1332,7 +1332,7 @@ class PV3_Divider(Page):
 
 class PV_12(Page):
     form_model = 'player'
-    form_fields = ['past_slider_one', 'past_slider_two']
+    form_fields = ['past_slider_one', 'past_slider_two','slider_one_ever_clicked', 'slider_two_ever_clicked']
 
     def vars_for_template(self):
         note = "Note that the total number of jobs that can be created over the two periods is different than in the last question."
@@ -1399,7 +1399,7 @@ class PV_12(Page):
 
 class PV_13(Page):
     form_model = 'player'
-    form_fields = ['past_slider_one', 'past_slider_two']
+    form_fields = ['past_slider_one', 'past_slider_two','slider_one_ever_clicked', 'slider_two_ever_clicked']
 
     def vars_for_template(self):
         note = "Note that the total number of jobs that can be created over the two periods is different than in the last question."
@@ -1466,7 +1466,7 @@ class PV_13(Page):
 
 class PV_23(Page):
     form_model = 'player'
-    form_fields = ['past_slider_one', 'past_slider_two']
+    form_fields = ['past_slider_one', 'past_slider_two','slider_one_ever_clicked', 'slider_two_ever_clicked']
 
     def vars_for_template(self):
         note = "Note that the total number of jobs that can be created over the two periods is different than in the last question."

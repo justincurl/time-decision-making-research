@@ -3,16 +3,23 @@
 
 
 {% block content %}
+<input type="hidden" value=0 name="slider_one_year_ever_clicked" id="id_slider_one_year_ever_clicked"/>
+<input type="hidden" value=0 name="slider_five_year_ever_clicked" id="id_slider_five_year_ever_clicked"/>
+
+<input type="hidden" name="is_mobile_original_method" id="is_mobile_original_method">
+<input type="hidden" name="is_mobile" id="is_mobile">
 
 <script>
 	$(document).ready(function () {
         $('input[name=slider_one_year]').on('input', function () {
             $('input[name=slider_one_year]').addClass('one-year-thumb');
+            document.getElementById("id_slider_one_year_ever_clicked").value = 1;
         });
     });
     	$(document).ready(function () {
         $('input[name=slider_five_year]').on('input', function () {
             $('input[name=slider_five_year]').addClass('five-year-thumb');
+            document.getElementById("id_slider_five_year_ever_clicked").value = 1;
         });
     });
 </script>
@@ -33,6 +40,10 @@
     How long do you consider the duration between <strong>now</strong> and a <strong><span style="color: rgb(244,161,13)">year from now</span></strong>?
 
 </div>
+
+    <br>
+<i>After clicking anywhere inside the grey bar, you can adjust the length of the arrow (by moving the arrowhead) to indicate your answer.</i>
+
 <table>
     <tr>
         <input type="range" name="slider_one_year" step="1" align="center" value= "0" min="0" max="260" id="id_slider_one_year">
@@ -71,7 +82,6 @@
     </tr>
 </table>
 <br>
-<i>After clicking anywhere inside the grey bar, you can adjust the length of the arrow (by moving the arrowhead) to indicate your answer.</i>
 
 <script>
     function alertFunction() {
@@ -80,15 +90,15 @@
         jQuery('.next-button').show();
         return false
     }
-    jQuery("#id_slider_one_year").on("click", function () {
-        jQuery("#id_slider_five_year").on("click", function () {
+    jQuery("#id_slider_one_year").on("input", function () {
+        jQuery("#id_slider_five_year").on("input", function () {
             jQuery(".next-button").show();
             jQuery(".waiting").hide();
         });
     });
 
-    jQuery("#id_slider_five_year").on("click", function () {
-        jQuery("#id_slider_one_year").on("click", function () {
+    jQuery("#id_slider_five_year").on("input", function () {
+        jQuery("#id_slider_one_year").on("input", function () {
             jQuery(".next-button").show();
             jQuery(".waiting").hide();
         });
@@ -108,6 +118,48 @@
 <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 <script src="http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"></script>
 <script src="jquery.ui.touch-punch.min.js"></script>
+
+<script>
+        const getDeviceType = () => {
+        const ua = navigator.userAgent;
+        if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
+          return "tablet";
+        }
+        if (
+          /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
+            ua
+          )
+        ) {
+          return "mobile";
+        }
+        return "computer";
+    };
+    document.getElementById("is_mobile_original_method").value = getDeviceType();
+</script>
+
+<script>
+
+function isMobile() {
+   return [
+     'iPad Simulator',
+     'iPhone Simulator',
+     'iPod Simulator',
+     'iPad',
+     'iPhone',
+     'iPod'
+   ].includes(navigator.platform)
+   // iPad on iOS 13 detection
+   || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+ }
+
+    // here is an alternative technique that checks screen resolution
+    // function isMobile() {
+    //     return ((window.innerWidth <= 800) && (window.innerHeight <= 600));
+    // }
+
+    document.getElementById('is_mobile').value = isMobile() ? 1 : 0;
+
+</script>
 
 {% endblock %}
 

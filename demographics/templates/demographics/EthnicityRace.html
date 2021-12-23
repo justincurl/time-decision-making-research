@@ -34,14 +34,14 @@
         jQuery('.next-button').show();
         return false
     }
-    jQuery("#id_gender").on("click", function () {
-        jQuery("#id_ethnicity").on("click", function () {
+    jQuery("#id_gender").on("input", function () {
+        jQuery("#id_ethnicity").on("input", function () {
             jQuery(".next-button").show();
             jQuery(".waiting").hide();
         });
     });
-    jQuery("#id_ethnicity").on("click", function () {
-        jQuery("#id_gender").on("click", function () {
+    jQuery("#id_ethnicity").on("input", function () {
+        jQuery("#id_gender").on("input", function () {
             jQuery(".next-button").show();
             jQuery(".waiting").hide();
         });

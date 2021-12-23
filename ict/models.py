@@ -54,6 +54,9 @@ class Player(BasePlayer):
     switching_row = models.IntegerField()
     staircase_condition = models.IntegerField()
 
+    start_time = models.StringField()
+    total_time = models.StringField()
+
     # set delayed payoff for next choice
     # ----------------------------------------------------------------------------------------------------------------
     def set_delayed_payoffs(self):

@@ -206,6 +206,15 @@ class Player(BasePlayer):
     slider_overlap_one_year = models.StringField(blank=True)
     slider_overlap_five_year = models.StringField(blank=True)
 
+    slider_one_year_ever_clicked = models.IntegerField(blank=True)
+    slider_five_year_ever_clicked = models.IntegerField(blank=True)
+    slider_overlap_one_year_ever_clicked = models.IntegerField(blank=True)
+    slider_overlap_five_year_ever_clicked = models.IntegerField(blank=True)
+
+    is_mobile = models.BooleanField()
+    is_mobile_original_method = models.StringField()
+
+
     zipcode = models.IntegerField(blank=True, min=0, max=99999)
 
     vs_respondents = models.IntegerField(

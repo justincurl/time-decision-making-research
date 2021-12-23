@@ -6,16 +6,18 @@
 
 <br>
 <div align="justify">
-    You will be asked to consent to participating in this study momentarily.
+    You are being asked to volunteer in a research study. The purpose of the study is to better understand how people
+    think about the economy.
 </div>
 <br>
 <div align="justify">
-    We have detected you are using the following device: <b><span id="reporting_device"></span></b>. Using a second method, we detected that you are {%  if phone == 0 %} also using a <strong>computer</strong> {%  elif phone == 1 %} using an <strong> iOS phone/ipad </strong> {%  endif %}
+    You will be asked to consent to participating in this study momentarily. First, so we can optimize your survey experience, please tell us on what device you are taking this survey.
 </div>
+<br>
+
 
 <input type="hidden" name="is_mobile_original_method" id="is_mobile_original_method">
-
-<br>
+<input type="hidden" name="is_mobile" id="is_mobile">
 
 <div class="device-type-questions">
     {% formfield player.device_type label="" %}
@@ -30,7 +32,7 @@
         jQuery('.next-button').show();
         return false
     }
-    jQuery(".device-type-questions").on("change", function () {
+    jQuery(".device-type-questions").on("input", function () {
         jQuery(".next-button").show()
         jQuery(".waiting").hide()
     });
@@ -48,8 +50,31 @@
         }
         return "computer";
     };
-    document.getElementById("reporting_device").innerHTML = getDeviceType();
     document.getElementById("is_mobile_original_method").value = getDeviceType();
+</script>
+
+<script>
+
+function isMobile() {
+   return [
+     'iPad Simulator',
+     'iPhone Simulator',
+     'iPod Simulator',
+     'iPad',
+     'iPhone',
+     'iPod'
+   ].includes(navigator.platform)
+   // iPad on iOS 13 detection
+   || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+ }
+
+    // here is an alternative technique that checks screen resolution
+    // function isMobile() {
+    //     return ((window.innerWidth <= 800) && (window.innerHeight <= 600));
+    // }
+
+    document.getElementById('is_mobile').value = isMobile() ? 1 : 0;
+
 </script>
 
 <div class="waiting" onclick="return alertFunction();" style="text-align: center;">

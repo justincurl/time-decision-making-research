@@ -11,6 +11,8 @@
     <input type="hidden" value="{{later_time}}" id="later_time"/>
     <input type="hidden" value={{earlier_max}} id="earlier_max"/>
     <input type="hidden" value={{later_max}} id="later_max"/>
+    <input type="hidden" value=0 name="slider_one_ever_clicked" id="id_slider_one_ever_clicked"/>
+    <input type="hidden" value=0 name="slider_two_ever_clicked" id="id_slider_two_ever_clicked"/>
 
     <div align="center">
         <h2 text-align="center">
@@ -156,6 +158,7 @@
                 var past_slider_one_display_val = earlier_max - $(this).val();
                 var past_slider_two_val = $(this).val()*later_max/earlier_max;
                 document.getElementById("id_past_slider_two").value = past_slider_one_actual_val*later_max/earlier_max;
+                document.getElementById("id_slider_one_ever_clicked").value = 1;
                 updateLabels(past_slider_one_display_val/earlier_max*10, past_slider_one_display_val, past_slider_two_val, document.getElementById("id_past_slider_one").step, document.getElementById("id_past_slider_two").step, earlier_time, later_time);
             });
 
@@ -178,6 +181,7 @@
                 var past_slider_one_actual_val = past_slider_two_val*earlier_max/later_max;
                 var past_slider_one_display_val = earlier_max - past_slider_one_actual_val;
                 document.getElementById("id_past_slider_one").value = past_slider_one_actual_val;
+                document.getElementById("id_slider_two_ever_clicked").value = 1;
                 updateLabels(past_slider_one_display_val/earlier_max*10, past_slider_one_display_val, past_slider_two_val, document.getElementById("id_past_slider_one").step, document.getElementById("id_past_slider_two").step, earlier_time, later_time);
             });
 
@@ -416,7 +420,7 @@
             jQuery('.next-button').show();
             return false
         }
-        jQuery(".rotate").on("click", function () {
+        jQuery(".rotate").on("input", function () {
             jQuery(".next-button").show();
             jQuery(".waiting").hide();
         });
@@ -438,5 +442,5 @@
 {% endblock %}
 
 {% block styles %}
-<link rel="stylesheet" href="{% static 'App1/styles/pv_13.css' %}" />
+<link rel="stylesheet" href="{% static 'App1/style/pv_13.css' %}" />
 {% endblock %}

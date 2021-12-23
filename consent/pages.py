@@ -20,26 +20,17 @@ class Consent(Page):
 
 class PhoneDevice(Page):
     def is_displayed(self):
-        return (self.player.device_type == 3) or (self.player.device_type == 4) or (self.player.device_type == 5)
+        return (self.player.device_type == 3)
 
-class DeviceType2(Page):
-    form_model = "player"
-    form_fields = ["is_mobile"]
 
 class DeviceType(Page):
     form_model = "player"
-    form_fields = ["device_type", "is_mobile_original_method"]
-
-    def vars_for_template(self):
-        return dict(
-            phone=self.player.is_mobile
-        )
+    form_fields = ["device_type", "is_mobile_original_method", "is_mobile"]
 
 
 def generate_page_sequence():
     return (
-        [DeviceType2]
-        + [DeviceType]
+        [DeviceType]
         + [PhoneDevice]
         + [Consent]
         + [NonConsent]

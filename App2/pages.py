@@ -9,6 +9,9 @@ class Start(Page):
     pass
 
 class Instructions(Page):
+    form_model = 'player'
+    form_fields = ["is_mobile_original_method", "is_mobile"]
+
     def is_displayed(self):
         if self.round_number == 1:
             current_time = datetime.datetime.now().strftime("%H:%M:%S")
@@ -26,7 +29,7 @@ class Instructions(Page):
 
 class DirectGrowthBefore(Page):
     form_model = 'player'
-    form_fields = ['slider_direct_growth', 'direct_growth']
+    form_fields = ['slider_direct_growth', 'direct_growth', 'slider_direct_ever_clicked']
 
     def is_displayed(self):
         check_condition = False
@@ -50,7 +53,7 @@ class DirectGrowthBefore(Page):
 
 class DirectGrowthAfter(Page):
     form_model = 'player'
-    form_fields = ['slider_direct_growth', 'direct_growth']
+    form_fields = ['slider_direct_growth', 'direct_growth','slider_direct_ever_clicked']
 
     def is_displayed(self):
         check_condition = False

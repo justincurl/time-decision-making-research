@@ -25,12 +25,12 @@
     }
 
     jQuery("#id_age").on("input", function () {
-        jQuery("#id_gender").on("click", function () {
+        jQuery("#id_gender").on("input", function () {
             jQuery(".next-button").show();
             jQuery(".waiting").hide();
         });
     });
-    jQuery("#id_gender").on("click", function () {
+    jQuery("#id_gender").on("input", function () {
         jQuery("#id_age").on("input", function () {
             jQuery(".next-button").show();
             jQuery(".waiting").hide();
