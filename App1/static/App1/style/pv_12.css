@@ -113,7 +113,6 @@ input[name=past_slider_one]::-webkit-slider-thumb {
     border-radius: 0px !important;
     cursor: pointer !important;
     -webkit-appearance: none !important;
-    pointer-events: auto; 
 }
 
 input[name=past_slider_two] {
