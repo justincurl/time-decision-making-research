@@ -68,7 +68,8 @@
 /* new thumb that appears when clicked */
 .past_slider_one_thumb::-webkit-slider-thumb {
     height: 330px !important; /* control the width of the slider thumb */
-    background: transparent;
+    background: transparent !important;
+    box-shadow: none !important;
     width: 8% !important;
     border-radius: 0px !important;
     cursor: pointer !important;
@@ -108,7 +109,8 @@ input[name=past_slider_one]::-webkit-slider-thumb {
 /* new thumb that appears when clicked */
 .past_slider_two_thumb::-webkit-slider-thumb {
     height: 330px !important; /* control the width of the slider thumb */
-    background: transparent;
+    background: transparent !important;
+    box-shadow: none !important;
     width: 8% !important;
     border-radius: 0px !important;
     cursor: pointer !important;
