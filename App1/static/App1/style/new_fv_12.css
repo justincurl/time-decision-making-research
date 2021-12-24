@@ -68,6 +68,7 @@
     height: 330px !important; /* control the width of the slider thumb */
     background: transparent !important;
     width: 8% !important;
+    box-shadow: none !important;
     border-radius: 0px !important;
     cursor: pointer !important;
     -webkit-appearance: none !important;
@@ -108,6 +109,7 @@ input[name=future_slider_one]::-webkit-slider-thumb {
     height: 330px !important; /* control the width of the slider thumb */
     background: transparent !important;
     width: 8% !important;
+    box-shadow: none !important;
     border-radius: 0px !important;
     cursor: pointer !important;
     -webkit-appearance: none !important;

@@ -72,6 +72,7 @@
     background: transparent;
     width: 8% !important;
     border-radius: 0px !important;
+    box-shadow: none !important;
     cursor: pointer !important;
     -webkit-appearance: none !important;
 }
@@ -109,7 +110,8 @@ input[name=future_slider_one]::-webkit-slider-thumb {
 /* new thumb that appears when clicked */
 .future_slider_two_thumb::-webkit-slider-thumb {
     height: 470px !important; /* control the width of the slider thumb */
-    background: transparent;
+    background: transparent !important;
+    box-shadow: none !important;
     width: 8% !important;
     border-radius: 0px !important;
     cursor: pointer !important;

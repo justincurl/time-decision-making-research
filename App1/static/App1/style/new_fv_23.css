@@ -68,7 +68,8 @@
 /* new thumb that appears when clicked */
 .future_slider_one_thumb::-webkit-slider-thumb {
     height: 330px !important; /* control the width of the slider thumb */
-    background: transparent;
+    background: transparent !important;
+    box-shadow: none !important;
     width: 8% !important;
     border-radius: 0px !important;
     cursor: pointer !important;
@@ -97,11 +98,12 @@ input[name=future_slider_one]::-webkit-slider-runnable-track {
 
 /* hide original thumb */
 input[name=future_slider_one]::-webkit-slider-thumb {
-    border: 0px;
-    height: 0px;
-    width: 0px;
-    border-radius: 0px;
-    -webkit-appearance: none;
+    border: 0px !important;
+    height: 0px !important;
+    width: 0px !important;
+    box-shadow: none !important;
+    border-radius: 0px !important;
+    -webkit-appearance: none !important;
 }
 
 /* for slider two */
@@ -111,7 +113,7 @@ input[name=future_slider_one]::-webkit-slider-thumb {
     width: 8% !important;
     border-radius: 0px !important;
     cursor: pointer !important;
-    background: transparent;
+    background: transparent !important;
     -webkit-appearance: none !important;
     pointer-events: auto; 
 }
@@ -137,11 +139,11 @@ input[name=future_slider_two]::-webkit-slider-runnable-track {
 
 /* hide original slider thumb */
 input[name=future_slider_two]::-webkit-slider-thumb {
-    border: 0px;
-    height: 0px;
-    width: 0px;
-    border-radius: 0px;
-    -webkit-appearance: none;
+    border: 0px !important;
+    height: 0px !important;
+    width: 0px !important;
+    border-radius: 0px !important;
+    -webkit-appearance: none !important;
 }
 
 .left-bubble-zero {
