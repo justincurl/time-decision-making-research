@@ -32,7 +32,7 @@
         <tr class="timepref__question-end">
             <td>{{question_instructions}} <strong><span style="color: rgb(244,161,13)">{{ later_time }}</span></strong></td>
             {% for value in later_values %}
-            <td class="text-center" style="width: 110px !important;">{{ value }}</td>
+            <td class="text-center">{{ value }}</td>
             {% endfor %}
         </tr>
         <tr class="timepref__question-choices">
@@ -75,7 +75,6 @@
 
 <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 <script src="http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"></script>
-<script src="jquery.ui.touch-punch.min.js"></script>
 {% endblock %}
 
 {% block styles %}
